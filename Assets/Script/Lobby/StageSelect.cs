@@ -52,4 +52,10 @@ public class StageSelect : MonoBehaviour
             }
         }
     }
+
+    public void GameStart()
+    {
+		SoundManager.Instance.PlaySFX("Button");
+        
+    }
 }
