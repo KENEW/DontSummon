@@ -9,42 +9,37 @@ public class MonsterGenerator : MonoBehaviour
     public GameObject largePre;
     public GameObject[] monsterObject;
 
-    private float radius = 5.0f; //원안의 랜덤 위치
     private int smallNum = 3;
     private int mediumNum = 2;
     private int largeNum = 1;
+
+    public int i = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         
-        for(int i=0; i<smallNum;i++) //소
+        for (int i = 0; i < smallNum; i++) //소
         {
-            Instantiate(smallPre, RandomPosition(radius), Quaternion.identity);
+            Instantiate(smallPre, RandomPosition(5.6f,7.4f), Quaternion.identity);
         }
 
-        for(int i=0;i<mediumNum;i++) //중
+        for (int i = 0; i < mediumNum; i++) //중
         {
-            Instantiate(mediumPre, RandomPosition(radius), Quaternion.identity);
+            Instantiate(mediumPre, RandomPosition(5.6f, 7.3f), Quaternion.identity);
         }
 
-        for(int i=0;i<largeNum;i++) //대
+        for (int i = 0; i < largeNum; i++) //대
         {
-            Instantiate(largePre, RandomPosition(radius), Quaternion.identity);
+            Instantiate(largePre, RandomPosition(5.6f, 7.3f), Quaternion.identity);
         }
 
-      
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 
-    public Vector2 RandomPosition(float radius) //랜덤 위치
+    public Vector2 RandomPosition(float hei, float wid) //랜덤 위치
     {
         //Vector2 getPoint = Random.insideUnitCircle;
         //float r = Random.Range(0.0f, radius);
@@ -52,11 +47,14 @@ public class MonsterGenerator : MonoBehaviour
         int signX = 1;
         int signY = 1;
 
-        Vector2 randomPos = Random.insideUnitCircle * radius;
+        //Vector2 randomPos = Random.insideUnitCircle * radius;
+        Vector2 randomPos = new Vector2(Random.Range(-wid / 2, wid / 2),Random.Range(-hei/2, hei/2));
 
-        if(randomPos.x<2.5f && randomPos.y<2.5f) //원반 위에 있게
+        
+
+        if(randomPos.x<1.8f && randomPos.y<1.8f) //원 내부
         {
-            if(randomPos.x > -2.5f && randomPos.y > -2.5f)
+            if(randomPos.x > -1.8f && randomPos.y > -1.8f)
             {
                 if(randomPos.x<0)
                 {
@@ -66,12 +64,33 @@ public class MonsterGenerator : MonoBehaviour
                 {
                     signY = -1;
                 }
-                randomPos.x += 2.5f * signX;
-                randomPos.y += 2.5f * signY;
+                randomPos.x += 0.7f * signX;
+                randomPos.y += 0.7f * signY;
             }
             
         }
 
+        /*if (randomPos.x > 2.8f && randomPos.y > 3.4f) //사각형 바깥
+        {
+            if (randomPos.x < -2.8f && randomPos.y < -3.4f)
+            {
+                if (randomPos.x < 0)
+                {
+                    signX = -1;
+                }
+                if (randomPos.y < 0)
+                {
+                    signY = -1;
+                }
+                randomPos.x -= 2.0f * signX;
+                randomPos.y -= 1.0f * signY;
+            }
+
+        }*/
+
+
         return randomPos;
     }
+
+    
 }
