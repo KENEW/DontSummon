@@ -7,7 +7,6 @@ public class MonsterGenerator : MonoBehaviour
     public GameObject smallPre;
     public GameObject mediumPre;
     public GameObject largePre;
-    public GameObject[] monsterObject;
 
     private int smallNum = 3;
     private int mediumNum = 2;
@@ -38,12 +37,8 @@ public class MonsterGenerator : MonoBehaviour
     }
 
 
-
     public Vector2 RandomPosition(float hei, float wid) //랜덤 위치
     {
-        //Vector2 getPoint = Random.insideUnitCircle;
-        //float r = Random.Range(0.0f, radius);
-        //return (getPoint * r) + transform.position;
         int signX = 1;
         int signY = 1;
 
@@ -52,7 +47,7 @@ public class MonsterGenerator : MonoBehaviour
 
         
 
-        if(randomPos.x<1.8f && randomPos.y<1.8f) //원 내부
+        if(randomPos.x<1.8f && randomPos.y<1.8f) //안쪽 사각형 내부
         {
             if(randomPos.x > -1.8f && randomPos.y > -1.8f)
             {
@@ -69,24 +64,6 @@ public class MonsterGenerator : MonoBehaviour
             }
             
         }
-
-        /*if (randomPos.x > 2.8f && randomPos.y > 3.4f) //사각형 바깥
-        {
-            if (randomPos.x < -2.8f && randomPos.y < -3.4f)
-            {
-                if (randomPos.x < 0)
-                {
-                    signX = -1;
-                }
-                if (randomPos.y < 0)
-                {
-                    signY = -1;
-                }
-                randomPos.x -= 2.0f * signX;
-                randomPos.y -= 1.0f * signY;
-            }
-
-        }*/
 
 
         return randomPos;
