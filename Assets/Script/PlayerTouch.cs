@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Build;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerTouch : MonoBehaviour
@@ -17,17 +18,6 @@ public class PlayerTouch : MonoBehaviour
 
 	private void Update()
 	{
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            GameObject[] allBall = GameObject.FindGameObjectsWithTag("Monster");
-            for(int i = 0; i< allBall.Length; i++)
-            {
-                Vector2 dir =  new Vector3(0f, 0f, 0f) - allBall[i].transform.position;
-                dir.Normalize();
-                allBall[i].GetComponent<Ball>().rigid.velocity = dir * 1.5f;
-
-            }
-		}
         if(Input.GetMouseButtonDown(0))
         {
             Vector2 pivotPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -38,7 +28,6 @@ public class PlayerTouch : MonoBehaviour
                 if (collider.CompareTag("Monster"))
                 {
                     monsterCheck = true;
-                    Debug.Log("몬스터가 감지되었습니다.");
                 }
             }
             else
@@ -47,8 +36,6 @@ public class PlayerTouch : MonoBehaviour
             }
             
         }
-
-        bool arrayCheck = false;
         int layerMask = (1 << LayerMask.NameToLayer("ArrayCheck"));
 
         if (Input.GetMouseButton(0))
@@ -58,7 +45,7 @@ public class PlayerTouch : MonoBehaviour
                 Vector2 pivotPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Collider2D collider = Physics2D.OverlapCircle(pivotPos, CapsuleSize, layerMask);
 
-                if(collider.transform.gameObject == null)
+                if(collider == null)
                 {
                     Debug.Log("아님");
                     touchObj.SetActive(false);
