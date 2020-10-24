@@ -25,6 +25,8 @@ public class NeedMonster : MonoBehaviour
 	void Start()
     {
 		playerHp = GameObject.Find("PlayerHp").GetComponent<PlayerHp>();
+
+		curImage.sprite = monsterSprite[monsterFlag]; // 이미지 변경
 	}
 
 	void Update()
