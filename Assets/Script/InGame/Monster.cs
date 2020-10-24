@@ -5,11 +5,23 @@ using UnityEngine;
 public class Monster : MonoBehaviour
 {
     public Rigidbody2D rigid;
+
+    [SerializeField]
+    private Vector2 curDir = new Vector2(1f, 0.5f);
+
     private float moveSpeed;
+    private float power = 1.5f;
+
+    //QuestDirector questDirector;
+    NeedMonster needMonster;
+
+    Vector2 tempVec;
+
 
     void Start()
     {
         //questDirector = GameObject.Find("QuestDirector").GetComponent<QuestDirector>();
+        needMonster = GameObject.Find("NeedMonster").GetComponent<NeedMonster>();
 
         if (transform.CompareTag("Small"))
         {
@@ -27,7 +39,7 @@ public class Monster : MonoBehaviour
         rigid.velocity = new Vector2(-rigid.transform.position.x * moveSpeed, -rigid.transform.position.y * moveSpeed);
     }
 
-    void FixedUpdate()
+    /*void FixedUpdate()
     {
         if (transform.CompareTag("Small"))
         {
@@ -44,52 +56,67 @@ public class Monster : MonoBehaviour
 
 
 
-    }
+    }*/
 
-    void OnMouseDown()
+    /*void OnMouseDown()
     {
         rigid.velocity = new Vector2(rigid.transform.position.x*moveSpeed, rigid.transform.position.y*moveSpeed);
+    }*/
+
+    public void SetPower(float powerValue)
+    {
+        power = powerValue;
     }
 
-    private void OnTriggerEnter2D(Collider2D coll)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        /* //퀘스트
+        SoundManager.Instance.PlaySFX("Hit");
+        tempVec = rigid.velocity;
+        //Debug.Log("현재 벨로시티 : " + tempVec);
+        tempVec.Normalize();
+        //Debug.Log("벨로시티 정규화 : " + tempVec);
+        rigid.velocity = tempVec * power;
+        //Debug.Log("변환된 벨로시티 : " + rigid.velocity);
+    }
+
+    private void OnTriggerEnter2D(Collider2D coll) //퀘스트
+    {
         if(transform.CompareTag("Small"))
         {
-            if (questDirector.num[0] != 0)
+            if (needMonster.needNum != 0 && needMonster.monsterFlag==0) 
             {
-                questDirector.Success(0);
+                needMonster.Success();
             }
             else
             {
-                questDirector.Fail();
+                needMonster.Fail();
             }
         }
 
         if (transform.CompareTag("Medium"))
         {
-            if (questDirector.num[1] != 0)
+            if (needMonster.needNum != 0 && needMonster.monsterFlag == 1)
             { 
-                questDirector.Success(1);
+                needMonster.Success();
             }
             else
             {
-                questDirector.Fail();
+                needMonster.Fail();
             }
         }
 
         if (transform.CompareTag("Large"))
         {
-            if (questDirector.num[2] != 0)
+            if (needMonster.needNum != 0 && needMonster.monsterFlag == 2)
             {
-                questDirector.Success(2);
+                needMonster.Success();
             }
             else
             {
-                questDirector.Fail();
+                needMonster.Fail();
             }
         }
-        */
+       
 
         Debug.Log("소환");
         Destroy(gameObject);

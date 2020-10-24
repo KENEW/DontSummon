@@ -5,61 +5,64 @@ using UnityEngine.UI;
 
 public class QuestDirector : MonoBehaviour
 {
-    public int[] num = new int[3];
+    public int[] needNum = new int[3]; //필요한 숫자
+    public NeedMonster[] needMonster;
 
-    public Text quest;
+    //public Text quest;
 
-    public Image smallImage;
-    public Image mediumImage;
-    public Image largeImage;
+    //public Image smallImage;
+    //public Image mediumImage;
+    //public Image largeImage;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        //smallImage.SetActive(false);
-        //mediumImage.SetActive(false);
-        //largeImage.SetActive(false);
 
-        quest.text = "";
 
-        for (int i = 0; i < num.Length; i++)
+        /*quest.text = "";
+
+        for (int i = 0; i < needNum.Length; i++)
         {
-            if (num[i] != 0)
+            if (needNum[i] != 0)
             {
-                quest.text += "×" + num[i];
+                quest.text += needNum[i];
+            }
+        }*/
+
+        for (int i = 0; i < needNum.Length; i++)
+        {
+            if (needNum[i] != 0)
+            {
+                needMonster[i].SetNeedText(needNum[i]);
             }
         }
 
-        /*if(smallNum!=0)
-        {
-            //smallImage.SetActive(true);
-            quest.text += " × " + smallNum;
-        }
-        if (mediumNum != 0)
-        {
-            //mediumImage.SetActive(true);
-            quest.text += " × " + mediumNum;
-        }
-        if (largeNum != 0)
-        {
-           //largeImage.SetActive(true);
-            quest.text += " × " + largeNum;
-        }*/
     }
 
     // Update is called once per frame
     void Update()
     {
-        quest.text = "×" + num[0] +"\n"+ "×" + num[1] + "\n"+"×" + num[2];
+        for (int i = 0; i < needNum.Length; i++)
+        {
+            if (needNum[i] != 0)
+            {
+                needMonster[i].SetNeedText(needNum[i]);
+            }
+        }
+        //quest.text = "×" + needNum[0] + "\n" + "×" + needNum[1] + "\n" + "×" + needNum[2];
     }
 
     public void Success(int j)
     {
-        num[j] -= 1;
+        needNum[j] -= 1;
     }
 
     public void Fail()
     {
-
+        //라이프가 깎임
     }
+
 }
+

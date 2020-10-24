@@ -15,7 +15,7 @@ public class PlayerTouch : MonoBehaviour
 
     void Start()
     {
-        touchObj.SetActive(false);
+        touchObj.SetActive(true);
     }
 
 	private void Update()
