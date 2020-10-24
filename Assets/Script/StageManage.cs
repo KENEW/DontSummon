@@ -27,15 +27,18 @@ public class StageManage : MonoSingleton<StageManage>
 		{
 			case 1:
 				needMonster.monsterFlag = 0;
+				needMonster.curImage.sprite = needMonster.monsterSprite[needMonster.monsterFlag];
 				needMonster.needNum = 3;
 				break;
 			case 2:
-				needMonster.monsterFlag = 0;
-				needMonster.needNum = 3;
+				needMonster.monsterFlag = 1;
+				needMonster.curImage.sprite = needMonster.monsterSprite[needMonster.monsterFlag];
+				needMonster.needNum = 2;
 				break;
 			case 3:
-				needMonster.monsterFlag = 0;
-				needMonster.needNum = 3;
+				needMonster.monsterFlag = 2;
+				needMonster.curImage.sprite = needMonster.monsterSprite[needMonster.monsterFlag];
+				needMonster.needNum = 1;
 				break;
 		}
 
