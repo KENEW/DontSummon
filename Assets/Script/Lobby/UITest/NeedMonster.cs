@@ -25,13 +25,14 @@ public class NeedMonster : MonoBehaviour
 	void Start()
     {
 		playerHp = GameObject.Find("PlayerHp").GetComponent<PlayerHp>();
-
 	}
 
 	void Update()
     {
 		needText.text = needNum+"";
-		//needNum이 0이되면 성공
+
+		
+	
     }
 
 	public void Success()
@@ -43,6 +44,11 @@ public class NeedMonster : MonoBehaviour
 	{
 		//라이프가 깎임
 		playerHp.GetDamage(1);
+	}
+
+	public void Clear() //스테이지 클리어
+    {
+		Debug.Log("clear");
 	}
 
 	public void SetNeedText(int value)
