@@ -102,7 +102,6 @@ public class PlayerHp : MonoBehaviour
 	{
 		return curHp;
 	}
-<<<<<<< HEAD
 
 	public void GameOver()
     {
@@ -111,10 +110,7 @@ public class PlayerHp : MonoBehaviour
 
 	public void Clear() //스테이지 클리어
 	{
-		curHp = GetHp;
 		Debug.Log("clear");
 	}
 
-=======
->>>>>>> d53310234cf1a99044b220a71179e1c6f86e9cee
 }
