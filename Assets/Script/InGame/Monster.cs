@@ -12,7 +12,7 @@ public class Monster : MonoBehaviour
 
     void Start()
     {
-        questDirector = GameObject.Find("QuestDirector").GetComponent<QuestDirector>();
+        //questDirector = GameObject.Find("QuestDirector").GetComponent<QuestDirector>();
 
         if (transform.CompareTag("Small"))
         {
@@ -30,13 +30,33 @@ public class Monster : MonoBehaviour
         rigid.velocity = new Vector2(-rigid.transform.position.x * moveSpeed, -rigid.transform.position.y * moveSpeed);
     }
 
+    void FixedUpdate()
+    {
+        if (transform.CompareTag("Small"))
+        {
+            moveSpeed = 0.4f;
+        }
+        else if (transform.CompareTag("Medium"))
+        {
+            moveSpeed = 0.3f;
+        }
+        else
+        {
+            moveSpeed = 0.2f;
+        }
+
+
+
+    }
+
     void OnMouseDown()
     {
-        rigid.velocity = new Vector2(rigid.transform.position.x * moveSpeed, rigid.transform.position.y * moveSpeed);
+        rigid.velocity = new Vector2(rigid.transform.position.x*moveSpeed, rigid.transform.position.y*moveSpeed);
     }
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
+        /* //퀘스트
         if(transform.CompareTag("Small"))
         {
             if (questDirector.num[0] != 0)
@@ -72,6 +92,7 @@ public class Monster : MonoBehaviour
                 questDirector.Fail();
             }
         }
+        */
 
         Debug.Log("소환");
         Destroy(gameObject);
