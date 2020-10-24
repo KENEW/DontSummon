@@ -9,6 +9,8 @@ TagManager:
   - Large
   - Medium
   - Small
+  - Monster
+  - Array
   layers:
   - Default
   - TransparentFX
@@ -18,8 +20,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - ArrayCheck
+  - Normal
   - 
   - 
   - 

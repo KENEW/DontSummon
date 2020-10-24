@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 8834089213309463866}
   - component: {fileID: 8834089213309463869}
   - component: {fileID: 8834089213309463868}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TestBall
-  m_TagString: Ball
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigid: {fileID: 8834089213309463868}
   curDir: {x: 1, y: 0.5}
+  power: 2
 --- !u!212 &8834089213309463866
 SpriteRenderer:
   m_ObjectHideFlags: 0
