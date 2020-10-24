@@ -7,8 +7,6 @@ public class Monster : MonoBehaviour
     public Rigidbody2D rigid;
     private float moveSpeed;
 
-    
-
     void Start()
     {
         //questDirector = GameObject.Find("QuestDirector").GetComponent<QuestDirector>();

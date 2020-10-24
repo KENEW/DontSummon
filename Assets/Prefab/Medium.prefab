@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4555746536033918872}
   - component: {fileID: 5753814152708623117}
   - component: {fileID: 3220849950620726079}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Medium
   m_TagString: Medium
   m_Icon: {fileID: 0}
@@ -134,4 +134,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigid: {fileID: 4555746536033918872}
-  questDirector: {fileID: 0}

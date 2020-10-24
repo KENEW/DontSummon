@@ -8,19 +8,21 @@ public class Ball : MonoBehaviour
 
     [SerializeField]
     private Vector2 curDir = new Vector2(1f, 0.5f);
-
+    Vector2 tempVec;
     private float moveSpeed = 200f;
 
-    [SerializeField]
-    float power = 1.5f;
+    private float power = 1.5f;
 
     void Start()
     {
-        //rigid.AddForce(curDir * moveSpeed * Time.deltaTime, ForceMode2D.Impulse);
         rigid.velocity = new Vector2(4, 2);
     }
 
-    Vector2 tempVec;
+    public void SetPower(float powerValue)
+    {
+        power = powerValue;
+    }
+
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
         SoundManager.Instance.PlaySFX("Hit");

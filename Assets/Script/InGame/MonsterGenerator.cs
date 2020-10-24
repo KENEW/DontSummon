@@ -14,13 +14,13 @@ public class MonsterGenerator : MonoBehaviour
 
     public int i = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
         
         for (int i = 0; i < smallNum; i++) //소
         {
             Instantiate(smallPre, RandomPosition(5.6f,7.4f), Quaternion.identity);
+
         }
 
         for (int i = 0; i < mediumNum; i++) //중
@@ -32,10 +32,7 @@ public class MonsterGenerator : MonoBehaviour
         {
             Instantiate(largePre, RandomPosition(5.6f, 7.3f), Quaternion.identity);
         }
-
-
     }
-
 
     public Vector2 RandomPosition(float hei, float wid) //랜덤 위치
     {
@@ -44,8 +41,6 @@ public class MonsterGenerator : MonoBehaviour
 
         //Vector2 randomPos = Random.insideUnitCircle * radius;
         Vector2 randomPos = new Vector2(Random.Range(-wid / 2, wid / 2),Random.Range(-hei/2, hei/2));
-
-        
 
         if(randomPos.x<1.8f && randomPos.y<1.8f) //안쪽 사각형 내부
         {
@@ -65,9 +60,6 @@ public class MonsterGenerator : MonoBehaviour
             
         }
 
-
         return randomPos;
-    }
-
-    
+    }  
 }
