@@ -12,12 +12,11 @@ public class Small : MonoBehaviour
     private float moveSpeed = 0.1f;
 
     private Vector2 portal = new Vector2(0.0f, 0.0f);
-    
 
-    void Update()
+
+    void Start()
     {
-        Vector2 position = Vector2.MoveTowards(transform.position, portal, moveSpeed);
-        rigid.MovePosition(position);
+        rigid.velocity = new Vector2(-rigid.transform.position.x, -rigid.transform.position.y);
     }
 
     Vector2 tempVelo;
