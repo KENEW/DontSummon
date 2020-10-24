@@ -37,7 +37,7 @@ public class PlayerHp : MonoBehaviour
 
 		if(curHp==0) //현재 체력이 0이면
         {
-			GameOver();
+			StageManage.Instance.StageFailed();
         }
 
 		DrawHp();
@@ -91,10 +91,4 @@ public class PlayerHp : MonoBehaviour
 	{
 		return curHp;
 	}
-
-	public void GameOver()
-    {
-		Debug.Log("game over");
-    }
-
 }
