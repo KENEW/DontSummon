@@ -11,6 +11,8 @@ public class PlayerTouch : MonoBehaviour
     private float CapsuleSize = 0.3f;
 
     private bool monsterCheck = true;
+
+
     void Start()
     {
         touchObj.SetActive(false);
@@ -33,8 +35,8 @@ public class PlayerTouch : MonoBehaviour
             else
             {
                 monsterCheck = false;
-            }
-            
+                Debug.Log(monsterCheck);
+            }   
         }
         int layerMask = (1 << LayerMask.NameToLayer("ArrayCheck"));
 
