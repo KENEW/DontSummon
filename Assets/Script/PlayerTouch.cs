@@ -13,7 +13,7 @@ public class PlayerTouch : MonoBehaviour
     private bool monsterCheck = true;
     void Start()
     {
-        touchObj.SetActive(true);
+        touchObj.SetActive(false) ;
     }
 
 	private void Update()
