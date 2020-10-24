@@ -61,12 +61,11 @@ public class TimeLimit : MonoBehaviour
 			playerHp.hpObject[0].SetActive(false); //Life 0
 			playerHp.hpObject[1].SetActive(false);
 			playerHp.hpObject[2].SetActive(false);
-			
-			GameOver();
-        }
 
-
+			StageManage.Instance.StageFailed();
+		}
 	}
+
 	private void BackHpRun()
 	{
 		backHpDamage = true;
@@ -82,9 +81,4 @@ public class TimeLimit : MonoBehaviour
 			Invoke("BackHpRun", 0.1f);
 		}
 	}
-
-	public void GameOver()
-    {
-		Debug.Log("game over");
-    }
 }

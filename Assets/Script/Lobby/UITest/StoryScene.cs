@@ -12,6 +12,7 @@ public class StoryScene : MonoBehaviour
 
 	public void NextButton()
 	{
+		SoundManager.Instance.PlaySFX("Button");
 		storyPanel[curPage].SetActive(false);
 		curPage++;
 
