@@ -31,9 +31,8 @@ public class NeedMonster : MonoBehaviour
     {
 		needText.text = needNum+"";
 
-		
-	
-    }
+
+	}
 
 	public void Success()
 	{
@@ -46,10 +45,7 @@ public class NeedMonster : MonoBehaviour
 		playerHp.GetDamage(1);
 	}
 
-	public void Clear() //스테이지 클리어
-    {
-		Debug.Log("clear");
-	}
+	
 
 	public void SetNeedText(int value)
 	{

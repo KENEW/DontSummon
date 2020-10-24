@@ -16,6 +16,7 @@ public class TimeLimit : MonoBehaviour
 	NeedMonster needMonster;
 
 	private bool backHpDamage = false;
+	int flag = 0;
 
 	private void Start()
 	{
@@ -42,15 +43,18 @@ public class TimeLimit : MonoBehaviour
 			}
 		}
 
-		if (needMonster.needNum == 0) //needNum이 0이되면 성공
+		if (needMonster.needNum == 0) //스테이지 클리어
 		{
 			if (curTime >= 10.0f) //10초 이상 남았을 때 클리어 시 라이프 획득
 			{
-				playerHp.RecoveryHp(1);
-
+				flag += 1;
 			}
-			needMonster.Clear();
 		}
+
+		if(flag==1)
+        {
+			playerHp.RecoveryHp(1);
+        }
 
 		if (curTime==0) //현재 타임이 0이 되면
         {
