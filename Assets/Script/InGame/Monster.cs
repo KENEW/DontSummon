@@ -6,7 +6,6 @@ public class Monster : MonoBehaviour
 {
     public Rigidbody2D rigid;
     private float moveSpeed;
-    public QuestDirector questDirector;
 
     
 
@@ -16,15 +15,15 @@ public class Monster : MonoBehaviour
 
         if (transform.CompareTag("Small"))
         {
-            moveSpeed = 0.4f;
+            moveSpeed = 0.8f;
         }
         else if(transform.CompareTag("Medium"))
         {
-            moveSpeed = 0.3f;
+            moveSpeed = 0.6f;
         }
         else
         {
-            moveSpeed = 0.2f;
+            moveSpeed = 0.4f;
         }
 
         rigid.velocity = new Vector2(-rigid.transform.position.x * moveSpeed, -rigid.transform.position.y * moveSpeed);
