@@ -134,4 +134,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigid: {fileID: 5931830297575751955}
-  curDir: {x: 1, y: 0.5}

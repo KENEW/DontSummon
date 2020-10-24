@@ -5,27 +5,19 @@ using UnityEngine;
 public class Large : MonoBehaviour
 {
     public Rigidbody2D rigid;
-
-    [SerializeField]
-    private Vector2 curDir = new Vector2(1f, 0.5f);
-
-    private float moveSpeed = 0.04f;
-
-    private Vector2 portal = new Vector2(0.0f, 0.0f);
+    private float moveSpeed = 0.4f;
 
     void Start()
     {
-        rigid.velocity = new Vector2(-rigid.transform.position.x, -rigid.transform.position.y);
+        rigid.velocity = new Vector2(-rigid.transform.position.x * moveSpeed, -rigid.transform.position.y * moveSpeed);
     }
 
 
-    Vector2 tempVelo;
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D coll)
     {
-        //if (collision.gameObject.CompareTag("Ball"))
-        //{
-        //    rigid.velocity = Vector3.zero;
-        //}
+
+        Debug.Log("소환");
+        Destroy(gameObject);
     }
 
 }
