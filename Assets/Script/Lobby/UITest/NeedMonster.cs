@@ -9,6 +9,11 @@ public class NeedMonster : MonoBehaviour
 	public Sprite[] monsterSprite;
 	public Image curImage;
 	public Text needText;
+	public int monsterFlag; //몬스터 구별 플래그 0-소 1-중 2-대
+
+	public int needNum;
+
+	PlayerHp playerHp;
 
 	public enum Monster 
 	{ 
@@ -16,6 +21,29 @@ public class NeedMonster : MonoBehaviour
 	};
 
 	Monster monster;
+
+	void Start()
+    {
+		playerHp = GameObject.Find("PlayerHp").GetComponent<PlayerHp>();
+
+	}
+
+	void Update()
+    {
+		needText.text = needNum+"";
+		//needNum이 0이되면 성공
+    }
+
+	public void Success()
+	{
+		needNum -= 1;
+	}
+
+	public void Fail()
+	{
+		//라이프가 깎임
+		playerHp.GetDamage(1);
+	}
 
 	public void SetNeedText(int value)
 	{

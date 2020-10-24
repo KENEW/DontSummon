@@ -13,7 +13,9 @@ public class PlayerHp : MonoBehaviour
 
 	private void Start()
 	{
-		Init();
+	    //Init();
+		GetHp();
+		DrawHp();
 	}
 
 	public void Init()
@@ -32,8 +34,16 @@ public class PlayerHp : MonoBehaviour
 		{
 			GetDamage(1);
 		}
+
+		if(curHp==0) //현재 체력이 0이면
+        {
+			GameOver();
+        }
+
+		DrawHp();
 	}
-	public void RecoveryHp(int hpValue)
+
+	public void RecoveryHp(int hpValue) //회복
 	{
 		if(curHp + hpValue >= maxHp)
 		{
@@ -44,10 +54,10 @@ public class PlayerHp : MonoBehaviour
 			curHp += hpValue;
 		}
 
-		DrawHp();
+		//DrawHp();
 	}
 
-	public void GetDamage(int hpValue)
+	public void GetDamage(int hpValue) //데미지
 	{
 		if (curHp - hpValue <= 0)
 		{
@@ -58,7 +68,7 @@ public class PlayerHp : MonoBehaviour
 			curHp -= hpValue;
 		}
 
-		DrawHp();
+		//DrawHp();
 	}
 
 	private void DrawHp()
@@ -81,5 +91,10 @@ public class PlayerHp : MonoBehaviour
 	{
 		return curHp;
 	}
+
+	public void GameOver()
+    {
+		Debug.Log("game over");
+    }
 
 }

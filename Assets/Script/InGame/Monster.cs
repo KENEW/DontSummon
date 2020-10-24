@@ -6,10 +6,14 @@ public class Monster : MonoBehaviour
 {
     public Rigidbody2D rigid;
     private float moveSpeed;
+    //QuestDirector questDirector;
+    NeedMonster needMonster;
+
 
     void Start()
     {
         //questDirector = GameObject.Find("QuestDirector").GetComponent<QuestDirector>();
+        needMonster = GameObject.Find("NeedMonster").GetComponent<NeedMonster>();
 
         if (transform.CompareTag("Small"))
         {
@@ -53,43 +57,43 @@ public class Monster : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D coll)
     {
-        /* //퀘스트
+         //퀘스트
         if(transform.CompareTag("Small"))
         {
-            if (questDirector.num[0] != 0)
+            if (needMonster.needNum != 0 && needMonster.monsterFlag==0) 
             {
-                questDirector.Success(0);
+                needMonster.Success();
             }
             else
             {
-                questDirector.Fail();
+                needMonster.Fail();
             }
         }
 
         if (transform.CompareTag("Medium"))
         {
-            if (questDirector.num[1] != 0)
+            if (needMonster.needNum != 0 && needMonster.monsterFlag == 1)
             { 
-                questDirector.Success(1);
+                needMonster.Success();
             }
             else
             {
-                questDirector.Fail();
+                needMonster.Fail();
             }
         }
 
         if (transform.CompareTag("Large"))
         {
-            if (questDirector.num[2] != 0)
+            if (needMonster.needNum != 0 && needMonster.monsterFlag == 2)
             {
-                questDirector.Success(2);
+                needMonster.Success();
             }
             else
             {
-                questDirector.Fail();
+                needMonster.Fail();
             }
         }
-        */
+       
 
         Debug.Log("소환");
         Destroy(gameObject);

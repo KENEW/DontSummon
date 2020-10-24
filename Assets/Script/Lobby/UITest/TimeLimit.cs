@@ -12,6 +12,8 @@ public class TimeLimit : MonoBehaviour
 	private float curTime;
 	private float maxTime;
 
+	PlayerHp playerHp;
+
 	private bool backHpDamage = false;
 
 	private void Start()
@@ -19,6 +21,8 @@ public class TimeLimit : MonoBehaviour
 		maxTime = 20f;
 		curTime = maxTime;
 		StartCoroutine(Regular());
+
+		playerHp = GameObject.Find("PlayerHp").GetComponent<PlayerHp>();
 	}
 	private void Update()
 	{
@@ -34,6 +38,15 @@ public class TimeLimit : MonoBehaviour
 				hpGaugeBack.fillAmount = hpGauge.fillAmount;
 			}
 		}
+
+		if(curTime==0) //현재 타임이 0이 되면
+        {
+			playerHp.hpObject[0].SetActive(false); //Life 0
+			playerHp.hpObject[1].SetActive(false);
+			playerHp.hpObject[2].SetActive(false);
+			
+			GameOver();
+        }
 	}
 	private void BackHpRun()
 	{
@@ -50,4 +63,9 @@ public class TimeLimit : MonoBehaviour
 			Invoke("BackHpRun", 0.1f);
 		}
 	}
+
+	public void GameOver()
+    {
+		Debug.Log("game over");
+    }
 }
