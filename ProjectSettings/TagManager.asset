@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ball
+  - Portal
+  - Large
+  - Medium
+  - Small
   layers:
   - Default
   - TransparentFX

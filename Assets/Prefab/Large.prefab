@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 8788251192130503321}
   - component: {fileID: 3127141328447518050}
   - component: {fileID: 5931830297575751955}
-  - component: {fileID: -3793579809003451247}
+  - component: {fileID: 3361648495197826639}
   m_Layer: 0
   m_Name: Large
-  m_TagString: monster
+  m_TagString: Large
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,7 +93,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 6592614862305876355}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: c309580b1d08fbd4c81ef129f9aca833, type: 2}
+  m_Material: {fileID: 6200000, guid: e86b3668de5de7944b727abcedae8cd1, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -121,7 +121,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-3793579809003451247
+--- !u!114 &3361648495197826639
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6592614862305876355}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19f7ededf619e9449a9e3b0ba57b9e80, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c2fe6f0ff4f5f24c922dc3835c77cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rigid: {fileID: 5931830297575751955}
