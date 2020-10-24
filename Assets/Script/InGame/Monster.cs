@@ -36,7 +36,7 @@ public class Monster : MonoBehaviour
             moveSpeed = 0.4f;
         }
 
-        rigid.velocity = new Vector2(-rigid.transform.position.x * moveSpeed, -rigid.transform.position.y * moveSpeed);
+        rigid.velocity = new Vector2(-rigid.transform.position.x * moveSpeed * 0.2f, -rigid.transform.position.y * moveSpeed * 0.2f);
     }
 
     /*void FixedUpdate()
@@ -70,7 +70,7 @@ public class Monster : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        SoundManager.Instance.PlaySFX("Hit");
+        SoundManager.Instance.PlaySFX("Tick");
         tempVec = rigid.velocity;
         //Debug.Log("현재 벨로시티 : " + tempVec);
         tempVec.Normalize();

@@ -5,6 +5,9 @@ using UnityEngine;
 public class StageManage : MonoSingleton<StageManage>
 {
 	public NeedMonster needMonster;
+
+	public GameObject ClearObj;
+	public GameObject FailedObj;
 	private int curStage
 	{
 		get
@@ -50,13 +53,15 @@ public class StageManage : MonoSingleton<StageManage>
 		}
 		else
 		{
+			ClearObj.SetActive(true);
+
 			Invoke("PlayerInit", 3.0f);
 		}
 	}
 	public void StageFailed()
 	{
 		Debug.Log("스테이지 실패");
-		//로비로 이동
+		FailedObj.SetActive(true);
 	}
 
 }

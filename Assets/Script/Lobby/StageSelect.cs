@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class StageSelect : MonoBehaviour
 {
     public GameObject scrollBar;
@@ -56,6 +56,6 @@ public class StageSelect : MonoBehaviour
     public void GameStart()
     {
 		SoundManager.Instance.PlaySFX("Button");
-        
+        SceneManager.LoadScene("testScene");
     }
 }
