@@ -11,9 +11,13 @@ public class PlayerHp : MonoBehaviour
 	[SerializeField]
 	private int maxHp;
 
+	NeedMonster needMonster;
+
 	private void Start()
 	{
-	    //Init();
+		needMonster = GameObject.Find("NeedMonster").GetComponent<NeedMonster>();
+
+		//Init();
 		GetHp();
 		DrawHp();
 	}
@@ -38,6 +42,13 @@ public class PlayerHp : MonoBehaviour
 		if(curHp==0) //현재 체력이 0이면
         {
 			StageManage.Instance.StageFailed();
+        }
+        else
+        {
+			if(needMonster.needNum==0)
+            {
+				Clear();
+            }
         }
 
 		DrawHp();
@@ -91,4 +102,15 @@ public class PlayerHp : MonoBehaviour
 	{
 		return curHp;
 	}
+
+	public void GameOver()
+    {
+		Debug.Log("game over");
+    }
+
+	public void Clear() //스테이지 클리어
+	{
+		Debug.Log("clear");
+	}
+
 }

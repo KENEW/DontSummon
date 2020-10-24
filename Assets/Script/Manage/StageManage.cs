@@ -27,13 +27,16 @@ public class StageManage : MonoSingleton<StageManage>
 		switch (curStage)
 		{
 			case 1:
-				
+				needMonster.monsterFlag = 0;
+				needMonster.needNum = 3;
 				break;
 			case 2:
-
+				needMonster.monsterFlag = 0;
+				needMonster.needNum = 3;
 				break;
 			case 3:
-
+				needMonster.monsterFlag = 0;
+				needMonster.needNum = 3;
 				break;
 		}
 
