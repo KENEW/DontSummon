@@ -8,6 +8,8 @@ public class StageManage : MonoSingleton<StageManage>
 
 	public GameObject ClearObj;
 	public GameObject FailedObj;
+
+	public bool gameState = false;
 	private int curStage
 	{
 		get
@@ -23,8 +25,17 @@ public class StageManage : MonoSingleton<StageManage>
 	private void Start()
 	{
 		curStage = 1;
+		Invoke("GameStateTrue", 2f);
+		StageInit();
 	}
-
+	public void GameStateTrue()
+	{
+		gameState = true;
+	}
+	public void GameStateFalse()
+	{
+		gameState = false;
+	}
 	private void StageInit()
 	{
 		switch (curStage)
@@ -33,16 +44,21 @@ public class StageManage : MonoSingleton<StageManage>
 				needMonster.monsterFlag = 0;
 				needMonster.curImage.sprite = needMonster.monsterSprite[needMonster.monsterFlag];
 				needMonster.needNum = 3;
+				MonsterGenerator.instance.MosnterCreate();
 				break;
 			case 2:
 				needMonster.monsterFlag = 1;
 				needMonster.curImage.sprite = needMonster.monsterSprite[needMonster.monsterFlag];
 				needMonster.needNum = 2;
+				MonsterGenerator.instance.MosnterCreate();
+
 				break;
 			case 3:
 				needMonster.monsterFlag = 2;
 				needMonster.curImage.sprite = needMonster.monsterSprite[needMonster.monsterFlag];
 				needMonster.needNum = 1;
+				MonsterGenerator.instance.MosnterCreate();
+
 				break;
 		}
 
@@ -57,13 +73,12 @@ public class StageManage : MonoSingleton<StageManage>
 		else
 		{
 			ClearObj.SetActive(true);
-
-			Invoke("PlayerInit", 3.0f);
+			Invoke("StageInit", 2.0f);
 		}
 	}
 	public void StageFailed()
 	{
-		Debug.Log("스테이지 실패");
+		gameState = false;
 		FailedObj.SetActive(true);
 	}
 
