@@ -73,12 +73,9 @@ public class StageManage : MonoSingleton<StageManage>
 		else
 		{
 			ClearObj.SetActive(true);
-<<<<<<< HEAD
 
-			//Invoke("PlayerInit", 3.0f);
-=======
+			Invoke("PlayerInit", 3.0f);
 			Invoke("StageInit", 2.0f);
->>>>>>> d60ae03f2237c6991ddf39322753c4a27a3b3a3e
 		}
 	}
 	public void StageFailed()
