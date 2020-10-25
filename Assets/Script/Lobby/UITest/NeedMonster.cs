@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class NeedMonster : MonoBehaviour
 {
-	public Sprite[] monsterSprite;
+	public Sprite[] monsterSprite= new Sprite[3];
 	public Image curImage;
 	public Text needText;
 	public int monsterFlag; //몬스터 구별 플래그 0-소 1-중 2-대
