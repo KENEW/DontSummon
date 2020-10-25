@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterGenerator : MonoBehaviour
+public class MonsterGenerator : MonoSingleton<MonsterGenerator>
 {
     public GameObject smallPre;
     public GameObject mediumPre;
@@ -14,12 +14,16 @@ public class MonsterGenerator : MonoBehaviour
 
     public int i = 0;
 
-    void Start()
+	private void Start()
+	{
+        MosnterCreate();
+
+    }
+	public void MosnterCreate()
     {
-        
         for (int i = 0; i < smallNum; i++) //소
         {
-            Instantiate(smallPre, RandomPosition(5.6f,7.4f), Quaternion.identity);
+            Instantiate(smallPre, RandomPosition(5.6f, 7.4f), Quaternion.identity);
 
         }
 
