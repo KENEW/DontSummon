@@ -111,6 +111,8 @@ public class PlayerHp : MonoBehaviour
 	public void Clear() //스테이지 클리어
 	{
 		Debug.Log("clear");
+		StageManage.Instance.StageClear();
+
 	}
 
 }

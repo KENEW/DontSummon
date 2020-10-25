@@ -10,7 +10,7 @@ MonoImporter:
       type: 3}
   - largePre: {fileID: 6592614862305876355, guid: 1cec4507f4a483e4ba5b7165379a3f1e,
       type: 3}
-  executionOrder: 0
+  executionOrder: -5
   icon: {instanceID: 0}
   userData: 
   assetBundleName: 
