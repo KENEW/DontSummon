@@ -36,7 +36,7 @@ public class Monster : MonoBehaviour
             moveSpeed = 0.4f;
         }
 
-        rigid.velocity = new Vector2(-rigid.transform.position.x * moveSpeed * 0.2f, -rigid.transform.position.y * moveSpeed * 0.2f);
+        rigid.velocity = new Vector2(-rigid.transform.position.x * moveSpeed * 0.5f, -rigid.transform.position.y * moveSpeed * 0.5f);
     }
 
     /*void FixedUpdate()
@@ -62,6 +62,7 @@ public class Monster : MonoBehaviour
     {
         rigid.velocity = new Vector2(rigid.transform.position.x*moveSpeed, rigid.transform.position.y*moveSpeed);
     }*/
+
 
     public void SetPower(float powerValue)
     {

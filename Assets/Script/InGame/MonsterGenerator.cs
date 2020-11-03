@@ -23,18 +23,18 @@ public class MonsterGenerator : MonoSingleton<MonsterGenerator>
     {
         for (int i = 0; i < smallNum; i++) //소
         {
-            Instantiate(smallPre, RandomPosition(5.6f, 7.4f), Quaternion.identity);
+            Instantiate(smallPre, RandomPosition(4.8f, 7.4f), Quaternion.identity);
 
         }
 
         for (int i = 0; i < mediumNum; i++) //중
         {
-            Instantiate(mediumPre, RandomPosition(5.6f, 7.3f), Quaternion.identity);
+            Instantiate(mediumPre, RandomPosition(4.8f, 7.3f), Quaternion.identity);
         }
 
         for (int i = 0; i < largeNum; i++) //대
         {
-            Instantiate(largePre, RandomPosition(5.6f, 7.3f), Quaternion.identity);
+            Instantiate(largePre, RandomPosition(4.8f, 7.3f), Quaternion.identity);
         }
     }
 
