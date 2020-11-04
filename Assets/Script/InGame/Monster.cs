@@ -10,7 +10,7 @@ public class Monster : MonoBehaviour
     private Vector2 curDir = new Vector2(1f, 0.5f);
 
     private float moveSpeed;
-    private float power = 1.5f;
+    private float power;
 
     //QuestDirector questDirector;
     NeedMonster needMonster;
@@ -25,18 +25,18 @@ public class Monster : MonoBehaviour
 
         if (transform.CompareTag("Small"))
         {
-            moveSpeed = 0.8f;
+            moveSpeed = 0.4f;
         }
         else if(transform.CompareTag("Medium"))
         {
-            moveSpeed = 0.6f;
+            moveSpeed = 0.3f;
         }
         else
         {
-            moveSpeed = 0.4f;
+            moveSpeed = 0.2f;
         }
 
-        rigid.velocity = new Vector2(-rigid.transform.position.x * moveSpeed * 0.5f, -rigid.transform.position.y * moveSpeed * 0.5f);
+        rigid.velocity = new Vector2(-rigid.transform.position.x * moveSpeed, -rigid.transform.position.y * moveSpeed);
         //rigid.MovePosition = new Vector2(-rigid.transform.position.x * moveSpeed * 0.5f, -rigid.transform.position.y * moveSpeed * 0.5f);
 
     }
@@ -73,6 +73,19 @@ public class Monster : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if(transform.CompareTag("Small"))
+        {
+            SetPower(1.0f);
+        }
+        else if (transform.CompareTag("Medium"))
+        {
+            SetPower(0.7f);
+        }
+        else if (transform.CompareTag("Large"))
+        {
+            SetPower(0.5f);
+        }
+
         SoundManager.Instance.PlaySFX("Tick");
         tempVec = rigid.velocity;
         //Debug.Log("현재 벨로시티 : " + tempVec);
