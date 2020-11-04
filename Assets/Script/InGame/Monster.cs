@@ -37,6 +37,8 @@ public class Monster : MonoBehaviour
         }
 
         rigid.velocity = new Vector2(-rigid.transform.position.x * moveSpeed * 0.5f, -rigid.transform.position.y * moveSpeed * 0.5f);
+        //rigid.MovePosition = new Vector2(-rigid.transform.position.x * moveSpeed * 0.5f, -rigid.transform.position.y * moveSpeed * 0.5f);
+
     }
 
     /*void FixedUpdate()
@@ -78,6 +80,8 @@ public class Monster : MonoBehaviour
         //Debug.Log("벨로시티 정규화 : " + tempVec);
         rigid.velocity = tempVec * power;
         //Debug.Log("변환된 벨로시티 : " + rigid.velocity);
+
+        
     }
 
     private void OnTriggerEnter2D(Collider2D coll) //퀘스트

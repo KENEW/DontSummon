@@ -11,6 +11,7 @@ TagManager:
   - Small
   - Monster
   - Array
+  - Wall
   layers:
   - Default
   - TransparentFX
