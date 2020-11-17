@@ -12,6 +12,12 @@ TagManager:
   - Monster
   - Array
   - Wall
+  - RedMonster
+  - BlueMonster
+  - GreenMonster
+  - RedTile
+  - BlueTile
+  - GreenTile
   layers:
   - Default
   - TransparentFX
