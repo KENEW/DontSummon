@@ -52,7 +52,7 @@ public class PlayerTouch : MonoBehaviour
                 }
                 else if (collider.CompareTag("Array"))
                 {
-                    Debug.Log(collider.gameObject);
+                    //Debug.Log(collider.gameObject);
                     touchObj.transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     touchObj.transform.position = new Vector3(touchObj.transform.position.x, touchObj.transform.position.y, 0);
                     touchObj.SetActive(true);

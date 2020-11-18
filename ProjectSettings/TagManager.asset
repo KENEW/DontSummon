@@ -18,6 +18,9 @@ TagManager:
   - RedTile
   - BlueTile
   - GreenTile
+  - RedBullet
+  - BlueBullet
+  - GreenBullet
   layers:
   - Default
   - TransparentFX

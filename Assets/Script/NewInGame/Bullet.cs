@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public Rigidbody2D rigid;
     private SpriteRenderer renderer;
+    public Sprite[] sprites;
 
     [SerializeField]
     private Vector2 curDir = new Vector2(1f, 0.5f);
@@ -13,9 +14,12 @@ public class Bullet : MonoBehaviour
     private float moveSpeed=0.2f;
     private float power;
 
+    
+
 
     void Start()
     {
+
         renderer = gameObject.GetComponent<SpriteRenderer>();
 
         //포탈을 향해 이동
@@ -39,17 +43,17 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (coll.gameObject.tag == "RedMonster")
+        else if (coll.gameObject.tag == "RedMonster")
         {
             Destroy(gameObject);
         }
 
-        if (coll.gameObject.tag == "GreenMonster")
+        else if (coll.gameObject.tag == "GreenMonster")
         {
             Destroy(gameObject);
         }
 
-        if (coll.gameObject.tag == "BlueMonster")
+        else if (coll.gameObject.tag == "BlueMonster")
         {
             Destroy(gameObject);
         }
@@ -60,18 +64,26 @@ public class Bullet : MonoBehaviour
     {
         if(coll.CompareTag("RedTile"))
         {
-            renderer.color = new Color(1.0f, 0f, 0f);
-        }
-
-        else if (coll.CompareTag("BlueTile"))
-        {
-            renderer.color = new Color(0f, 0f, 1.0f);
+            //renderer.color = new Color(1.0f, 0f, 0f);
+            renderer.sprite = sprites[0];
+            gameObject.tag = "RedBullet";
         }
 
         else if (coll.CompareTag("GreenTile"))
         {
-            renderer.color = new Color(0f, 1.0f, 0f);
+            //renderer.color = new Color(0f, 1.0f, 0f);
+            renderer.sprite = sprites[1];
+            gameObject.tag = "GreenBullet";
         }
+
+        else if (coll.CompareTag("BlueTile"))
+        {
+            //renderer.color = new Color(0f, 0f, 1.0f);
+            renderer.sprite = sprites[2];
+            gameObject.tag = "BlueBullet";
+        }
+
+        
 
        
     }

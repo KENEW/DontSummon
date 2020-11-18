@@ -4,20 +4,26 @@ using UnityEngine;
 
 public class Monster1 : MonoBehaviour
 {
-    public GameObject bullet;
-    private SpriteRenderer renderer;
+    public GameObject[] hpObject;
 
-    int monsterHp = 5;
+    public GameObject bullet;
+    SpriteRenderer renderer;
+
+    [SerializeField]
+    private int monsterHp;
+    [SerializeField]
+    private int monsterMaxHp;
 
     float timer = 0f;
     int waitingTime = 5;
 
     Vector2 bulletPos;
 
+   
+
     // Start is called before the first frame update
     void Start()
     {
-        renderer = gameObject.GetComponent<SpriteRenderer>();
 
         bulletPos = new Vector2(transform.position.x, transform.position.y - 1.0f);
         Instantiate(bullet, bulletPos, Quaternion.identity);
@@ -26,6 +32,7 @@ public class Monster1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         timer += Time.deltaTime;
 
         if(monsterHp>0) //몬스터의 hp가 남아있으면 5초 간격으로 생성
@@ -36,15 +43,40 @@ public class Monster1 : MonoBehaviour
                 timer = 0;
             }
         }
+
+        else if(monsterHp==0)
+        {
+            Destroy(gameObject);
+        }
+
+        DrawHp();
         
     }
 
-    private void OnCollisionEnter2D(Collision2D coll) 
+    private void DrawHp()
     {
-        /*
-        if(transform.CompareTag("RedMonster"))
+        for (int i = 0; i < monsterHp; i++)
         {
-            if(coll.renderer.color ==  Color(1.0f,0f,0f))
+            hpObject[i].SetActive(true);
+            //animator.SetTrigger("HpAnime");
+        }
+        for (int i = monsterHp; i < monsterMaxHp; i++)
+        {
+            hpObject[i].SetActive(false);
+            //animator.SetFloat("Reverse", -1);
+            //animator.SetTrigger("HpAnime");
+
+        }
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D coll) //현재
+    {
+        renderer = GetComponent<SpriteRenderer>();
+
+        if (transform.CompareTag("RedMonster"))
+        {
+            if(coll.gameObject.tag=="RedBullet")
             {
                 monsterHp -= 1;
                 Debug.Log(monsterHp);
@@ -53,7 +85,7 @@ public class Monster1 : MonoBehaviour
 
         else if (transform.CompareTag("GreenMonster"))
         {
-            if (coll.renderer.color == new Color(0f, 1.0f, 0f))
+            if (coll.gameObject.tag == "GreenBullet")
             {
                 monsterHp -= 1;
                 Debug.Log(monsterHp);
@@ -62,15 +94,14 @@ public class Monster1 : MonoBehaviour
 
         else if (transform.CompareTag("BlueMonster"))
         {
-            if (coll.renderer.color == new Color(0f, 0f, 1.0f))
+            if (coll.gameObject.tag == "BlueBullet")
             {
                 monsterHp -= 1;
                 Debug.Log(monsterHp);
             }
-        }
-        */
-        
+        }  
 
     }
+    
 
 }
