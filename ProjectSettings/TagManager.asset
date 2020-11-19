@@ -21,6 +21,8 @@ TagManager:
   - RedBullet
   - BlueBullet
   - GreenBullet
+  - DefenseWall
+  - Bullet
   layers:
   - Default
   - TransparentFX
