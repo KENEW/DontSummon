@@ -56,7 +56,7 @@ public class TimeLimit : MonoBehaviour
 			playerHp.RecoveryHp(1);
         }
 
-		if (curTime==0) //현재 타임이 0이 되면
+		if (curTime == 0) //현재 타임이 0이 되면
         {
 			playerHp.hpObject[0].SetActive(false); //Life 0
 			playerHp.hpObject[1].SetActive(false);

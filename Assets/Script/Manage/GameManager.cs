@@ -4,4 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+	private void Awake()
+	{
+		ScreenSetting();
+	}
+	public void ScreenSetting()
+	{
+		Screen.SetResolution(1080, 1920, false);
+	}
 }

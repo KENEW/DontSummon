@@ -21,7 +21,6 @@ public class SoundManager : MonoSingleton<SoundManager>
 	private void Start()
 	{
         Instance = this;
-        Debug.Log("생성 : " + Instance);
     }
 	public void PlayBGM(string p_bgmName)
 	{

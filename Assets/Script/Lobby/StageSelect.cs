@@ -56,6 +56,6 @@ public class StageSelect : MonoBehaviour
     public void GameStart()
     {
 		SoundManager.Instance.PlaySFX("Button");
-        SceneManager.LoadScene("testScene");
+        SceneManager.LoadScene("editScene");
     }
 }
