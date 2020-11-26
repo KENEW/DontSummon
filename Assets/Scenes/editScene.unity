@@ -3135,6 +3135,7 @@ MonoBehaviour:
   hpGauge: {fileID: 6810965814609242524}
   hpGaugeBack: {fileID: 6810965815082344902}
   curTimeText: {fileID: 6810965816254981434}
+  maxTime: 60
 --- !u!1 &6810965815952082648
 GameObject:
   m_ObjectHideFlags: 0

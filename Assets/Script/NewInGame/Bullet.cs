@@ -15,6 +15,7 @@ public class Bullet : MonoBehaviour
     private float power;
 
     PlayerHp playerHp;
+   
 
 
     void Start()
@@ -46,17 +47,26 @@ public class Bullet : MonoBehaviour
 
         else if (coll.gameObject.tag == "RedMonster")
         {
-            Destroy(gameObject);
+            if(transform.CompareTag("RedBullet"))
+            {
+                Destroy(gameObject);
+            }
         }
 
         else if (coll.gameObject.tag == "GreenMonster")
         {
-            Destroy(gameObject);
+            if (transform.CompareTag("GreenBullet"))
+            {
+                Destroy(gameObject);
+            }
         }
 
         else if (coll.gameObject.tag == "BlueMonster")
         {
-            Destroy(gameObject);
+            if (transform.CompareTag("BlueBullet"))
+            {
+                Destroy(gameObject);
+            }
         }
 
     }
