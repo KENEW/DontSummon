@@ -14,13 +14,13 @@ public class Bullet : MonoBehaviour
     private float moveSpeed=0.2f;
     private float power;
 
-    
+    PlayerHp playerHp;
 
 
     void Start()
     {
-
         renderer = gameObject.GetComponent<SpriteRenderer>();
+        playerHp = GameObject.Find("HpPanel").GetComponent<PlayerHp>();
 
         //포탈을 향해 이동
         rigid.velocity = new Vector2(-rigid.transform.position.x * moveSpeed, -(rigid.transform.position.y+4.27f) * moveSpeed);
@@ -40,6 +40,7 @@ public class Bullet : MonoBehaviour
 
         if (coll.gameObject.tag == "Portal")
         {
+            playerHp.GetDamage(1);
             Destroy(gameObject);
         }
 
@@ -82,8 +83,6 @@ public class Bullet : MonoBehaviour
             renderer.sprite = sprites[2];
             gameObject.tag = "BlueBullet";
         }
-
-        
 
        
     }

@@ -33,9 +33,9 @@ public class Player : MonoBehaviour
                 MousePosition.y = -2.7f;
             }
 
-            if (MousePosition.y < -4f)
+            if (MousePosition.y < -3.5f)
             {
-                MousePosition.y = -4f;
+                MousePosition.y = -3.5f;
             }
 
             transform.position = MousePosition;

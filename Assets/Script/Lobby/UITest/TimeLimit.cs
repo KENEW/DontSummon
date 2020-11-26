@@ -13,16 +13,16 @@ public class TimeLimit : MonoBehaviour
 	private float maxTime;
 
 	PlayerHp playerHp;
-	NeedMonster needMonster;
+	//NeedMonster needMonster;
 
 	private bool backHpDamage = false;
 	int flag = 0;
 
 	private void Start()
 	{
-		playerHp = GameObject.Find("PlayerHp").GetComponent<PlayerHp>();
-		needMonster = GameObject.Find("NeedMonster").GetComponent<NeedMonster>();
-		maxTime = 20f;
+		playerHp = GameObject.Find("HpPanel").GetComponent<PlayerHp>();
+		//needMonster = GameObject.Find("NeedMonster").GetComponent<NeedMonster>();
+		maxTime = 10f;
 		curTime = maxTime;
 		StartCoroutine(Regular());
 
@@ -43,7 +43,7 @@ public class TimeLimit : MonoBehaviour
 			}
 		}
 
-		if (needMonster.needNum == 0) //스테이지 클리어
+		/*if (needMonster.needNum == 0) //스테이지 클리어
 		{
 			if (curTime >= 10.0f) //10초 이상 남았을 때 클리어 시 라이프 획득
 			{
@@ -54,13 +54,11 @@ public class TimeLimit : MonoBehaviour
 		if(flag==1)
         {
 			playerHp.RecoveryHp(1);
-        }
+        }*/
 
 		if (curTime == 0) //현재 타임이 0이 되면
         {
-			playerHp.hpObject[0].SetActive(false); //Life 0
-			playerHp.hpObject[1].SetActive(false);
-			playerHp.hpObject[2].SetActive(false);
+			playerHp.GetDamage(playerHp.curHp);
 
 			StageManage.Instance.StageFailed();
 		}

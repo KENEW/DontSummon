@@ -33,22 +33,22 @@ public class StageManage : MonoSingleton<StageManage>
 		switch (curStage)
 		{
 			case 1:
-				needMonster.monsterFlag = 0;
-				needMonster.curImage.sprite = needMonster.monsterSprite[needMonster.monsterFlag];
-				needMonster.needNum = 3;
+				//needMonster.monsterFlag = 0;
+				//needMonster.curImage.sprite = needMonster.monsterSprite[needMonster.monsterFlag];
+				//needMonster.needNum = 3;
 				//MonsterGenerator.instance.MosnterCreate();
 				break;
 			case 2:
-				needMonster.monsterFlag = 1;
-				needMonster.curImage.sprite = needMonster.monsterSprite[needMonster.monsterFlag];
-				needMonster.needNum = 2;
+				//needMonster.monsterFlag = 1;
+				//needMonster.curImage.sprite = needMonster.monsterSprite[needMonster.monsterFlag];
+				//needMonster.needNum = 2;
 				//MonsterGenerator.instance.MosnterCreate();
 
 				break;
 			case 3:
-				needMonster.monsterFlag = 2;
-				needMonster.curImage.sprite = needMonster.monsterSprite[needMonster.monsterFlag];
-				needMonster.needNum = 1;
+				//needMonster.monsterFlag = 2;
+				//needMonster.curImage.sprite = needMonster.monsterSprite[needMonster.monsterFlag];
+				//needMonster.needNum = 1;
 				//MonsterGenerator.instance.MosnterCreate();
 
 				break;
@@ -85,7 +85,7 @@ public class StageManage : MonoSingleton<StageManage>
 	}
 	public void LoadSceneRestart()
 	{
-		SceneManager.LoadScene("TestScene");
+		SceneManager.LoadScene("editScene");
 	}
 
 }
