@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private Vector2 curDir = new Vector2(1f, 0.5f);
 
-    private float moveSpeed=0.2f;
+    private float moveSpeed=0.4f;
     private float power;
 
     PlayerHp playerHp;
