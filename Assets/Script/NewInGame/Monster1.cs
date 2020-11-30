@@ -1,29 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Monster1 : MonoBehaviour
 {
-    public GameObject[] hpObject;
+    public Image hp;
 
     public GameObject bullet;
-    SpriteRenderer renderer;
+    public GameObject[] bulletArr;
+    public GameObject[] redBulletArr;
+    public GameObject[] greenBulletArr;
+    public GameObject[] blueBulletArr;
 
-    [SerializeField]
+    
     private int monsterHp;
     [SerializeField]
     private int monsterMaxHp;
 
     float timer = 0f;
-    int waitingTime = 5;
+    int waitingTime = 3;
+    int bulletFlag = 1;
 
     Vector2 bulletPos;
 
-   
-
+ 
     // Start is called before the first frame update
     void Start()
     {
+        monsterHp = monsterMaxHp;
 
         bulletPos = new Vector2(transform.position.x, transform.position.y - 1.0f);
         Instantiate(bullet, bulletPos, Quaternion.identity);
@@ -32,28 +37,47 @@ public class Monster1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bulletArr = GameObject.FindGameObjectsWithTag("Bullet");
+        redBulletArr = GameObject.FindGameObjectsWithTag("RedBullet");
+        greenBulletArr = GameObject.FindGameObjectsWithTag("GreenBullet");
+        blueBulletArr = GameObject.FindGameObjectsWithTag("BlueBullet");
+
+        int bulletNum = bulletArr.Length + redBulletArr.Length + greenBulletArr.Length + blueBulletArr.Length; //투사체 개수
 
         timer += Time.deltaTime;
 
-        if(monsterHp>0) //몬스터의 hp가 남아있으면 5초 간격으로 생성
+        if(bulletFlag<monsterMaxHp) //몬스터의 hp만큼 생성
         {
             if (timer > waitingTime)
             {
                 Instantiate(bullet, bulletPos, Quaternion.identity);
+                bulletFlag += 1;
                 timer = 0;
+                
             }
         }
 
-        else if(monsterHp==0)
+        else if (bulletNum<monsterHp && monsterHp != 0)
+        {
+            if (timer > waitingTime)
+            {
+                Instantiate(bullet, bulletPos, Quaternion.identity);
+                bulletFlag += 1;
+                timer = 0;
+
+            }
+        }
+
+        if(monsterHp==0)
         {
             Destroy(gameObject);
         }
 
-        DrawHp();
+        //DrawHp();
         
     }
 
-    private void DrawHp()
+    /*private void DrawHp()
     {
         for (int i = 0; i < monsterHp; i++)
         {
@@ -67,17 +91,21 @@ public class Monster1 : MonoBehaviour
             //animator.SetTrigger("HpAnime");
 
         }
-    }
+    }*/
 
+    private void Damage()
+    {
+        hp.fillAmount -= 1.0f / monsterMaxHp;
+    }
 
     private void OnCollisionEnter2D(Collision2D coll) //현재
     {
-        renderer = GetComponent<SpriteRenderer>();
 
         if (transform.CompareTag("RedMonster"))
         {
             if(coll.gameObject.tag=="RedBullet")
             {
+                Damage();
                 monsterHp -= 1;
                 Debug.Log(monsterHp);
             }
@@ -87,6 +115,7 @@ public class Monster1 : MonoBehaviour
         {
             if (coll.gameObject.tag == "GreenBullet")
             {
+                Damage();
                 monsterHp -= 1;
                 Debug.Log(monsterHp);
             }
@@ -96,6 +125,7 @@ public class Monster1 : MonoBehaviour
         {
             if (coll.gameObject.tag == "BlueBullet")
             {
+                Damage();
                 monsterHp -= 1;
                 Debug.Log(monsterHp);
             }

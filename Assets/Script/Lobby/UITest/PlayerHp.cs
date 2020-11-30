@@ -6,16 +6,18 @@ public class PlayerHp : MonoBehaviour
 {
 	public GameObject[] hpObject;
 
-	[SerializeField]
-	private int curHp;
+	//[SerializeField]
+	//private int curHp;
 	[SerializeField]
 	private int maxHp;
 
-	NeedMonster needMonster;
+	public int curHp;
+
+	//NeedMonster needMonster;
 
 	private void Start()
 	{
-		needMonster = GameObject.Find("NeedMonster").GetComponent<NeedMonster>();
+		//needMonster = GameObject.Find("NeedMonster").GetComponent<NeedMonster>();
 
 		//Init();
 		GetHp();
@@ -30,10 +32,10 @@ public class PlayerHp : MonoBehaviour
 
 	private void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.UpArrow))
+		/*if (Input.GetKeyDown(KeyCode.UpArrow))
 		{
 			RecoveryHp(1);
-		}
+		}*/
 		if (Input.GetKeyDown(KeyCode.DownArrow))
 		{
 			GetDamage(1);
@@ -43,18 +45,19 @@ public class PlayerHp : MonoBehaviour
         {
 			StageManage.Instance.StageFailed();
         }
-        else
+
+        /*else
         {
 			if(needMonster.needNum==0)
             {
 				Clear();
             }
-        }
+        }*/
 
 		DrawHp();
 	}
 
-	public void RecoveryHp(int hpValue) //회복
+	/*public void RecoveryHp(int hpValue) //회복
 	{
 		if(curHp + hpValue >= maxHp)
 		{
@@ -66,7 +69,7 @@ public class PlayerHp : MonoBehaviour
 		}
 
 		//DrawHp();
-	}
+	}*/
 
 	public void GetDamage(int hpValue) //데미지
 	{
@@ -79,7 +82,6 @@ public class PlayerHp : MonoBehaviour
 			curHp -= hpValue;
 		}
 
-		//DrawHp();
 	}
 
 	private void DrawHp()
@@ -102,11 +104,6 @@ public class PlayerHp : MonoBehaviour
 	{
 		return curHp;
 	}
-
-	public void GameOver()
-    {
-		Debug.Log("game over");
-    }
 
 	public void Clear() //스테이지 클리어
 	{

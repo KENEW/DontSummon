@@ -11,16 +11,17 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private Vector2 curDir = new Vector2(1f, 0.5f);
 
-    private float moveSpeed=0.2f;
+    private float moveSpeed=0.4f;
     private float power;
 
-    
+    PlayerHp playerHp;
+   
 
 
     void Start()
     {
-
         renderer = gameObject.GetComponent<SpriteRenderer>();
+        playerHp = GameObject.Find("HpPanel").GetComponent<PlayerHp>();
 
         //포탈을 향해 이동
         rigid.velocity = new Vector2(-rigid.transform.position.x * moveSpeed, -(rigid.transform.position.y+4.27f) * moveSpeed);
@@ -40,22 +41,32 @@ public class Bullet : MonoBehaviour
 
         if (coll.gameObject.tag == "Portal")
         {
+            playerHp.GetDamage(1);
             Destroy(gameObject);
         }
 
         else if (coll.gameObject.tag == "RedMonster")
         {
-            Destroy(gameObject);
+            if(transform.CompareTag("RedBullet"))
+            {
+                Destroy(gameObject);
+            }
         }
 
         else if (coll.gameObject.tag == "GreenMonster")
         {
-            Destroy(gameObject);
+            if (transform.CompareTag("GreenBullet"))
+            {
+                Destroy(gameObject);
+            }
         }
 
         else if (coll.gameObject.tag == "BlueMonster")
         {
-            Destroy(gameObject);
+            if (transform.CompareTag("BlueBullet"))
+            {
+                Destroy(gameObject);
+            }
         }
 
     }
@@ -82,8 +93,6 @@ public class Bullet : MonoBehaviour
             renderer.sprite = sprites[2];
             gameObject.tag = "BlueBullet";
         }
-
-        
 
        
     }
