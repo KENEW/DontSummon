@@ -9,10 +9,15 @@ public class StageSelect : MonoBehaviour
 
     public Text stageNum;
 
+    public Button rightButton;
+    public Button leftButton;
+
     [SerializeField]
     private float scrollPos = 0;
     [SerializeField]
     private float[] contentPos;
+
+    public int curStage = 0;
 
     private void Update()
     {
@@ -30,11 +35,13 @@ public class StageSelect : MonoBehaviour
         }
         else
         {
+            Debug.Log("마우스 땜");
             for (int i = 0; i < contentPos.Length; i++)
             {
                 if (scrollPos < (contentPos[i] + (distance / 2.0f)) && (scrollPos > contentPos[i] - (distance / 2.0f)))
                 {
-                    stageNum.text = (i + 1) + "";
+                    curStage = i;
+                    stageNum.text = (curStage + 1) + "";
                     scrollBar.GetComponent<Scrollbar>().value = Mathf.Lerp(scrollBar.GetComponent<Scrollbar>().value, contentPos[i], 0.1f);
                 }
             }
@@ -57,5 +64,32 @@ public class StageSelect : MonoBehaviour
     {
 		SoundManager.Instance.PlaySFX("Button");
         SceneManager.LoadScene("editScene");
+    }
+
+    public void NextStageButton()
+    {
+        if (curStage < contentPos.GetLength(0))
+        {
+            curStage++;
+            rightButton.interactable = true;
+            scrollBar.GetComponent<Scrollbar>().value = Mathf.Lerp(scrollBar.GetComponent<Scrollbar>().value, contentPos[curStage], 0.1f);
+        }
+        else
+        {
+            rightButton.interactable = false;
+        }
+
+    }
+    public void PrevStageButton()
+    {
+        if (curStage > 0)
+        {
+            curStage--;
+            leftButton.interactable = false;
+        }
+        else
+        {
+            leftButton.interactable = false;
+        }
     }
 }
