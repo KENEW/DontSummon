@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     private Vector2 curDir = new Vector2(1f, 0.5f);
 
-    private float moveSpeed=0.4f;
+    private float moveSpeed=0.3f;
     private float power;
 
     PlayerHp playerHp;
@@ -47,26 +47,21 @@ public class Bullet : MonoBehaviour
 
         else if (coll.gameObject.tag == "RedMonster")
         {
-            if(transform.CompareTag("RedBullet"))
+            /*if(transform.CompareTag("RedBullet"))
             {
                 Destroy(gameObject);
-            }
+            }*/
+            Destroy(gameObject);
         }
 
         else if (coll.gameObject.tag == "GreenMonster")
         {
-            if (transform.CompareTag("GreenBullet"))
-            {
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
 
         else if (coll.gameObject.tag == "BlueMonster")
         {
-            if (transform.CompareTag("BlueBullet"))
-            {
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
 
     }

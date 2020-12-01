@@ -63,5 +63,25 @@ public class DefenseWall : MonoBehaviour
             wallHp -= 1; 
         }
 
+        else if (coll.gameObject.tag == "Heal")
+        {
+            wallHp -= 1;
+        }
+
+        else if (coll.gameObject.tag == "Fire")
+        {
+            wallHp -= 1;
+        }
+
+        else if (coll.gameObject.tag == "Bomb")
+        {
+            wallHp -= 1;
+        }
+
+        else if (coll.gameObject.tag == "Skull")
+        {
+            wallHp -= 1;
+        }
+
     }
 }
