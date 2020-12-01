@@ -5,12 +5,22 @@ using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 
-public class LoadScene : MonoBehaviour
+public class LoadScene : MonoSingleton<LoadScene>
 {
-	public Text curLoadText;
+	public GameObject loadingPanel;
 	public Image curLoadGuageBar;
-
 	public Image sceneScreen;
+	public Text curLoadText;
+
+	private void Start()
+	{
+		if(loadingPanel.active == true)
+		{
+			Debug.Log("로딩패널을 꺼주세요");
+			loadingPanel.SetActive(false);
+		}
+
+	}
 
 	private void Update()
 	{
@@ -21,12 +31,13 @@ public class LoadScene : MonoBehaviour
 	}
 	public void LoadStart()
 	{
+		loadingPanel.SetActive(true);
 		StartCoroutine(Loading());
 	}
-	
 	IEnumerator Loading()
 	{
-		Debug.Log("로딩 시작");
+		loadingPanel.SetActive(true);
+
 		AsyncOperation operation = SceneManager.LoadSceneAsync("EditScene");
 		operation.allowSceneActivation = false;
 
@@ -45,16 +56,13 @@ public class LoadScene : MonoBehaviour
 				timer += Time.deltaTime;
 				curLoadGuageBar.fillAmount = Mathf.Lerp(0.9f, 1f, timer);
 				curLoadText.text = (int)(curLoadGuageBar.fillAmount * 100f)+ "";
+
 				if (curLoadGuageBar.fillAmount >= 1.0f)
 				{
-					operation.allowSceneActivation = true;
+					sceneScreen.DOFade(1, 1.0f).OnComplete(() => { operation.allowSceneActivation = true; });
 					yield break;
 				}
 			}
 		}
-
-		Debug.Log("로딩 끝");
-
-		sceneScreen.DOFade(1, 1.0f);
 	}
 }

@@ -7,9 +7,13 @@ public class StageSelect : MonoBehaviour
 {
     public GameObject scrollBar;
 
-    public Text stageNum;
+    public GameObject stageSelectPanel;
+    public GameObject titlePanel;
 
-    public GameObject LoadPanel;
+    public Text stageNumText;
+    public Text highScoreText;
+    public Text stageNameText;
+    public Text storyText;
 
     public Button rightButton;
     public Button leftButton;
@@ -20,6 +24,14 @@ public class StageSelect : MonoBehaviour
     private float[] contentPos;
 
     public int curStage = 0;
+
+    public Vector2 selectScaleFalse = new Vector3(0.7f, 0.7f);
+    public Vector2 selectScaleTrue = new Vector3(0.55f, 0.55f);
+
+    public string[] stageStory = new string[3];
+    public string[] stageName = new string[3];
+    public int[] highScore = new int[3];
+
 
     private void Update()
     {
@@ -43,7 +55,8 @@ public class StageSelect : MonoBehaviour
                 if (scrollPos < (contentPos[i] + (distance / 2.0f)) && (scrollPos > contentPos[i] - (distance / 2.0f)))
                 {
                     curStage = i;
-                    stageNum.text = (curStage + 1) + "";
+                    UIUpdate();
+                    stageNumText.text = (curStage + 1) + "";
                     scrollBar.GetComponent<Scrollbar>().value = Mathf.Lerp(scrollBar.GetComponent<Scrollbar>().value, contentPos[i], 0.1f);
                 }
             }
@@ -53,10 +66,10 @@ public class StageSelect : MonoBehaviour
         {
             if (scrollPos < (contentPos[i] + (distance / 2.0f)) && (scrollPos > contentPos[i] - (distance / 2.0f)))
             {
-                transform.GetChild(i).localScale = Vector2.Lerp(transform.GetChild(i).localScale, new Vector2(1f, 1f), 0.1f);
+                transform.GetChild(i).localScale = Vector2.Lerp(transform.GetChild(i).localScale, selectScaleFalse, 0.1f);
                 for (int a = 0; a < contentPos.Length; a++)
                 {
-                    transform.GetChild(a).localScale = Vector2.Lerp(transform.GetChild(a).localScale, new Vector2(0.8f, 0.8f), 0.1f);
+                    transform.GetChild(a).localScale = Vector2.Lerp(transform.GetChild(a).localScale, selectScaleTrue, 0.1f);
                 }
             }
         }
@@ -65,9 +78,19 @@ public class StageSelect : MonoBehaviour
     public void GameStart()
     {
 		SoundManager.Instance.PlaySFX("Button");
-        SceneManager.LoadScene("editScene");
+        LoadScene.Instance.LoadStart();
     }
-
+    public void BackButton()
+    {
+        stageSelectPanel.SetActive(false);
+        titlePanel.SetActive(true);
+    }
+    private void UIUpdate()
+    {
+        storyText.text = stageStory[curStage];
+        highScoreText.text = highScore[curStage] + "";
+        stageNameText.text = stageName[curStage];
+    }
     public void NextStageButton()
     {
         if (curStage < contentPos.GetLength(0))
@@ -80,7 +103,6 @@ public class StageSelect : MonoBehaviour
         {
             rightButton.interactable = false;
         }
-
     }
     public void PrevStageButton()
     {
