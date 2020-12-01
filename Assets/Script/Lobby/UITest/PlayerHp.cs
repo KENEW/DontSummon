@@ -32,10 +32,10 @@ public class PlayerHp : MonoBehaviour
 
 	private void Update()
 	{
-		/*if (Input.GetKeyDown(KeyCode.UpArrow))
+		if (Input.GetKeyDown(KeyCode.UpArrow))
 		{
 			RecoveryHp(1);
-		}*/
+		}
 		if (Input.GetKeyDown(KeyCode.DownArrow))
 		{
 			GetDamage(1);
@@ -57,7 +57,7 @@ public class PlayerHp : MonoBehaviour
 		DrawHp();
 	}
 
-	/*public void RecoveryHp(int hpValue) //회복
+	public void RecoveryHp(int hpValue) //회복
 	{
 		if(curHp + hpValue >= maxHp)
 		{
@@ -69,7 +69,7 @@ public class PlayerHp : MonoBehaviour
 		}
 
 		//DrawHp();
-	}*/
+	}
 
 	public void GetDamage(int hpValue) //데미지
 	{

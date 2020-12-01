@@ -742,6 +742,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2390895986756703347, guid: d62a79aec17f11b47a1730ff0bcb59fc,
+        type: 3}
+      propertyPath: randomBullet.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2390895986756703347, guid: d62a79aec17f11b47a1730ff0bcb59fc,
+        type: 3}
+      propertyPath: randomBullet.Array.data[0]
+      value: 
+      objectReference: {fileID: 5567514128373307102, guid: be199be9867101c4e971eb97261b3289,
+        type: 3}
+    - target: {fileID: 2390895986756703347, guid: d62a79aec17f11b47a1730ff0bcb59fc,
+        type: 3}
+      propertyPath: randomBullet.Array.data[1]
+      value: 
+      objectReference: {fileID: 6564517405985520474, guid: 9f24e77cc77d634439a7197546b378e1,
+        type: 3}
+    - target: {fileID: 2390895986756703347, guid: d62a79aec17f11b47a1730ff0bcb59fc,
+        type: 3}
+      propertyPath: randomBullet.Array.data[2]
+      value: 
+      objectReference: {fileID: 107732889114567035, guid: fcaec969288f04a4f857ca37b9c31028,
+        type: 3}
+    - target: {fileID: 2390895986756703347, guid: d62a79aec17f11b47a1730ff0bcb59fc,
+        type: 3}
+      propertyPath: randomBullet.Array.data[3]
+      value: 
+      objectReference: {fileID: 6692823952648815766, guid: e90cf71204e40764bb0ba04014d2ced9,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d62a79aec17f11b47a1730ff0bcb59fc, type: 3}
 --- !u!1001 &761239468
@@ -811,6 +840,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8739073824846311187, guid: 2ab01ab5f77cd7d4f996e09f101674e2,
+        type: 3}
+      propertyPath: randomBullet.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739073824846311187, guid: 2ab01ab5f77cd7d4f996e09f101674e2,
+        type: 3}
+      propertyPath: randomBullet.Array.data[0]
+      value: 
+      objectReference: {fileID: 5567514128373307102, guid: be199be9867101c4e971eb97261b3289,
+        type: 3}
+    - target: {fileID: 8739073824846311187, guid: 2ab01ab5f77cd7d4f996e09f101674e2,
+        type: 3}
+      propertyPath: randomBullet.Array.data[1]
+      value: 
+      objectReference: {fileID: 6564517405985520474, guid: 9f24e77cc77d634439a7197546b378e1,
+        type: 3}
+    - target: {fileID: 8739073824846311187, guid: 2ab01ab5f77cd7d4f996e09f101674e2,
+        type: 3}
+      propertyPath: randomBullet.Array.data[2]
+      value: 
+      objectReference: {fileID: 107732889114567035, guid: fcaec969288f04a4f857ca37b9c31028,
+        type: 3}
+    - target: {fileID: 8739073824846311187, guid: 2ab01ab5f77cd7d4f996e09f101674e2,
+        type: 3}
+      propertyPath: randomBullet.Array.data[3]
+      value: 
+      objectReference: {fileID: 6692823952648815766, guid: e90cf71204e40764bb0ba04014d2ced9,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ab01ab5f77cd7d4f996e09f101674e2, type: 3}
 --- !u!1 &825226968

@@ -8,18 +8,20 @@ public class Monster1 : MonoBehaviour
     public Image hp;
 
     public GameObject bullet;
+    public GameObject[] randomBullet;
     public GameObject[] bulletArr;
     public GameObject[] redBulletArr;
     public GameObject[] greenBulletArr;
     public GameObject[] blueBulletArr;
 
     
-    private int monsterHp;
+    //private int monsterHp;
+    public int monsterHp;
     [SerializeField]
     private int monsterMaxHp;
 
     float timer = 0f;
-    int waitingTime = 3;
+    int waitingTime = 5;
     int bulletFlag = 1;
 
     Vector2 bulletPos;
@@ -32,21 +34,23 @@ public class Monster1 : MonoBehaviour
 
         bulletPos = new Vector2(transform.position.x, transform.position.y - 1.0f);
         Instantiate(bullet, bulletPos, Quaternion.identity);
+
+        InvokeRepeating("SpawnRandomBullet", 17, 17);
     }
 
     // Update is called once per frame
     void Update()
     {
-        bulletArr = GameObject.FindGameObjectsWithTag("Bullet");
+        /*bulletArr = GameObject.FindGameObjectsWithTag("Bullet");
         redBulletArr = GameObject.FindGameObjectsWithTag("RedBullet");
         greenBulletArr = GameObject.FindGameObjectsWithTag("GreenBullet");
         blueBulletArr = GameObject.FindGameObjectsWithTag("BlueBullet");
 
-        int bulletNum = bulletArr.Length + redBulletArr.Length + greenBulletArr.Length + blueBulletArr.Length; //투사체 개수
+        int bulletNum = bulletArr.Length + redBulletArr.Length + greenBulletArr.Length + blueBulletArr.Length;*/ //투사체 개수 
 
         timer += Time.deltaTime;
 
-        if(bulletFlag<monsterMaxHp) //몬스터의 hp만큼 생성
+        /*if(bulletFlag<monsterMaxHp) //몬스터의 hp만큼 생성
         {
             if (timer > waitingTime)
             {
@@ -66,15 +70,26 @@ public class Monster1 : MonoBehaviour
                 timer = 0;
 
             }
+        } */
+
+        if(monsterHp>0)
+        {
+            if (timer > waitingTime)
+            {
+                Instantiate(bullet, bulletPos, Quaternion.identity);
+                //bulletFlag += 1;
+                timer = 0;
+            }
         }
 
-        if(monsterHp==0)
+        else if(monsterHp==0)
         {
             Destroy(gameObject);
         }
 
-        //DrawHp();
         
+        //DrawHp();
+
     }
 
     /*private void DrawHp()
@@ -93,20 +108,47 @@ public class Monster1 : MonoBehaviour
         }
     }*/
 
-    private void Damage()
+    void SpawnRandomBullet() //특수 투사체 생성
     {
-        hp.fillAmount -= 1.0f / monsterMaxHp;
+        Instantiate(randomBullet[Random.Range(0, 4)], bulletPos, Quaternion.identity);
     }
 
-    private void OnCollisionEnter2D(Collision2D coll) //현재
+    public void GetDamage(int hpValue)
+    {
+        if (monsterHp - hpValue <= 0)
+        {
+            monsterHp = 0;
+        }
+        else
+        {
+            monsterHp -= hpValue;
+        }
+
+        hp.fillAmount -= (float)hpValue / monsterMaxHp;
+    }
+
+    public void RecoveryHp(int hpValue) //회복
+    {
+        if (monsterHp + hpValue >= monsterMaxHp)
+        {
+            monsterHp = monsterMaxHp;
+        }
+        else
+        {
+            monsterHp += hpValue;
+        }
+
+        hp.fillAmount += (float)hpValue / monsterMaxHp;
+    }
+
+    private void OnCollisionEnter2D(Collision2D coll) 
     {
 
         if (transform.CompareTag("RedMonster"))
         {
             if(coll.gameObject.tag=="RedBullet")
             {
-                Damage();
-                monsterHp -= 1;
+                GetDamage(1);
                 Debug.Log(monsterHp);
             }
         }
@@ -115,8 +157,7 @@ public class Monster1 : MonoBehaviour
         {
             if (coll.gameObject.tag == "GreenBullet")
             {
-                Damage();
-                monsterHp -= 1;
+                GetDamage(1);
                 Debug.Log(monsterHp);
             }
         }
@@ -125,8 +166,7 @@ public class Monster1 : MonoBehaviour
         {
             if (coll.gameObject.tag == "BlueBullet")
             {
-                Damage();
-                monsterHp -= 1;
+                GetDamage(1);
                 Debug.Log(monsterHp);
             }
         }  

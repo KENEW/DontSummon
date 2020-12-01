@@ -23,6 +23,10 @@ TagManager:
   - GreenBullet
   - DefenseWall
   - Bullet
+  - Heal
+  - Fire
+  - Bomb
+  - Skull
   layers:
   - Default
   - TransparentFX
