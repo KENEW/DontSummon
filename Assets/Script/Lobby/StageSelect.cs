@@ -9,6 +9,8 @@ public class StageSelect : MonoBehaviour
 
     public Text stageNum;
 
+    public GameObject LoadPanel;
+
     public Button rightButton;
     public Button leftButton;
 
