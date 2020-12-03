@@ -9,9 +9,18 @@ public class Player : MonoBehaviour
     //public float speed;
     private GameObject target;
 
+    //public Rigidbody2D rigid;
+    //Vector2 playerVelocity;
+
+    Vector2 oldPosition;
+    Vector2 curPosition;
+    Vector2 playerVelocity;
+
     private void Start()
     {
         Camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+
+        oldPosition = transform.position;
     }
 
     void Update()
@@ -35,9 +44,9 @@ public class Player : MonoBehaviour
                     MousePosition.x = -2.5f;
                 }
 
-                if (MousePosition.y > -2.7f)
+                if (MousePosition.y > -2.4f)
                 {
-                    MousePosition.y = -2.7f;
+                    MousePosition.y = -2.4f;
                 }
 
                 if (MousePosition.y < -3.5f)
@@ -49,6 +58,14 @@ public class Player : MonoBehaviour
 
            // }
         }
+
+        curPosition = transform.position;
+        Vector2 distance = curPosition - oldPosition;
+        playerVelocity = distance / Time.deltaTime;
+        oldPosition = curPosition;
+
+        
+        //playerVelocity = rigid.velocity;
     }
 
     void CastRay() // 유닛 히트처리 부분.  레이를 쏴서 처리합니다. 
@@ -73,6 +90,13 @@ public class Player : MonoBehaviour
             target = hit.collider.gameObject;  //히트 된 게임 오브젝트를 타겟으로 지정
 
         }
+
+    }
+
+    private void OnCollisionEnter2D(Collision2D coll) 
+    {
+        Debug.Log(playerVelocity);
+        coll.gameObject.GetComponent<Rigidbody2D>().AddForce(playerVelocity*10);
 
     }
 
