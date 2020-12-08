@@ -2,36 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-public class StageSelect : MonoBehaviour
+
+public enum DefenceWall
+{
+    rentangle,
+    triangle,
+    Square
+}
+
+public class DefenceWallSelect : MonoBehaviour
 {
     public GameObject scrollBar;
+    public GameObject defenceWallSelectWindow;
+    public GameObject stageSelectWindow;
 
-    public GameObject stageSelectPanel;
-    public GameObject titlePanel;
-    public GameObject defenceWallSelectPanel;
-
-    public Text stageNumText;
-    public Text highScoreText;
-    public Text stageNameText;
-    public Text storyText;
-
-    public Button rightButton;
-    public Button leftButton;
+    public Text defenceWallNameText;
+    public Text defenceWallHpText;
+    public Text defenceWallInfoText;
 
     [SerializeField]
     private float scrollPos = 0;
     [SerializeField]
     private float[] contentPos;
 
-    public int curStage = 0;
+    public DefenceWall curDefenceWall = DefenceWall.rentangle;
 
     public Vector2 selectScaleFalse = new Vector3(0.7f, 0.7f);
     public Vector2 selectScaleTrue = new Vector3(0.55f, 0.55f);
 
-    public string[] stageStory = new string[3];
-    public string[] stageName = new string[3];
-    public int[] highScore = new int[3];
+    public int[] defenceWallHp = new int[] {3, 1, 2};
+	public string[] defenceWallNameStr = new string[]
+	{
+        "직사각형",
+        "세모",
+        "정사각형"
+    };
+	public string[] defenceWallInfoStr = new string[]
+	{
+        "네모 네모 직사각형",
+        "세모 세모 세모",
+        "네모 네모 정사각형"
+    };
 
 
     private void Update()
@@ -54,9 +65,8 @@ public class StageSelect : MonoBehaviour
             {
                 if (scrollPos < (contentPos[i] + (distance / 2.0f)) && (scrollPos > contentPos[i] - (distance / 2.0f)))
                 {
-                    curStage = i;
+                    curDefenceWall = (DefenceWall)i;
                     UIUpdate();
-                    stageNumText.text = (curStage + 1) + "";
                     scrollBar.GetComponent<Scrollbar>().value = Mathf.Lerp(scrollBar.GetComponent<Scrollbar>().value, contentPos[i], 0.1f);
                 }
             }
@@ -75,45 +85,21 @@ public class StageSelect : MonoBehaviour
         }
     }
 
-    public void StageSelectButton()
+    public void GameStart()
     {
-        stageSelectPanel.SetActive(false);
-        defenceWallSelectPanel.SetActive(true);
+        SoundManager.Instance.PlaySFX("Button");
+        MyData.Instance.SetDefenceWall(curDefenceWall);
+        LoadScene.Instance.LoadStart();
     }
     public void BackButton()
     {
-        stageSelectPanel.SetActive(false);
-        titlePanel.SetActive(true);
+        SoundManager.Instance.PlaySFX("Button");
+        defenceWallSelectWindow.SetActive(false);
+        stageSelectWindow.SetActive(true);
     }
     private void UIUpdate()
     {
-        storyText.text = stageStory[curStage];
-        highScoreText.text = highScore[curStage] + "";
-        stageNameText.text = stageName[curStage];
-    }
-    public void NextStageButton()
-    {
-        if (curStage < contentPos.GetLength(0))
-        {
-            curStage++;
-            rightButton.interactable = true;
-            scrollBar.GetComponent<Scrollbar>().value = Mathf.Lerp(scrollBar.GetComponent<Scrollbar>().value, contentPos[curStage], 0.1f);
-        }
-        else
-        {
-            rightButton.interactable = false;
-        }
-    }
-    public void PrevStageButton()
-    {
-        if (curStage > 0)
-        {
-            curStage--;
-            leftButton.interactable = false;
-        }
-        else
-        {
-            leftButton.interactable = false;
-        }
+        defenceWallNameText.text = defenceWallNameStr[(int)curDefenceWall];
+        defenceWallHpText.text = defenceWallHp[(int)curDefenceWall] + "";
     }
 }

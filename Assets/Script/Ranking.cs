@@ -6,7 +6,7 @@ using TheBackend;
 
 public class Ranking : MonoBehaviour
 {
-	private void onClickGetUserInfo()
+	public void onClickGetUserInfo()
 	{
 		BackendReturnObject BRO = Backend.BMember.GetUserInfo();
 
