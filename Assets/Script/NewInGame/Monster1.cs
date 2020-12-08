@@ -21,7 +21,7 @@ public class Monster1 : MonoBehaviour
     private int monsterMaxHp;
 
     float timer = 0f;
-    int waitingTime = 5;
+    int waitingTime = 4;
     int bulletFlag = 1;
 
     Vector2 bulletPos;

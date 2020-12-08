@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
     private SpriteRenderer renderer;
     public Sprite[] sprites;
 
+
     [SerializeField]
     private Vector2 curDir = new Vector2(1f, 0.5f);
 
@@ -15,19 +16,23 @@ public class Bullet : MonoBehaviour
     private float power;
 
     PlayerHp playerHp;
-   
+    Player player;
 
 
     void Start()
     {
         renderer = gameObject.GetComponent<SpriteRenderer>();
         playerHp = GameObject.Find("HpPanel").GetComponent<PlayerHp>();
+        player = GameObject.Find("TouchObject").GetComponent<Player>();
+
 
         //포탈을 향해 이동
         rigid.velocity = new Vector2(-rigid.transform.position.x * moveSpeed, -(rigid.transform.position.y+4.27f) * moveSpeed);
 
     }
 
+   
+  
    
     public void SetPower(float powerValue)
     {
@@ -41,26 +46,36 @@ public class Bullet : MonoBehaviour
 
         if (coll.gameObject.tag == "Portal")
         {
+            player.ChangeFace(1); //angry face
+
             playerHp.GetDamage(1);
             Destroy(gameObject);
         }
 
         else if (coll.gameObject.tag == "RedMonster")
         {
-            /*if(transform.CompareTag("RedBullet"))
+            if(transform.CompareTag("RedBullet"))
             {
-                Destroy(gameObject);
-            }*/
+                player.ChangeFace(2); //happy face
+            }
             Destroy(gameObject);
         }
 
         else if (coll.gameObject.tag == "GreenMonster")
         {
+            if (transform.CompareTag("GreenBullet"))
+            {
+                player.ChangeFace(2); //happy face
+            }
             Destroy(gameObject);
         }
 
         else if (coll.gameObject.tag == "BlueMonster")
         {
+            if (transform.CompareTag("BlueBullet"))
+            {
+                player.ChangeFace(2); //happy face
+            }
             Destroy(gameObject);
         }
 
@@ -91,4 +106,6 @@ public class Bullet : MonoBehaviour
 
        
     }
+
+    
 }

@@ -771,6 +771,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6692823952648815766, guid: e90cf71204e40764bb0ba04014d2ced9,
         type: 3}
+    - target: {fileID: 2390895986756703347, guid: d62a79aec17f11b47a1730ff0bcb59fc,
+        type: 3}
+      propertyPath: monsterMaxHp
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d62a79aec17f11b47a1730ff0bcb59fc, type: 3}
 --- !u!1001 &761239468
@@ -1361,7 +1366,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1139076302}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5350902, y: 0.7182461, z: -0.7647096}
+  m_LocalPosition: {x: 0, y: 0, z: -0.7647096}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4398689822031379819}
@@ -1464,14 +1469,14 @@ RectTransform:
   m_GameObject: {fileID: 1197337829}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.7647096}
-  m_LocalScale: {x: 0.26363152, y: 0.26363152, z: 0.26363152}
+  m_LocalScale: {x: 0.115525074, y: 0.115525074, z: 0.20304035}
   m_Children: []
   m_Father: {fileID: 1139076303}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.5, y: -3.46}
+  m_AnchoredPosition: {x: -0.079, y: -2.655}
   m_SizeDelta: {x: 2.86, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!50 &1197337831
@@ -1508,9 +1513,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00000014901161, y: 0}
+  m_Offset: {x: 0.8999998, y: -0.7808139}
   serializedVersion: 2
-  m_Radius: 1.4999999
+  m_Radius: 4
 --- !u!114 &1197337833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1523,6 +1528,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c99a9dfbc5029bf49a594a2c92ddf8ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  faceSprite:
+  - {fileID: 21300000, guid: 2f27aa81829dc5c4690c41b7e2db063f, type: 3}
+  - {fileID: 21300000, guid: 66ed3c8f782a3ef4391706d8b3773a54, type: 3}
+  - {fileID: 21300000, guid: 59abcbd27fbed4241a62fef71eb31a55, type: 3}
 --- !u!212 &1197337834
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1562,8 +1571,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 8d59b8ffabb405d4892852c99a883d8b, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 2f27aa81829dc5c4690c41b7e2db063f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2436,12 +2445,12 @@ PrefabInstance:
     - target: {fileID: 7458382644240308606, guid: 771dce1958b54524d8d3c798dc7e0bc2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.79
+      value: 1.74
       objectReference: {fileID: 0}
     - target: {fileID: 7458382644240308606, guid: 771dce1958b54524d8d3c798dc7e0bc2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.1
+      value: -3.89
       objectReference: {fileID: 0}
     - target: {fileID: 7458382644240308606, guid: 771dce1958b54524d8d3c798dc7e0bc2,
         type: 3}
@@ -2541,7 +2550,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4398689822031379822}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5350902, y: -3.8976, z: 0.7647096}
+  m_LocalPosition: {x: -0.01, y: -3.15, z: 0.7647096}
   m_LocalScale: {x: 5.607952, y: 2.3145905, z: 0.836323}
   m_Children: []
   m_Father: {fileID: 1139076303}
@@ -2656,12 +2665,12 @@ PrefabInstance:
     - target: {fileID: 7458382644240308606, guid: 771dce1958b54524d8d3c798dc7e0bc2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.79
+      value: -1.74
       objectReference: {fileID: 0}
     - target: {fileID: 7458382644240308606, guid: 771dce1958b54524d8d3c798dc7e0bc2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.1
+      value: -3.89
       objectReference: {fileID: 0}
     - target: {fileID: 7458382644240308606, guid: 771dce1958b54524d8d3c798dc7e0bc2,
         type: 3}

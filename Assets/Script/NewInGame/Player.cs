@@ -8,17 +8,23 @@ public class Player : MonoBehaviour
     Camera Camera;
     //public float speed;
     private GameObject target;
+    private SpriteRenderer playerRenderer;
 
     //public Rigidbody2D rigid;
     //Vector2 playerVelocity;
+
 
     Vector2 oldPosition;
     Vector2 curPosition;
     Vector2 playerVelocity;
 
+    public Sprite[] faceSprite;
+
     private void Start()
     {
         Camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+
+        playerRenderer = gameObject.GetComponent<SpriteRenderer>();
 
         oldPosition = transform.position;
     }
@@ -49,9 +55,9 @@ public class Player : MonoBehaviour
                     MousePosition.y = -2.4f;
                 }
 
-                if (MousePosition.y < -3.5f)
+                if (MousePosition.y < -2.9f)
                 {
-                    MousePosition.y = -3.5f;
+                    MousePosition.y = -2.9f;
                 }
 
                 transform.position = MousePosition;
@@ -96,11 +102,22 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D coll) 
     {
         Debug.Log(playerVelocity);
-        coll.gameObject.GetComponent<Rigidbody2D>().AddForce(playerVelocity*10);
+        coll.gameObject.GetComponent<Rigidbody2D>().AddForce(playerVelocity* 15);
+        //coll.gameObject.GetComponent<Rigidbody2D>().velocity = playerVelocity;
 
     }
 
+    IEnumerator Face(Sprite changeSprite)
+    {
+        playerRenderer.sprite = changeSprite;
+        yield return new WaitForSeconds(1f);
+        playerRenderer.sprite = faceSprite[0];
+    }
 
+    public void ChangeFace(int num)
+    {
+        StartCoroutine(Face(faceSprite[num]));
+    }
 
 
 
