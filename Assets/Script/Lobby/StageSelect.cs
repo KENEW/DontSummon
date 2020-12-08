@@ -49,7 +49,6 @@ public class StageSelect : MonoBehaviour
         }
         else
         {
-            Debug.Log("마우스 땜");
             for (int i = 0; i < contentPos.Length; i++)
             {
                 if (scrollPos < (contentPos[i] + (distance / 2.0f)) && (scrollPos > contentPos[i] - (distance / 2.0f)))
