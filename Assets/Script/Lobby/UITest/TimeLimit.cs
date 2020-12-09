@@ -14,6 +14,8 @@ public class TimeLimit : MonoBehaviour
 	[SerializeField]
 	private float maxTime;
 
+	public int clearTime;
+
 	PlayerHp playerHp;
 
 	private bool backHpDamage = false;
@@ -32,7 +34,7 @@ public class TimeLimit : MonoBehaviour
 	{
 		hpGauge.fillAmount = Mathf.Lerp(hpGauge.fillAmount, ((float)curTime / (float)maxTime), 7.5f * Time.deltaTime);
 
-		if (backHpDamage)
+		/*if (backHpDamage)
 		{
 			hpGaugeBack.fillAmount = Mathf.Lerp(hpGaugeBack.fillAmount, hpGauge.fillAmount, 3.5f * Time.deltaTime);
 
@@ -41,7 +43,7 @@ public class TimeLimit : MonoBehaviour
 				backHpDamage = false;
 				hpGaugeBack.fillAmount = hpGauge.fillAmount;
 			}
-		}
+		}*/
 
 
 		if (curTime == 0) //현재 타임이 0이 되면
@@ -67,4 +69,9 @@ public class TimeLimit : MonoBehaviour
 			Invoke("BackHpRun", 0.1f);
 		}
 	}
+
+	public void ClearTime()
+    {
+		clearTime = (int)curTime;
+    }
 }

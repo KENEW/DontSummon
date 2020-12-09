@@ -20,11 +20,15 @@ public class Monster1 : MonoBehaviour
     [SerializeField]
     private int monsterMaxHp;
 
+    public int monsterScore; //몬스터 피격 점수
+
     float timer = 0f;
-    int waitingTime = 4;
+    public int waitingTime = 4;
     int bulletFlag = 1;
 
     Vector2 bulletPos;
+
+    Score score;
 
  
     // Start is called before the first frame update
@@ -36,6 +40,8 @@ public class Monster1 : MonoBehaviour
         Instantiate(bullet, bulletPos, Quaternion.identity);
 
         InvokeRepeating("SpawnRandomBullet", 17, 17);
+
+        score = GameObject.Find("ScorePanel").GetComponent<Score>();
     }
 
     // Update is called once per frame
@@ -125,6 +131,8 @@ public class Monster1 : MonoBehaviour
         }
 
         hp.fillAmount -= (float)hpValue / monsterMaxHp;
+
+        score.AddScore(monsterScore*hpValue); //몬스터 피격 시 점수 획득
     }
 
     public void RecoveryHp(int hpValue) //회복
