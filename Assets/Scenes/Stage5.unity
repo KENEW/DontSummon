@@ -845,7 +845,7 @@ PrefabInstance:
     - target: {fileID: 8739073824846311187, guid: 2ab01ab5f77cd7d4f996e09f101674e2,
         type: 3}
       propertyPath: waitingTime
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8739073824846311187, guid: 2ab01ab5f77cd7d4f996e09f101674e2,
         type: 3}
@@ -2534,7 +2534,7 @@ PrefabInstance:
     - target: {fileID: 8739073824846311187, guid: 2ab01ab5f77cd7d4f996e09f101674e2,
         type: 3}
       propertyPath: waitingTime
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8739073824846311187, guid: 2ab01ab5f77cd7d4f996e09f101674e2,
         type: 3}
@@ -2723,6 +2723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clearScore: 10
+  flag: 1
 --- !u!4 &2127199662
 Transform:
   m_ObjectHideFlags: 0

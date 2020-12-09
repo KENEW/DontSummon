@@ -21,10 +21,10 @@ public class BossMonster2 : MonoBehaviour
     {
         while(true)
         {
-            renderer.sprite = sprites[1];
+            renderer.sprite = sprites[0];
             gameObject.tag = "GreenMonster";
             yield return new WaitForSeconds(3f);
-            renderer.sprite = sprites[0];
+            renderer.sprite = sprites[1];
             gameObject.tag = "RedMonster";
             yield return new WaitForSeconds(3f);
             renderer.sprite = sprites[2];

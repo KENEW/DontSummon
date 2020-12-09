@@ -33,24 +33,19 @@ public class StageManage : MonoSingleton<StageManage>
 		switch (curStage)
 		{
 			case 1:
-				//needMonster.monsterFlag = 0;
-				//needMonster.curImage.sprite = needMonster.monsterSprite[needMonster.monsterFlag];
-				//needMonster.needNum = 3;
-				//MonsterGenerator.instance.MosnterCreate();
+				//SceneManager.LoadScene("Stage1");
 				break;
 			case 2:
-				//needMonster.monsterFlag = 1;
-				//needMonster.curImage.sprite = needMonster.monsterSprite[needMonster.monsterFlag];
-				//needMonster.needNum = 2;
-				//MonsterGenerator.instance.MosnterCreate();
-
+				//SceneManager.LoadScene("Stage2");
 				break;
 			case 3:
-				//needMonster.monsterFlag = 2;
-				//needMonster.curImage.sprite = needMonster.monsterSprite[needMonster.monsterFlag];
-				//needMonster.needNum = 1;
-				//MonsterGenerator.instance.MosnterCreate();
-
+				//SceneManager.LoadScene("Stage3");
+				break;
+			case 4:
+				//SceneManager.LoadScene("Stage4");
+				break;
+			case 5:
+				//SceneManager.LoadScene("Stage5");
 				break;
 		}
 
@@ -63,9 +58,11 @@ public class StageManage : MonoSingleton<StageManage>
 		//SoundManager.instance.PlaySFX("Clear");
 		gameState = false;
 		ClearObj.SetActive(true);
-		Invoke("LoadSceneLobby", 2f);
+		//Invoke("LoadSceneLobby", 2f);
 		//yield return new WaitForSeconds(2.0f);
 		//SceneManager.LoadScene("Lobby");
+		Invoke("LoadNextScene", 2f);
+		
 	}
 
 	public void StageFailed()
@@ -73,7 +70,7 @@ public class StageManage : MonoSingleton<StageManage>
 		//SoundManager.instance.PlaySFX("Failed");
 		gameState = false;
 		FailedObj.SetActive(true);
-		Invoke("LoadSceneRestart", 2f);
+		Invoke("LoadSceneLobby", 2f);
 
 		//yield return new WaitForSeconds(2.0f);
 		//SceneManager.LoadScene("TestScene");
@@ -86,6 +83,14 @@ public class StageManage : MonoSingleton<StageManage>
 	public void LoadSceneRestart()
 	{
 		SceneManager.LoadScene("editScene");
+	}
+
+	public void LoadNextScene()
+    {
+		Scene scene = SceneManager.GetActiveScene();
+		int curScene = scene.buildIndex;
+		int nextScene = curScene + 1;
+		SceneManager.LoadScene(nextScene);
 	}
 
 }
