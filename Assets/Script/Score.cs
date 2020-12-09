@@ -11,6 +11,12 @@ public class Score : MonoBehaviour
 	{
 		ScoreInit();
 	}
+
+	void Update()
+    {
+		ScoreUpdate();
+    }
+
 	public void ScoreInit()
 	{
 		score = 0;
