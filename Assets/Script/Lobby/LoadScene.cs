@@ -31,6 +31,7 @@ public class LoadScene : MonoSingleton<LoadScene>
 		loadingPanel.SetActive(true);
 
 		AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
+		Debug.Log("병합테스트");
 		operation.allowSceneActivation = false;
 
 		float timer = 0;
