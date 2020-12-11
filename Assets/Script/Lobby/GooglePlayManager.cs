@@ -17,6 +17,7 @@ public class GooglePlayManager : MonoBehaviour
         PlayGamesPlatform.Activate();
 
         text.text = "no Login";
+        OnLogin();
     }
     public void OnLogin()
     {
@@ -26,21 +27,41 @@ public class GooglePlayManager : MonoBehaviour
             {
                 if (bSuccess)
                 {
-                    Debug.Log("Success : " + Social.localUser.userName);
                     text.text = Social.localUser.userName;
+                    Debug.Log(Social.localUser.userName);
                 }
                 else
                 {
-                    Debug.Log("Fall");
                     text.text = "Fail";
                 }
             });
         }
     }
-
     public void OnLogOut()
     {
         ((PlayGamesPlatform)Social.Active).SignOut();
         text.text = "Logout";
+    }
+    public void OnShowLeaderBoard()
+    {
+		text.text = "ShowLeaderBoard";
+		Social.ReportScore(1000, GPGSIds.leaderboard_score, (bool bSuccess) =>
+		{
+			if (bSuccess)
+			{
+				text.text = "ReportLeaderBoard Success";
+			}
+			else
+			{
+				text.text = "ReportLeaderBoard Fail";
+			}
+		}
+		);
+		Social.ShowLeaderboardUI();
+	}
+    public void OnShowAchievement()
+    {
+        text.text = "ShowAchievement";
+        Social.ShowAchievementsUI();
     }
 }

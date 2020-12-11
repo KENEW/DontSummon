@@ -1,9 +1,9 @@
 lastUpgrade=01012
 proj.pluginVersion=0.10.12
-proj.AppId=875766070345
-and.BundleId=com.GoldenRatio.Summon
+proj.AppId=616204697091
+and.BundleId=com.GoldenRatio.NotSummon
 proj.classDir=Assets
 proj.ConstantsClassName=GPGSIds
-and.ResourceData=%3c%3fxml+version%3d%221.0%22+encoding%3d%22utf-8%22%3f%3e%0d%0a%3c%21--Google+Play+game+services+IDs.+Save+this+file+as+res%2fvalues%2fgames-ids.xml+in+your+project.--%3e%0d%0a%3cresources%3e%0d%0a++%3c%21--app_id--%3e%0d%0a++%3cstring+name%3d%22app_id%22+translatable%3d%22false%22%3e875766070345%3c%2fstring%3e%0d%0a++%3c%21--package_name--%3e%0d%0a++%3cstring+name%3d%22package_name%22+translatable%3d%22false%22%3ecom.GoldenRatio.Summon%3c%2fstring%3e%0d%0a++%3c%21--achievement+%eb%a1%9c%ea%b7%b8%ec%9d%b8+%ec%84%b1%ea%b3%b5%21--%3e%0d%0a++%3cstring+name%3d%22achievement%22+translatable%3d%22false%22%3eCgkIyfjmvb4ZEAIQAQ%3c%2fstring%3e%0d%0a++%3c%21--leaderboard+Stage+1+Score--%3e%0d%0a++%3cstring+name%3d%22leaderboard_stage_1_score%22+translatable%3d%22false%22%3eCgkIyfjmvb4ZEAIQAA%3c%2fstring%3e%0d%0a%3c%2fresources%3e
-and.ClientId=875766070345-spv8r08so9nru3mor5gdq1ts9ou4fk1j.apps.googleusercontent.com
+and.ResourceData=%3c%3fxml+version%3d%221.0%22+encoding%3d%22utf-8%22%3f%3e%0d%0a%3c%21--Google+Play+game+services+IDs.+Save+this+file+as+res%2fvalues%2fgames-ids.xml+in+your+project.--%3e%0d%0a%3cresources%3e%0d%0a++%3c%21--app_id--%3e%0d%0a++%3cstring+name%3d%22app_id%22+translatable%3d%22false%22%3e616204697091%3c%2fstring%3e%0d%0a++%3c%21--package_name--%3e%0d%0a++%3cstring+name%3d%22package_name%22+translatable%3d%22false%22%3ecom.GoldenRatio.NotSummon%3c%2fstring%3e%0d%0a++%3c%21--leaderboard+Score--%3e%0d%0a++%3cstring+name%3d%22leaderboard_score%22+translatable%3d%22false%22%3eCgkIg_ylxfcREAIQAQ%3c%2fstring%3e%0d%0a%3c%2fresources%3e
+and.ClientId=616204697091-bcjmj06csig26hedu61mqpuanr3hidc0.apps.googleusercontent.com
 android.SetupDone=true
