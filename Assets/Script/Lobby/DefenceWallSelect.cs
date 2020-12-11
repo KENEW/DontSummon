@@ -7,7 +7,7 @@ public enum DefenceWall
 {
     rentangle,
     triangle,
-    Square
+    square
 }
 
 public class DefenceWallSelect : MonoBehaviour
@@ -88,6 +88,7 @@ public class DefenceWallSelect : MonoBehaviour
     public void GameStart()
     {
         SoundManager.Instance.PlaySFX("Button");
+        DefenseWallManage.curDefenseWall = curDefenceWall; //인게임 씬으로
         MyData.Instance.SetDefenceWall(curDefenceWall);
         LoadScene.Instance.LoadStart();
     }

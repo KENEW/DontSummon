@@ -38,7 +38,7 @@ public class LoadScene : MonoSingleton<LoadScene>
 	{
 		loadingPanel.SetActive(true);
 
-		AsyncOperation operation = SceneManager.LoadSceneAsync("EditScene");
+		AsyncOperation operation = SceneManager.LoadSceneAsync("Stage1");
 		operation.allowSceneActivation = false;
 
 		float timer = 0;
