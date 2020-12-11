@@ -8,10 +8,14 @@ public class DefenseWall : MonoBehaviour
     Color color;
     SpriteRenderer spr;
 
+    public Sprite[] defenseWallSprite;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-        wallHp = 3;
+        
 
         spr = GetComponent<SpriteRenderer>();
         color = spr.color;
@@ -22,7 +26,7 @@ public class DefenseWall : MonoBehaviour
     void Update()
     {
 
-        if (wallHp==2)
+        /*if (wallHp==2)
         {
             color.a = 0.66f;
             spr.color = color;
@@ -38,17 +42,33 @@ public class DefenseWall : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        */
         
+    }
+
+    private void GetDamage()
+    {
+        wallHp -= 1;
+
+        if(wallHp==0)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            spr.sprite = defenseWallSprite[wallHp - 1];
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D coll) //공이 닿았을 때
     {
-        if (coll.gameObject.tag == "RedBullet")
+        if (coll.gameObject.tag == "RedBullet"|| coll.gameObject.tag == "GreenBullet"|| coll.gameObject.tag == "BlueBullet"|| coll.gameObject.tag == "Bullet" ||
+            coll.gameObject.tag == "Heal"|| coll.gameObject.tag == "Fire"|| coll.gameObject.tag == "Bomb"|| coll.gameObject.tag == "Skull")
         {
-            wallHp -= 1;
+            GetDamage();
         }
 
-        else if (coll.gameObject.tag == "GreenBullet")
+        /*else if (coll.gameObject.tag == "GreenBullet")
         {
             wallHp -= 1;
         }
@@ -81,7 +101,8 @@ public class DefenseWall : MonoBehaviour
         else if (coll.gameObject.tag == "Skull")
         {
             wallHp -= 1;
-        }
+        }*/
+
 
     }
 }

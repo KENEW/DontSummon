@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4256699502894432656}
   - component: {fileID: 8409580725005889814}
   m_Layer: 0
-  m_Name: DefenseWall
+  m_Name: DefenseWallSquare
   m_TagString: DefenseWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,7 +100,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 17.5, y: 7.72}
+    oldSize: {x: 17.5, y: 7.72461}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -121,4 +121,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33846afcec637c94aa74bad28b4d9bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallHp: 0
+  wallHp: 1
