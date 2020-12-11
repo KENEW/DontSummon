@@ -21,24 +21,16 @@ public class LoadScene : MonoSingleton<LoadScene>
 		}
 
 	}
-
-	private void Update()
-	{
-		if(Input.GetKeyDown(KeyCode.O))
-		{
-			LoadStart();
-		}
-	}
-	public void LoadStart()
+	public void LoadStart(string sceneName)
 	{
 		loadingPanel.SetActive(true);
-		StartCoroutine(Loading());
+		StartCoroutine(Loading(sceneName));
 	}
-	IEnumerator Loading()
+	IEnumerator Loading(string sceneName)
 	{
 		loadingPanel.SetActive(true);
 
-		AsyncOperation operation = SceneManager.LoadSceneAsync("EditScene");
+		AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
 		operation.allowSceneActivation = false;
 
 		float timer = 0;
