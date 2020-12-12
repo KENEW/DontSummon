@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class LogoTitle : MonoBehaviour
 {
-	public GameObject storyScreen;
+	public GameObject loginScreen;
 	public Image maskPanel;
 
 	private void Start()
@@ -20,20 +20,20 @@ public class LogoTitle : MonoBehaviour
 		SoundManager.Instance.PlaySFX("Logo");
 		Color color = maskPanel.color;
 
-		while(color.a >= 0.014f)
+		while(color.a <= 0.99f)
 		{
 			Debug.Log(color.a);
-			color.a -= 0.03f;
+			color.a += 0.03f;
 			maskPanel.color = color;
 			yield return null;
 		}
 
-		color.a = 0.0f;
+		color.a = 1.0f;
 		maskPanel.color = color;
 
 		yield return new WaitForSeconds(2.0f);
 
-		storyScreen.SetActive(true);
+		loginScreen.SetActive(true);
 		gameObject.SetActive(false);
 	}
 }
