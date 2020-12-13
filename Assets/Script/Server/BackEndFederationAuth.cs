@@ -172,29 +172,24 @@ public class BackEndFederationAuth : MonoSingleton<BackEndFederationAuth>
 
 	public void OnShowLeaderBoard()
 	{
-		text.text = "ShowLeaderBoard";
-		// 1000점을 등록
-		Social.ReportScore(1000, GPGSIds.leaderboard_score, (bool bSuccess) =>
-		{
-			if (bSuccess)
-			{
-				Debug.Log("ReportLeaderBoard Success");
-				text.text = "ReportLeaderBoard Success";
-			}
-			else
-			{
-				Debug.Log("ReportLeaderBoard Fall");
-				text.text = "ReportLeaderBoard Fail";
-			}
-		}
-		);
+		//Social.ReportScore(1000, GPGSIds.leaderboard_score, (bool bSuccess) =>
+		//{
+		//	if (bSuccess)
+		//	{
+		//		Debug.Log("ReportLeaderBoard Success");
+		//		text.text = "ReportLeaderBoard Success";
+		//	}
+		//	else
+		//	{
+		//		Debug.Log("ReportLeaderBoard Fall");
+		//		text.text = "ReportLeaderBoard Fail";
+		//	}
+		//}
+		//);
 		Social.ShowLeaderboardUI();
 	}
-
-	// 업적보기
 	public void OnShowAchievement()
 	{
-		text.text = "ShowAchievement";
 		Social.ShowAchievementsUI();
 	}
 
