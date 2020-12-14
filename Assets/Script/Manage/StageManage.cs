@@ -11,6 +11,7 @@ public class StageManage : MonoSingleton<StageManage>
 
 	public GameObject ReadyObj;
 	public GameObject StartObj;
+	public GameObject StartPanel;
 
 	public bool gameState = false;
 	public int curStage;
@@ -41,10 +42,12 @@ public class StageManage : MonoSingleton<StageManage>
 		yield return new WaitForSecondsRealtime(2f);
 		ReadyObj.SetActive(false);
 		StartObj.SetActive(true);
-		yield return new WaitForSecondsRealtime(1f);
+		//StartPanel.SetActive(true);
+		yield return new WaitForSecondsRealtime(2f);
 		StartObj.SetActive(false);
 
 		Time.timeScale = 1;
+		//StartPanel.SetActive(false);
 	}
 
 
@@ -104,7 +107,8 @@ public class StageManage : MonoSingleton<StageManage>
 	{
 		Time.timeScale = 0;
 		yield return new WaitForSecondsRealtime(4f);
-		SceneManager.LoadScene("Lobby");
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		//SceneManager.LoadScene("Lobby");
 	}
 	public void LoadSceneRestart()
 	{

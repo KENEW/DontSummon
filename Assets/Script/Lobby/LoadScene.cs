@@ -14,6 +14,7 @@ public class LoadScene : MonoSingleton<LoadScene>
 
 	private void Start()
 	{
+		Debug.Log("시작");
 		if(loadingPanel.active == true)
 		{
 			Debug.Log("로딩패널을 꺼주세요");
@@ -31,7 +32,6 @@ public class LoadScene : MonoSingleton<LoadScene>
 		loadingPanel.SetActive(true);
 
 		AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
-		Debug.Log("병합테스트");
 		operation.allowSceneActivation = false;
 
 		float timer = 0;
@@ -42,6 +42,7 @@ public class LoadScene : MonoSingleton<LoadScene>
 
 			if(operation.progress < 0.9f)
 			{
+				Debug.Log("실질적 로딩 시작");
 				curLoadGuageBar.fillAmount = operation.progress;
 			}
 			else

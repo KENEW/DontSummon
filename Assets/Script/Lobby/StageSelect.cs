@@ -77,6 +77,7 @@ public class StageSelect : MonoBehaviour
 
     public void StageSelectButton()
     {
+        SoundManager.Instance.PlaySFX("Button");
         stageSelectPanel.SetActive(false);
         defenceWallSelectPanel.SetActive(true);
     }

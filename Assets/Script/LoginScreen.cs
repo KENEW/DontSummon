@@ -14,15 +14,15 @@ public class LoginScreen : MonoBehaviour
 
 	public void OnGoogleLogin()
 	{
-		BackEndFederationAuth.Instance.OnLogin();
+		//BackEndFederationAuth.Instance.OnLogin();
 	}
 
 	private void Update()
 	{
-		if(BackEndFederationAuth.Instance.isLoginCheck == true)
-		{
-			TitleScreen.SetActive(true);
-			loginScreen.SetActive(false);
-		}
+		//if(BackEndFederationAuth.Instance.isLoginCheck == true)
+		//{
+		//	TitleScreen.SetActive(true);
+		//	loginScreen.SetActive(false);
+		//}
 	}
 }
