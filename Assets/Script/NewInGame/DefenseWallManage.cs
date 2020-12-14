@@ -23,10 +23,10 @@ public class DefenseWallManage : MonoBehaviour
         }
         else if (curDefenseWall == DefenceWall.square) //정사각형
         {
-            Instantiate(defenseWall[3], new Vector2(-1.74f, -3.89f), Quaternion.identity);
-            Instantiate(defenseWall[3], new Vector2(-1.74f, -2.89f), Quaternion.identity);
-            Instantiate(defenseWall[3], new Vector2(1.74f, -3.89f), Quaternion.identity);
-            Instantiate(defenseWall[3], new Vector2(1.74f, -2.89f), Quaternion.identity);
+            Instantiate(defenseWall[3], new Vector2(-2.36f, -3.94f), Quaternion.identity);
+            Instantiate(defenseWall[3], new Vector2(-2.36f, -2.7f), Quaternion.identity);
+            Instantiate(defenseWall[3], new Vector2(2.36f, -3.94f), Quaternion.identity);
+            Instantiate(defenseWall[3], new Vector2(2.36f, -2.7f), Quaternion.identity);
         }
 
     }

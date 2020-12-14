@@ -9,25 +9,45 @@ public class StageManage : MonoSingleton<StageManage>
 	public GameObject ClearObj;
 	public GameObject FailedObj;
 
+	public GameObject ReadyObj;
+	public GameObject StartObj;
+
 	public bool gameState = false;
 	public int curStage;
 
 	private void Start()
 	{
+		Time.timeScale = 0;
 		//Debug.Log(SoundManager.instance);
 		curStage = 1;
-		Invoke("GameStateTrue", 2f);
+		StartCoroutine("GameStart");
 		StageInit();
 
 	}
+
+
 	public void GameStateTrue()
-	{
+    {
 		gameState = true;
-	}
+    }
 	public void GameStateFalse()
-	{
+    {
 		gameState = false;
+    }
+
+	IEnumerator GameStart()
+	{
+		ReadyObj.SetActive(true);
+		yield return new WaitForSecondsRealtime(2f);
+		ReadyObj.SetActive(false);
+		StartObj.SetActive(true);
+		yield return new WaitForSecondsRealtime(1f);
+		StartObj.SetActive(false);
+
+		Time.timeScale = 1;
 	}
+
+
 	private void StageInit()
 	{
 		switch (curStage)
@@ -56,28 +76,34 @@ public class StageManage : MonoSingleton<StageManage>
 	public void StageClear()
 	{
 		//SoundManager.instance.PlaySFX("Clear");
-		gameState = false;
 		ClearObj.SetActive(true);
-		//Invoke("LoadSceneLobby", 2f);
-		//yield return new WaitForSeconds(2.0f);
+		//Time.timeScale = 0;
+		//gameState = false;
+		//StartCoroutine("GameEnd");
 		//SceneManager.LoadScene("Lobby");
-		Invoke("LoadNextScene", 2f);
-		
+		//Invoke("LoadNextScene", 2f);
+		StartCoroutine("LoadNextScene");
+
 	}
 
 	public void StageFailed()
 	{
 		//SoundManager.instance.PlaySFX("Failed");
-		gameState = false;
 		FailedObj.SetActive(true);
-		Invoke("LoadSceneLobby", 2f);
+		//Time.timeScale = 0;
+		//gameState = false;
+		//StartCoroutine("GameEnd");
+		//Invoke("LoadSceneLobby",2f);
+		StartCoroutine("LoadSceneLobby");
 
 		//yield return new WaitForSeconds(2.0f);
 		//SceneManager.LoadScene("TestScene");
 	}
 
-	public void LoadSceneLobby()
+	IEnumerator LoadSceneLobby()
 	{
+		Time.timeScale = 0;
+		yield return new WaitForSecondsRealtime(4f);
 		SceneManager.LoadScene("Lobby");
 	}
 	public void LoadSceneRestart()
@@ -85,8 +111,12 @@ public class StageManage : MonoSingleton<StageManage>
 		SceneManager.LoadScene("editScene");
 	}
 
-	public void LoadNextScene()
+	IEnumerator LoadNextScene()
     {
+		Time.timeScale = 0;
+		//점수 계산
+		yield return new WaitForSecondsRealtime(4f);
+	
 		Scene scene = SceneManager.GetActiveScene();
 		int curScene = scene.buildIndex;
 		int nextScene = curScene + 1;

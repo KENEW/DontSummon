@@ -40,24 +40,24 @@ public class Player : MonoBehaviour
            // {
                 MousePosition = Camera.ScreenToWorldPoint(Input.mousePosition);
 
-                if (MousePosition.x > 2.5f)
+                if (MousePosition.x > 2.4f)
                 {
-                    MousePosition.x = 2.5f;
+                    MousePosition.x = 2.4f;
                 }
 
-                if (MousePosition.x < -2.5f)
+                if (MousePosition.x < -2.4f)
                 {
-                    MousePosition.x = -2.5f;
+                    MousePosition.x = -2.4f;
                 }
 
-                if (MousePosition.y > -2.4f)
+                if (MousePosition.y > -2.75f)
                 {
-                    MousePosition.y = -2.4f;
+                    MousePosition.y = -2.75f;
                 }
 
-                if (MousePosition.y < -2.9f)
+                if (MousePosition.y < -3.75f)
                 {
-                    MousePosition.y = -2.9f;
+                    MousePosition.y = -3.75f;
                 }
 
                 transform.position = MousePosition;
