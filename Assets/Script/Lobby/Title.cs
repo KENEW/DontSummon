@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class Title : MonoBehaviour
 {
+	public Animator logoAnimator;
+
 	public GameObject StageSelect;
 	public GameObject TitleScreen;
-
 	public GameObject CreditPanel;
 
+	private void Start()
+	{
+		logoAnimator.SetTrigger("LogoStart");
+	}
 	public void StartButton()
 	{
 		SoundManager.Instance.PlaySFX("Button");

@@ -10,8 +10,6 @@ public class LogoTitle : MonoBehaviour
 
 	private void Start()
 	{
-		Screen.SetResolution(1080, 1920, false);
-
 		StartCoroutine(FadeLogo());
 	}
 
