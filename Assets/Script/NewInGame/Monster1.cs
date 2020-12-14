@@ -37,7 +37,7 @@ public class Monster1 : MonoBehaviour
         monsterHp = monsterMaxHp;
 
         bulletPos = new Vector2(transform.position.x, transform.position.y - 1.0f);
-        Instantiate(bullet, bulletPos, Quaternion.identity);
+        StartCoroutine("BulletSpawn");
 
         InvokeRepeating("SpawnRandomBullet", 17, 17);
 
@@ -54,7 +54,7 @@ public class Monster1 : MonoBehaviour
 
         int bulletNum = bulletArr.Length + redBulletArr.Length + greenBulletArr.Length + blueBulletArr.Length;*/ //투사체 개수 
 
-        timer += Time.deltaTime;
+        //timer += Time.deltaTime;
 
         /*if(bulletFlag<monsterMaxHp) //몬스터의 hp만큼 생성
         {
@@ -78,7 +78,7 @@ public class Monster1 : MonoBehaviour
             }
         } */
 
-        if(monsterHp>0)
+        /*if(monsterHp>0)
         {
             if (timer > waitingTime)
             {
@@ -86,33 +86,29 @@ public class Monster1 : MonoBehaviour
                 //bulletFlag += 1;
                 timer = 0;
             }
-        }
+        }*/
 
-        else if(monsterHp==0)
+        if(monsterHp==0)
         {
             Destroy(gameObject);
         }
 
         
-        //DrawHp();
-
     }
 
-    /*private void DrawHp()
-    {
-        for (int i = 0; i < monsterHp; i++)
-        {
-            hpObject[i].SetActive(true);
-            //animator.SetTrigger("HpAnime");
-        }
-        for (int i = monsterHp; i < monsterMaxHp; i++)
-        {
-            hpObject[i].SetActive(false);
-            //animator.SetFloat("Reverse", -1);
-            //animator.SetTrigger("HpAnime");
 
+    IEnumerator BulletSpawn()
+    {
+        while(true)
+        {
+            if(monsterHp>0)
+            {
+                yield return new WaitForSeconds(0.1f);
+                Instantiate(bullet, bulletPos, Quaternion.identity);
+                yield return new WaitForSeconds(waitingTime);
+            }
         }
-    }*/
+    }
 
     void SpawnRandomBullet() //특수 투사체 생성
     {
@@ -180,6 +176,7 @@ public class Monster1 : MonoBehaviour
         }  
 
     }
+
     
 
 }

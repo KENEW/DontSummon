@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 8fdb0042e06615346a9d1890f4ee4c0f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e750e7e56b76bca4e828bcb5e7c6bf86, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -138,7 +138,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4b1e3d700543ee84aa850e620b9f6622, type: 3}
   - {fileID: 21300000, guid: 3d06a4ebec4edda49b1d55d51d0fb7b2, type: 3}
   - {fileID: 21300000, guid: 0e6b7364cc8093349bb3568279af8e2c, type: 3}
-  originalSprite: {fileID: 21300000, guid: 2f27aa81829dc5c4690c41b7e2db063f, type: 3}
-  happySprite: {fileID: 21300000, guid: 59abcbd27fbed4241a62fef71eb31a55, type: 3}
-  angrySprite: {fileID: 21300000, guid: 66ed3c8f782a3ef4391706d8b3773a54, type: 3}
   curDir: {x: 1, y: 0.5}
