@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class LogoTitle : MonoBehaviour
 {
@@ -10,17 +11,14 @@ public class LogoTitle : MonoBehaviour
 
 	private void Start()
 	{
-		StartCoroutine(FadeLogo());
+		StartCoroutine(fadeCoroutine());
 	}
-
-	IEnumerator FadeLogo()
+	IEnumerator fadeCoroutine()
 	{
-		SoundManager.Instance.PlaySFX("Logo");
 		Color color = maskPanel.color;
 
-		while(color.a <= 0.99f)
+		while (color.a <= 0.99f)
 		{
-			Debug.Log(color.a);
 			color.a += 0.03f;
 			maskPanel.color = color;
 			yield return null;
