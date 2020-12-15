@@ -44,7 +44,6 @@ public class DefenceWallSelect : MonoBehaviour
         "네모 네모 정사각형"
     };
 
-
     private void Update()
     {
         contentPos = new float[transform.childCount];
@@ -84,12 +83,11 @@ public class DefenceWallSelect : MonoBehaviour
             }
         }
     }
-
     public void GameStart()
     {
         SoundManager.Instance.PlaySFX("Button");
         DefenseWallManage.curDefenseWall = curDefenceWall; //인게임 씬으로
-        MyData.Instance.SetDefenceWall(curDefenceWall);
+        MyData.Instance.curDefenceWall = curDefenceWall;
         LoadScene.Instance.LoadStart("Stage1");
     }
     public void BackButton()

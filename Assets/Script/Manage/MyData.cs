@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class MyData : SceneSingleTon<MyData>
 {
-    public static int curStage = 0;
-    public static DefenceWall curDefenceWall = DefenceWall.rentangle;
+    public DefenceWall curDefenceWall = DefenceWall.rentangle;
 
-    public void SetDefenceWall(DefenceWall defenceWall)
+    public int curStage = 0;
+    public int curHp = 3;
+    public int curScore = 0;
+    public float curTIme = 100;
+
+    public int[] stageScore = new int[3];
+
+    public void InitState()
     {
-        curDefenceWall = defenceWall;
+        curStage = 0;
+        curHp = 3;
+        curTIme = 100;
+        curDefenceWall = DefenceWall.rentangle;
     }
-    public void SetStage(int stage)
-    {
-        curStage = stage;
-	}
 }

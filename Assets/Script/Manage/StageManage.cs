@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
+
 public class StageManage : MonoSingleton<StageManage>
 {
 	public NeedMonster needMonster;
@@ -13,20 +15,18 @@ public class StageManage : MonoSingleton<StageManage>
 	public GameObject StartObj;
 	public GameObject StartPanel;
 
+	public Animator animator;
+
 	public bool gameState = false;
 	public int curStage;
 
 	private void Start()
 	{
 		Time.timeScale = 0;
-		//Debug.Log(SoundManager.instance);
 		curStage = 1;
 		StartCoroutine("GameStart");
 		StageInit();
-
 	}
-
-
 	public void GameStateTrue()
     {
 		gameState = true;
@@ -38,16 +38,19 @@ public class StageManage : MonoSingleton<StageManage>
 
 	IEnumerator GameStart()
 	{
-		ReadyObj.SetActive(true);
-		yield return new WaitForSecondsRealtime(2f);
-		ReadyObj.SetActive(false);
-		StartObj.SetActive(true);
-		//StartPanel.SetActive(true);
-		yield return new WaitForSecondsRealtime(2f);
-		StartObj.SetActive(false);
+		//ReadyObj.SetActive(true);
+		//yield return new WaitForSecondsRealtime(2f);
+		//ReadyObj.SetActive(false);
+		//StartObj.SetActive(true);
+		////StartPanel.SetActive(true);
+		yield return new WaitForSecondsRealtime(0.2f);
+		animator.SetTrigger("Start");
 
+		yield return new WaitForSecondsRealtime(4.5f);
+		//StartObj.SetActive(false);
+
+		StartPanel.gameObject.transform.DOMoveY(1.0f, 3f).OnComplete(() => { StartPanel.SetActive(false);});
 		Time.timeScale = 1;
-		//StartPanel.SetActive(false);
 	}
 
 
@@ -124,7 +127,7 @@ public class StageManage : MonoSingleton<StageManage>
 		Scene scene = SceneManager.GetActiveScene();
 		int curScene = scene.buildIndex;
 		int nextScene = curScene + 1;
-		SceneManager.LoadScene(nextScene);
+		SceneManager.LoadScene("Stage" + nextScene);
 	}
 
 }
