@@ -2,22 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public class StageInfo
+{
+    public int stage;
+    public int hp;
+    public int score;
+    public int curTime;
+}
+
 public class MyData : SceneSingleTon<MyData>
 {
     public DefenceWall curDefenceWall = DefenceWall.rentangle;
 
-    public int curStage = 0;
-    public int curHp = 3;
-    public int curScore = 0;
-    public float curTIme = 100;
+    public StageInfo stageInfo = new StageInfo();
 
     public int[] stageScore = new int[3];
-
+    public void SaveScore()
+    {
+        
+	}
     public void InitState()
     {
-        curStage = 0;
-        curHp = 3;
-        curTIme = 100;
+        stageInfo.score = 0;
+        stageInfo.hp = 3;
+        stageInfo.curTime = 100;
         curDefenceWall = DefenceWall.rentangle;
     }
 }
