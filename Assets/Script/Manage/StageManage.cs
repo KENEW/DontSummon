@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class StageManage : MonoSingleton<StageManage>
 {
+	public NeedMonster needMonster;
 
 	public GameObject ClearObj;
 	public GameObject FailedObj;
