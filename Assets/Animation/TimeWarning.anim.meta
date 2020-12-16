@@ -1,20 +1,16 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Prefab/UI/InGame/PauseScreen.prefab.meta
-guid: 748ecefe94606ea409a3684dcdd5f71e
-PrefabImporter:
-=======
 <<<<<<< HEAD
+guid: 1031a53841921d04d9af759b61e79af2
+=======
 <<<<<<< HEAD:Assets/Script/InGame/TimeAnimation.anim.meta
 guid: d8e939328b6a13d4cbdbdc778b02e038
 =======
 guid: 1031a53841921d04d9af759b61e79af2
 >>>>>>> ebd3df9b40e15f29ec93e0d486a5052d3cdb354e:Assets/Animation/TimeWarning.anim.meta
-=======
-guid: d8e939328b6a13d4cbdbdc778b02e038
 >>>>>>> ebd3df9b40e15f29ec93e0d486a5052d3cdb354e
 NativeFormatImporter:
->>>>>>> 3d981ea3986cb36e5a336cdeb128f29751133526:Assets/Script/InGame/TimeAnimation.anim.meta
   externalObjects: {}
+  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
