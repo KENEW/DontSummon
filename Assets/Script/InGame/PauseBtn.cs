@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseBtn : MonoBehaviour
 {
-    bool isPause;
+    public GameObject PauseScreen;
 
     // Update is called once per frame
     /*void Update()
@@ -17,15 +18,18 @@ public class PauseBtn : MonoBehaviour
 
     public void Pause()
     {
-        if(isPause==false)
-        {
-            this.isPause = true;
-            Time.timeScale = 0;
-        }
-        else
-        {
-            this.isPause = false;
-            Time.timeScale = 1;
-        }
+        Time.timeScale = 0;
+        PauseScreen.SetActive(true);
+    }
+
+    public void Continue()
+    {
+        Time.timeScale = 1;
+        PauseScreen.SetActive(false);
+    }
+
+    public void Stop()
+    {
+        SceneManager.LoadScene("Lobby");
     }
 }
