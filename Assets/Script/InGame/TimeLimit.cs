@@ -3,75 +3,81 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimeLimit : MonoBehaviour
+public class TimeLimit : MonoSingleton<TimeLimit>
 {
-	public Image hpGauge;
-	public Image hpGaugeBack;
+	public Animator animator;
+	public Image timeGauge;
 	public Text curTimeText;
 
-	
 	private float curTime;
-	[SerializeField]
 	private float maxTime;
+	private bool timeWarningCheck = false;
 
 	public int clearTime;
 
-	PlayerHp playerHp;
-
-	private bool backHpDamage = false;
-	int flag = 0;
+	private Color WARNING_YELLOW = new Color(166 / 255f, 105 / 255f, 37 / 255f);
+	private Color WARNING_RED = new Color(169 / 255f, 22 / 255f, 19 / 255f);
 
 	private void Start()
 	{
-		playerHp = GameObject.Find("HpPanel").GetComponent<PlayerHp>();
-		//maxTime = 60f;
-		curTime = maxTime;
+		SetStageTime(30);
 		StartCoroutine(Regular());
-
-		
 	}
 	private void Update()
 	{
-		hpGauge.fillAmount = Mathf.Lerp(hpGauge.fillAmount, ((float)curTime / (float)maxTime), 7.5f * Time.deltaTime);
+		timeGauge.fillAmount = Mathf.Lerp(timeGauge.fillAmount, ((float)curTime / (float)maxTime), 7.5f * Time.deltaTime);
 
-		/*if (backHpDamage)
+		if(curTime <= (int)(maxTime * 0.2f))	//현재 시간이 전체 시간에 20% 아래로 내려갈시
 		{
-			hpGaugeBack.fillAmount = Mathf.Lerp(hpGaugeBack.fillAmount, hpGauge.fillAmount, 3.5f * Time.deltaTime);
+			timeGauge.color = WARNING_RED;
+			timeWarningCheck = true;
+		}
+		else if (curTime <= (int)(maxTime * 0.4f))	//40%
+		{
+			timeGauge.color = WARNING_YELLOW;
+		}
+		else
+		{
+			timeGauge.color = Color.white;
+			timeWarningCheck = false;
+		}
 
-			if (hpGauge.fillAmount >= hpGaugeBack.fillAmount - 0.01f)
-			{
-				backHpDamage = false;
-				hpGaugeBack.fillAmount = hpGauge.fillAmount;
-			}
-		}*/
-
-
-		if (curTime == 0) //현재 타임이 0이 되면
+		if (curTime <= 0) //현재 타임이 0이 되면
         {
-			playerHp.GetDamage(playerHp.curHp);
-
+			timeGauge.fillAmount = 0f;
 			StageManage.Instance.StageFailed();
 		}
 	}
-
-	private void BackHpRun()
+	public void SetStageTime(int time)	//스테이지 시간 설정
 	{
-		backHpDamage = true;
+		maxTime = time;
+		curTime = maxTime;
 	}
+	public void AddTime(int time)	//현재 시간 추가
+	{
+		if(curTime + time >= maxTime)
+		{
+			curTime = maxTime;
+			return;
+		}
 
-	IEnumerator Regular()
+		curTime += time;
+	}
+	public void ClearTime()
+	{
+		clearTime = (int)curTime;
+	}
+	IEnumerator Regular()	//일정시간 마다 시간 설정
 	{
 		while(curTime > 0.0f)
 		{
 			yield return new WaitForSeconds(1f);
+			if(timeWarningCheck)
+			{
+				animator.SetTrigger("TimeWarning");
+			}
 			curTime -= 1f;
 			curTimeText.text = (int)curTime + "";
-			Invoke("BackHpRun", 0.1f);
 		}
 	}
-
-	public void ClearTime()
-    {
-		clearTime = (int)curTime;
-    }
 }
