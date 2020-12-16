@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c99a9dfbc5029bf49a594a2c92ddf8ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigid: {fileID: 4816157527265494145}
   faceSprite:
   - {fileID: 21300000, guid: 2f27aa81829dc5c4690c41b7e2db063f, type: 3}
   - {fileID: 21300000, guid: 66ed3c8f782a3ef4391706d8b3773a54, type: 3}

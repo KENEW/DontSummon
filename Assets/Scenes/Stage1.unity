@@ -770,6 +770,12 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!50 &776917181 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 4816157527265494145, guid: 35ef5a2dbc8627a428b0aba284aacce2,
+    type: 3}
+  m_PrefabInstance: {fileID: 4816157528383957094}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &869728214
 GameObject:
   m_ObjectHideFlags: 0
@@ -2760,6 +2766,11 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.7808124
       objectReference: {fileID: 0}
+    - target: {fileID: 4816157527265494159, guid: 35ef5a2dbc8627a428b0aba284aacce2,
+        type: 3}
+      propertyPath: rigid
+      value: 
+      objectReference: {fileID: 776917181}
     - target: {fileID: 4816157527265494159, guid: 35ef5a2dbc8627a428b0aba284aacce2,
         type: 3}
       propertyPath: faceSprite.Array.data[0]

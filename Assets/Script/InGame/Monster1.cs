@@ -9,10 +9,6 @@ public class Monster1 : MonoBehaviour
 
     public GameObject bullet;
     public GameObject[] randomBullet;
-    public GameObject[] bulletArr;
-    public GameObject[] redBulletArr;
-    public GameObject[] greenBulletArr;
-    public GameObject[] blueBulletArr;
 
     
     //private int monsterHp;
@@ -47,53 +43,10 @@ public class Monster1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*bulletArr = GameObject.FindGameObjectsWithTag("Bullet");
-        redBulletArr = GameObject.FindGameObjectsWithTag("RedBullet");
-        greenBulletArr = GameObject.FindGameObjectsWithTag("GreenBullet");
-        blueBulletArr = GameObject.FindGameObjectsWithTag("BlueBullet");
-
-        int bulletNum = bulletArr.Length + redBulletArr.Length + greenBulletArr.Length + blueBulletArr.Length;*/ //투사체 개수 
-
-        //timer += Time.deltaTime;
-
-        /*if(bulletFlag<monsterMaxHp) //몬스터의 hp만큼 생성
-        {
-            if (timer > waitingTime)
-            {
-                Instantiate(bullet, bulletPos, Quaternion.identity);
-                bulletFlag += 1;
-                timer = 0;
-                
-            }
-        }
-
-        else if (bulletNum<monsterHp && monsterHp != 0)
-        {
-            if (timer > waitingTime)
-            {
-                Instantiate(bullet, bulletPos, Quaternion.identity);
-                bulletFlag += 1;
-                timer = 0;
-
-            }
-        } */
-
-        /*if(monsterHp>0)
-        {
-            if (timer > waitingTime)
-            {
-                Instantiate(bullet, bulletPos, Quaternion.identity);
-                //bulletFlag += 1;
-                timer = 0;
-            }
-        }*/
-
         if(monsterHp==0)
         {
             Destroy(gameObject);
         }
-
-        
     }
 
 

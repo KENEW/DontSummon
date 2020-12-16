@@ -33,6 +33,26 @@ public class RandomBullet : MonoBehaviour
         blueBulletArr = GameObject.FindGameObjectsWithTag("BlueBullet");
     }
 
+    void FixedUpdate()
+    {
+        if (rigid.velocity.x > 2f)
+        {
+            rigid.velocity = new Vector2(2f, rigid.velocity.y);
+        }
+        else if (rigid.velocity.x < -2f)
+        {
+            rigid.velocity = new Vector2(-2f, rigid.velocity.y);
+        }
+
+        if (rigid.velocity.y > 2f)
+        {
+            rigid.velocity = new Vector2(rigid.velocity.x, 2f);
+        }
+        else if (rigid.velocity.y < -2f)
+        {
+            rigid.velocity = new Vector2(rigid.velocity.x, -2f);
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D coll)
     {
