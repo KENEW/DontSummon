@@ -2,6 +2,9 @@ fileFormatVersion: 2
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ebd3df9b40e15f29ec93e0d486a5052d3cdb354e
 guid: bd74a8ec4cdca9943a1b50809c303c98
 folderAsset: yes
 =======
@@ -21,6 +24,7 @@ folderAsset: yes
 >>>>>>> parent of 63ae000... - 일시정지 버튼
 DefaultImporter:
   externalObjects: {}
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD:Assets/Animation/TimePanel.controller.meta
 guid: 48c083d6f32d4ca4d86d8fac328066e1
@@ -33,6 +37,8 @@ DefaultImporter:
   externalObjects: {}
   mainObjectFileID: 0
 >>>>>>> parent of 63ae000... - 일시정지 버튼
+=======
+>>>>>>> ebd3df9b40e15f29ec93e0d486a5052d3cdb354e
   userData: 
   assetBundleName: 
   assetBundleVariant: 

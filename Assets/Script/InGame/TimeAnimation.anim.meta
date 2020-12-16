@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD:Assets/Script/InGame/TimeAnimation.anim.meta
 guid: d8e939328b6a13d4cbdbdc778b02e038
+=======
+guid: 1031a53841921d04d9af759b61e79af2
+>>>>>>> ebd3df9b40e15f29ec93e0d486a5052d3cdb354e:Assets/Animation/TimeWarning.anim.meta
+=======
+guid: d8e939328b6a13d4cbdbdc778b02e038
+>>>>>>> ebd3df9b40e15f29ec93e0d486a5052d3cdb354e
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 0
