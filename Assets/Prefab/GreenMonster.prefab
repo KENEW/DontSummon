@@ -125,10 +125,9 @@ MonoBehaviour:
   - {fileID: 6564517405985520474, guid: 9f24e77cc77d634439a7197546b378e1, type: 3}
   - {fileID: 107732889114567035, guid: fcaec969288f04a4f857ca37b9c31028, type: 3}
   - {fileID: 6692823952648815766, guid: e90cf71204e40764bb0ba04014d2ced9, type: 3}
-  bulletArr: []
-  redBulletArr: []
-  greenBulletArr: []
-  blueBulletArr: []
+  monsterFace:
+  - {fileID: 21300000, guid: cfb511cc5c734a04bbe8a810de9e85d2, type: 3}
+  - {fileID: 21300000, guid: 1f273735fd569f342a57e6fca18f2fdc, type: 3}
   monsterHp: 0
   monsterMaxHp: 3
   monsterScore: 0
@@ -782,7 +781,7 @@ GameObject:
   - component: {fileID: 2515479248922859429}
   - component: {fileID: 1083881048939730932}
   m_Layer: 0
-  m_Name: 531
+  m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

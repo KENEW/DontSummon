@@ -1147,6 +1147,7 @@ MonoBehaviour:
   ReadyObj: {fileID: 0}
   StartObj: {fileID: 0}
   StartPanel: {fileID: 1722358658891472907}
+  PauseBtn: {fileID: 697270084080587965}
   animator: {fileID: 1722358660362329557}
   gameState: 0
   curStage: 0
@@ -1943,6 +1944,11 @@ PrefabInstance:
       propertyPath: PauseScreen
       value: 
       objectReference: {fileID: 284635286}
+    - target: {fileID: 697270082108380818, guid: d7c19e1d10aec82438040e14b1da13d8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6280368776282080516, guid: d7c19e1d10aec82438040e14b1da13d8,
         type: 3}
       propertyPath: m_Name
@@ -2055,6 +2061,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7c19e1d10aec82438040e14b1da13d8, type: 3}
+--- !u!1 &697270084080587965 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 697270082108380818, guid: d7c19e1d10aec82438040e14b1da13d8,
+    type: 3}
+  m_PrefabInstance: {fileID: 697270084080587964}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1285228551878983142
 PrefabInstance:
   m_ObjectHideFlags: 0

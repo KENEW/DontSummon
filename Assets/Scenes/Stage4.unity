@@ -866,6 +866,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 479385246}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &479385248 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 697270082108380818, guid: d7c19e1d10aec82438040e14b1da13d8,
+    type: 3}
+  m_PrefabInstance: {fileID: 479385246}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &548298098
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1578,6 +1584,7 @@ MonoBehaviour:
   ReadyObj: {fileID: 1743462112}
   StartObj: {fileID: 1123012483}
   StartPanel: {fileID: 1699085994}
+  PauseBtn: {fileID: 479385248}
   animator: {fileID: 1699085992}
   gameState: 0
   curStage: 0
