@@ -14,7 +14,7 @@ public class LoginScreen : MonoBehaviour
 	}
 	public void OnGoogleLogin()
 	{
-		//BackEndFederationAuth.Instance.OnLogin();
+		BackEndFederationAuth.Instance.OnLogin();
 	}
 	private void Update()
 	{

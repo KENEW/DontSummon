@@ -6,6 +6,8 @@ public class MyData : SceneSingleTon<MyData>
 {
     public DefenceWall curDefenceWall = DefenceWall.rentangle;
 
+    public string loginID = string.Empty;
+
     public int curStage = 0;
     public int curHp = 3;
     public int curScore = 0;
