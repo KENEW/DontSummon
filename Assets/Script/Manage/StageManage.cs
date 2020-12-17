@@ -13,6 +13,7 @@ public class StageManage : MonoSingleton<StageManage>
 	public GameObject ReadyObj;
 	public GameObject StartObj;
 	public GameObject StartPanel;
+	public GameObject PauseBtn;
 
 	public Animator animator;
 
@@ -50,6 +51,8 @@ public class StageManage : MonoSingleton<StageManage>
 
 		StartPanel.gameObject.transform.DOMoveY(1.0f, 3f).OnComplete(() => { StartPanel.SetActive(false);});
 		Time.timeScale = 1;
+
+		PauseBtn.SetActive(true);
 	}
 
 

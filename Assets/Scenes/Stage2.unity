@@ -577,6 +577,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7c19e1d10aec82438040e14b1da13d8, type: 3}
+--- !u!1 &306378656 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 697270082108380818, guid: d7c19e1d10aec82438040e14b1da13d8,
+    type: 3}
+  m_PrefabInstance: {fileID: 306378655}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &312071255 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1285228551596445040, guid: 748ecefe94606ea409a3684dcdd5f71e,
@@ -1620,6 +1626,7 @@ MonoBehaviour:
   ReadyObj: {fileID: 1743462112}
   StartObj: {fileID: 1123012483}
   StartPanel: {fileID: 1081657178}
+  PauseBtn: {fileID: 306378656}
   animator: {fileID: 270592222}
   gameState: 0
   curStage: 0

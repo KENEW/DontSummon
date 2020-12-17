@@ -1246,6 +1246,7 @@ MonoBehaviour:
   ReadyObj: {fileID: 1743462112}
   StartObj: {fileID: 1123012483}
   StartPanel: {fileID: 164909202}
+  PauseBtn: {fileID: 2025586476}
   animator: {fileID: 164909200}
   gameState: 0
   curStage: 0
@@ -2414,6 +2415,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7c19e1d10aec82438040e14b1da13d8, type: 3}
+--- !u!1 &2025586476 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 697270082108380818, guid: d7c19e1d10aec82438040e14b1da13d8,
+    type: 3}
+  m_PrefabInstance: {fileID: 2025586475}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2127199660
 GameObject:
   m_ObjectHideFlags: 0

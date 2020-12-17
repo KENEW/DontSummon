@@ -10,7 +10,9 @@ public class Monster1 : MonoBehaviour
     public GameObject bullet;
     public GameObject[] randomBullet;
 
-    
+    public Sprite[] monsterFace;
+    private SpriteRenderer monsterRenderer;
+
     //private int monsterHp;
     public int monsterHp;
     [SerializeField]
@@ -38,6 +40,8 @@ public class Monster1 : MonoBehaviour
         InvokeRepeating("SpawnRandomBullet", 17, 17);
 
         score = GameObject.Find("ScorePanel").GetComponent<Score>();
+
+        monsterRenderer = transform.Find("MonsterCanvas/Face").gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -49,6 +53,12 @@ public class Monster1 : MonoBehaviour
         }
     }
 
+    IEnumerator MonsterChangeFace(Sprite changeSprite)
+    {
+        monsterRenderer.sprite = changeSprite;
+        yield return new WaitForSeconds(1f);
+        monsterRenderer.sprite = monsterFace[0];
+    }
 
     IEnumerator BulletSpawn()
     {
@@ -82,6 +92,8 @@ public class Monster1 : MonoBehaviour
         hp.fillAmount -= (float)hpValue / monsterMaxHp;
 
         score.AddScore(monsterScore*hpValue); //몬스터 피격 시 점수 획득
+
+        StartCoroutine(MonsterChangeFace(monsterFace[1])); //우는 표정
     }
 
     public void RecoveryHp(int hpValue) //회복

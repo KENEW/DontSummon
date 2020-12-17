@@ -285,6 +285,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8739073824846311187, guid: 3529ff3d0a0de15468794e3c9e6526ed,
         type: 3}
+      propertyPath: waitingTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739073824846311187, guid: 3529ff3d0a0de15468794e3c9e6526ed,
+        type: 3}
       propertyPath: monsterMaxHp
       value: 20
       objectReference: {fileID: 0}
@@ -1203,6 +1208,7 @@ MonoBehaviour:
   ReadyObj: {fileID: 1743462112}
   StartObj: {fileID: 1123012483}
   StartPanel: {fileID: 1118438075}
+  PauseBtn: {fileID: 1414912408}
   animator: {fileID: 1118438073}
   gameState: 0
   curStage: 0
@@ -1783,6 +1789,12 @@ PrefabInstance:
 --- !u!224 &1414912407 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6280368776282080635, guid: d7c19e1d10aec82438040e14b1da13d8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1414912406}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1414912408 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 697270082108380818, guid: d7c19e1d10aec82438040e14b1da13d8,
     type: 3}
   m_PrefabInstance: {fileID: 1414912406}
   m_PrefabAsset: {fileID: 0}
