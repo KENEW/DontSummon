@@ -770,6 +770,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!1 &651916341 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3056217671319096564, guid: 748ecefe94606ea409a3684dcdd5f71e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1285228551878983142}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &651916343
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651916341}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 18eb98c75f101054fb856d7485ae61eb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!50 &776917181 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 4816157527265494145, guid: 35ef5a2dbc8627a428b0aba284aacce2,
@@ -2156,6 +2181,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8596927429949193072, guid: 748ecefe94606ea409a3684dcdd5f71e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 68.562
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 748ecefe94606ea409a3684dcdd5f71e, type: 3}
