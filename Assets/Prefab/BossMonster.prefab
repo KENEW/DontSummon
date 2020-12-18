@@ -459,6 +459,7 @@ MonoBehaviour:
   monsterFace:
   - {fileID: 21300000, guid: a825eeef41c1e6c458fbc1d96620dd59, type: 3}
   - {fileID: 21300000, guid: 64bb3494f6575f841ab1b65836702548, type: 3}
+  - {fileID: 21300000, guid: 320adbda18f61ff4fa8881713b8a64bd, type: 3}
   monsterHp: 0
   monsterMaxHp: 3
   monsterScore: 0

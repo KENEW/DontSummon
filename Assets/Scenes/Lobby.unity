@@ -190,7 +190,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'LEE CHANG HYUN '
+  m_Text: LEE CHANG HYEON
 --- !u!222 &9006403
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2481,7 +2481,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'KIM JOO HEE '
+  m_Text: 'KIM JU HEE '
 --- !u!222 &362110097
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3651,7 +3651,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &511006949
 Transform:
   m_ObjectHideFlags: 0
@@ -6771,6 +6771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curDefenceWall: 0
+  loginID: 
   curStage: 0
   curHp: 3
   curScore: 0
@@ -8334,7 +8335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1268130047
 RectTransform:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class ClearManage : MonoBehaviour
 
     public int clearScore;
     public bool flag = true;
+    private int allMonsterHp;
 
     TimeLimit time;
     Score score;
@@ -27,7 +28,9 @@ public class ClearManage : MonoBehaviour
         green = GameObject.FindGameObjectsWithTag("GreenMonster");
         blue = GameObject.FindGameObjectsWithTag("BlueMonster");
 
-        if (red.Length == 0 && green.Length == 0 && blue.Length == 0 && flag == true)
+
+
+        if (red.Length == 0 && green.Length==0 && blue.Length==0  && flag == true)
         {
             flag = false;
             StageManage.Instance.StageClear();
