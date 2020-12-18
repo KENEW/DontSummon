@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,11 +31,11 @@ public class DefenceWallSelect : MonoBehaviour
     public Vector2 selectScaleFalse = new Vector3(0.5f, 0.5f);
     public Vector2 selectScaleTrue = new Vector3(0.39f, 0.39f);
 
-    public int[] defenceWallHp = new int[] {3, 1, 2};
+    public int[] defenceWallHp = new int[] {2, 2, 1};
 	public string[] defenceWallNameStr = new string[]
 	{
         "직사각형",
-        "세모",
+        "삼각형",
         "정사각형"
     };
 	public string[] defenceWallInfoStr = new string[]
