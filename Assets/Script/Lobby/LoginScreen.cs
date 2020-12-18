@@ -17,9 +17,14 @@ public class LoginScreen : MonoBehaviour
 		BackEndFederationAuth.Instance.OnClickGoogleServer();
 		NextScreen();
 	}
-	public void OnGuestLogin()
+	public void OnTestLogin()
 	{
 		BackEndAuthentication.Instance.OneClickCustomServer();
+		NextScreen();
+	}
+	public void OnGuestLogin()
+	{
+		//BackEndAuthentication.Instance.OneClickCustomServer();
 		NextScreen();
 	}
 	private void Update()
