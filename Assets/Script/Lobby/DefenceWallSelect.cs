@@ -85,7 +85,7 @@ public class DefenceWallSelect : MonoBehaviour
     public void GameStart()
     {
         SoundManager.Instance.PlaySFX("Button");
-        DefenseWallManage.curDefenseWall = curDefenceWall; //인게임 씬으로
+        //DefenseWallManage.curDefenseWall = curDefenceWall; //인게임 씬으로
         MyData.Instance.stageInfo.curDefenceWall = curDefenceWall;
         LoadScene.Instance.LoadStart("Stage1");
     }

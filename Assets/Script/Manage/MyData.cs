@@ -20,12 +20,14 @@ public class MyData : SceneSingleTon<MyData>
 
     public StageInfo stageInfo = new StageInfo();
 
+
     public void InitState()
     {
         stageInfo.curStage = 0;
         stageInfo.curHp = 3;
         stageInfo.curTIme = 60;
         stageInfo.curDefenceWall = DefenceWall.rentangle;
+       // DefenseWallManage.curDefenseWall = stageInfo.curDefenceWall;
     }
     public void SetStageScore(int stage, int score)
     {

@@ -10,6 +10,7 @@ public class DefenseWallManage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        curDefenseWall = MyData.Instance.stageInfo.curDefenceWall;
         //생성
         if (curDefenseWall == DefenceWall.rentangle) //직사각형
         {
