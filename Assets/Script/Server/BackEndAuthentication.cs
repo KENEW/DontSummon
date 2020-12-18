@@ -4,16 +4,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using BackEnd;
 
-public class BackEndAuthentication : MonoSingleton<BackEndAuthentication>
+public class BackEndAuthentication : SceneSingleTon<BackEndAuthentication>
 {
 	public InputField idInput;
 	public InputField paInput;
 
-	public string loginStr;
-	//회원가입1 동기 방식
+	public void OneClickCustomServer()
+	{
+		OnClickLogin();
+		BackEndGameInfo.Instance.OnClickPublicContents();
+	}
 	public void OnClickSignUp()
 	{
-		//회원가입을 한 뒤 결과를 backEndReturnObject 타입으로 변환한다.
 		BackendReturnObject BRO = Backend.BMember.CustomSignUp(idInput.text, paInput.text, "Test1");
 		
 		if(BRO.IsSuccess())
@@ -34,19 +36,15 @@ public class BackEndAuthentication : MonoSingleton<BackEndAuthentication>
 					break;
 			}
 		}
-		Debug.Log("동기방식");
 	}
 
 	public void OnClickLogin()
 	{
 		BackendReturnObject BRO = Backend.BMember.CustomLogin(idInput.text, paInput.text);
 
-		if(BRO.IsSuccess())
+		if (BRO.IsSuccess())
 		{
 			Debug.Log("로그인 완료");
-			MyData.Instance.loginID = BRO.GetInDate();
-			Debug.Log(BRO.GetInDate());
-			
 		}
 		else
 		{
@@ -80,15 +78,12 @@ public class BackEndAuthentication : MonoSingleton<BackEndAuthentication>
 
 			switch (error)
 			{
-				//토큰 기간 만료
 				case "GoneResourceException":
 					Debug.Log("1년뒤 refresh_token이 만료된 경우");
 					break;
-				//토큰 조건부 만료
 				case "BadUnauthorizedException":
 					Debug.Log("다른 기기로 로그인 하여 refresh_token이 만료된 경우");
 					break;
-				//이 경우 콘솔에서 입력한 차단된 사유가 에러코드가 된다.
 				case "BadPlayer":
 					Debug.Log("차단된 유저");
 					break;

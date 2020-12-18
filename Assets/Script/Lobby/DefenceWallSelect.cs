@@ -87,7 +87,7 @@ public class DefenceWallSelect : MonoBehaviour
     {
         SoundManager.Instance.PlaySFX("Button");
         DefenseWallManage.curDefenseWall = curDefenceWall; //인게임 씬으로
-        MyData.Instance.curDefenceWall = curDefenceWall;
+        MyData.Instance.stageInfo.curDefenceWall = curDefenceWall;
         LoadScene.Instance.LoadStart("Stage1");
     }
     public void BackButton()

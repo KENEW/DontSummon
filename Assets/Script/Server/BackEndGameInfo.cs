@@ -1,31 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using BackEnd;
 using LitJson;
 
-public class BackEndGameInfo : MonoBehaviour
+public class BackEndGameInfo : SceneSingleTon<BackEndGameInfo>
 {
-	Param t_param;
-	string infoStr;
 	public void OnClickInsertData()
 	{
-		int stage1Score = 100;
-		int stage2Score = 200;
-		int stage3Score = 300;
+		int stage1Score = 0;
+		int stage2Score = 0;
+		int stage3Score = 0;
 
 		Param param = new Param();
-		t_param = param;
 		param.Add("stage1", stage1Score);
 		param.Add("stage2", stage2Score);
 		param.Add("stage3", stage3Score);
-
 
 		BackendReturnObject BRO = Backend.GameInfo.Insert("StageScore", param);
 
 		if(BRO.IsSuccess())
 		{
-			Debug.Log("indate : " + BRO.GetInDate());
+			Debug.Log("새로운 데이터가 서버에 등록되었습니다! indate 값 : " + BRO.GetInDate());
 		}
 		else
 		{
@@ -80,7 +77,7 @@ public class BackEndGameInfo : MonoBehaviour
 		
 		if(BRO.IsSuccess())
 		{
-			Debug.Log(BRO.FirstKeystring());
+			Debug.Log("성공");
 			GetGameInfo(BRO.GetReturnValuetoJSON());
 		}
 		else
@@ -107,14 +104,12 @@ public class BackEndGameInfo : MonoBehaviour
 	//공개 테이블에서 특정 유저의 정보 불러오기
 	public void OnClickGetPublicContentsByGamerIndate()
 	{
-		BackendReturnObject BRO = Backend.GameInfo.GetPublicContentsByGamerIndate("StageScore", infoStr);
+		BackendReturnObject BRO = Backend.GameInfo.GetPublicContentsByGamerIndate("StageScore", MyData.Instance.loginID);
 
 		if (BRO.IsSuccess())
 		{
 			Debug.Log(BRO.GetReturnValue());
 			GetGameInfo(BRO.GetReturnValuetoJSON());
-			Debug.Log("indate : " + BRO.GetInDate());
-			infoStr = BRO.GetInDate();
 		}
 		else
 		{
@@ -158,13 +153,21 @@ public class BackEndGameInfo : MonoBehaviour
 
 	private void GetData(JsonData data)
 	{
-		var stage1Score = data["stage1"][0];
-		var stage2Score = data["stage2"][0];
-		var stage3Score = data["stage3"][0];
+		var dataIndate = data["inDate"][0].ToString();
+		MyData.Instance.loginID = dataIndate;
+		Debug.Log(MyData.Instance.loginID);
 
-		Debug.Log(stage1Score);
-		Debug.Log(stage2Score);
-		Debug.Log(stage3Score);
+		var stage1Score = data["stage1"][0].ToString();
+		var stage2Score = data["stage2"][0].ToString();
+		var stage3Score = data["stage3"][0].ToString();
+
+		MyData.Instance.stageScore[0] = int.Parse(stage1Score);
+		MyData.Instance.stageScore[1] = int.Parse(stage2Score);
+		MyData.Instance.stageScore[2] = int.Parse(stage3Score);
+		
+		Debug.Log("형번환한 데이터1 : " + MyData.Instance.stageScore[0]);
+		Debug.Log("형번환한 데이터2 : " + MyData.Instance.stageScore[1]);
+		Debug.Log("형번환한 데이터3 : " + MyData.Instance.stageScore[2]);
 	}
 	string firstKey = string.Empty;
 	public void OnClickPublicContentsNext()
@@ -196,7 +199,8 @@ public class BackEndGameInfo : MonoBehaviour
 		Param param = new Param();
 		param.Add("stage1", 9999);
 		
-		BackendReturnObject BRO = Backend.GameInfo.Update("StageScore", OnClickGetIndate(), param);
+		BackendReturnObject BRO = Backend.GameInfo.Update("StageScore", MyData.Instance.loginID, param);
+
 		if (BRO.IsSuccess())
 		{
 			Debug.Log("수정 완료");
@@ -269,9 +273,8 @@ public class BackEndGameInfo : MonoBehaviour
 	{
 		Param param = new Param();
 		param.AddCalculation("stage1", GameInfoOperator.addition, -10);
+		BackendReturnObject BRO = Backend.GameInfo.Update("StageScore", "", param);
 
-
-		BackendReturnObject BRO = Backend.GameInfo.Update("StageScore", OnClickGetIndate(), param);
 		if (BRO.IsSuccess())
 		{
 			Debug.Log("수정 완료");
@@ -301,19 +304,5 @@ public class BackEndGameInfo : MonoBehaviour
 					break;
 			}
 		}
-
-	}
-	private string OnClickGetIndate()
-	{
-		Param where = new Param();
-		BackendReturnObject bro = Backend.GameSchemaInfo.Get("StageScore", where, 10);
-		// 빈 where절을 이용하여 데이터 10개 검색
-		string inDate = bro.GetReturnValuetoJSON()["rows"][0]["inDate"]["S"].ToString();
-		Debug.Log(inDate);
-		return inDate;
-		//리턴된 값들중에서 0번째 데이터의 inDate로 접근하여 string으로 추출
-		Backend.GameSchemaInfo.Update("tableName", inDate, where);
-		// 해당 inDate의 데이터 수정
-		Backend.GameSchemaInfo.UpdateRTRankTable("tableName", "columnName", 123, inDate);
 	}
 }
