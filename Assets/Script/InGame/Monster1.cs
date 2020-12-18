@@ -60,8 +60,8 @@ public class Monster1 : MonoBehaviour
             }
             else
             {
-                timer = 0;
                 Destroy(gameObject);
+                timer = 0;
             }
             timer += Time.deltaTime;
         }

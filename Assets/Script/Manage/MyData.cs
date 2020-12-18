@@ -32,5 +32,6 @@ public class MyData : SceneSingleTon<MyData>
         stageScore[stage] = score > stageScore[stage] ? score : stageScore[stage];
 
         BackEndFederationAuth.Instance.OnSetLeaderBoard(stage, score);
+
 	}
 }
