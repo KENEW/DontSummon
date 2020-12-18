@@ -24,7 +24,11 @@
 
 public static class GPGSIds
 {
-        public const string leaderboard_score = "CgkIg_ylxfcREAIQAQ"; // <GPGSID>
+        public const string leaderboard_totalscore = "CgkIg_ylxfcREAIQAQ"; // <GPGSID>
+        public const string leaderboard_stage1 = "CgkIg_ylxfcREAIQAw"; // <GPGSID>
+        public const string achievement = "CgkIg_ylxfcREAIQAg"; // <GPGSID>
+        public const string leaderboard_stage2 = "CgkIg_ylxfcREAIQBA"; // <GPGSID>
+        public const string leaderboard_stage3 = "CgkIg_ylxfcREAIQBQ"; // <GPGSID>
 
 }
 

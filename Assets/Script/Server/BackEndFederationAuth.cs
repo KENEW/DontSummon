@@ -174,21 +174,55 @@ public class BackEndFederationAuth : SceneSingleTon<BackEndFederationAuth>
 
 	public void OnShowLeaderBoard()
 	{
-		//Social.ReportScore(1000, GPGSIds.leaderboard_score, (bool bSuccess) =>
-		//{
-		//	if (bSuccess)
-		//	{
-		//		Debug.Log("ReportLeaderBoard Success");
-		//		text.text = "ReportLeaderBoard Success";
-		//	}
-		//	else
-		//	{
-		//		Debug.Log("ReportLeaderBoard Fall");
-		//		text.text = "ReportLeaderBoard Fail";
-		//	}
-		//}
-		//);
 		Social.ShowLeaderboardUI();
+	}
+	public void OnSetLeaderBoard(int stage, int score)
+	{
+		switch (stage)
+		{
+			case 1:
+				Social.ReportScore(score, GPGSIds.leaderboard_stage1, (bool bSuccess) =>
+				{
+					if (bSuccess)
+					{
+						Debug.Log("ReportLeaderBoard Success");
+					}
+					else
+					{
+						Debug.Log("ReportLeaderBoard Fall");
+					}
+				}
+				);
+				break;
+			case 2:
+				Social.ReportScore(score, GPGSIds.leaderboard_stage2, (bool bSuccess) =>
+				{
+					if (bSuccess)
+					{
+						Debug.Log("ReportLeaderBoard Success");
+					}
+					else
+					{
+						Debug.Log("ReportLeaderBoard Fall");
+					}
+				}
+				);
+				break;
+			case 3:
+				Social.ReportScore(score, GPGSIds.leaderboard_stage3, (bool bSuccess) =>
+				{
+					if (bSuccess)
+					{
+						Debug.Log("ReportLeaderBoard Success");
+					}
+					else
+					{
+						Debug.Log("ReportLeaderBoard Fall");
+					}
+				}
+				);
+				break;
+		}
 	}
 	public void OnShowAchievement()
 	{
@@ -198,7 +232,7 @@ public class BackEndFederationAuth : SceneSingleTon<BackEndFederationAuth>
 	// 업적추가
 	public void OnAddAchievement()
 	{
-		Social.ReportProgress(GPGSIds.leaderboard_score, 100.0f, (bool bSuccess) =>
+		Social.ReportProgress(GPGSIds.achievement, 100.0f, (bool bSuccess) =>
 		{
 			if (bSuccess)
 			{
