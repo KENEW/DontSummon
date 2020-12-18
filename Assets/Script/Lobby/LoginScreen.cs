@@ -7,20 +7,14 @@ public class LoginScreen : MonoBehaviour
 	public GameObject TitleScreen;
 	public GameObject loginScreen;
 
-	public void NextScreen()
+	public void OnGuesePlayLogin()
 	{
 		TitleScreen.SetActive(true);
 		loginScreen.SetActive(false);
 	}
 	public void OnGoogleLogin()
 	{
-		BackEndFederationAuth.Instance.OnClickGoogleServer();
-		NextScreen();
-	}
-	public void OnGuestLogin()
-	{
-		BackEndAuthentication.Instance.OneClickCustomServer();
-		NextScreen();
+		BackEndFederationAuth.Instance.OnLogin();
 	}
 	private void Update()
 	{

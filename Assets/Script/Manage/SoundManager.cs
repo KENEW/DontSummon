@@ -33,10 +33,12 @@ public class SoundManager : MonoSingleton<SoundManager>
 			}
 		}
 	}
+
     public void StopBGM()
     {
         bgmPlayer.Stop();
     }
+
     public void PlaySFX(string p_sfxName)
     {
         for (int i = 0; i < sfx.Length; i++)

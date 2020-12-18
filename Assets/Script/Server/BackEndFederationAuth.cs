@@ -7,15 +7,10 @@ using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using UnityEngine.SocialPlatforms;
 
-public class BackEndFederationAuth : SceneSingleTon<BackEndFederationAuth>
+public class BackEndFederationAuth : MonoSingleton<BackEndFederationAuth>
 {
+	public Text text;
 	public bool isLoginCheck = false;
-
-	public void OnClickGoogleServer()
-	{
-		OnLogin();
-		BackEndGameInfo.Instance.OnClickPublicContents();
-	}
 	public void OnLogin()
 	{
 		PlayGamesClientConfiguration config = new PlayGamesClientConfiguration
@@ -44,10 +39,14 @@ public class BackEndFederationAuth : SceneSingleTon<BackEndFederationAuth>
 				if (success == false)
 				{
 					Debug.Log("구글 로그인 실패");
+					text.text = "로그인 실패";
 					return;
 				}
 
 				//Login Success
+
+				text.text = Social.localUser.userName;
+
 				Debug.Log("GetIdToken - " + PlayGamesPlatform.Instance.GetIdToken());
 				Debug.Log("Email - " + ((PlayGamesLocalUser)Social.localUser).Email);
 				Debug.Log("GoogleId - " + Social.localUser.id);
@@ -198,15 +197,19 @@ public class BackEndFederationAuth : SceneSingleTon<BackEndFederationAuth>
 	// 업적추가
 	public void OnAddAchievement()
 	{
+		text.text = "AddAchievement";
+
 		Social.ReportProgress(GPGSIds.leaderboard_score, 100.0f, (bool bSuccess) =>
 		{
 			if (bSuccess)
 			{
 				Debug.Log("AddAchievement Success");
+				text.text = "AddAchievement Success";
 			}
 			else
 			{
 				Debug.Log("AddAchievement Fall");
+				text.text = "AddAchievement Fail";
 			}
 		}
 		);

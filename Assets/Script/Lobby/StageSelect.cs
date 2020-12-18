@@ -89,7 +89,7 @@ public class StageSelect : MonoBehaviour
     private void UIUpdate()
     {
         storyText.text = stageStory[curStage];
-        highScoreText.text = MyData.Instance.stageScore[curStage] + "";
+        highScoreText.text = highScore[curStage] + "";
         stageNameText.text = stageName[curStage];
     }
     public void NextStageButton()
