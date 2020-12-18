@@ -20,9 +20,10 @@ public class Monster1 : MonoBehaviour
 
     public int monsterScore; //몬스터 피격 점수
 
-    float timer = 0f;
+    float timer;
+    public float fadeTime = 1f;
+
     public int waitingTime = 4;
-    int bulletFlag = 1;
 
     Vector2 bulletPos;
 
@@ -49,7 +50,20 @@ public class Monster1 : MonoBehaviour
     {
         if(monsterHp==0)
         {
-            Destroy(gameObject);
+            if (timer < fadeTime)
+            {
+                monsterRenderer.sprite = monsterFace[2];
+                transform.Find("MonsterCanvas/Hp").gameObject.SetActive(false);
+                transform.Find("MonsterCanvas/HpBackground").gameObject.SetActive(false);
+                GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f - timer / fadeTime);
+                monsterRenderer.color = new Color(1, 1, 1, 1f - timer / fadeTime);
+            }
+            else
+            {
+                timer = 0;
+                Destroy(gameObject);
+            }
+            timer += Time.deltaTime;
         }
     }
 
