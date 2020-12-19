@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using DG.Tweening;
 public enum DefenceWall
 {
     rentangle,
@@ -12,6 +12,8 @@ public enum DefenceWall
 
 public class DefenceWallSelect : MonoBehaviour
 {
+    public GameObject fadePanel;
+
     public GameObject scrollBar;
     public GameObject defenceWallSelectWindow;
     public GameObject stageSelectWindow;
@@ -85,9 +87,13 @@ public class DefenceWallSelect : MonoBehaviour
     public void GameStart()
     {
         SoundManager.Instance.PlaySFX("Button");
-        //DefenseWallManage.curDefenseWall = curDefenceWall; //인게임 씬으로
-        MyData.Instance.stageInfo.curDefenceWall = curDefenceWall;
-        LoadScene.Instance.LoadStart("Stage1");
+
+        fadePanel.SetActive(true);
+        fadePanel.GetComponent<Image>().DOFade(1.0f, 2.0f).OnComplete(() =>
+        {
+            MyData.Instance.stageInfo.curDefenceWall = curDefenceWall;
+            LoadScene.Instance.LoadStart("Stage1");
+        });
     }
     public void BackButton()
     {
