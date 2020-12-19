@@ -35,6 +35,7 @@ public class GameResult : MonoBehaviour
 	}
     public void OnLobbyButton()
     {
+        
         fadePanel.SetActive(true);
         fadePanel.GetComponent<Image>().DOFade(1.0f, 2.0f).OnComplete(() => 
         {
