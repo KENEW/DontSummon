@@ -19,7 +19,7 @@ public class StageInfo
 public class MyData : SceneSingleTon<MyData>
 {
     public string loginID = string.Empty;
-    public int[] stageScore = new int[3];
+    public int[] stageScore = new int[3] { 0, 0, 0 };
 
     public StageInfo stageInfo = new StageInfo();
 
@@ -32,6 +32,10 @@ public class MyData : SceneSingleTon<MyData>
         stageInfo.curTIme = 60;
         stageInfo.curDefenceWall = DefenceWall.rentangle;
     }
+    public void SetScore(int[] score)
+    {
+        stageScore = score;
+	}
     public void SaveData()
     {
         for (int i = 0; i < 3; i++)
@@ -52,13 +56,6 @@ public class MyData : SceneSingleTon<MyData>
 
 		text.text = stageScore[2].ToString();
 	}
-    public void EditData()
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            stageScore[i] = 9999;
-        }
-    }
     private byte[] GetUserKey(string userKey)
     {
         MD5 md5Hash = new MD5CryptoServiceProvider();

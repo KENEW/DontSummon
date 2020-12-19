@@ -25,6 +25,7 @@ public class LoginScreen : MonoBehaviour
 	public void OnGuestLogin()
 	{
 		//BackEndAuthentication.Instance.OneClickCustomServer();
+		MyData.Instance.LoadData();
 		NextScreen();
 	}
 	private void Update()

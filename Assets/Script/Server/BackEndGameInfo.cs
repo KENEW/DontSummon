@@ -161,13 +161,11 @@ public class BackEndGameInfo : SceneSingleTon<BackEndGameInfo>
 		var stage2Score = data["stage2"][0].ToString();
 		var stage3Score = data["stage3"][0].ToString();
 
-		MyData.Instance.stageScore[0] = int.Parse(stage1Score);
-		MyData.Instance.stageScore[1] = int.Parse(stage2Score);
-		MyData.Instance.stageScore[2] = int.Parse(stage3Score);
+		MyData.Instance.SetScore(new int[3] { int.Parse(stage1Score), int.Parse(stage2Score), int.Parse(stage3Score) });
 		
-		Debug.Log("형번환한 데이터1 : " + MyData.Instance.stageScore[0]);
-		Debug.Log("형번환한 데이터2 : " + MyData.Instance.stageScore[1]);
-		Debug.Log("형번환한 데이터3 : " + MyData.Instance.stageScore[2]);
+		Debug.Log("서버에서 받아온 스테이지 데이터1 : " + MyData.Instance.stageScore[0]);
+		Debug.Log("서버에서 받아온 스테이지 데이터2 : " + MyData.Instance.stageScore[1]);
+		Debug.Log("서버에서 받아온 스테이지 데이터3 : " + MyData.Instance.stageScore[2]);
 	}
 	string firstKey = string.Empty;
 	public void OnClickPublicContentsNext()

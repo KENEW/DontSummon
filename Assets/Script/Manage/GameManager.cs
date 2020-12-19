@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 	}
 	private void Start()
 	{
-		//MyData.Instance.LoadData();
+		MyData.Instance.SaveData();
 	}
 	public void ScreenSetting()
 	{
