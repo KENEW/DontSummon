@@ -8,6 +8,10 @@ public class GameManager : MonoBehaviour
 	{
 		ScreenSetting();
 	}
+	private void Start()
+	{
+		//MyData.Instance.LoadData();
+	}
 	public void ScreenSetting()
 	{
 		Screen.SetResolution(720, 1280, false);
