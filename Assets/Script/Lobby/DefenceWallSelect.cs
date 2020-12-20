@@ -35,18 +35,9 @@ public class DefenceWallSelect : MonoBehaviour
     public Vector2 selectScaleTrue = new Vector3(0.39f, 0.39f);
 
     public int[] defenceWallHp = new int[] {3, 1, 2};
-	public string[] defenceWallNameStr = new string[]
-	{
-        "직사각형",
-        "세모",
-        "정사각형"
-    };
-	public string[] defenceWallInfoStr = new string[]
-	{
-        "네모 네모 직사각형",
-        "세모 세모 세모",
-        "네모 네모 정사각형"
-    };
+    public string[] defenceWallNameStr;
+    public string[] defenceWallInfoStr;
+
 	private void Start()
 	{
         loadScene = FindObjectOfType<LoadScene>();
@@ -111,5 +102,6 @@ public class DefenceWallSelect : MonoBehaviour
     {
         defenceWallNameText.text = defenceWallNameStr[(int)curDefenceWall];
         defenceWallHpText.text = defenceWallHp[(int)curDefenceWall] + "";
+        defenceWallInfoText.text = defenceWallInfoStr[(int)curDefenceWall] + "";
     }
 }
