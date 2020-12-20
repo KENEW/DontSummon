@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : SceneSingleTon<GameManager>
 {
+	public bool isFirstCheck = true;
+
 	private void Awake()
 	{
 		ScreenSetting();

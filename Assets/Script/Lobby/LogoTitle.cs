@@ -11,11 +11,22 @@ public class LogoTitle : MonoBehaviour
 
 	private void Start()
 	{
-		StartCoroutine(fadeCoroutine());
+		StartCoroutine(fadeStart());
 	}
-	IEnumerator fadeCoroutine()
+	private IEnumerator fadeStart()
 	{
 		Color color = maskPanel.color;
+
+		yield return new WaitForSeconds(0.5f);
+
+		while (color.a >= 0.01f)
+		{
+			color.a -= 0.03f;
+			maskPanel.color = color;
+			yield return null;
+		}
+
+		yield return new WaitForSeconds(1.5f);
 
 		while (color.a <= 0.99f)
 		{
@@ -26,8 +37,7 @@ public class LogoTitle : MonoBehaviour
 
 		color.a = 1.0f;
 		maskPanel.color = color;
-
-		yield return new WaitForSeconds(2.0f);
+		yield return new WaitForSeconds(0.5f);
 
 		loginScreen.SetActive(true);
 		gameObject.SetActive(false);

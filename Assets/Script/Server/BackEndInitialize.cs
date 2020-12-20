@@ -9,16 +9,13 @@ public class BackEndInitialize : MonoBehaviour
     { 
 	    Backend.Initialize(() =>
         {
-            // 성공
             if (Backend.IsInitialized)
             {
-                // 해쉬키 
-                Debug.Log("구글 해쉬키 : " + Backend.Utils.GetGoogleHash());
+                //Debug.Log("구글 해쉬키 : " + Backend.Utils.GetGoogleHash());
             }
-            // 실패
             else
             {
-                Debug.LogError("초기화 실패");
+                //Debug.LogError("초기화 실패");
             }
         });
     }

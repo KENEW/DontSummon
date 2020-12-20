@@ -23,8 +23,6 @@ public class MyData : SceneSingleTon<MyData>
 
     public StageInfo stageInfo = new StageInfo();
 
-    public Text text;
-
     public void InitState()
     {
         stageInfo.curStage = 0;
@@ -53,8 +51,6 @@ public class MyData : SceneSingleTon<MyData>
 			stageScore[i] = int.Parse(GetString("stageScore" + (i + 1).ToString(), GetUserKey("user")));
 			Debug.Log("스코어 : " + stageScore[i]);
 		}
-
-		text.text = stageScore[2].ToString();
 	}
     private byte[] GetUserKey(string userKey)
     {
