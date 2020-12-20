@@ -20,8 +20,8 @@ public class Monster1 : MonoBehaviour
 
     public int monsterScore; //몬스터 피격 점수
 
-    float timer;
-    public float fadeTime = 1f;
+    float timer=0;
+    public float fadeTime = 0.9f;
 
     public int waitingTime = 4;
 
@@ -29,17 +29,18 @@ public class Monster1 : MonoBehaviour
 
     Score score;
 
-    bool isDie = false;
+    public bool isDie = false;
 
     // Start is called before the first frame update
     void Start()
     {
         monsterHp = monsterMaxHp;
+        
 
-        bulletPos = new Vector2(transform.position.x, transform.position.y - 1.0f);
+        bulletPos = new Vector2(transform.position.x, transform.position.y-gameObject.GetComponent<PolygonCollider2D>().bounds.extents.y- 0.45f);
         StartCoroutine("BulletSpawn");
 
-        InvokeRepeating("SpawnRandomBullet", 17, 17);
+        StartCoroutine(SpawnRandomBullet());
 
         score = GameObject.Find("ScorePanel").GetComponent<Score>();
 
@@ -52,6 +53,7 @@ public class Monster1 : MonoBehaviour
 
         if(monsterHp==0)
         {
+            isDie = true;
             monsterRenderer.sprite = monsterFace[2];
             transform.Find("MonsterCanvas/Hp").gameObject.SetActive(false);
             transform.Find("MonsterCanvas/HpBackground").gameObject.SetActive(false);
@@ -63,7 +65,6 @@ public class Monster1 : MonoBehaviour
             }
             else
             {
-                timer = 0;
                 Destroy(gameObject);
             }
             timer += Time.deltaTime;
@@ -91,9 +92,14 @@ public class Monster1 : MonoBehaviour
         }
     }
 
-    void SpawnRandomBullet() //특수 투사체 생성
+    IEnumerator SpawnRandomBullet() //특수 투사체 생성
     {
-        Instantiate(randomBullet[Random.Range(0, 4)], bulletPos, Quaternion.identity);
+        while(true)
+        {
+            int randTime = (int)Random.Range(5, 10);
+            yield return new WaitForSeconds(randTime);
+            Instantiate(randomBullet[Random.Range(0, 4)], bulletPos, Quaternion.identity);
+        }
     }
 
     public void GetDamage(int hpValue)
@@ -111,7 +117,10 @@ public class Monster1 : MonoBehaviour
 
         score.AddScore(monsterScore*hpValue); //몬스터 피격 시 점수 획득
 
-        StartCoroutine(MonsterChangeFace(monsterFace[1])); //우는 표정
+        if (monsterHp != 0)
+        {
+            StartCoroutine(MonsterChangeFace(monsterFace[1])); //우는 표정
+        }
     }
 
     public void RecoveryHp(int hpValue) //회복

@@ -206,6 +206,7 @@ MonoBehaviour:
   monsterHp: 0
   monsterMaxHp: 3
   monsterScore: 0
+  fadeTime: 1
   waitingTime: 4
 --- !u!60 &2054507416370891567
 PolygonCollider2D:
