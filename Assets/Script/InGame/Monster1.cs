@@ -29,7 +29,8 @@ public class Monster1 : MonoBehaviour
 
     Score score;
 
- 
+    bool isDie = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,24 +49,27 @@ public class Monster1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if(monsterHp==0)
         {
+            monsterRenderer.sprite = monsterFace[2];
+            transform.Find("MonsterCanvas/Hp").gameObject.SetActive(false);
+            transform.Find("MonsterCanvas/HpBackground").gameObject.SetActive(false);
+
             if (timer < fadeTime)
             {
-                monsterRenderer.sprite = monsterFace[2];
-                transform.Find("MonsterCanvas/Hp").gameObject.SetActive(false);
-                transform.Find("MonsterCanvas/HpBackground").gameObject.SetActive(false);
                 GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f - timer / fadeTime);
                 monsterRenderer.color = new Color(1, 1, 1, 1f - timer / fadeTime);
             }
             else
             {
-                Destroy(gameObject);
                 timer = 0;
+                Destroy(gameObject);
             }
             timer += Time.deltaTime;
         }
     }
+
 
     IEnumerator MonsterChangeFace(Sprite changeSprite)
     {
