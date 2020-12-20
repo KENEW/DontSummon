@@ -39,7 +39,7 @@ public class GameResult : MonoBehaviour
         fadePanel.SetActive(true);
         fadePanel.GetComponent<Image>().DOFade(1.0f, 2.0f).OnComplete(() => 
         {
-            LoadScene.Instance.LoadStart("Lobby");
+            //LoadScene.Instance.LoadStart("Lobby");
         });
 	}
 	public void GetRemainTime(int time)

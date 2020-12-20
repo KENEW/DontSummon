@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 
-public class LoadScene : SceneSingleTon<LoadScene>
+public class LoadScene : MonoBehaviour
 {
 	public GameObject loadingPanel;
 	public Image curLoadGuageBar;

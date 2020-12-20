@@ -24,16 +24,8 @@ public class LoginScreen : MonoBehaviour
 	}
 	public void OnGuestLogin()
 	{
-		//BackEndAuthentication.Instance.OneClickCustomServer();
 		MyData.Instance.LoadData();
 		NextScreen();
-	}
-	private void Update()
-	{
-		//if(BackEndFederationAuth.Instance.isLoginCheck == true)
-		//{
-		//	TitleScreen.SetActive(true);
-		//	loginScreen.SetActive(false);
-		//}
+		//LoadScene.Instance.LoadStart("Lobby");
 	}
 }

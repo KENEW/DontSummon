@@ -18,6 +18,8 @@ public class DefenceWallSelect : MonoBehaviour
     public GameObject defenceWallSelectWindow;
     public GameObject stageSelectWindow;
 
+    public LoadScene loadScene;
+
     public Text defenceWallNameText;
     public Text defenceWallHpText;
     public Text defenceWallInfoText;
@@ -45,7 +47,11 @@ public class DefenceWallSelect : MonoBehaviour
         "세모 세모 세모",
         "네모 네모 정사각형"
     };
-    private void Update()
+	private void Start()
+	{
+        loadScene = FindObjectOfType<LoadScene>();
+    }
+	private void Update()
     {
         contentPos = new float[transform.childCount];
         float distance = 1.0f / (contentPos.Length - 1.0f);
@@ -92,7 +98,7 @@ public class DefenceWallSelect : MonoBehaviour
         fadePanel.GetComponent<Image>().DOFade(1.0f, 2.0f).OnComplete(() =>
         {
             MyData.Instance.stageInfo.curDefenceWall = curDefenceWall;
-            LoadScene.Instance.LoadStart("Stage1");
+            loadScene.LoadStart("Stage1");
         });
     }
     public void BackButton()
