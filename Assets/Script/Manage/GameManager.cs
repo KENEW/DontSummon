@@ -12,7 +12,7 @@ public class GameManager : SceneSingleTon<GameManager>
 	}
 	private void Start()
 	{
-		MyData.Instance.SaveData();
+		//MyData.Instance.SaveData();
 	}
 	public void ScreenSetting()
 	{

@@ -26,6 +26,5 @@ public class LoginScreen : MonoBehaviour
 	{
 		MyData.Instance.LoadData();
 		NextScreen();
-		//LoadScene.Instance.LoadStart("Lobby");
 	}
 }
