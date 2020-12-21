@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 125807092913109158}
   - component: {fileID: 2390895986756703347}
   - component: {fileID: 4388053185981865278}
+  - component: {fileID: 43562941631467689}
   m_Layer: 0
   m_Name: GreenMonster
   m_TagString: GreenMonster
@@ -126,12 +127,13 @@ MonoBehaviour:
   - {fileID: 107732889114567035, guid: fcaec969288f04a4f857ca37b9c31028, type: 3}
   - {fileID: 6692823952648815766, guid: e90cf71204e40764bb0ba04014d2ced9, type: 3}
   monsterFace:
-  - {fileID: 21300000, guid: cfb511cc5c734a04bbe8a810de9e85d2, type: 3}
-  - {fileID: 21300000, guid: 1f273735fd569f342a57e6fca18f2fdc, type: 3}
-  - {fileID: 21300000, guid: cbdac73c97e908144a44788e4fb41b9f, type: 3}
+  - {fileID: 21300000, guid: c0351df540b31b54d8c619ab2d641d8d, type: 3}
+  - {fileID: 21300000, guid: 85292677d6834ed46a4c6ec7c817b429, type: 3}
+  - {fileID: 21300000, guid: 1ff8865af4d69524ba3cff9c7f082b27, type: 3}
   monsterHp: 0
   monsterMaxHp: 3
   monsterScore: 0
+  fadeTime: 0.9
   waitingTime: 4
 --- !u!60 &4388053185981865278
 PolygonCollider2D:
@@ -522,6 +524,25 @@ PolygonCollider2D:
       - {x: 1.3183595, y: -8.8916025}
       - {x: 1.4941407, y: -8.774415}
       - {x: 1.6259767, y: -8.671876}
+--- !u!95 &43562941631467689
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520956309726254024}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5a9706f749615a042826136142eeff6e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3490950130955047988
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,6 +802,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2515479248922859429}
   - component: {fileID: 1083881048939730932}
+  - component: {fileID: 1379484355325172596}
   m_Layer: 0
   m_Name: Face
   m_TagString: Untagged
@@ -796,7 +818,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9065086092357421868}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.019, z: 0}
   m_LocalScale: {x: 0.042559385, y: 0.042559385, z: 0}
   m_Children: []
   m_Father: {fileID: 477158167085367485}
@@ -841,7 +863,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 7
-  m_Sprite: {fileID: 21300000, guid: cfb511cc5c734a04bbe8a810de9e85d2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c0351df540b31b54d8c619ab2d641d8d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -852,3 +874,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1379484355325172596
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9065086092357421868}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5a9706f749615a042826136142eeff6e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

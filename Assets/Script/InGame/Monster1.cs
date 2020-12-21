@@ -11,6 +11,7 @@ public class Monster1 : MonoBehaviour
     public GameObject[] randomBullet;
 
     public Sprite[] monsterFace;
+    private SpriteRenderer monsterFaceRenderer;
     private SpriteRenderer monsterRenderer;
 
     //private int monsterHp;
@@ -20,16 +21,14 @@ public class Monster1 : MonoBehaviour
 
     public int monsterScore; //몬스터 피격 점수
 
-    float timer=0;
     public float fadeTime = 0.9f;
+    private bool isPlaying = false;
 
     public int waitingTime = 4;
 
     Vector2 bulletPos;
 
     Score score;
-
-    public bool isDie = false;
 
     // Start is called before the first frame update
     void Start()
@@ -44,39 +43,34 @@ public class Monster1 : MonoBehaviour
 
         score = GameObject.Find("ScorePanel").GetComponent<Score>();
 
-        monsterRenderer = transform.Find("MonsterCanvas/Face").gameObject.GetComponent<SpriteRenderer>();
+
+        monsterFaceRenderer = transform.Find("MonsterCanvas/Face").gameObject.GetComponent<SpriteRenderer>();
+        monsterRenderer = this.gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if(monsterHp==0)
+        
+        if (monsterHp==0)
         {
-            isDie = true;
-            monsterRenderer.sprite = monsterFace[2];
+            monsterFaceRenderer.sprite = monsterFace[2];
             transform.Find("MonsterCanvas/Hp").gameObject.SetActive(false);
             transform.Find("MonsterCanvas/HpBackground").gameObject.SetActive(false);
 
-            if (timer < fadeTime)
-            {
-                GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f - timer / fadeTime);
-                monsterRenderer.color = new Color(1, 1, 1, 1f - timer / fadeTime);
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-            timer += Time.deltaTime;
-        }
-    }
+            transform.Find("MonsterCanvas/Face").gameObject.GetComponent<Animator>().SetTrigger("DieTrigger");
+            gameObject.GetComponent<Animator>().SetTrigger("DieTrigger");
 
+        }
+
+    }
+    
 
     IEnumerator MonsterChangeFace(Sprite changeSprite)
     {
-        monsterRenderer.sprite = changeSprite;
+        monsterFaceRenderer.sprite = changeSprite;
         yield return new WaitForSeconds(1f);
-        monsterRenderer.sprite = monsterFace[0];
+        monsterFaceRenderer.sprite = monsterFace[0];
     }
 
     IEnumerator BulletSpawn()

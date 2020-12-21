@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6342649036348285335}
   - component: {fileID: 1050015837237678680}
+  - component: {fileID: 8606699394524668228}
   m_Layer: 0
   m_Name: Face
   m_TagString: Untagged
@@ -81,6 +82,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8606699394524668228
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729822615035250072}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5a9706f749615a042826136142eeff6e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5571752476990609789
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,6 +363,7 @@ GameObject:
   - component: {fileID: 1190877834681166346}
   - component: {fileID: 8739073824846311187}
   - component: {fileID: 9115696005675961684}
+  - component: {fileID: 1252175530341913608}
   m_Layer: 0
   m_Name: RedMonster
   m_TagString: RedMonster
@@ -462,6 +483,7 @@ MonoBehaviour:
   monsterHp: 0
   monsterMaxHp: 3
   monsterScore: 0
+  fadeTime: 0.9
   waitingTime: 4
 --- !u!60 &9115696005675961684
 PolygonCollider2D:
@@ -923,3 +945,22 @@ PolygonCollider2D:
       - {x: 0.9521485, y: -14.16504}
       - {x: 1.1132814, y: -14.106446}
       - {x: 1.2451173, y: -14.033204}
+--- !u!95 &1252175530341913608
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8391709248627969156}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5a9706f749615a042826136142eeff6e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

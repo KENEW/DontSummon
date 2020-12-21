@@ -104,6 +104,7 @@ public class Bullet : MonoBehaviour
     {
         if(coll.CompareTag("RedTile"))
         {
+            coll.GetComponent<Animator>().SetTrigger("BulletTrigger");
             //renderer.color = new Color(1.0f, 0f, 0f);
             renderer.sprite = sprites[0];
             gameObject.tag = "RedBullet";
@@ -111,6 +112,7 @@ public class Bullet : MonoBehaviour
 
         else if (coll.CompareTag("GreenTile"))
         {
+            coll.GetComponent<Animator>().SetTrigger("BulletTrigger");
             //renderer.color = new Color(0f, 1.0f, 0f);
             renderer.sprite = sprites[1];
             gameObject.tag = "GreenBullet";
@@ -118,6 +120,7 @@ public class Bullet : MonoBehaviour
 
         else if (coll.CompareTag("BlueTile"))
         {
+            coll.GetComponent<Animator>().SetTrigger("BulletTrigger");
             //renderer.color = new Color(0f, 0f, 1.0f);
             renderer.sprite = sprites[2];
             gameObject.tag = "BlueBullet";

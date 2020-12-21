@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6342649036348285335}
   - component: {fileID: 1050015837237678680}
+  - component: {fileID: 1048325006398078979}
   m_Layer: 0
   m_Name: Face
   m_TagString: Untagged
@@ -81,6 +82,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1048325006398078979
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729822615035250072}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5a9706f749615a042826136142eeff6e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5571752476990609789
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,6 +364,7 @@ GameObject:
   - component: {fileID: 8739073824846311187}
   - component: {fileID: 5310979221548854759}
   - component: {fileID: 3236287661613053095}
+  - component: {fileID: 3529363699868657514}
   m_Layer: 0
   m_Name: BossMonster 1
   m_TagString: GreenMonster
@@ -463,6 +484,7 @@ MonoBehaviour:
   monsterHp: 0
   monsterMaxHp: 3
   monsterScore: 0
+  fadeTime: 0.9
   waitingTime: 4
 --- !u!114 &5310979221548854759
 MonoBehaviour:
@@ -480,6 +502,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 35aa4089d5b23e040b8ee0bfc0b6bebc, type: 3}
   - {fileID: 21300000, guid: faed2fcad1e49464b95c6941427b8ef6, type: 3}
   - {fileID: 21300000, guid: 8c64c6bae973a8641b51d95979206f81, type: 3}
+  bossFace: []
 --- !u!60 &3236287661613053095
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -809,3 +832,22 @@ PolygonCollider2D:
       - {x: 1.5966798, y: -13.681642}
       - {x: 1.8310548, y: -13.666993}
       - {x: 1.9775392, y: -13.666993}
+--- !u!95 &3529363699868657514
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8391709248627969156}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5a9706f749615a042826136142eeff6e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

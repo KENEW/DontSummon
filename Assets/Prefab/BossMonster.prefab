@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6342649036348285335}
   - component: {fileID: 1050015837237678680}
+  - component: {fileID: 4611255372650034876}
   m_Layer: 0
   m_Name: Face
   m_TagString: Untagged
@@ -75,12 +76,31 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 30.000002, y: 30.000002}
+  m_Size: {x: 30.004612, y: 28.730001}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4611255372650034876
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1729822615035250072}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5a9706f749615a042826136142eeff6e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5571752476990609789
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,6 +364,7 @@ GameObject:
   - component: {fileID: 8739073824846311187}
   - component: {fileID: 5989927058505773294}
   - component: {fileID: 5310979221548854759}
+  - component: {fileID: 6279767478458451689}
   m_Layer: 0
   m_Name: BossMonster
   m_TagString: RedMonster
@@ -457,12 +478,13 @@ MonoBehaviour:
   - {fileID: 107732889114567035, guid: fcaec969288f04a4f857ca37b9c31028, type: 3}
   - {fileID: 6692823952648815766, guid: e90cf71204e40764bb0ba04014d2ced9, type: 3}
   monsterFace:
-  - {fileID: 21300000, guid: a825eeef41c1e6c458fbc1d96620dd59, type: 3}
-  - {fileID: 21300000, guid: 64bb3494f6575f841ab1b65836702548, type: 3}
-  - {fileID: 21300000, guid: 320adbda18f61ff4fa8881713b8a64bd, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   monsterHp: 0
   monsterMaxHp: 3
   monsterScore: 0
+  fadeTime: 0.9
   waitingTime: 4
 --- !u!60 &5989927058505773294
 PolygonCollider2D:
@@ -870,3 +892,26 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 34c2ee28d8d0c5e4389a79695554b3d7, type: 3}
   - {fileID: 21300000, guid: 8220434a50970d942abc17e09b7e3254, type: 3}
   - {fileID: 21300000, guid: 43c3eb493209f5849b5250b206682f8a, type: 3}
+  bossFace:
+  - {fileID: 21300000, guid: a825eeef41c1e6c458fbc1d96620dd59, type: 3}
+  - {fileID: 21300000, guid: 0d5ae84c1aa95724aa48d17225f54fdf, type: 3}
+  - {fileID: 21300000, guid: 3df501dcb9a22874497274c120658df3, type: 3}
+--- !u!95 &6279767478458451689
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8391709248627969156}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5a9706f749615a042826136142eeff6e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

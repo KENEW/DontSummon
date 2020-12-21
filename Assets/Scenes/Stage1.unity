@@ -1086,6 +1086,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 957410662}
   m_CullTransparentMesh: 0
+--- !u!1 &1020529190 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1729822615035250072, guid: 2ab01ab5f77cd7d4f996e09f101674e2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1742910993}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1020529193
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020529190}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5a9706f749615a042826136142eeff6e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &1113149187 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8391709248627969156, guid: 2ab01ab5f77cd7d4f996e09f101674e2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1742910993}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1113149188
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113149187}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5a9706f749615a042826136142eeff6e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1116390367
 GameObject:
   m_ObjectHideFlags: 0
@@ -1130,6 +1180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4606a2d57be76d34c8dbd0803be7dbc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFirstCheck: 1
 --- !u!114 &1116390371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1183,6 +1234,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1152126976 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1520956309726254024, guid: d2a55bf71c752d846b4af2f5e00b0987,
+    type: 3}
+  m_PrefabInstance: {fileID: 1318861559}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1152126977
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152126976}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5a9706f749615a042826136142eeff6e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1173979880
 GameObject:
   m_ObjectHideFlags: 0
@@ -1474,6 +1550,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2a55bf71c752d846b4af2f5e00b0987, type: 3}
+--- !u!1 &1459419870 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9065086092357421868, guid: d2a55bf71c752d846b4af2f5e00b0987,
+    type: 3}
+  m_PrefabInstance: {fileID: 1318861559}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1459419873
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1459419870}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5a9706f749615a042826136142eeff6e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1480074193
 GameObject:
   m_ObjectHideFlags: 0
