@@ -10,8 +10,9 @@ public class StageManage : MonoSingleton<StageManage>
 	public GameObject ClearObj;
 	public GameObject FailedObj;
 
-	public GameObject ReadyObj;
-	public GameObject StartObj;
+	public GameObject ClearScreen;
+	public GameObject FailedScreen;
+
 	public GameObject StartPanel;
 	public GameObject PauseBtn;
 
@@ -84,28 +85,46 @@ public class StageManage : MonoSingleton<StageManage>
 	public void StageClear()
 	{
 		//SoundManager.instance.PlaySFX("Clear");
-		ClearObj.SetActive(true);
-		//Time.timeScale = 0;
 		//gameState = false;
 		//StartCoroutine("GameEnd");
 		//SceneManager.LoadScene("Lobby");
 		//Invoke("LoadNextScene", 2f);
-		StartCoroutine("LoadNextScene");
+		//StartCoroutine("LoadNextScene");
 
+		StartCoroutine(Clear());
 	}
 
 	public void StageFailed()
 	{
 		//SoundManager.instance.PlaySFX("Failed");
-		FailedObj.SetActive(true);
-		//Time.timeScale = 0;
 		//gameState = false;
 		//StartCoroutine("GameEnd");
 		//Invoke("LoadSceneLobby",2f);
-		StartCoroutine("LoadSceneLobby");
-
+		//StartCoroutine("LoadSceneLobby");
 		//yield return new WaitForSeconds(2.0f);
 		//SceneManager.LoadScene("TestScene");
+
+		StartCoroutine(GameOver());
+	}
+
+	IEnumerator Clear()
+    {
+		Time.timeScale = 0;
+		ClearObj.SetActive(true);
+		yield return new WaitForSecondsRealtime(3f);
+		ClearObj.SetActive(false);
+		ClearScreen.SetActive(true);
+		yield return null;
+    }
+
+	IEnumerator GameOver()
+    {
+		Time.timeScale = 0;
+		FailedObj.SetActive(true);
+		yield return new WaitForSecondsRealtime(3f);
+		FailedObj.SetActive(false);
+		FailedScreen.SetActive(true);
+		yield return null;
 	}
 
 	IEnumerator LoadSceneLobby()
