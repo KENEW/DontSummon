@@ -6277,6 +6277,7 @@ MonoBehaviour:
   stageScore: 000000000000000000000000
   stageInfo:
     curStage: 0
+    curChapter: 1
     curHp: 3
     curScore: 0
     curTIme: 60

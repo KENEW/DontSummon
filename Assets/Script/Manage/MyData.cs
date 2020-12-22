@@ -8,7 +8,9 @@ using UnityEngine.UI;
 [System.Serializable]
 public class StageInfo
 {
-    public int curStage = 0;
+    public int curStage = 1;
+    public int curChapter = 1;
+
     public int curHp = 3;
     public int curScore = 0;
     public float curTIme = 60;

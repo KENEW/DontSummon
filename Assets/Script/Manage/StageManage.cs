@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 
 public class StageManage : MonoSingleton<StageManage>
 {
+	public Animator animator;
 
 	public GameObject ClearObj;
 	public GameObject FailedObj;
@@ -16,7 +18,8 @@ public class StageManage : MonoSingleton<StageManage>
 	public GameObject StartPanel;
 	public GameObject PauseBtn;
 
-	public Animator animator;
+	public Text stageText;
+	public Text chapterText;
 
 	public bool gameState = false;
 	public int curStage;
@@ -27,6 +30,9 @@ public class StageManage : MonoSingleton<StageManage>
 		curStage = 1;
 		StartCoroutine("GameStart");
 		StageInit();
+
+		chapterText.text = MyData.Instance.stageInfo.curChapter.ToString();
+		stageText.text = MyData.Instance.stageInfo.curStage.ToString();
 	}
 	public void GameStateTrue()
     {
@@ -39,18 +45,12 @@ public class StageManage : MonoSingleton<StageManage>
 
 	IEnumerator GameStart()
 	{
-		//ReadyObj.SetActive(true);
-		//yield return new WaitForSecondsRealtime(2f);
-		//ReadyObj.SetActive(false);
-		//StartObj.SetActive(true);
-		////StartPanel.SetActive(true);
 		yield return new WaitForSecondsRealtime(0.2f);
 		animator.SetTrigger("Start");
 
 		yield return new WaitForSecondsRealtime(4.5f);
-		//StartObj.SetActive(false);
 
-		StartPanel.gameObject.transform.DOMoveY(1.0f, 3f).OnComplete(() => { StartPanel.SetActive(false);});
+		StartPanel.gameObject.transform.DOMoveY(1.0f, 3f).OnComplete(() => { StartPanel.SetActive(false);});	//Delay CallBack
 		Time.timeScale = 1;
 
 		PauseBtn.SetActive(true);
