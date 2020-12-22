@@ -49,7 +49,9 @@ public class StageManage : MonoSingleton<StageManage>
 	{
 		yield return new WaitForSecondsRealtime(0.4f);
 		animator.SetTrigger("Start");
-
+		SoundManager.Instance.PlaySFX("GameReady");
+		SoundManager.Instance.PlayBGM("Stage1BGM");
+		
 		yield return new WaitForSecondsRealtime(6.3f);
 
 		StartPanel.gameObject.transform.DOMoveY(1.0f, 3f).OnComplete(() => { StartPanel.SetActive(false);});	//Delay CallBack
@@ -118,6 +120,7 @@ public class StageManage : MonoSingleton<StageManage>
 
 	IEnumerator Clear()
     {
+		SoundManager.Instance.PlaySFX("StageClear");
 		playerGuard = true;
 		Time.timeScale = 1;
 		ClearObj.SetActive(true);

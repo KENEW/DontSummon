@@ -8,7 +8,7 @@ public class Sound
     public string name;
     public AudioClip clip;
 }
-public class SoundManager : MonoSingleton<SoundManager>
+public class SoundManager : SceneSingleTon<SoundManager>
 {
     public static SoundManager Instance;
      

@@ -10,10 +10,6 @@ public class GameManager : SceneSingleTon<GameManager>
 	{
 		ScreenSetting();
 	}
-	private void Start()
-	{
-		//MyData.Instance.SaveData();
-	}
 	public void ScreenSetting()
 	{
 		Screen.SetResolution(720, 1280, false);

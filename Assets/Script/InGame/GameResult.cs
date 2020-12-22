@@ -38,17 +38,19 @@ public class GameResult : MonoSingleton<GameResult>
 	}
     public void OnLobby()
     {
+        SoundManager.Instance.PlaySFX("Button");
         lightLoading.LoadStart("Lobby");
 	}
     public void OnReStart()
     {
-        //InitScore();
+        SoundManager.Instance.PlaySFX("Button");
         MyData.Instance.InitState();
 
         lightLoading.LoadStart("Stage1");
     }
     public void OnRanking()
     {
+        SoundManager.Instance.PlaySFX("Button");
         BackEndFederationAuth.Instance.OnShowLeaderBoard();
     }
 	public void GetRemainTime(int time) //남은 시간 받아오기

@@ -3052,9 +3052,17 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 5312106da8335804380206cf82e9186f, type: 3}
   - name: BackButton
     clip: {fileID: 8300000, guid: 5effcd515ba798d4f872196d8a2fe6de, type: 3}
+  - name: GameReady
+    clip: {fileID: 8300000, guid: 1309a489ee04f2b409481a0ffea18742, type: 3}
+  - name: Tick
+    clip: {fileID: 8300000, guid: 5693834c818ceb847957c64ed2d49a5b, type: 3}
+  - name: Clear
+    clip: {fileID: 8300000, guid: f8377b9b9231cbe478f8c7e4f3cf0e17, type: 3}
   bgm:
   - name: Title
     clip: {fileID: 8300000, guid: 9d7446ccad80bc04da7c1586c0d1cea9, type: 3}
+  - name: Stage1BGM
+    clip: {fileID: 8300000, guid: c065dbc39c6fa084285daf5d1f521459, type: 3}
   bgmPlayer: {fileID: 31724570}
   sfxPlayer:
   - {fileID: 1674903821}
@@ -6200,6 +6208,7 @@ MonoBehaviour:
     curScore: 0
     curTIme: 60
     curDefenceWall: 0
+  isLoginCheck: 0
 --- !u!4 &930433387
 Transform:
   m_ObjectHideFlags: 0
