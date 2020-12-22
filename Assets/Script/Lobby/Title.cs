@@ -10,12 +10,9 @@ public class Title : MonoBehaviour
 	public GameObject TitleScreen;
 	public GameObject CreditPanel;
 
-	private void Update()
+	private void OnEnable()
 	{
-		if(Input.GetKeyDown(KeyCode.A))
-		{
-			logoAnimator.SetTrigger("LogoStart");
-		}
+		SoundManager.Instance.PlayBGM("Title");
 	}
 	public void StartButton()
 	{

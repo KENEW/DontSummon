@@ -83,7 +83,8 @@ public class DefenceWallSelect : MonoBehaviour
     }
     public void GameStart()
     {
-        SoundManager.Instance.PlaySFX("Button");
+        SoundManager.Instance.StopBGM();
+        SoundManager.Instance.PlaySFX("GameStart");
 
         fadePanel.SetActive(true);
         fadePanel.GetComponent<Image>().DOFade(1.0f, 2.0f).OnComplete(() =>
@@ -94,7 +95,7 @@ public class DefenceWallSelect : MonoBehaviour
     }
     public void BackButton()
     {
-        SoundManager.Instance.PlaySFX("Button");
+        SoundManager.Instance.PlaySFX("BackButton");
         defenceWallSelectWindow.SetActive(false);
         stageSelectWindow.SetActive(true);
     }
