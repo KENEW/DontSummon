@@ -10,7 +10,9 @@ public class Title : MonoBehaviour
 	public GameObject TitleScreen;
 	public GameObject CreditPanel;
 
-	private void OnEnable()
+	private bool isBGMCheck = false;
+
+	private void Start()
 	{
 		SoundManager.Instance.PlayBGM("Title");
 	}

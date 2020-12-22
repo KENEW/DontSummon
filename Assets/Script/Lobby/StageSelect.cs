@@ -83,6 +83,8 @@ public class StageSelect : MonoBehaviour
     }
     public void BackButton()
     {
+        SoundManager.Instance.PlaySFX("BackButton");
+
         stageSelectPanel.SetActive(false);
         titlePanel.SetActive(true);
     }

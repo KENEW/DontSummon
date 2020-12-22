@@ -3045,11 +3045,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfx:
-  - name: Logo
-    clip: {fileID: 8300000, guid: 591c4253ef5f49d408f65e9424a2e14a, type: 3}
+  - name: GameStart
+    clip: {fileID: 8300000, guid: c2580d1304ea26b4285360e16bde81d9, type: 3}
   - name: Button
-    clip: {fileID: 8300000, guid: 3cefb497602354e45a7c428e79ba6431, type: 3}
-  bgm: []
+    clip: {fileID: 8300000, guid: 5312106da8335804380206cf82e9186f, type: 3}
+  - name: BackButton
+    clip: {fileID: 8300000, guid: 5effcd515ba798d4f872196d8a2fe6de, type: 3}
+  bgm:
+  - name: Title
+    clip: {fileID: 8300000, guid: 9d7446ccad80bc04da7c1586c0d1cea9, type: 3}
   bgmPlayer: {fileID: 31724570}
   sfxPlayer:
   - {fileID: 1674903821}
@@ -12727,7 +12731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f110ab82ccc5dc14a8dd1318e4753e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainTitle: {fileID: 897571617}
+  mainTitle: {fileID: 1352003082}
 --- !u!1 &2002447209 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1836024332025435358, guid: 7213734b40afd8c47a04497439b77687,
