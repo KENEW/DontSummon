@@ -362,9 +362,9 @@ GameObject:
   - component: {fileID: 8391709248627969158}
   - component: {fileID: 1190877834681166346}
   - component: {fileID: 8739073824846311187}
-  - component: {fileID: 5310979221548854759}
   - component: {fileID: 3236287661613053095}
   - component: {fileID: 3529363699868657514}
+  - component: {fileID: 3776161625769255692}
   m_Layer: 0
   m_Name: BossMonster 1
   m_TagString: GreenMonster
@@ -486,23 +486,6 @@ MonoBehaviour:
   monsterScore: 0
   fadeTime: 0.9
   waitingTime: 4
---- !u!114 &5310979221548854759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8391709248627969156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb3487ff90b9d064aad54a2a83bc3d85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 21300000, guid: 35aa4089d5b23e040b8ee0bfc0b6bebc, type: 3}
-  - {fileID: 21300000, guid: faed2fcad1e49464b95c6941427b8ef6, type: 3}
-  - {fileID: 21300000, guid: 8c64c6bae973a8641b51d95979206f81, type: 3}
-  bossFace: []
 --- !u!60 &3236287661613053095
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -851,3 +834,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3776161625769255692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8391709248627969156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2687b7f30a90ffa46b19d6072799eff7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 35aa4089d5b23e040b8ee0bfc0b6bebc, type: 3}
+  - {fileID: 21300000, guid: faed2fcad1e49464b95c6941427b8ef6, type: 3}
+  - {fileID: 21300000, guid: 8c64c6bae973a8641b51d95979206f81, type: 3}
