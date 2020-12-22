@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHp : MonoBehaviour
+public class PlayerHp : MonoSingleton<PlayerHp>
 {
 	public GameObject[] hpObject;
 
@@ -73,15 +73,17 @@ public class PlayerHp : MonoBehaviour
 
 	public void GetDamage(int hpValue) //데미지
 	{
-		if (curHp - hpValue <= 0)
+		if(!StageManage.Instance.playerGuard)
 		{
-			curHp = 0;
+			if (curHp - hpValue <= 0)
+			{
+				curHp = 0;
+			}
+			else
+			{
+				curHp -= hpValue;
+			}
 		}
-		else
-		{
-			curHp -= hpValue;
-		}
-
 	}
 
 	private void DrawHp()
@@ -108,7 +110,7 @@ public class PlayerHp : MonoBehaviour
 	public void Clear() //스테이지 클리어
 	{
 		Debug.Log("clear");
-		StageManage.Instance.StageClear();
+		StageManage.Instance.OnStageClear();
 
 	}
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TimeLimit : MonoBehaviour
+public class TimeLimit : MonoSingleton<TimeLimit>
 {
 	public Image hpGauge;
 	public Image hpGaugeBack;
@@ -70,8 +70,8 @@ public class TimeLimit : MonoBehaviour
 		}
 	}
 
-	public void ClearTime()
+	public int GetClearTime()
     {
-		clearTime = (int)curTime;
+		return (int)curTime;
     }
 }

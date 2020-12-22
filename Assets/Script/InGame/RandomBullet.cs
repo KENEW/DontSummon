@@ -97,7 +97,11 @@ public class RandomBullet : MonoBehaviour
             }
             else if(transform.CompareTag("Skull"))
             {
-                StageManage.Instance.StageFailed(); //게임 오버
+                if(!StageManage.Instance.playerGuard)
+                {
+                    StageManage.Instance.StageFailed(); //게임 오버
+                }
+               
                 Destroy(gameObject);
                 Debug.Log("플레이어 Skull");
             }

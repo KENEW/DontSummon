@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 
-public class GameResult : MonoBehaviour
+public class GameResult : MonoSingleton<GameResult>
 {
     public Animator highScoreTextAnimation;
 
@@ -42,7 +42,10 @@ public class GameResult : MonoBehaviour
 	}
     public void OnReStart()
     {
-        lightLoading.LoadStart(SceneManager.GetActiveScene().name);
+        //InitScore();
+        MyData.Instance.InitState();
+
+        lightLoading.LoadStart("Stage1");
     }
     public void OnRanking()
     {
@@ -67,13 +70,17 @@ public class GameResult : MonoBehaviour
         acquireScore = 0;
         totalScore = 0;
     }
-    private void ScoreResult()  //스코어 계산 ( 점수 계산 시작)
+    public void ScoreResult()  //스코어 계산 ( 점수 계산 시작)
     {
         highScoreText.text = MyData.Instance.stageScore[0].ToString();
 
         totalScore += remainHealth * SET_HEALTH_UP;
         totalScore += remainTime * SET_RE_TIME_UP;
         totalScore += acquireScore;
+
+        MyData.Instance.stageInfo.curScore += totalScore;
+        MyData.Instance.stageScore[0] = MyData.Instance.stageInfo.curScore;
+        MyData.Instance.SaveData();
 
         StartCoroutine(CountSequence());
     }

@@ -80,8 +80,8 @@ public class ClearManage : MonoBehaviour
         if (red.Length == 0 && green.Length==0 && blue.Length==0  && flag == true)
         {
             flag = false;
-            StageManage.Instance.StageClear();
-            time.ClearTime();
+            StageManage.Instance.OnStageClear();
+            time.GetClearTime();
             score.AddScore(time.clearTime*clearScore);
         }
     }

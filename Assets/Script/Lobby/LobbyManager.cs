@@ -15,10 +15,10 @@ public class LobbyManager : MonoBehaviour
 
 		gameManager = FindObjectOfType<GameManager>();
 
-		if (gameManager.isFirstCheck)
+		if (!MyData.Instance.isLoginCheck)
 		{
 			firstScreen.SetActive(true);
-			gameManager.isFirstCheck = false;
+			MyData.Instance.isLoginCheck = true;
 		}
 		else
 		{

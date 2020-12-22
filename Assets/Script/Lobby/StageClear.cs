@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 
-public class StageClear : MonoBehaviour
+public class StageClear : MonoSingleton<StageClear>
 {
     public LightLoading lightLoading;
 
@@ -36,7 +36,7 @@ public class StageClear : MonoBehaviour
     }
     public void OnNextStage()   //다음 스테이지
     {
-        lightLoading.LoadStart(SceneManager.GetActiveScene().name);
+        lightLoading.LoadStart("Stage" + (MyData.Instance.stageInfo.curStage + 1).ToString());
     }
     public void GetRemainTime(int time) //남은 시간 받아오기
     {
@@ -57,11 +57,13 @@ public class StageClear : MonoBehaviour
         acquireScore = 0;
         totalScore = 0;
     }
-    private void ScoreResult()  //스코어 계산 ( 점수 계산 시작)
+    public void ScoreResult()  //스코어 계산 ( 점수 계산 시작)
     {
         totalScore += remainHealth * SET_HEALTH_UP;
         totalScore += remainTime * SET_RE_TIME_UP;
         totalScore += acquireScore;
+
+        MyData.Instance.stageInfo.curScore += totalScore;
 
         StartCoroutine(CountSequence());
     }
