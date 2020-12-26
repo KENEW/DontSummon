@@ -7,15 +7,6 @@ public class PauseBtn : MonoBehaviour
 {
     public GameObject PauseScreen;
 
-    // Update is called once per frame
-    /*void Update()
-    {
-        if (this.isPause == true)
-            Time.timeScale = 0;
-        else
-            Time.timeScale = 1;
-    }*/
-
     public void Pause()
     {
         Time.timeScale = 0;

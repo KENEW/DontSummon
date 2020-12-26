@@ -39,10 +39,12 @@ public class StageManage : MonoSingleton<StageManage>
 	public void GameStateTrue()
     {
 		gameState = true;
+		Time.timeScale = 1;
     }
 	public void GameStateFalse()
     {
 		gameState = false;
+		Time.timeScale = 0;
     }
 
 	IEnumerator GameStart()
@@ -153,7 +155,7 @@ public class StageManage : MonoSingleton<StageManage>
 
 	IEnumerator GameOver()
     {
-		Time.timeScale = 0;
+		Time.timeScale = 1;
 		FailedObj.SetActive(true);
 		yield return new WaitForSecondsRealtime(3f);
 		FailedObj.SetActive(false);
@@ -168,10 +170,6 @@ public class StageManage : MonoSingleton<StageManage>
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		//SceneManager.LoadScene("Lobby");
 	}
-	public void LoadSceneRestart()
-	{
-		SceneManager.LoadScene("editScene");
-	}
 
 	IEnumerator LoadNextScene()
     {
@@ -184,5 +182,6 @@ public class StageManage : MonoSingleton<StageManage>
 		int nextScene = curScene + 1;
 		SceneManager.LoadScene("Stage" + nextScene);
 	}
+
 
 }

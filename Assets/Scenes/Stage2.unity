@@ -694,6 +694,11 @@ PrefabInstance:
       propertyPath: PauseScreen
       value: 
       objectReference: {fileID: 312071255}
+    - target: {fileID: 697270082108380814, guid: d7c19e1d10aec82438040e14b1da13d8,
+        type: 3}
+      propertyPath: lightLoading
+      value: 
+      objectReference: {fileID: 1750810201}
     - target: {fileID: 6280368776282080516, guid: d7c19e1d10aec82438040e14b1da13d8,
         type: 3}
       propertyPath: m_Name
@@ -1498,7 +1503,7 @@ PrefabInstance:
     - target: {fileID: 721439663914360236, guid: 14a92fac5537ef04f913783b7b1d2bf3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -165
       objectReference: {fileID: 0}
     - target: {fileID: 721439663914360236, guid: 14a92fac5537ef04f913783b7b1d2bf3,
         type: 3}
@@ -2332,6 +2337,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8554835725013775333}
     m_Modifications:
+    - target: {fileID: 367828609056244126, guid: 4de5dfd894632e142a8c059d231316ee,
+        type: 3}
+      propertyPath: lightLoading
+      value: 
+      objectReference: {fileID: 1750810201}
     - target: {fileID: 3581928671799274832, guid: 4de5dfd894632e142a8c059d231316ee,
         type: 3}
       propertyPath: m_Name

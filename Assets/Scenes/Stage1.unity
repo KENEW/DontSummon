@@ -216,7 +216,7 @@ PrefabInstance:
     - target: {fileID: 721439663914360236, guid: 14a92fac5537ef04f913783b7b1d2bf3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -165
       objectReference: {fileID: 0}
     - target: {fileID: 721439663914360236, guid: 14a92fac5537ef04f913783b7b1d2bf3,
         type: 3}
@@ -237,6 +237,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LightLoadingPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 721439663914360243, guid: 14a92fac5537ef04f913783b7b1d2bf3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14a92fac5537ef04f913783b7b1d2bf3, type: 3}
@@ -348,6 +353,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8554835725013775333}
     m_Modifications:
+    - target: {fileID: 367828609056244126, guid: 4de5dfd894632e142a8c059d231316ee,
+        type: 3}
+      propertyPath: lightLoading
+      value: 
+      objectReference: {fileID: 84375599}
     - target: {fileID: 3581928671799274832, guid: 4de5dfd894632e142a8c059d231316ee,
         type: 3}
       propertyPath: m_Name
@@ -1348,6 +1358,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ReadyScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 1722358659605303619, guid: 7a370044c131832478d8419519a08d58,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1722358659605303644, guid: 7a370044c131832478d8419519a08d58,
         type: 3}
@@ -2620,6 +2635,11 @@ PrefabInstance:
       propertyPath: PauseScreen
       value: 
       objectReference: {fileID: 284635286}
+    - target: {fileID: 697270082108380814, guid: d7c19e1d10aec82438040e14b1da13d8,
+        type: 3}
+      propertyPath: lightLoading
+      value: 
+      objectReference: {fileID: 84375599}
     - target: {fileID: 697270082108380818, guid: d7c19e1d10aec82438040e14b1da13d8,
         type: 3}
       propertyPath: m_IsActive
@@ -2755,6 +2775,11 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0.69803923
       objectReference: {fileID: 0}
+    - target: {fileID: 1285228550705046531, guid: 748ecefe94606ea409a3684dcdd5f71e,
+        type: 3}
+      propertyPath: lightLoading
+      value: 
+      objectReference: {fileID: 84375599}
     - target: {fileID: 1285228551596445040, guid: 748ecefe94606ea409a3684dcdd5f71e,
         type: 3}
       propertyPath: m_Name
