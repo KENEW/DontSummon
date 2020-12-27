@@ -24,6 +24,11 @@ public class GameResult : MonoSingleton<GameResult>
     private int SET_HEALTH_UP = 50;     //점수로 변환 기준
     private int SET_RE_TIME_UP = 30;
 
+	private void OnEnable()
+	{
+        SoundManager.Instance.PlaySFX("StageResultSFX");
+        SoundManager.Instance.PlayBGM("Stage1BGM");
+    }
 	private void Update()
 	{
         //Test

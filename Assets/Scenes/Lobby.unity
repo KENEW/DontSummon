@@ -308,7 +308,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -3058,11 +3058,21 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 5693834c818ceb847957c64ed2d49a5b, type: 3}
   - name: Clear
     clip: {fileID: 8300000, guid: f8377b9b9231cbe478f8c7e4f3cf0e17, type: 3}
+  - name: MonsterHitSFX
+    clip: {fileID: 8300000, guid: 2335163a66a8e5d46adc7d7d7e98840f, type: 3}
+  - name: MonsterDeathSFX
+    clip: {fileID: 8300000, guid: cda4906bba7aebf4fa285f5ed90e440c, type: 3}
+  - name: StageClearSFX
+    clip: {fileID: 8300000, guid: a00203c32eb202f41b949f1125fe7b87, type: 3}
+  - name: StageResultSFX
+    clip: {fileID: 8300000, guid: ef2013b69ca0d2d4a8390c1a0c9e8f89, type: 3}
   bgm:
   - name: Title
     clip: {fileID: 8300000, guid: 9d7446ccad80bc04da7c1586c0d1cea9, type: 3}
   - name: Stage1BGM
     clip: {fileID: 8300000, guid: c065dbc39c6fa084285daf5d1f521459, type: 3}
+  - name: StageResultBGM
+    clip: {fileID: 8300000, guid: a636f152d8a27fd4ab29bb763d3e5b15, type: 3}
   bgmPlayer: {fileID: 31724570}
   sfxPlayer:
   - {fileID: 1674903821}
@@ -8406,7 +8416,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1371001630
 MonoBehaviour:
   m_ObjectHideFlags: 0

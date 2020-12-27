@@ -34,6 +34,11 @@ public class StageClear : MonoSingleton<StageClear>
             ScoreResult();
         }
     }
+    private void OnEnable()
+    {
+        SoundManager.Instance.PlaySFX("StageResultSFX");
+        SoundManager.Instance.PlayBGM("StageResultBGM");
+    }
     public void OnNextStage()   //다음 스테이지
     {
         SoundManager.Instance.PlaySFX("Button");

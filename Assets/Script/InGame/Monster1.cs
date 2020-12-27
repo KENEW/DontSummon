@@ -16,8 +16,7 @@ public class Monster1 : MonoBehaviour
 
     //private int monsterHp;
     public int monsterHp;
-    [SerializeField]
-    private int monsterMaxHp;
+    private int monsterMaxHp = 3;
 
     public int monsterScore; //몬스터 피격 점수
 
@@ -28,51 +27,33 @@ public class Monster1 : MonoBehaviour
 
     Vector2 bulletPos;
 
-    Score score;
-
-    // Start is called before the first frame update
     void Start()
     {
-        monsterHp = monsterMaxHp;
-        
-
-        bulletPos = new Vector2(transform.position.x, transform.position.y-gameObject.GetComponent<PolygonCollider2D>().bounds.extents.y- 0.45f);
-        StartCoroutine("BulletSpawn");
-
-        StartCoroutine(SpawnRandomBullet());
-
-        score = GameObject.Find("ScorePanel").GetComponent<Score>();
-
-
+        monsterRenderer = gameObject.GetComponent<SpriteRenderer>();
         monsterFaceRenderer = transform.Find("MonsterCanvas/Face").gameObject.GetComponent<SpriteRenderer>();
-        monsterRenderer = this.gameObject.GetComponent<SpriteRenderer>();
-    }
 
-    // Update is called once per frame
-    void Update()
+        bulletPos = new Vector2(transform.position.x, transform.position.y - gameObject.GetComponent<PolygonCollider2D>().bounds.extents.y - 0.45f);
+        monsterHp = monsterMaxHp;
+       
+        StartCoroutine(BulletSpawn());
+        StartCoroutine(SpawnRandomBullet());
+    }
+    public void Destroyed()
     {
-        
-        if (monsterHp==0)
-        {
-            monsterFaceRenderer.sprite = monsterFace[2];
-            transform.Find("MonsterCanvas/Hp").gameObject.SetActive(false);
-            transform.Find("MonsterCanvas/HpBackground").gameObject.SetActive(false);
+        monsterFaceRenderer.sprite = monsterFace[2];
+        transform.Find("MonsterCanvas/Hp").gameObject.SetActive(false);
+        transform.Find("MonsterCanvas/HpBackground").gameObject.SetActive(false);
 
-            transform.Find("MonsterCanvas/Face").gameObject.GetComponent<Animator>().SetTrigger("DieTrigger");
-            gameObject.GetComponent<Animator>().SetTrigger("DieTrigger");
-
-        }
-
+        transform.Find("MonsterCanvas/Face").gameObject.GetComponent<Animator>().SetTrigger("DieTrigger");
+        gameObject.GetComponent<Animator>().SetTrigger("DieTrigger");
+        Destroy(gameObject);
     }
-    
-
     IEnumerator MonsterChangeFace(Sprite changeSprite)
     {
         monsterFaceRenderer.sprite = changeSprite;
         yield return new WaitForSeconds(1f);
         monsterFaceRenderer.sprite = monsterFace[0];
     }
-
     IEnumerator BulletSpawn()
     {
         while(true)
@@ -85,7 +66,6 @@ public class Monster1 : MonoBehaviour
             }
         }
     }
-
     IEnumerator SpawnRandomBullet() //특수 투사체 생성
     {
         while(true)
@@ -95,28 +75,24 @@ public class Monster1 : MonoBehaviour
             Instantiate(randomBullet[Random.Range(0, 4)], bulletPos, Quaternion.identity);
         }
     }
-
     public void GetDamage(int hpValue)
     {
         if (monsterHp - hpValue <= 0)
         {
             monsterHp = 0;
+            SoundManager.Instance.PlaySFX("MonsterDeathSFX");
+            Destroyed();
         }
         else
         {
             monsterHp -= hpValue;
+            SoundManager.Instance.PlaySFX("MonsterHitSFX");
+            StartCoroutine(MonsterChangeFace(monsterFace[1])); //우는 표정
         }
 
         hp.fillAmount -= (float)hpValue / monsterMaxHp;
-
-        score.AddScore(monsterScore*hpValue); //몬스터 피격 시 점수 획득
-
-        if (monsterHp != 0)
-        {
-            StartCoroutine(MonsterChangeFace(monsterFace[1])); //우는 표정
-        }
+        Score.Instance.AddScore(monsterScore * hpValue); //몬스터 피격 시 점수 획득
     }
-
     public void RecoveryHp(int hpValue) //회복
     {
         if (monsterHp + hpValue >= monsterMaxHp)
@@ -130,10 +106,8 @@ public class Monster1 : MonoBehaviour
 
         hp.fillAmount += (float)hpValue / monsterMaxHp;
     }
-
     private void OnCollisionEnter2D(Collision2D coll) 
     {
-
         if (transform.CompareTag("RedMonster"))
         {
             if(coll.gameObject.tag=="RedBullet")
@@ -142,7 +116,6 @@ public class Monster1 : MonoBehaviour
                 Debug.Log(monsterHp);
             }
         }
-
         else if (transform.CompareTag("GreenMonster"))
         {
             if (coll.gameObject.tag == "GreenBullet")
@@ -151,7 +124,6 @@ public class Monster1 : MonoBehaviour
                 Debug.Log(monsterHp);
             }
         }
-
         else if (transform.CompareTag("BlueMonster"))
         {
             if (coll.gameObject.tag == "BlueBullet")
@@ -160,9 +132,5 @@ public class Monster1 : MonoBehaviour
                 Debug.Log(monsterHp);
             }
         }  
-
     }
-
-    
-
 }

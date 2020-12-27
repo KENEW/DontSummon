@@ -122,7 +122,7 @@ public class StageManage : MonoSingleton<StageManage>
 
 	IEnumerator Clear()
     {
-		SoundManager.Instance.PlaySFX("StageClear");
+		SoundManager.Instance.PlaySFX("StageClearSFX");
 		playerGuard = true;
 		Time.timeScale = 1;
 		ClearObj.SetActive(true);

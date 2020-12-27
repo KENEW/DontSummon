@@ -24,15 +24,11 @@ public class RandomBullet : MonoBehaviour
         //포탈을 향해 이동
         rigid.velocity = new Vector2(-rigid.transform.position.x * moveSpeed, -(rigid.transform.position.y + 4.27f) * moveSpeed);
     }
-    
-    void Update()
+    private GameObject[] GetBulletObject(string ObjName)
     {
-        bulletArr = GameObject.FindGameObjectsWithTag("Bullet");
-        redBulletArr = GameObject.FindGameObjectsWithTag("RedBullet");
-        greenBulletArr = GameObject.FindGameObjectsWithTag("GreenBullet");
-        blueBulletArr = GameObject.FindGameObjectsWithTag("BlueBullet");
-    }
-
+        GameObject[] t_bullet = GameObject.FindGameObjectsWithTag(ObjName);
+        return t_bullet;
+	}
     void FixedUpdate()
     {
         if (rigid.velocity.x > 2f)
@@ -56,52 +52,52 @@ public class RandomBullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D coll)
     {
-        SoundManager.Instance.PlaySFX("Tick");
+        //SoundManager.Instance.PlaySFX("Tick");
 
         if (coll.gameObject.tag == "Portal")
         {
-            if(transform.CompareTag("Heal"))
+            if (transform.CompareTag("Heal"))
             {
                 playerHp.RecoveryHp(1); //플레이어 hp 1 회복
                 Destroy(gameObject);
                 Debug.Log("플레이어 Heal " + playerHp.curHp);
             }
-            else if(transform.CompareTag("Fire"))
+            else if (transform.CompareTag("Fire"))
             {
                 playerHp.GetDamage(2); //플레이어 hp 2 감소
                 Destroy(gameObject);
-                Debug.Log("플레이어 Fire "+playerHp.curHp);
+                Debug.Log("플레이어 Fire " + playerHp.curHp);
             }
-            else if(transform.CompareTag("Bomb"))
+            else if (transform.CompareTag("Bomb"))
             {
                 //모든 투사체 삭제
-                for(int i=0;i<bulletArr.Length;i++)
+                for (int i = 0; i < GetBulletObject("Bullet").GetLength(0); i++)
                 {
-                    Destroy(bulletArr[i]);
+                    Destroy(GetBulletObject("Bullet")[i]);
                 }
-                for (int i = 0; i < redBulletArr.Length; i++)
+                for (int i = 0; i < GetBulletObject("RedBullet").GetLength(0); i++)
                 {
-                    Destroy(redBulletArr[i]);
+                    Destroy(GetBulletObject("GreenBullet")[i]);
                 }
-                for (int i = 0; i < greenBulletArr.Length; i++)
+                for (int i = 0; i < GetBulletObject("GreenBullet").GetLength(0); i++)
                 {
-                    Destroy(greenBulletArr[i]);
+                    Destroy(GetBulletObject("GreenBullet")[i]);
                 }
-                for (int i = 0; i < blueBulletArr.Length; i++)
+                for (int i = 0; i < GetBulletObject("BlueBullet").GetLength(0); i++)
                 {
-                    Destroy(blueBulletArr[i]);
+                    Destroy(GetBulletObject("BlueBullet")[i]);
                 }
 
                 Destroy(gameObject);
                 Debug.Log("플레이어 Bomb");
             }
-            else if(transform.CompareTag("Skull"))
+            else if (transform.CompareTag("Skull"))
             {
-                if(!StageManage.Instance.playerGuard)
+                if (!StageManage.Instance.playerGuard)
                 {
                     StageManage.Instance.StageFailed(); //게임 오버
                 }
-               
+
                 Destroy(gameObject);
                 Debug.Log("플레이어 Skull");
             }
@@ -121,7 +117,7 @@ public class RandomBullet : MonoBehaviour
             {
                 monsterHp.GetDamage(2); //몬스터 hp 2 감소
                 Destroy(gameObject);
-                Debug.Log("몬스터 Fire " +monsterHp.monsterHp);
+                Debug.Log("몬스터 Fire " + monsterHp.monsterHp);
             }
             else if (transform.CompareTag("Bomb"))
             {
@@ -135,8 +131,5 @@ public class RandomBullet : MonoBehaviour
                 Debug.Log("몬스터 Skull " + monsterHp.monsterHp);
             }
         }
-
-       
-
     }
 }

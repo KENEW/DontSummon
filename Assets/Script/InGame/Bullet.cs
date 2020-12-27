@@ -61,8 +61,6 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D coll) //포탈이나 몬스터에 닿으면 destroy
     {
-        SoundManager.Instance.PlaySFX("Tick");
-
         if (coll.gameObject.tag == "Portal")
         {
             player.ChangeFace(1); //angry face
@@ -97,7 +95,10 @@ public class Bullet : MonoBehaviour
             }
             Destroy(gameObject);
         }
-
+        else
+        {
+            SoundManager.Instance.PlaySFX("Tick");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D coll) //타일
@@ -124,10 +125,6 @@ public class Bullet : MonoBehaviour
             //renderer.color = new Color(0f, 0f, 1.0f);
             renderer.sprite = sprites[2];
             gameObject.tag = "BlueBullet";
-        }
-
-       
+        }    
     }
-
-    
 }
