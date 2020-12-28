@@ -148,7 +148,7 @@ public class StageManage : MonoSingleton<StageManage>
 			StageClear.Instance.ScoreResult();
 		}
 
-		MyData.Instance.stageInfo.curStage++;
+		//MyData.Instance.stageInfo.curStage++;
 
 		yield return null;
     }
