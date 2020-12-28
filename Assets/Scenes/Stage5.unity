@@ -1907,7 +1907,7 @@ PrefabInstance:
     - target: {fileID: 8739073824846311187, guid: a8cca219ef0ed9641a36b21b51c20517,
         type: 3}
       propertyPath: monsterScore
-      value: 8
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8cca219ef0ed9641a36b21b51c20517, type: 3}
@@ -2905,7 +2905,7 @@ PrefabInstance:
     - target: {fileID: 8739073824846311187, guid: 3529ff3d0a0de15468794e3c9e6526ed,
         type: 3}
       propertyPath: monsterScore
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3529ff3d0a0de15468794e3c9e6526ed, type: 3}

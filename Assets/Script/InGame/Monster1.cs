@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Monster1 : MonoBehaviour
 {
+    public ParticleSystem hitEffect;
+
     public Image hp;
 
     public GameObject bullet;
@@ -16,7 +18,8 @@ public class Monster1 : MonoBehaviour
 
     //private int monsterHp;
     public int monsterHp;
-    private int monsterMaxHp = 3;
+    [SerializeField]
+    private int monsterMaxHp;
 
     public int monsterScore; //몬스터 피격 점수
 
@@ -37,6 +40,7 @@ public class Monster1 : MonoBehaviour
        
         StartCoroutine(BulletSpawn());
         StartCoroutine(SpawnRandomBullet());
+
     }
     public void Destroyed()
     {
@@ -44,9 +48,10 @@ public class Monster1 : MonoBehaviour
         transform.Find("MonsterCanvas/Hp").gameObject.SetActive(false);
         transform.Find("MonsterCanvas/HpBackground").gameObject.SetActive(false);
 
+        transform.Find("Explosion").gameObject.SetActive(true);
         transform.Find("MonsterCanvas/Face").gameObject.GetComponent<Animator>().SetTrigger("DieTrigger");
         gameObject.GetComponent<Animator>().SetTrigger("DieTrigger");
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
     IEnumerator MonsterChangeFace(Sprite changeSprite)
     {
@@ -79,19 +84,33 @@ public class Monster1 : MonoBehaviour
     {
         if (monsterHp - hpValue <= 0)
         {
+            if(monsterHp-hpValue<0)
+            {
+                Score.Instance.AddScore(monsterScore * (monsterHp+hpValue)); //몬스터 피격 시 점수 획득
+            }
+            else
+            {
+                Score.Instance.AddScore(monsterScore * hpValue); //몬스터 피격 시 점수 획득
+            }
+
             monsterHp = 0;
             SoundManager.Instance.PlaySFX("MonsterDeathSFX");
+            Destroy(gameObject.GetComponent<PolygonCollider2D>());
+            Destroy(gameObject.GetComponent<Rigidbody2D>());
+            hp.fillAmount -= (float)hpValue / monsterMaxHp;
             Destroyed();
         }
+
         else
         {
+            Score.Instance.AddScore(monsterScore * hpValue); //몬스터 피격 시 점수 획득
             monsterHp -= hpValue;
             SoundManager.Instance.PlaySFX("MonsterHitSFX");
+            Instantiate(hitEffect,transform.position, transform.rotation); //hit effect
             StartCoroutine(MonsterChangeFace(monsterFace[1])); //우는 표정
+            hp.fillAmount -= (float)hpValue / monsterMaxHp;
         }
-
-        hp.fillAmount -= (float)hpValue / monsterMaxHp;
-        Score.Instance.AddScore(monsterScore * hpValue); //몬스터 피격 시 점수 획득
+       
     }
     public void RecoveryHp(int hpValue) //회복
     {

@@ -81,8 +81,8 @@ public class ClearManage : MonoBehaviour
         {
             flag = false;
             StageManage.Instance.OnStageClear();
-            time.GetClearTime();
-            score.AddScore(time.clearTime*clearScore);
+            //time.GetClearTime();
+            //score.AddScore(time.clearTime*clearScore);
         }
     }
 }

@@ -331,7 +331,7 @@ PrefabInstance:
     - target: {fileID: 2390895986756703347, guid: d62a79aec17f11b47a1730ff0bcb59fc,
         type: 3}
       propertyPath: monsterScore
-      value: 5
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d62a79aec17f11b47a1730ff0bcb59fc, type: 3}
@@ -437,7 +437,7 @@ PrefabInstance:
     - target: {fileID: 2390895986756703347, guid: d2a55bf71c752d846b4af2f5e00b0987,
         type: 3}
       propertyPath: monsterScore
-      value: 8
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2a55bf71c752d846b4af2f5e00b0987, type: 3}
@@ -1841,7 +1841,7 @@ PrefabInstance:
     - target: {fileID: 2390895986756703347, guid: d2a55bf71c752d846b4af2f5e00b0987,
         type: 3}
       propertyPath: monsterScore
-      value: 8
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2a55bf71c752d846b4af2f5e00b0987, type: 3}
@@ -2270,7 +2270,7 @@ PrefabInstance:
     - target: {fileID: 2390895986756703347, guid: d2a55bf71c752d846b4af2f5e00b0987,
         type: 3}
       propertyPath: monsterScore
-      value: 8
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2a55bf71c752d846b4af2f5e00b0987, type: 3}
