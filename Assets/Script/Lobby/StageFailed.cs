@@ -9,18 +9,24 @@ public class StageFailed : MonoBehaviour
 {
     public LightLoading lightLoading;
 
-    public void OnLobby()
+    public void FailedLobby()
     {
-        Debug.Log("타임스케일"+Time.timeScale);
+        Debug.Log("타임스케일" + Time.timeScale);
+        Time.timeScale = 1;
+        Debug.Log("타임스케일" + Time.timeScale);
         SoundManager.Instance.PlaySFX("Button");
         lightLoading.LoadStart("Lobby");
+
     }
 
-    public void OnReStart()
+    public void FailedRestart()
     {
+        Debug.Log("타임스케일" + Time.timeScale);
+        Time.timeScale = 1;
         Debug.Log("타임스케일"+Time.timeScale);
         SoundManager.Instance.PlaySFX("Button");
         lightLoading.LoadStart("Stage" + (MyData.Instance.stageInfo.curStage).ToString());
+
     }
 
 }

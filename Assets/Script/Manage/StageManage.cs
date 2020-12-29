@@ -124,7 +124,8 @@ public class StageManage : MonoSingleton<StageManage>
     {
 		SoundManager.Instance.PlaySFX("StageClearSFX");
 		playerGuard = true;
-		Time.timeScale = 1;
+
+		Time.timeScale = 0;
 		ClearObj.SetActive(true);
 		yield return new WaitForSecondsRealtime(3f);
 		ClearObj.SetActive(false);
@@ -148,14 +149,14 @@ public class StageManage : MonoSingleton<StageManage>
 			StageClear.Instance.ScoreResult();
 		}
 
-		//MyData.Instance.stageInfo.curStage++;
+		MyData.Instance.stageInfo.curStage++;
 
 		yield return null;
     }
 
 	IEnumerator GameOver()
     {
-		Time.timeScale = 1;
+		//Time.timeScale = 0;
 		FailedObj.SetActive(true);
 		yield return new WaitForSecondsRealtime(3f);
 		FailedObj.SetActive(false);
@@ -182,6 +183,5 @@ public class StageManage : MonoSingleton<StageManage>
 		int nextScene = curScene + 1;
 		SceneManager.LoadScene("Stage" + nextScene);
 	}
-
 
 }

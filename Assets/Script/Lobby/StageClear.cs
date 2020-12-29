@@ -41,8 +41,9 @@ public class StageClear : MonoSingleton<StageClear>
     }
     public void OnNextStage()   //다음 스테이지
     {
+        Time.timeScale = 1;
         SoundManager.Instance.PlaySFX("Button");
-        lightLoading.LoadStart("Stage" + (MyData.Instance.stageInfo.curStage + 1).ToString());
+        lightLoading.LoadStart("Stage" + (MyData.Instance.stageInfo.curStage).ToString());
     }
     public void GetRemainTime(int time) //남은 시간 받아오기
     {

@@ -44,6 +44,12 @@ public class Monster1 : MonoBehaviour
     }
     public void Destroyed()
     {
+        StopCoroutine(BulletSpawn());
+        StopCoroutine(SpawnRandomBullet());
+
+        Destroy(gameObject.GetComponent<PolygonCollider2D>());
+        Destroy(gameObject.GetComponent<Rigidbody2D>());
+
         monsterFaceRenderer.sprite = monsterFace[2];
         transform.Find("MonsterCanvas/Hp").gameObject.SetActive(false);
         transform.Find("MonsterCanvas/HpBackground").gameObject.SetActive(false);
@@ -61,28 +67,25 @@ public class Monster1 : MonoBehaviour
     }
     IEnumerator BulletSpawn()
     {
-        while(true)
+        while(monsterHp>0)
         {
-            if(monsterHp>0)
-            {
-                yield return new WaitForSeconds(0.1f);
-                Instantiate(bullet, bulletPos, Quaternion.identity);
-                yield return new WaitForSeconds(waitingTime);
-            }
+            yield return new WaitForSeconds(0.1f);
+            Instantiate(bullet, bulletPos, Quaternion.identity);
+            yield return new WaitForSeconds(waitingTime);
         }
     }
     IEnumerator SpawnRandomBullet() //특수 투사체 생성
     {
-        while(true)
+        while(monsterHp>0)
         {
-            int randTime = (int)Random.Range(5, 10);
+            int randTime = (int)Random.Range(15, 20);
             yield return new WaitForSeconds(randTime);
             Instantiate(randomBullet[Random.Range(0, 4)], bulletPos, Quaternion.identity);
         }
     }
     public void GetDamage(int hpValue)
     {
-        if (monsterHp - hpValue <= 0)
+        if (monsterHp - hpValue <= 0) //몬스터 죽음
         {
             if(monsterHp-hpValue<0)
             {
@@ -94,10 +97,9 @@ public class Monster1 : MonoBehaviour
             }
 
             monsterHp = 0;
+            hp.fillAmount =0;
             SoundManager.Instance.PlaySFX("MonsterDeathSFX");
-            Destroy(gameObject.GetComponent<PolygonCollider2D>());
-            Destroy(gameObject.GetComponent<Rigidbody2D>());
-            hp.fillAmount -= (float)hpValue / monsterMaxHp;
+            
             Destroyed();
         }
 

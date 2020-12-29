@@ -13,6 +13,8 @@ public class LightLoading : MonoBehaviour
 
 	public void LoadStart(string sceneName)
 	{
+		Time.timeScale = 1;
+		Debug.Log("타임스케일" + Time.timeScale);
 		loadingPanel.SetActive(true);
 		StartCoroutine(Loading(sceneName));
 	}

@@ -216,7 +216,7 @@ PrefabInstance:
     - target: {fileID: 8739073824846311187, guid: 3529ff3d0a0de15468794e3c9e6526ed,
         type: 3}
       propertyPath: monsterMaxHp
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8739073824846311187, guid: 3529ff3d0a0de15468794e3c9e6526ed,
         type: 3}
@@ -473,6 +473,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6389073711131076847, guid: 4de5dfd894632e142a8c059d231316ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FailedRestart
+      objectReference: {fileID: 0}
+    - target: {fileID: 7466313449511911904, guid: 4de5dfd894632e142a8c059d231316ee,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FailedLobby
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4de5dfd894632e142a8c059d231316ee, type: 3}
