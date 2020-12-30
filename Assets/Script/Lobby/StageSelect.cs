@@ -16,9 +16,6 @@ public class StageSelect : MonoBehaviour
     public Text stageNameText;
     public Text storyText;
 
-    public Button rightButton;
-    public Button leftButton;
-
     [SerializeField]
     private float scrollPos = 0;
     [SerializeField]
@@ -93,30 +90,5 @@ public class StageSelect : MonoBehaviour
         storyText.text = stageStory[curStage];
         highScoreText.text = MyData.Instance.stageScore[curStage] + "";
         stageNameText.text = stageName[curStage];
-    }
-    public void NextStageButton()
-    {
-        if (curStage < contentPos.GetLength(0))
-        {
-            curStage++;
-            rightButton.interactable = true;
-            scrollBar.GetComponent<Scrollbar>().value = Mathf.Lerp(scrollBar.GetComponent<Scrollbar>().value, contentPos[curStage], 0.1f);
-        }
-        else
-        {
-            rightButton.interactable = false;
-        }
-    }
-    public void PrevStageButton()
-    {
-        if (curStage > 0)
-        {
-            curStage--;
-            leftButton.interactable = false;
-        }
-        else
-        {
-            leftButton.interactable = false;
-        }
     }
 }

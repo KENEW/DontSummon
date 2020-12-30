@@ -22,7 +22,7 @@ public class StageManage : MonoSingleton<StageManage>
 	public Text chapterText;
 
 	public bool gameState = false;
-	public bool playerGuard = false;
+	public bool playing = true;
 
 	public int curStage;
 
@@ -35,7 +35,15 @@ public class StageManage : MonoSingleton<StageManage>
 
 		chapterText.text =  MyData.Instance.stageInfo.curChapter + "";
 		stageText.text =	MyData.Instance.stageInfo.curStage + "" ;
-	}	
+	}
+	private void Update()
+	{
+		//Test
+		if (Input.GetKeyDown(KeyCode.Y))
+		{
+			OnStageClear();
+		}
+	}
 	public void GameStateTrue()
     {
 		gameState = true;
@@ -83,11 +91,7 @@ public class StageManage : MonoSingleton<StageManage>
 				//SceneManager.LoadScene("Stage5");
 				break;
 		}
-
 	}
-
-
-
 	public void OnStageClear()
 	{
 		//SoundManager.instance.PlaySFX("Clear");
@@ -112,27 +116,39 @@ public class StageManage : MonoSingleton<StageManage>
 
 		StartCoroutine(GameOver());
 	}
-	private void Update()
+	public void BulletAllDestory()
 	{
-		if(Input.GetKeyDown(KeyCode.Y))
+		GameObject[] t_bullet_red = GameObject.FindGameObjectsWithTag("RedBullet");
+		GameObject[] t_bullet_blue = GameObject.FindGameObjectsWithTag("BlueBullet");
+		GameObject[] t_bullet_green = GameObject.FindGameObjectsWithTag("GreenBullet");
+
+		for(int i = 0; i < t_bullet_red.GetLength(0); i++)
 		{
-			OnStageClear();
+			Destroy(t_bullet_red[i]);
+		}
+		for (int i = 0; i < t_bullet_blue.GetLength(0); i++)
+		{
+			Destroy(t_bullet_blue[i]);
+		}
+		for (int i = 0; i < t_bullet_green.GetLength(0); i++)
+		{
+			Destroy(t_bullet_green[i]);
 		}
 	}
 
 	IEnumerator Clear()
     {
 		SoundManager.Instance.PlaySFX("StageClearSFX");
-		playerGuard = true;
+		playing = false;
 
-		Time.timeScale = 0;
+		BulletAllDestory();
+		TimeLimit.Instance.StopRegular();
+		Time.timeScale = 1;
+
 		ClearObj.SetActive(true);
 		yield return new WaitForSecondsRealtime(3f);
 		ClearObj.SetActive(false);
-
 		ClearScreen.SetActive(true);
-		Debug.Log(StageClear.Instance);
-
 
 		if(MyData.Instance.stageInfo.curStage >= 4)
 		{
@@ -150,7 +166,6 @@ public class StageManage : MonoSingleton<StageManage>
 		}
 
 		MyData.Instance.stageInfo.curStage++;
-
 		yield return null;
     }
 

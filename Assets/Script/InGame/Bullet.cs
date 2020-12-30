@@ -8,7 +8,6 @@ public class Bullet : MonoBehaviour
     private SpriteRenderer renderer;
     public Sprite[] sprites;
 
-
     [SerializeField]
     private Vector2 curDir = new Vector2(1f, 0.5f);
 
@@ -17,7 +16,6 @@ public class Bullet : MonoBehaviour
 
     PlayerHp playerHp;
     Player player;
-
 
     void Start()
     {
@@ -28,9 +26,7 @@ public class Bullet : MonoBehaviour
 
         //포탈을 향해 이동
         rigid.velocity = new Vector2(-rigid.transform.position.x * moveSpeed, -(rigid.transform.position.y+4.27f) * moveSpeed);
-
     }
-
    void FixedUpdate()
     {
         if(rigid.velocity.x>2f)
@@ -51,14 +47,10 @@ public class Bullet : MonoBehaviour
             rigid.velocity = new Vector2(rigid.velocity.x, -2f);
         }
     }
-  
-   
     public void SetPower(float powerValue)
     {
         power = powerValue;
     }
-
-
     private void OnCollisionEnter2D(Collision2D coll) //포탈이나 몬스터에 닿으면 destroy
     {
         if (coll.gameObject.tag == "Portal")
@@ -100,7 +92,6 @@ public class Bullet : MonoBehaviour
             SoundManager.Instance.PlaySFX("Tick");
         }
     }
-
     private void OnTriggerEnter2D(Collider2D coll) //타일
     {
         if(coll.CompareTag("RedTile"))

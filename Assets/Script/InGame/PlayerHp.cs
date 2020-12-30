@@ -73,7 +73,7 @@ public class PlayerHp : MonoSingleton<PlayerHp>
 
 	public void GetDamage(int hpValue) //데미지
 	{
-		if(!StageManage.Instance.playerGuard)
+		if(!StageManage.Instance.playing)
 		{
 			if (curHp - hpValue <= 0)
 			{

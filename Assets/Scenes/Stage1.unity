@@ -1737,7 +1737,7 @@ MonoBehaviour:
   stageText: {fileID: 394619882}
   chapterText: {fileID: 1730509208}
   gameState: 0
-  playerGuard: 0
+  playing: 1
   curStage: 0
 --- !u!1 &1139076302
 GameObject:
@@ -2998,6 +2998,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8554835725013775333}
     m_Modifications:
+    - target: {fileID: 8145098958194495106, guid: d3b96f7a8db93fc49a5a1482756aa122,
+        type: 3}
+      propertyPath: m_Text
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8145098958511977625, guid: d3b96f7a8db93fc49a5a1482756aa122,
+        type: 3}
+      propertyPath: m_Text
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8145098959606608356, guid: d3b96f7a8db93fc49a5a1482756aa122,
         type: 3}
       propertyPath: lightLoading
@@ -3116,6 +3126,11 @@ PrefabInstance:
     - target: {fileID: 8145098959606608358, guid: d3b96f7a8db93fc49a5a1482756aa122,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8145098960022677363, guid: d3b96f7a8db93fc49a5a1482756aa122,
+        type: 3}
+      propertyPath: m_Text
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

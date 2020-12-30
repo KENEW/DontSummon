@@ -5,30 +5,24 @@ using UnityEngine.UI;
 
 public class TimeLimit : MonoSingleton<TimeLimit>
 {
+	public PlayerHp playerHp;
+
 	public Image hpGauge;
 	public Image hpGaugeBack;
 	public Text curTimeText;
 
-	
-	private float curTime;
 	[SerializeField]
 	private float maxTime;
-
+	private float curTime;
 	public int clearTime;
 
-	PlayerHp playerHp;
-
-	private bool backHpDamage = false;
-	int flag = 0;
+	private Coroutine regularCo;
 
 	private void Start()
 	{
 		playerHp = GameObject.Find("HpPanel").GetComponent<PlayerHp>();
-		//maxTime = 60f;
 		curTime = maxTime;
-		StartCoroutine(Regular());
-
-		
+		regularCo = StartCoroutine(Regular());
 	}
 	private void Update()
 	{
@@ -53,27 +47,20 @@ public class TimeLimit : MonoSingleton<TimeLimit>
 			StageManage.Instance.StageFailed();
 		}
 	}
-
-	private void BackHpRun()
-	{
-		backHpDamage = true;
-	}
-
 	IEnumerator Regular()
 	{
 		while(curTime > 0.0f)
 		{
 			yield return new WaitForSeconds(1f);
 			curTime -= 1f;
-			curTimeText.text = (int)curTime + "";
-			Invoke("BackHpRun", 0.1f);
 		}
 	}
-
+	public void StopRegular()
+	{
+		StopCoroutine(regularCo);
+	}
 	public int GetClearTime()
     {
 		return (int)curTime;
     }
-
-	
 }
