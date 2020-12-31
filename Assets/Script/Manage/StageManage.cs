@@ -125,7 +125,7 @@ public class StageManage : MonoSingleton<StageManage>
 		SoundManager.Instance.PlaySFX("StageClearSFX");
 		playerGuard = true;
 
-		Time.timeScale = 0;
+		//Time.timeScale = 0;
 		ClearObj.SetActive(true);
 		yield return new WaitForSecondsRealtime(3f);
 		ClearObj.SetActive(false);
