@@ -93,7 +93,7 @@ public class RandomBullet : MonoBehaviour
             }
             else if (transform.CompareTag("Skull"))
             {
-                if (!StageManage.Instance.playerGuard)
+                if (!StageManage.Instance.playing)
                 {
                     StageManage.Instance.StageFailed(); //게임 오버
                 }
