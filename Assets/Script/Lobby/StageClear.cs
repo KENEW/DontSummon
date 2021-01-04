@@ -18,20 +18,15 @@ public class StageClear : MonoSingleton<StageClear>
     private int acquireScore = 0;
     private int totalScore = 0;
 
-    private int SET_HEALTH_UP = 50;     //점수로 변환 기준
-    private int SET_RE_TIME_UP = 30;
+    private const int SET_HEALTH_UP = 50;
+    private const int SET_RE_TIME_UP = 10;
 
     private void Update()
     {
         //Test
         if (Input.GetKeyDown(KeyCode.T))
         {
-            InitScore();
-            GetaquireScore(5000);
-            GetRemainTime(60);
-            GetRemainHealth(3);
-
-            ScoreResult();
+            ScoreResult(5000, 300, 200);
         }
     }
     private void OnEnable()
@@ -39,33 +34,25 @@ public class StageClear : MonoSingleton<StageClear>
         SoundManager.Instance.PlaySFX("StageResultSFX");
         SoundManager.Instance.PlayBGM("StageResultBGM");
     }
-    public void OnNextStage()   //다음 스테이지
+    public void OnNextStage()
     {
         Time.timeScale = 1;
         SoundManager.Instance.PlaySFX("Button");
-        lightLoading.LoadStart("Stage" + (MyData.Instance.stageInfo.curStage).ToString());
+        lightLoading.LoadStart(SceneManager.GetActiveScene().name);
     }
-    public void GetRemainTime(int time) //남은 시간 받아오기
-    {
-        remainTime = time;
-    }
-    public void GetRemainHealth(int health) //남은 체력 받아오기
-    {
-        remainHealth = health;
-    }
-    public void GetaquireScore(int score)   //게임하는 도중에서 얻은 스코어
-    {
-        acquireScore = score;
-    }
-    private void InitScore()    //얻은 점수 초기화
+    private void InitScore()
     {
         remainTime = 0;
         remainHealth = 0;
         acquireScore = 0;
         totalScore = 0;
     }
-    public void ScoreResult()  //스코어 계산 ( 점수 계산 시작)
+    public void ScoreResult(int time, int health, int score)
     {
+        remainTime = time;
+        remainHealth = health;
+        acquireScore = score;
+
         totalScore += remainHealth * SET_HEALTH_UP;
         totalScore += remainTime * SET_RE_TIME_UP;
         totalScore += acquireScore;
@@ -74,7 +61,7 @@ public class StageClear : MonoSingleton<StageClear>
 
         StartCoroutine(CountSequence());
     }
-    private IEnumerator CountSequence() //숫자 카운팅 시퀀스
+    private IEnumerator CountSequence()
     {
         float delay = 0.4f;
 

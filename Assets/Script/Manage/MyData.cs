@@ -26,13 +26,7 @@ public class MyData : SceneSingleTon<MyData>
     public StageInfo stageInfo = new StageInfo();
     public bool isLoginCheck = false;
 
-	private void Start()
-	{
-        InitState();
-
-    }
-	//test
-	public void DataEdit()
+	public void DataEdit()  //test
     {
         stageScore[0] = 300;
         stageScore[1] = 500;
@@ -43,7 +37,6 @@ public class MyData : SceneSingleTon<MyData>
     public void InitState()
     {
         stageInfo.curStage = 1;
-        stageInfo.curChapter = 1;
         stageInfo.curHp = 3;
         stageInfo.curTIme = 60;
         stageInfo.curScore = 0;

@@ -21,7 +21,7 @@ public class StageSelect : MonoBehaviour
     [SerializeField]
     private float[] contentPos;
 
-    public int curStage = 0;
+    public int curChapter = 0;
 
     public Vector2 selectScaleFalse = new Vector3(0.7f, 0.7f);
     public Vector2 selectScaleTrue = new Vector3(0.55f, 0.55f);
@@ -29,7 +29,6 @@ public class StageSelect : MonoBehaviour
     public string[] stageStory = new string[3];
     public string[] stageName = new string[3];
     public int[] highScore = new int[3];
-
 
     private void Update()
     {
@@ -51,14 +50,13 @@ public class StageSelect : MonoBehaviour
             {
                 if (scrollPos < (contentPos[i] + (distance / 2.0f)) && (scrollPos > contentPos[i] - (distance / 2.0f)))
                 {
-                    curStage = i;
+                    curChapter = i;
                     UIUpdate();
-                    stageNumText.text = (curStage + 1) + "";
+                    stageNumText.text = (curChapter + 1) + "";
                     scrollBar.GetComponent<Scrollbar>().value = Mathf.Lerp(scrollBar.GetComponent<Scrollbar>().value, contentPos[i], 0.1f);
                 }
             }
         }
-
         for (int i = 0; i < contentPos.Length; i++)
         {
             if (scrollPos < (contentPos[i] + (distance / 2.0f)) && (scrollPos > contentPos[i] - (distance / 2.0f)))
@@ -73,6 +71,7 @@ public class StageSelect : MonoBehaviour
     }
     public void StageSelectButton()
     {
+        MyData.Instance.stageInfo.curChapter = curChapter + 1;
         SoundManager.Instance.PlaySFX("Button");
 
         stageSelectPanel.SetActive(false);
@@ -87,8 +86,8 @@ public class StageSelect : MonoBehaviour
     }
     private void UIUpdate()
     {
-        storyText.text = stageStory[curStage];
-        highScoreText.text = MyData.Instance.stageScore[curStage] + "";
-        stageNameText.text = stageName[curStage];
+        storyText.text = stageStory[curChapter];
+        highScoreText.text = MyData.Instance.stageScore[curChapter] + "";
+        stageNameText.text = stageName[curChapter];
     }
 }

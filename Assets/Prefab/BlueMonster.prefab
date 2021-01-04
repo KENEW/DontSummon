@@ -83,14 +83,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1520956309726254025}
+  - component: {fileID: 953361384244216202}
+  - component: {fileID: 1292927723757640780}
   - component: {fileID: 1520956309726254030}
   - component: {fileID: 125807092913109158}
-  - component: {fileID: 2390895986756703347}
   - component: {fileID: 6575201081598021998}
   - component: {fileID: 5817448891341068746}
   m_Layer: 0
   m_Name: BlueMonster
-  m_TagString: BlueMonster
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,6 +112,54 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &953361384244216202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520956309726254024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc3a0f3b63ba6e24bb294c30fa3570bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomBulletPre:
+  - {fileID: 5567514128373307102, guid: be199be9867101c4e971eb97261b3289, type: 3}
+  - {fileID: 6564517405985520474, guid: 9f24e77cc77d634439a7197546b378e1, type: 3}
+  - {fileID: 107732889114567035, guid: fcaec969288f04a4f857ca37b9c31028, type: 3}
+  - {fileID: 6692823952648815766, guid: e90cf71204e40764bb0ba04014d2ced9, type: 3}
+  bulletPre: {fileID: 8293981335406364551, guid: 07ce1f4e05c21b64b96ad036bd191dc0,
+    type: 3}
+  hitEffect: {fileID: 19800000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
+  dieEffect: {fileID: 198681264470032530, guid: aa8d6482d70a23445b4b2a928ed1b845,
+    type: 3}
+  monsterFace:
+  - {fileID: 21300000, guid: 8b5e6ae62c196014192f10f14b755ed1, type: 3}
+  - {fileID: 21300000, guid: 8b5e6ae62c196014192f10f14b755ed1, type: 3}
+  - {fileID: 21300000, guid: 8b5e6ae62c196014192f10f14b755ed1, type: 3}
+  maxHp: 4
+  acuireScore: 500
+  typeColor: 2
+  hpbarParent: {fileID: 0}
+  hpBarPre: {fileID: 0}
+  hpBarImg: {fileID: 0}
+  animator: {fileID: 6575201081598021998}
+  spriteOutline: {fileID: 1292927723757640780}
+--- !u!114 &1292927723757640780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520956309726254024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd7219d6ecb668c4d82d88486d27442e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 1, g: 1, b: 1, a: 1}
+  outlineSize: 0
 --- !u!212 &1520956309726254030
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -129,7 +178,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d2d201b1733c7314994adb82a4d9f7d2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -182,35 +231,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2390895986756703347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1520956309726254024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccaffa21bb4a3854a94f9a94ca5e0953, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitEffect: {fileID: 19800000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
-  hp: {fileID: 171521720299943090}
-  bullet: {fileID: 8293981335406364551, guid: 07ce1f4e05c21b64b96ad036bd191dc0, type: 3}
-  randomBullet:
-  - {fileID: 5567514128373307102, guid: be199be9867101c4e971eb97261b3289, type: 3}
-  - {fileID: 6564517405985520474, guid: 9f24e77cc77d634439a7197546b378e1, type: 3}
-  - {fileID: 107732889114567035, guid: fcaec969288f04a4f857ca37b9c31028, type: 3}
-  - {fileID: 6692823952648815766, guid: e90cf71204e40764bb0ba04014d2ced9, type: 3}
-  monsterFace:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  monsterHp: 0
-  monsterMaxHp: 3
-  monsterScore: 0
-  fadeTime: 1
-  waitingTime: 4
 --- !u!95 &6575201081598021998
 Animator:
   serializedVersion: 3

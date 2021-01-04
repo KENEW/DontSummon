@@ -5,193 +5,257 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 
+public enum GameState
+{
+	Ready,
+	Play,
+	Pause,
+	Clear,
+	Failed
+}
+	
 public class StageManage : MonoSingleton<StageManage>
 {
 	public Animator animator;
 
-	public GameObject ClearObj;
-	public GameObject FailedObj;
+	public GameObject readyScreen;
+	public GameObject clearPanel;
+	public GameObject clearScreen;
+	public GameObject clearChapterPanel;
+	public GameObject failedPanel;
+	public GameObject failedScreen;
 
-	public GameObject ClearScreen;
-	public GameObject FailedScreen;
-
-	public GameObject StartPanel;
-	public GameObject PauseBtn;
+	public Image bgImg;
+	public Sprite[] bgSpr;
 
 	public Text stageText;
 	public Text chapterText;
 
-	public bool gameState = false;
-	public bool playing = true;
+	private GameState gameState;
 
-	public int curStage;
+	public int curMonster = 0;
 
 	private void Start()
 	{
-		Time.timeScale = 0;
-		curStage = 1;
-		StartCoroutine("GameStart");
-		StageInit();
-
-		chapterText.text =  MyData.Instance.stageInfo.curChapter + "";
-		stageText.text =	MyData.Instance.stageInfo.curStage + "" ;
+		StateChange(GameState.Ready);
 	}
 	private void Update()
 	{
 		//Test
 		if (Input.GetKeyDown(KeyCode.Y))
 		{
-			OnStageClear();
+			StateChange(GameState.Clear);
 		}
 	}
-	public void GameStateTrue()
-    {
-		gameState = true;
-		Time.timeScale = 1;
-    }
-	public void GameStateFalse()
-    {
-		gameState = false;
-		Time.timeScale = 0;
-    }
-
-	IEnumerator GameStart()
+	public void StateChange(GameState state)
 	{
+		switch (state)
+		{
+			case GameState.Ready:
+				StageInit();
+				Score.Instance.ScoreInit();
+				StartCoroutine("GameReadyCo");
+				break;
+			case GameState.Play:
+				Time.timeScale = 1;
+				break;
+			case GameState.Pause:
+				Time.timeScale = 0;
+				break;
+			case GameState.Clear:
+				MyData.Instance.stageInfo.curHp = PlayerHp.Instance.GetHp();
+				StartCoroutine(Clear());
+				break;
+			case GameState.Failed:
+				StartCoroutine(GameOver());
+				break;
+		}
+
+		gameState = state;
+	}
+	public GameState GetGameState()
+	{
+		return gameState;
+	}
+	IEnumerator GameReadyCo()
+	{
+		Time.timeScale = 0;
+
+		chapterText.text = MyData.Instance.stageInfo.curChapter + "";
+		stageText.text = MyData.Instance.stageInfo.curStage + "";
+
 		yield return new WaitForSecondsRealtime(0.4f);
+
 		animator.SetTrigger("Start");
 		SoundManager.Instance.PlaySFX("GameReady");
 		SoundManager.Instance.PlayBGM("Stage1BGM");
 		
 		yield return new WaitForSecondsRealtime(6.3f);
 
-		StartPanel.gameObject.transform.DOMoveY(1.0f, 3f).OnComplete(() => { StartPanel.SetActive(false);});	//Delay CallBack
-		Time.timeScale = 1;
-
-		PauseBtn.SetActive(true);
+		readyScreen.transform.DOMoveY(1.0f, 3f).OnComplete(() => { readyScreen.SetActive(false);});   //Delay CallBack
+		StateChange(GameState.Play);
 	}
-
-
 	private void StageInit()
 	{
-		switch (curStage)
+		bgImg.sprite = bgSpr[MyData.Instance.stageInfo.curChapter - 1];
+
+		switch (MyData.Instance.stageInfo.curChapter)
 		{
 			case 1:
-				//SceneManager.LoadScene("Stage1");
+				switch (MyData.Instance.stageInfo.curStage)
+				{
+					case 1:
+						MonsterManager.Instance.MonsterCreate(MonsterType.GreenMonster, 1.71f, 2.08f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.RedMonster, -2.0f, 2.17f);
+						break;
+					case 2:
+						MonsterManager.Instance.MonsterCreate(MonsterType.GreenMonster, -1.96f, 2.08f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.RedMonster, -0.12f, 2.65f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.BlueMonster, 1.99f, 2.28f);
+						break;
+					case 3:
+						MonsterManager.Instance.MonsterCreate(MonsterType.Boss1, -0.12f, 2.65f);
+						break;
+					case 4:
+						MonsterManager.Instance.MonsterCreate(MonsterType.GreenMonster, -1.94f, 2.23f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.GreenMonster, -0.14f, 2.88f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.BlueMonster, 1.65f, 2.32f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.GreenMonster, 1.94f, -1.11f);
+						break;
+					case 5:
+						MonsterManager.Instance.MonsterCreate(MonsterType.Boss2, 1.53f, 2.45f);
+						break;
+				}
 				break;
 			case 2:
-				//SceneManager.LoadScene("Stage2");
+				switch (MyData.Instance.stageInfo.curStage)
+				{
+					case 1:
+						MonsterManager.Instance.MonsterCreate(MonsterType.Boss2, 1.71f, 2.08f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.RedMonster, -2.0f, 2.17f);
+						break;
+					case 2:
+						MonsterManager.Instance.MonsterCreate(MonsterType.GreenMonster, -1.96f, 2.08f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.RedMonster, -0.12f, 2.65f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.BlueMonster, 1.99f, 2.28f);
+						break;
+					case 3:
+						MonsterManager.Instance.MonsterCreate(MonsterType.Boss1, -0.12f, 2.65f);
+						break;
+					case 4:
+						MonsterManager.Instance.MonsterCreate(MonsterType.GreenMonster, -1.94f, 2.23f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.GreenMonster, -0.14f, 2.88f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.BlueMonster, 1.65f, 2.32f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.GreenMonster, 1.94f, -1.11f);
+						break;
+					case 5:
+						MonsterManager.Instance.MonsterCreate(MonsterType.Boss2, 1.53f, 2.45f);
+						break;
+				}
 				break;
 			case 3:
-				//SceneManager.LoadScene("Stage3");
-				break;
-			case 4:
-				//SceneManager.LoadScene("Stage4");
-				break;
-			case 5:
-				//SceneManager.LoadScene("Stage5");
+				switch (MyData.Instance.stageInfo.curStage)
+				{
+					case 1:
+						MonsterManager.Instance.MonsterCreate(MonsterType.GreenMonster, 1.71f, 2.08f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.RedMonster, -2.0f, 2.17f);
+						break;
+					case 2:
+						MonsterManager.Instance.MonsterCreate(MonsterType.GreenMonster, -1.96f, 2.08f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.RedMonster, -0.12f, 2.65f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.BlueMonster, 1.99f, 2.28f);
+						break;
+					case 3:
+						MonsterManager.Instance.MonsterCreate(MonsterType.Boss1, -0.12f, 2.65f);
+						break;
+					case 4:
+						MonsterManager.Instance.MonsterCreate(MonsterType.GreenMonster, -1.94f, 2.23f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.GreenMonster, -0.14f, 2.88f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.BlueMonster, 1.65f, 2.32f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.GreenMonster, 1.94f, -1.11f);
+						break;
+					case 5:
+						MonsterManager.Instance.MonsterCreate(MonsterType.Boss2, 1.53f, 2.45f);
+						break;
+				}
 				break;
 		}
-	}
-	public void OnStageClear()
-	{
-		//SoundManager.instance.PlaySFX("Clear");
-		//gameState = false;
-		//StartCoroutine("GameEnd");
-		//SceneManager.LoadScene("Lobby");
-		//Invoke("LoadNextScene", 2f);
-		//StartCoroutine("LoadNextScene");
 
-		StartCoroutine(Clear());
-	}
-
-	public void StageFailed()
-	{
-		//SoundManager.instance.PlaySFX("Failed");
-		//gameState = false;
-		//StartCoroutine("GameEnd");
-		//Invoke("LoadSceneLobby",2f);
-		//StartCoroutine("LoadSceneLobby");
-		//yield return new WaitForSeconds(2.0f);
-		//SceneManager.LoadScene("TestScene");
-
-		StartCoroutine(GameOver());
+		curMonster = MonsterCheck();
 	}
 	public void BulletAllDestory()
 	{
-		GameObject[] t_bullet_red = GameObject.FindGameObjectsWithTag("RedBullet");
-		GameObject[] t_bullet_blue = GameObject.FindGameObjectsWithTag("BlueBullet");
-		GameObject[] t_bullet_green = GameObject.FindGameObjectsWithTag("GreenBullet");
+		GameObject[] Bullet = GameObject.FindGameObjectsWithTag("Bullet");
 
-		for(int i = 0; i < t_bullet_red.GetLength(0); i++)
+		for(int i = 0; i < Bullet.GetLength(0); i++)
 		{
-			Destroy(t_bullet_red[i]);
-		}
-		for (int i = 0; i < t_bullet_blue.GetLength(0); i++)
-		{
-			Destroy(t_bullet_blue[i]);
-		}
-		for (int i = 0; i < t_bullet_green.GetLength(0); i++)
-		{
-			Destroy(t_bullet_green[i]);
+			Destroy(Bullet[i]);
 		}
 	}
+	public void MonsterAllDestory()
+	{
+		GameObject[] monster = GameObject.FindGameObjectsWithTag("Monster");
 
+		for(int i = 0; i < monster.GetLength(0); i++)
+		{
+			Destroy(monster[i]);
+		}
+	}
 	IEnumerator Clear()
     {
+		Time.timeScale = 0;
 		SoundManager.Instance.PlaySFX("StageClearSFX");
-		playing = false;
 
 		BulletAllDestory();
+		MonsterAllDestory();
+
 		TimeLimit.Instance.StopRegular();
+
 		Time.timeScale = 1;
-
-		//Time.timeScale = 0;
-		ClearObj.SetActive(true);
+		clearPanel.SetActive(true);
 		yield return new WaitForSecondsRealtime(3f);
-		ClearObj.SetActive(false);
-		ClearScreen.SetActive(true);
+		clearPanel.SetActive(false);
 
-		if(MyData.Instance.stageInfo.curStage >= 4)
+
+		if(MyData.Instance.stageInfo.curStage == 5)
 		{
-			GameResult.Instance.GetRemainTime(TimeLimit.Instance.GetClearTime());
-			GameResult.Instance.GetRemainHealth(PlayerHp.Instance.GetHp());
-			GameResult.instance.GetaquireScore(Score.Instance.GetScore());
-			GameResult.Instance.ScoreResult();
+			clearChapterPanel.SetActive(true);
+			GameResult.Instance.ScoreResult(TimeLimit.Instance.GetClearTime(), PlayerHp.Instance.GetHp(), Score.Instance.GetScore());
 		}
 		else
 		{
-			StageClear.Instance.GetRemainTime(TimeLimit.Instance.GetClearTime());
-			StageClear.Instance.GetRemainHealth(PlayerHp.Instance.GetHp());
-			StageClear.instance.GetaquireScore(Score.Instance.GetScore());
-			StageClear.Instance.ScoreResult();
+			clearScreen.SetActive(true);
+			StageClear.Instance.ScoreResult(TimeLimit.Instance.GetClearTime(), PlayerHp.Instance.GetHp(), Score.Instance.GetScore());
 		}
 
 		MyData.Instance.stageInfo.curStage++;
-		yield return null;
-    }
-
+	}
 	IEnumerator GameOver()
     {
-		//Time.timeScale = 0;
-		FailedObj.SetActive(true);
-		yield return new WaitForSecondsRealtime(3f);
-		FailedObj.SetActive(false);
-		FailedScreen.SetActive(true);
-		yield return null;
-	}
+		TimeLimit.Instance.StopRegular();
+		Time.timeScale = 0;
 
+		SoundManager.Instance.PlaySFX("GameReady");
+
+		BulletAllDestory();
+		MonsterAllDestory();
+
+		failedPanel.SetActive(true);
+		yield return new WaitForSecondsRealtime(3f);
+		Time.timeScale = 1;
+
+		failedPanel.SetActive(false);
+		failedScreen.SetActive(true);
+	}
 	IEnumerator LoadSceneLobby()
 	{
 		Time.timeScale = 0;
 		yield return new WaitForSecondsRealtime(4f);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-		//SceneManager.LoadScene("Lobby");
 	}
-
 	IEnumerator LoadNextScene()
     {
 		Time.timeScale = 0;
-		//점수 계산
 		yield return new WaitForSecondsRealtime(4f);
 	
 		Scene scene = SceneManager.GetActiveScene();
@@ -199,5 +263,20 @@ public class StageManage : MonoSingleton<StageManage>
 		int nextScene = curScene + 1;
 		SceneManager.LoadScene("Stage" + nextScene);
 	}
+	public int MonsterCheck()
+	{
+		GameObject[] monster = GameObject.FindGameObjectsWithTag("Monster");
+		Debug.Log("감지된 몬스터 수 : " + monster.GetLength(0));
+		return monster.GetLength(0);
+	}
+	public void MonsterDestory()
+	{
+		curMonster--;
+		Debug.Log("삭제 된 후 수 : " + curMonster);
 
+		if (curMonster <= 0)
+		{
+			StateChange(GameState.Clear);
+		}
+	}
 }

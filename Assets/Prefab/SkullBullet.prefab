@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 8693659544284729789}
   - component: {fileID: 7166015931782628292}
   - component: {fileID: 1420639527732397010}
-  - component: {fileID: 6067714089135873036}
+  - component: {fileID: 2548274579305411688}
   m_Layer: 0
   m_Name: SkullBullet
-  m_TagString: Skull
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,7 +121,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &6067714089135873036
+--- !u!114 &2548274579305411688
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,11 +130,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6692823952648815766}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4152073d488f9a49a85ffc36f7b32f0, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f64ef92afbe531488cf3bba52760d73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigid: {fileID: 1420639527732397010}
-  bulletArr: []
-  redBulletArr: []
-  greenBulletArr: []
-  blueBulletArr: []
+  sprites:
+  - {fileID: 21300000, guid: 8497ae9e3c291114c980e04e299b09c7, type: 3}
+  - {fileID: 21300000, guid: 14adbd7031605eb4781d7b3df2f1e74f, type: 3}
+  - {fileID: 21300000, guid: eb7a7ca2bd768b6449b7f9a1e34f3751, type: 3}
+  curDir: {x: 1, y: 0.5}

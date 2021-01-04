@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 8630855863475406103}
   - component: {fileID: 6801884265504495631}
   - component: {fileID: 5066904758527489222}
-  - component: {fileID: 1475045997420261390}
+  - component: {fileID: 1017958770799649789}
   m_Layer: 0
   m_Name: BombBullet
-  m_TagString: Bomb
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,7 +121,7 @@ CircleCollider2D:
   m_Offset: {x: -0.3003497, y: -0.6}
   serializedVersion: 2
   m_Radius: 1.4348478
---- !u!114 &1475045997420261390
+--- !u!114 &1017958770799649789
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,11 +130,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 107732889114567035}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4152073d488f9a49a85ffc36f7b32f0, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f64ef92afbe531488cf3bba52760d73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigid: {fileID: 6801884265504495631}
-  bulletArr: []
-  redBulletArr: []
-  greenBulletArr: []
-  blueBulletArr: []
+  sprites:
+  - {fileID: 21300000, guid: 8497ae9e3c291114c980e04e299b09c7, type: 3}
+  - {fileID: 21300000, guid: 14adbd7031605eb4781d7b3df2f1e74f, type: 3}
+  - {fileID: 21300000, guid: eb7a7ca2bd768b6449b7f9a1e34f3751, type: 3}
+  curDir: {x: 1, y: 0.5}

@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6342649036348285335
 Transform:
   m_ObjectHideFlags: 0
@@ -359,15 +359,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8391709248627969159}
+  - component: {fileID: 5301398159807665052}
+  - component: {fileID: 4211637896435999377}
   - component: {fileID: 8391709248627969158}
   - component: {fileID: 1190877834681166346}
-  - component: {fileID: 8739073824846311187}
   - component: {fileID: 3236287661613053095}
   - component: {fileID: 3529363699868657514}
-  - component: {fileID: 3776161625769255692}
   m_Layer: 0
   m_Name: BossMonster 1
-  m_TagString: GreenMonster
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -388,6 +388,55 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5301398159807665052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8391709248627969156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd7219d6ecb668c4d82d88486d27442e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 1, g: 1, b: 1, a: 1}
+  outlineSize: 16
+--- !u!114 &4211637896435999377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8391709248627969156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb3487ff90b9d064aad54a2a83bc3d85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomBulletPre:
+  - {fileID: 5567514128373307102, guid: be199be9867101c4e971eb97261b3289, type: 3}
+  - {fileID: 6564517405985520474, guid: 9f24e77cc77d634439a7197546b378e1, type: 3}
+  - {fileID: 107732889114567035, guid: fcaec969288f04a4f857ca37b9c31028, type: 3}
+  - {fileID: 6692823952648815766, guid: e90cf71204e40764bb0ba04014d2ced9, type: 3}
+  bulletPre: {fileID: 8293981335406364551, guid: 07ce1f4e05c21b64b96ad036bd191dc0,
+    type: 3}
+  hitEffect: {fileID: 19800000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
+  dieEffect: {fileID: 198681264470032530, guid: aa8d6482d70a23445b4b2a928ed1b845,
+    type: 3}
+  monsterFace:
+  - {fileID: 21300000, guid: a036677c7a098d243b2cb4516a266b75, type: 3}
+  - {fileID: 21300000, guid: ee213945303efd547a2c25ef92e79727, type: 3}
+  - {fileID: 21300000, guid: f35d848e1268a544a9c3c5713d413baf, type: 3}
+  maxHp: 7
+  acuireScore: 1200
+  typeColor: 0
+  hpbarParent: {fileID: 0}
+  hpBarPre: {fileID: 0}
+  hpBarImg: {fileID: 0}
+  animator: {fileID: 3529363699868657514}
+  spriteOutline: {fileID: 5301398159807665052}
+  autoColor: 1
 --- !u!212 &8391709248627969158
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -406,7 +455,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d2d201b1733c7314994adb82a4d9f7d2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -427,7 +476,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: 35aa4089d5b23e040b8ee0bfc0b6bebc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a036677c7a098d243b2cb4516a266b75, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -459,35 +508,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8739073824846311187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8391709248627969156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccaffa21bb4a3854a94f9a94ca5e0953, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitEffect: {fileID: 19800000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
-  hp: {fileID: 3373538770085279958}
-  bullet: {fileID: 8293981335406364551, guid: 07ce1f4e05c21b64b96ad036bd191dc0, type: 3}
-  randomBullet:
-  - {fileID: 5567514128373307102, guid: be199be9867101c4e971eb97261b3289, type: 3}
-  - {fileID: 6564517405985520474, guid: 9f24e77cc77d634439a7197546b378e1, type: 3}
-  - {fileID: 107732889114567035, guid: fcaec969288f04a4f857ca37b9c31028, type: 3}
-  - {fileID: 6692823952648815766, guid: e90cf71204e40764bb0ba04014d2ced9, type: 3}
-  monsterFace:
-  - {fileID: 0}
-  - {fileID: 21300000, guid: ee213945303efd547a2c25ef92e79727, type: 3}
-  - {fileID: 21300000, guid: f35d848e1268a544a9c3c5713d413baf, type: 3}
-  monsterHp: 0
-  monsterMaxHp: 3
-  monsterScore: 0
-  fadeTime: 0.9
-  waitingTime: 4
 --- !u!60 &3236287661613053095
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -836,22 +856,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3776161625769255692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8391709248627969156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2687b7f30a90ffa46b19d6072799eff7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 21300000, guid: 35aa4089d5b23e040b8ee0bfc0b6bebc, type: 3}
-  - {fileID: 21300000, guid: faed2fcad1e49464b95c6941427b8ef6, type: 3}
-  - {fileID: 21300000, guid: 8c64c6bae973a8641b51d95979206f81, type: 3}
 --- !u!1001 &5213402842782399708
 PrefabInstance:
   m_ObjectHideFlags: 0

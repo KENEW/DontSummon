@@ -9,13 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6661893860911738090}
+  - component: {fileID: 648545745196489218}
   - component: {fileID: 269530161546363654}
   - component: {fileID: 3926834809840306115}
   - component: {fileID: 6347905448038669401}
-  - component: {fileID: 7964725649012297746}
   m_Layer: 0
   m_Name: FireBullet
-  m_TagString: Fire
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,6 +34,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &648545745196489218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6564517405985520474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f64ef92afbe531488cf3bba52760d73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 8497ae9e3c291114c980e04e299b09c7, type: 3}
+  - {fileID: 21300000, guid: 14adbd7031605eb4781d7b3df2f1e74f, type: 3}
+  - {fileID: 21300000, guid: eb7a7ca2bd768b6449b7f9a1e34f3751, type: 3}
+  curDir: {x: 1, y: 0.5}
 --- !u!212 &269530161546363654
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -121,20 +138,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &7964725649012297746
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6564517405985520474}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4152073d488f9a49a85ffc36f7b32f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rigid: {fileID: 6347905448038669401}
-  bulletArr: []
-  redBulletArr: []
-  greenBulletArr: []
-  blueBulletArr: []

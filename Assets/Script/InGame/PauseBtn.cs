@@ -9,18 +9,19 @@ public class PauseBtn : MonoBehaviour
 
     public void Pause()
     {
-        Time.timeScale = 0;
+        StageManage.Instance.StateChange(GameState.Pause);
         PauseScreen.SetActive(true);
     }
 
     public void Continue()
     {
-        Time.timeScale = 1;
+        StageManage.Instance.StateChange(GameState.Play);
         PauseScreen.SetActive(false);
     }
 
     public void Stop()
     {
+        SoundManager.Instance.PlaySFX("ButtonSFX");
         SceneManager.LoadScene("Lobby");
     }
 }

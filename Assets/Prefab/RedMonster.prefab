@@ -10,14 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 6342649036348285335}
   - component: {fileID: 1050015837237678680}
-  - component: {fileID: 8606699394524668228}
+  - component: {fileID: 1020529193}
   m_Layer: 0
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6342649036348285335
 Transform:
   m_ObjectHideFlags: 0
@@ -39,7 +39,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1729822615035250072}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &8606699394524668228
+--- !u!95 &1020529193
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -359,14 +359,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8391709248627969159}
+  - component: {fileID: 2191067416004888353}
+  - component: {fileID: -625139196636741775}
   - component: {fileID: 8391709248627969158}
   - component: {fileID: 1190877834681166346}
-  - component: {fileID: 8739073824846311187}
   - component: {fileID: 9115696005675961684}
-  - component: {fileID: 1252175530341913608}
+  - component: {fileID: 1113149188}
   m_Layer: 0
   m_Name: RedMonster
-  m_TagString: RedMonster
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -378,15 +379,63 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8391709248627969156}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.058, y: 0.058, z: 0.0592212}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.0592212}
   m_Children:
   - {fileID: 5142174949697710192}
   - {fileID: 984274170354378270}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2191067416004888353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8391709248627969156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd7219d6ecb668c4d82d88486d27442e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 1, g: 0, b: 0, a: 1}
+  outlineSize: 16
+--- !u!114 &-625139196636741775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8391709248627969156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc3a0f3b63ba6e24bb294c30fa3570bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomBulletPre:
+  - {fileID: 5567514128373307102, guid: be199be9867101c4e971eb97261b3289, type: 3}
+  - {fileID: 6564517405985520474, guid: 9f24e77cc77d634439a7197546b378e1, type: 3}
+  - {fileID: 107732889114567035, guid: fcaec969288f04a4f857ca37b9c31028, type: 3}
+  - {fileID: 6692823952648815766, guid: e90cf71204e40764bb0ba04014d2ced9, type: 3}
+  bulletPre: {fileID: 8293981335406364551, guid: 07ce1f4e05c21b64b96ad036bd191dc0,
+    type: 3}
+  hitEffect: {fileID: 19800000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
+  dieEffect: {fileID: 198681264470032530, guid: aa8d6482d70a23445b4b2a928ed1b845,
+    type: 3}
+  monsterFace:
+  - {fileID: 21300000, guid: d33b25c300795314892ff59dce32036b, type: 3}
+  - {fileID: 21300000, guid: 2203c0697221ef9488d4aff5e7c1c718, type: 3}
+  - {fileID: 21300000, guid: 8a2c587718e5c154eb9691b240745e97, type: 3}
+  maxHp: 5
+  acuireScore: 700
+  typeColor: 0
+  hpbarParent: {fileID: 0}
+  hpBarPre: {fileID: 0}
+  hpBarImg: {fileID: 0}
+  animator: {fileID: 1113149188}
+  spriteOutline: {fileID: 2191067416004888353}
 --- !u!212 &8391709248627969158
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -405,7 +454,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d2d201b1733c7314994adb82a4d9f7d2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -426,7 +475,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: 519ce2bacff54b844817b2f033671059, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d33b25c300795314892ff59dce32036b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -458,35 +507,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8739073824846311187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8391709248627969156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccaffa21bb4a3854a94f9a94ca5e0953, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitEffect: {fileID: 19800000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
-  hp: {fileID: 3373538770085279958}
-  bullet: {fileID: 8293981335406364551, guid: 07ce1f4e05c21b64b96ad036bd191dc0, type: 3}
-  randomBullet:
-  - {fileID: 5567514128373307102, guid: be199be9867101c4e971eb97261b3289, type: 3}
-  - {fileID: 6564517405985520474, guid: 9f24e77cc77d634439a7197546b378e1, type: 3}
-  - {fileID: 107732889114567035, guid: fcaec969288f04a4f857ca37b9c31028, type: 3}
-  - {fileID: 6692823952648815766, guid: e90cf71204e40764bb0ba04014d2ced9, type: 3}
-  monsterFace:
-  - {fileID: 21300000, guid: d33b25c300795314892ff59dce32036b, type: 3}
-  - {fileID: 21300000, guid: 2203c0697221ef9488d4aff5e7c1c718, type: 3}
-  - {fileID: 21300000, guid: 8a2c587718e5c154eb9691b240745e97, type: 3}
-  monsterHp: 0
-  monsterMaxHp: 3
-  monsterScore: 0
-  fadeTime: 0.9
-  waitingTime: 4
 --- !u!60 &9115696005675961684
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -947,7 +967,7 @@ PolygonCollider2D:
       - {x: 0.9521485, y: -14.16504}
       - {x: 1.1132814, y: -14.106446}
       - {x: 1.2451173, y: -14.033204}
---- !u!95 &1252175530341913608
+--- !u!95 &1113149188
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -959,7 +979,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 5a9706f749615a042826136142eeff6e, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 2
+  m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 

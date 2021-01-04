@@ -2,9 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum BulletType
+{
+    Normal = 0,
+    Heal,
+    Fire,
+    Bomb,
+    Skull
+}
+
 public class Bullet : MonoBehaviour
 {
-    public Rigidbody2D rigid;
+    private Rigidbody2D rigid;
     private SpriteRenderer renderer;
     public Sprite[] sprites;
 
@@ -14,77 +23,103 @@ public class Bullet : MonoBehaviour
     private float moveSpeed=0.3f;
     private float power;
 
-    PlayerHp playerHp;
-    Player player;
+    public TypeColor bulletColor;
+    public BulletType bulletType;
 
     void Start()
     {
         renderer = gameObject.GetComponent<SpriteRenderer>();
-        playerHp = GameObject.Find("HpPanel").GetComponent<PlayerHp>();
-        player = GameObject.Find("TouchObject").GetComponent<Player>();
-
-
+        rigid = gameObject.GetComponent<Rigidbody2D>();
         //포탈을 향해 이동
         rigid.velocity = new Vector2(-rigid.transform.position.x * moveSpeed, -(rigid.transform.position.y+4.27f) * moveSpeed);
     }
-   void FixedUpdate()
-    {
-        if(rigid.velocity.x>2f)
-        {
-            rigid.velocity = new Vector2(2f, rigid.velocity.y);
-        }
-        else if(rigid.velocity.x<-2f)
-        {
-            rigid.velocity = new Vector2(-2f, rigid.velocity.y);
-        }
+	void FixedUpdate()
+	{
+		if (rigid.velocity.x > 2f)
+		{
+			rigid.velocity = new Vector2(2f, rigid.velocity.y);
+		}
+		else if (rigid.velocity.x < -2f)
+		{
+			rigid.velocity = new Vector2(-2f, rigid.velocity.y);
+		}
 
-        if(rigid.velocity.y>2f)
-        {
-            rigid.velocity = new Vector2(rigid.velocity.x, 2f);
-        }
-        else if(rigid.velocity.y<-2f)
-        {
-            rigid.velocity = new Vector2(rigid.velocity.x, -2f);
-        }
-    }
-    public void SetPower(float powerValue)
+		if (rigid.velocity.y > 2f)
+		{
+			rigid.velocity = new Vector2(rigid.velocity.x, 2f);
+		}
+		else if (rigid.velocity.y < -2f)
+		{
+			rigid.velocity = new Vector2(rigid.velocity.x, -2f);
+		}
+	}
+    public void SetBulletType(BulletType bulletType)
     {
-        power = powerValue;
+        this.bulletType = bulletType;
     }
+    public BulletType GetBulletType()
+    {
+        return bulletType;
+	}
     private void OnCollisionEnter2D(Collision2D coll) //포탈이나 몬스터에 닿으면 destroy
     {
         if (coll.gameObject.tag == "Portal")
         {
-            player.ChangeFace(1); //angry face
-
-            playerHp.GetDamage(1);
+            switch(bulletType)
+            {
+                case BulletType.Heal :
+                    PlayerHp.Instance.RecoveryHp(1);
+                    Player.Instance.ChangeFace((int)PlayerFaceState.Happy);
+                    break;
+                case BulletType.Fire:
+                    PlayerHp.Instance.GetDamage(2);
+                    Player.Instance.ChangeFace((int)PlayerFaceState.Angry);
+                    break;
+                case BulletType.Skull:
+                    PlayerHp.Instance.GetDamage(3);
+                    Player.Instance.ChangeFace((int)PlayerFaceState.Angry);
+                    break;
+                case BulletType.Bomb:
+                    PlayerHp.Instance.GetDamage(3);
+                    Player.Instance.ChangeFace((int)PlayerFaceState.Angry);
+                    break;
+                case BulletType.Normal:
+                    PlayerHp.Instance.GetDamage(1);
+                    Player.Instance.ChangeFace((int)PlayerFaceState.Angry);
+                    break;
+            }
+            
             Destroy(gameObject);
         }
-
-        else if (coll.gameObject.tag == "RedMonster")
+        else if (coll.gameObject.tag == "Monster")
         {
-            if(transform.CompareTag("RedBullet"))
+            switch (bulletType)
             {
-                player.ChangeFace(2); //happy face
-            }
-            Destroy(gameObject);
-        }
+                case BulletType.Heal:
+                    coll.transform.GetComponent<Monster>().RecoveryHp(1);
+                    break;
+                case BulletType.Fire:
+                    coll.transform.GetComponent<Monster>().GetDamage(2);
+                    break;
+                case BulletType.Skull:
+                    coll.transform.GetComponent<Monster>().GetDamage(2);
+                    break;
+                case BulletType.Bomb:
+                    coll.transform.GetComponent<Monster>().GetDamage(3);
+                    break;
+                case BulletType.Normal:
 
-        else if (coll.gameObject.tag == "GreenMonster")
-        {
-            if (transform.CompareTag("GreenBullet"))
-            {
-                player.ChangeFace(2); //happy face
-            }
-            Destroy(gameObject);
-        }
+                    TypeColor t_collColor = coll.transform.GetComponent<Monster>().GetTypeColor();
 
-        else if (coll.gameObject.tag == "BlueMonster")
-        {
-            if (transform.CompareTag("BlueBullet"))
-            {
-                player.ChangeFace(2); //happy face
+                    if (t_collColor == bulletColor)
+                    {
+                        Player.Instance.ChangeFace((int)PlayerFaceState.Happy);
+                        coll.transform.GetComponent<Monster>().GetDamage(1);
+                    }
+
+                    break;
             }
+           
             Destroy(gameObject);
         }
         else
@@ -94,28 +129,27 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D coll) //타일
     {
-        if(coll.CompareTag("RedTile"))
+        if(bulletType == BulletType.Normal)
         {
-            coll.GetComponent<Animator>().SetTrigger("BulletTrigger");
-            //renderer.color = new Color(1.0f, 0f, 0f);
-            renderer.sprite = sprites[0];
-            gameObject.tag = "RedBullet";
+            if (coll.CompareTag("RedTile"))
+            {
+                coll.GetComponent<Animator>().SetTrigger("BulletTrigger");
+                renderer.sprite = sprites[(int)TypeColor.Red];
+                bulletColor = TypeColor.Red;
+            }
+            else if (coll.CompareTag("GreenTile"))
+            {
+                coll.GetComponent<Animator>().SetTrigger("BulletTrigger");
+                renderer.sprite = sprites[(int)TypeColor.Green];
+                bulletColor = TypeColor.Green;
+            }
+            else if (coll.CompareTag("BlueTile"))
+            {
+                coll.GetComponent<Animator>().SetTrigger("BulletTrigger");
+                renderer.sprite = sprites[(int)TypeColor.Blue];
+                bulletColor = TypeColor.Blue;
+            }
         }
-
-        else if (coll.CompareTag("GreenTile"))
-        {
-            coll.GetComponent<Animator>().SetTrigger("BulletTrigger");
-            //renderer.color = new Color(0f, 1.0f, 0f);
-            renderer.sprite = sprites[1];
-            gameObject.tag = "GreenBullet";
-        }
-
-        else if (coll.CompareTag("BlueTile"))
-        {
-            coll.GetComponent<Animator>().SetTrigger("BulletTrigger");
-            //renderer.color = new Color(0f, 0f, 1.0f);
-            renderer.sprite = sprites[2];
-            gameObject.tag = "BlueBullet";
-        }    
+         
     }
 }

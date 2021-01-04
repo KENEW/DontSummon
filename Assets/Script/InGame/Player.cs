@@ -2,7 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public enum PlayerFaceState
+{
+	Idle,
+	Angry,
+	Happy
+}
+
+public class Player : MonoSingleton<Player>
 {
     Vector2 MousePosition;
     Camera Camera;
@@ -17,14 +24,12 @@ public class Player : MonoBehaviour
 		Camera = GameObject.Find("Main Camera").GetComponent<Camera>();
 
 		playerRenderer = gameObject.GetComponent<SpriteRenderer>();
-
-		//oldPosition = transform.position;
 	}
     void Update()
     {
 		if (Input.GetMouseButton(0))
 		{
-			if(StageManage.Instance.playing)
+			if(StageManage.Instance.GetGameState() == GameState.Play)
 			{
 				MousePosition = Camera.ScreenToWorldPoint(Input.mousePosition);
 

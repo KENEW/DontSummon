@@ -9,14 +9,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1520956309726254025}
+  - component: {fileID: 9198076994956107816}
+  - component: {fileID: 8071358880987774543}
   - component: {fileID: 1520956309726254030}
   - component: {fileID: 125807092913109158}
-  - component: {fileID: 2390895986756703347}
   - component: {fileID: 4388053185981865278}
-  - component: {fileID: 43562941631467689}
+  - component: {fileID: 1152126977}
   m_Layer: 0
   m_Name: GreenMonster
-  m_TagString: GreenMonster
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,15 +29,63 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1520956309726254024}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.058, y: 0.058, z: 0}
+  m_LocalScale: {x: 0.0679354, y: 0.0679354, z: 0}
   m_Children:
   - {fileID: 477158167085367485}
   - {fileID: 4117624538215201568}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9198076994956107816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520956309726254024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc3a0f3b63ba6e24bb294c30fa3570bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  randomBulletPre:
+  - {fileID: 5567514128373307102, guid: be199be9867101c4e971eb97261b3289, type: 3}
+  - {fileID: 6564517405985520474, guid: 9f24e77cc77d634439a7197546b378e1, type: 3}
+  - {fileID: 107732889114567035, guid: fcaec969288f04a4f857ca37b9c31028, type: 3}
+  - {fileID: 6692823952648815766, guid: e90cf71204e40764bb0ba04014d2ced9, type: 3}
+  bulletPre: {fileID: 8293981335406364551, guid: 07ce1f4e05c21b64b96ad036bd191dc0,
+    type: 3}
+  hitEffect: {fileID: 19800000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
+  dieEffect: {fileID: 198681264470032530, guid: aa8d6482d70a23445b4b2a928ed1b845,
+    type: 3}
+  monsterFace:
+  - {fileID: 21300000, guid: 296a8b7ce6872f44a831818cb79ceb70, type: 3}
+  - {fileID: 21300000, guid: 94fb7cfb48e825b4b8231ee485512f2a, type: 3}
+  - {fileID: 21300000, guid: dc515e2ba4adcdf4caa14d78673569bb, type: 3}
+  maxHp: 3
+  acuireScore: 500
+  typeColor: 1
+  hpbarParent: {fileID: 0}
+  hpBarPre: {fileID: 0}
+  hpBarImg: {fileID: 0}
+  animator: {fileID: 1152126977}
+  spriteOutline: {fileID: 8071358880987774543}
+--- !u!114 &8071358880987774543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520956309726254024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd7219d6ecb668c4d82d88486d27442e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0.2855371, g: 0.8301887, b: 0, a: 1}
+  outlineSize: 16
 --- !u!212 &1520956309726254030
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -55,7 +104,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d2d201b1733c7314994adb82a4d9f7d2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -76,7 +125,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: bdb7b21bd2f1f414384d743fe7b9c521, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 296a8b7ce6872f44a831818cb79ceb70, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -108,35 +157,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2390895986756703347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1520956309726254024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccaffa21bb4a3854a94f9a94ca5e0953, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitEffect: {fileID: 19800000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
-  hp: {fileID: 4615476311026249390}
-  bullet: {fileID: 8293981335406364551, guid: 07ce1f4e05c21b64b96ad036bd191dc0, type: 3}
-  randomBullet:
-  - {fileID: 5567514128373307102, guid: be199be9867101c4e971eb97261b3289, type: 3}
-  - {fileID: 6564517405985520474, guid: 9f24e77cc77d634439a7197546b378e1, type: 3}
-  - {fileID: 107732889114567035, guid: fcaec969288f04a4f857ca37b9c31028, type: 3}
-  - {fileID: 6692823952648815766, guid: e90cf71204e40764bb0ba04014d2ced9, type: 3}
-  monsterFace:
-  - {fileID: 21300000, guid: c0351df540b31b54d8c619ab2d641d8d, type: 3}
-  - {fileID: 21300000, guid: 85292677d6834ed46a4c6ec7c817b429, type: 3}
-  - {fileID: 21300000, guid: 1ff8865af4d69524ba3cff9c7f082b27, type: 3}
-  monsterHp: 0
-  monsterMaxHp: 3
-  monsterScore: 0
-  fadeTime: 0.9
-  waitingTime: 4
 --- !u!60 &4388053185981865278
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -526,7 +546,7 @@ PolygonCollider2D:
       - {x: 1.3183595, y: -8.8916025}
       - {x: 1.4941407, y: -8.774415}
       - {x: 1.6259767, y: -8.671876}
---- !u!95 &43562941631467689
+--- !u!95 &1152126977
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -804,14 +824,14 @@ GameObject:
   m_Component:
   - component: {fileID: 2515479248922859429}
   - component: {fileID: 1083881048939730932}
-  - component: {fileID: 1379484355325172596}
+  - component: {fileID: 1459419873}
   m_Layer: 0
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2515479248922859429
 Transform:
   m_ObjectHideFlags: 0
@@ -876,7 +896,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &1379484355325172596
+--- !u!95 &1459419873
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
