@@ -154,4 +154,10 @@ public class Monster1 : MonoBehaviour
             }
         }  
     }
+
+    public void GamePlayFalse() //게임 오버, 클리어 시
+    {
+        StopCoroutine(BulletSpawn());
+        StopCoroutine(SpawnRandomBullet());
+    }
 }

@@ -28,6 +28,7 @@ public class StageManage : MonoSingleton<StageManage>
 
 	private void Start()
 	{
+		playing = true;
 		Time.timeScale = 0;
 		curStage = 1;
 		StartCoroutine("GameStart");
@@ -121,8 +122,14 @@ public class StageManage : MonoSingleton<StageManage>
 		GameObject[] t_bullet_red = GameObject.FindGameObjectsWithTag("RedBullet");
 		GameObject[] t_bullet_blue = GameObject.FindGameObjectsWithTag("BlueBullet");
 		GameObject[] t_bullet_green = GameObject.FindGameObjectsWithTag("GreenBullet");
+		GameObject[] t_bullet_bullet = GameObject.FindGameObjectsWithTag("Bullet");
+		GameObject[] t_bullet_fire = GameObject.FindGameObjectsWithTag("Fire");
+		GameObject[] t_bullet_heal = GameObject.FindGameObjectsWithTag("Heal");
+		GameObject[] t_bullet_bomb = GameObject.FindGameObjectsWithTag("Bomb");
+		GameObject[] t_bullet_skull = GameObject.FindGameObjectsWithTag("Skull");
 
-		for(int i = 0; i < t_bullet_red.GetLength(0); i++)
+
+		for (int i = 0; i < t_bullet_red.GetLength(0); i++)
 		{
 			Destroy(t_bullet_red[i]);
 		}
@@ -134,6 +141,26 @@ public class StageManage : MonoSingleton<StageManage>
 		{
 			Destroy(t_bullet_green[i]);
 		}
+		for (int i = 0; i < t_bullet_bullet.GetLength(0); i++)
+		{
+			Destroy(t_bullet_bullet[i]);
+		}
+		for (int i = 0; i < t_bullet_heal.GetLength(0); i++)
+		{
+			Destroy(t_bullet_heal[i]);
+		}
+		for (int i = 0; i < t_bullet_fire.GetLength(0); i++)
+		{
+			Destroy(t_bullet_fire[i]);
+		}
+		for (int i = 0; i < t_bullet_skull.GetLength(0); i++)
+		{
+			Destroy(t_bullet_skull[i]);
+		}
+		for (int i = 0; i < t_bullet_bomb.GetLength(0); i++)
+		{
+			Destroy(t_bullet_bomb[i]);
+		}
 	}
 
 	IEnumerator Clear()
@@ -143,9 +170,7 @@ public class StageManage : MonoSingleton<StageManage>
 
 		BulletAllDestory();
 		TimeLimit.Instance.StopRegular();
-		Time.timeScale = 1;
 
-		//Time.timeScale = 0;
 		ClearObj.SetActive(true);
 		yield return new WaitForSecondsRealtime(3f);
 		ClearObj.SetActive(false);
@@ -172,7 +197,11 @@ public class StageManage : MonoSingleton<StageManage>
 
 	IEnumerator GameOver()
     {
-		//Time.timeScale = 0;
+		playing = false;
+
+		BulletAllDestory();
+		TimeLimit.Instance.StopRegular();
+
 		FailedObj.SetActive(true);
 		yield return new WaitForSecondsRealtime(3f);
 		FailedObj.SetActive(false);

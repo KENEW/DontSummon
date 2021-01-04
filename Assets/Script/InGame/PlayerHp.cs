@@ -6,28 +6,17 @@ public class PlayerHp : MonoSingleton<PlayerHp>
 {
 	public GameObject[] hpObject;
 
-	//[SerializeField]
-	//private int curHp;
 	[SerializeField]
 	private int maxHp;
 
 	public int curHp;
 
-	//NeedMonster needMonster;
 
 	private void Start()
 	{
-		//needMonster = GameObject.Find("NeedMonster").GetComponent<NeedMonster>();
 
-		//Init();
-		GetHp();
-		DrawHp();
-	}
-
-	public void Init()
-	{
-		maxHp = 3;
-		curHp = maxHp;
+		HpInit();
+		Debug.Log("플레이어 hp:" + curHp);
 	}
 
 	private void Update()
@@ -46,15 +35,13 @@ public class PlayerHp : MonoSingleton<PlayerHp>
 			StageManage.Instance.StageFailed();
         }
 
-        /*else
-        {
-			if(needMonster.needNum==0)
-            {
-				Clear();
-            }
-        }*/
-
 		DrawHp();
+	}
+
+	public void HpInit()
+	{
+		maxHp = 3;
+		curHp = MyData.Instance.stageInfo.curHp;
 	}
 
 	public void RecoveryHp(int hpValue) //회복
@@ -73,7 +60,7 @@ public class PlayerHp : MonoSingleton<PlayerHp>
 
 	public void GetDamage(int hpValue) //데미지
 	{
-		if(!StageManage.Instance.playing)
+		if(StageManage.Instance.playing)
 		{
 			if (curHp - hpValue <= 0)
 			{

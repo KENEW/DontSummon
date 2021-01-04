@@ -19,7 +19,7 @@ public class StageClear : MonoSingleton<StageClear>
     private int totalScore = 0;
 
     private int SET_HEALTH_UP = 50;     //점수로 변환 기준
-    private int SET_RE_TIME_UP = 30;
+    private int SET_RE_TIME_UP = 10;
 
     private void Update()
     {
@@ -52,6 +52,7 @@ public class StageClear : MonoSingleton<StageClear>
     public void GetRemainHealth(int health) //남은 체력 받아오기
     {
         remainHealth = health;
+        MyData.Instance.stageInfo.curHp = remainHealth;
     }
     public void GetaquireScore(int score)   //게임하는 도중에서 얻은 스코어
     {
