@@ -18,7 +18,7 @@ public class StageClear : MonoSingleton<StageClear>
     private int acquireScore = 0;
     private int totalScore = 0;
 
-    private const int SET_HEALTH_UP = 50;
+    private const int SET_HEALTH_UP = 0;
     private const int SET_RE_TIME_UP = 10;
 
     private void Update()

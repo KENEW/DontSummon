@@ -80,7 +80,13 @@ public class Bullet : MonoBehaviour
                     Player.Instance.ChangeFace((int)PlayerFaceState.Angry);
                     break;
                 case BulletType.Bomb:
-                    PlayerHp.Instance.GetDamage(3);
+                    //PlayerHp.Instance.GetDamage(3);
+                    GameObject[] Bullet = GameObject.FindGameObjectsWithTag("Bullet");
+
+                    for (int i = 0; i < Bullet.GetLength(0); i++)
+                    {
+                        Destroy(Bullet[i]);
+                    }
                     Player.Instance.ChangeFace((int)PlayerFaceState.Angry);
                     break;
                 case BulletType.Normal:
@@ -105,7 +111,7 @@ public class Bullet : MonoBehaviour
                     coll.transform.GetComponent<Monster>().GetDamage(2);
                     break;
                 case BulletType.Bomb:
-                    coll.transform.GetComponent<Monster>().GetDamage(3);
+                    coll.transform.GetComponent<Monster>().GetDamage(1);
                     break;
                 case BulletType.Normal:
 

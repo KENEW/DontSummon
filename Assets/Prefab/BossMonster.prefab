@@ -122,6 +122,7 @@ MonoBehaviour:
   bulletPre: {fileID: 8293981335406364551, guid: 07ce1f4e05c21b64b96ad036bd191dc0,
     type: 3}
   hitEffect: {fileID: 19800000, guid: f06e78284f831ae469c74624ab5d513b, type: 3}
+  dieEffect: {fileID: 0}
   monsterFace:
   - {fileID: 21300000, guid: a825eeef41c1e6c458fbc1d96620dd59, type: 3}
   - {fileID: 21300000, guid: 64bb3494f6575f841ab1b65836702548, type: 3}
@@ -129,9 +130,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0490a0a8ccc6ae8478e1d44ffd0e25e2, type: 3}
   - {fileID: 21300000, guid: 3df501dcb9a22874497274c120658df3, type: 3}
   - {fileID: 21300000, guid: 7a65f84def25f0d4ca76e730f15ae9fd, type: 3}
-  hp: {fileID: 0}
   maxHp: 2
+  acuireScore: 0
+  typeColor: 0
+  hpbarParent: {fileID: 0}
+  hpBarPre: {fileID: 0}
+  hpBarImg: {fileID: 0}
+  animator: {fileID: 0}
   spriteOutline: {fileID: 0}
+  autoColor: 0
 --- !u!1 &7504803983062018406
 GameObject:
   m_ObjectHideFlags: 0

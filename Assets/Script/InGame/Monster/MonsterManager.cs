@@ -23,11 +23,23 @@ public class MonsterManager : MonoSingleton<MonsterManager>
 
 		Instantiate(monsterPre[(int)monsterType], t_pos, Quaternion.identity, parentTrans);
 	}
+
 	public void MonsterCreate(MonsterType monsterType, float x, float y, float size)
 	{
 		Vector2 t_pos = new Vector2(x, y);
 
 		GameObject t_obj = Instantiate(monsterPre[(int)monsterType], t_pos, Quaternion.identity, parentTrans);
 		t_obj.transform.localScale = new Vector2(size, size);
+	}
+
+	public void MonsterCreate(MonsterType monsterType, float x, float y, float size, int hp, int score)
+	{
+		Vector2 t_pos = new Vector2(x, y);
+
+		GameObject t_obj = Instantiate(monsterPre[(int)monsterType], t_pos, Quaternion.identity, parentTrans);
+		t_obj.transform.localScale = new Vector2(size, size);
+
+		t_obj.GetComponent<Monster>().maxHp = hp;
+		t_obj.GetComponent<Monster>().acuireScore = score;
 	}
 }

@@ -23,6 +23,7 @@ public class TimeLimit : MonoSingleton<TimeLimit>
 	public void TimeInit()
 	{
 		curTime = maxTime;
+		curTimeText.text = maxTime.ToString();
 	}
 	IEnumerator Regular()
 	{
@@ -33,11 +34,11 @@ public class TimeLimit : MonoSingleton<TimeLimit>
 
 			if (curTime < (int)(maxTime * 0.2f))
 			{
-				hpGauge.color = Color.red;
+				curTimeText.color = Color.red;
 			}
 			else if(curTime < (int)(maxTime * 0.4f))
 			{
-				hpGauge.color = Color.yellow;
+				curTimeText.color = Color.yellow;
 			}
 			
 			UIUpdate();
@@ -47,7 +48,9 @@ public class TimeLimit : MonoSingleton<TimeLimit>
 	}
 	private void UIUpdate()
 	{
-		hpGauge.fillAmount = Mathf.Lerp(hpGauge.fillAmount, ((float)curTime / (float)maxTime), 7.5f * Time.deltaTime);
+		//hpGauge.fillAmount = Mathf.Lerp(hpGauge.fillAmount, ((float)curTime / (float)maxTime), 7.5f * Time.deltaTime);
+		hpGauge.fillAmount = (float)curTime / (float)maxTime;
+		curTimeText.text = curTime.ToString();
 	}
 	public void StopRegular()
 	{

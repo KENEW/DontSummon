@@ -1977,7 +1977,7 @@ MonoBehaviour:
   storyText: {fileID: 227661893}
   scrollPos: 0
   contentPos: []
-  curStage: 0
+  curChapter: 0
   selectScaleFalse: {x: 0.7, y: 0.7}
   selectScaleTrue: {x: 0.55, y: 0.55}
   stageStory:
@@ -12821,7 +12821,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 262616157}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.4320708
+  m_Size: 0.43207076
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -13747,7 +13747,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0490a0a8ccc6ae8478e1d44ffd0e25e2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a825eeef41c1e6c458fbc1d96620dd59, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15759,7 +15759,7 @@ MonoBehaviour:
   - 0
   - 0.5
   - 1
-  curStage: 0
+  curChapter: 0
   selectScaleFalse: {x: 0.7, y: 0.7}
   selectScaleTrue: {x: 0.55, y: 0.55}
   stageStory:
