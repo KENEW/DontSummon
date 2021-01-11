@@ -27,7 +27,7 @@ public class TimeLimit : MonoSingleton<TimeLimit>
 	}
 	IEnumerator Regular()
 	{
-		while(curTime > -1.0f)
+		while(curTime >= 0f)
 		{
 			yield return new WaitForSeconds(1f);
 			curTime -= 1;
@@ -51,6 +51,10 @@ public class TimeLimit : MonoSingleton<TimeLimit>
 		//hpGauge.fillAmount = Mathf.Lerp(hpGauge.fillAmount, ((float)curTime / (float)maxTime), 7.5f * Time.deltaTime);
 		hpGauge.fillAmount = (float)curTime / (float)maxTime;
 		curTimeText.text = curTime.ToString();
+		if(curTime==-1)
+        {
+			curTimeText.text = "0";
+        }
 	}
 	public void StopRegular()
 	{

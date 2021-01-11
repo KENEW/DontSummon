@@ -57,6 +57,8 @@ public class Monster : MonoBehaviour
 	public Animator animator;
 	public SpriteOutline spriteOutline;
 
+	public float bulletSpawnTime=4.0f;
+
 	protected virtual void Start()
 	{
 		curHp = maxHp;
@@ -109,7 +111,7 @@ public class Monster : MonoBehaviour
 				t_bullet.GetComponent<Bullet>().SetBulletType(BulletType.Normal);
 			}
 
-			yield return new WaitForSeconds(4.0f);
+			yield return new WaitForSeconds(bulletSpawnTime);
 		}
 	}
 	protected IEnumerator SpawnRandomBullet() //특수 투사체 생성
