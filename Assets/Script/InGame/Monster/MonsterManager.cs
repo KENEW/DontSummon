@@ -7,9 +7,9 @@ public enum MonsterType
 	RedMonster,
 	GreenMonster,
 	BlueMonster,
-	Boss1,
-	Boss2,
-	Boss3
+	BossRed,
+	BossGreen,
+	BossBlue
 }
 
 public class MonsterManager : MonoSingleton<MonsterManager>
@@ -41,5 +41,17 @@ public class MonsterManager : MonoSingleton<MonsterManager>
 
 		t_obj.GetComponent<Monster>().maxHp = hp;
 		t_obj.GetComponent<Monster>().acuireScore = score;
+	}
+
+	public void MonsterCreate(MonsterType monsterType, float x, float y, float size, int hp, int score, float spawnTime)
+	{
+		Vector2 t_pos = new Vector2(x, y);
+
+		GameObject t_obj = Instantiate(monsterPre[(int)monsterType], t_pos, Quaternion.identity, parentTrans);
+		t_obj.transform.localScale = new Vector2(size, size);
+
+		t_obj.GetComponent<Monster>().maxHp = hp;
+		t_obj.GetComponent<Monster>().acuireScore = score;
+		t_obj.GetComponent<Monster>().bulletSpawnTime = spawnTime;
 	}
 }

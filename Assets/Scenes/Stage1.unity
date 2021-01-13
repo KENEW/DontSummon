@@ -1115,6 +1115,7 @@ MonoBehaviour:
   - {fileID: 1520956309726254024, guid: d62a79aec17f11b47a1730ff0bcb59fc, type: 3}
   - {fileID: 995588562994639954, guid: 405bd197166aa594d85dd6ef9d1a910e, type: 3}
   - {fileID: 8391709248627969156, guid: a8cca219ef0ed9641a36b21b51c20517, type: 3}
+  - {fileID: 8391709248627969156, guid: 7df08e5e43a1aca4c90a8262d09a5c35, type: 3}
   parentTrans: {fileID: 706411877}
 --- !u!4 &706411877
 Transform:
