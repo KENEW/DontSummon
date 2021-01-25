@@ -67,15 +67,15 @@ public class GameResult : MonoSingleton<GameResult>
         remainHealth = health;
         acquireScore = score;
 
-        highScoreText.text = MyData.Instance.stageScore[0].ToString();
+        highScoreText.text = MyData.Instance.scoreInfo.stageScore[MyData.Instance.stageInfo.curChapter].ToString();
 
         totalScore += remainHealth * SET_HEALTH_UP;
         totalScore += remainTime * SET_RE_TIME_UP;
         totalScore += acquireScore;
 
         MyData.Instance.stageInfo.curScore += totalScore;
-        MyData.Instance.stageScore[MyData.Instance.stageInfo.curChapter] = MyData.Instance.stageInfo.curScore;
-        MyData.Instance.SaveData();
+        MyData.Instance.scoreInfo.stageScore[MyData.Instance.stageInfo.curChapter] = MyData.Instance.stageInfo.curScore;
+        MyData.Instance.SaveGameData();
 
         StartCoroutine(CountSequence());
     }
@@ -100,9 +100,9 @@ public class GameResult : MonoSingleton<GameResult>
                     yield return new WaitForSeconds(delay);
                     break;
                 case 3:
-                    if(totalScore > MyData.Instance.stageScore[0])
+                    if(totalScore > MyData.Instance.scoreInfo.stageScore[MyData.Instance.stageInfo.curChapter])
                     {
-                        StartCoroutine(Count(highScoreText, totalScore, MyData.Instance.stageScore[0]));
+                        StartCoroutine(Count(highScoreText, totalScore, MyData.Instance.scoreInfo.stageScore[MyData.Instance.stageInfo.curChapter]));
                     }
                     yield return new WaitForSeconds(delay);
                     highScoreTextAnimation.SetTrigger("HighScore");

@@ -154,18 +154,15 @@ public class BackEndGameInfo : SceneSingleTon<BackEndGameInfo>
 	private void GetData(JsonData data)
 	{
 		var dataIndate = data["inDate"][0].ToString();
+
 		MyData.Instance.loginID = dataIndate;
-		Debug.Log(MyData.Instance.loginID);
+		Debug.Log("사용자 인증번호 : " +MyData.Instance.loginID);
 
-		var stage1Score = data["stage1"][0].ToString();
-		var stage2Score = data["stage2"][0].ToString();
-		var stage3Score = data["stage3"][0].ToString();
-
-		MyData.Instance.SetScore(new int[3] { int.Parse(stage1Score), int.Parse(stage2Score), int.Parse(stage3Score) });
-		
-		Debug.Log("서버에서 받아온 스테이지 데이터1 : " + MyData.Instance.stageScore[0]);
-		Debug.Log("서버에서 받아온 스테이지 데이터2 : " + MyData.Instance.stageScore[1]);
-		Debug.Log("서버에서 받아온 스테이지 데이터3 : " + MyData.Instance.stageScore[2]);
+		for (int i = 0; i < 3; i++)
+		{
+			var stageScore = data["stage" + (i + 1)][i].ToString();
+			Debug.Log("서버에서 받아온 스테이지 데이터1 : " + MyData.Instance.scoreInfo.stageScore[i]);
+		}
 	}
 	string firstKey = string.Empty;
 	public void OnClickPublicContentsNext()

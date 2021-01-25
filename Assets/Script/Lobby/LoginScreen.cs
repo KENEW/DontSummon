@@ -27,7 +27,7 @@ public class LoginScreen : MonoBehaviour
 	public void OnGuestLogin()
 	{
 		SoundManager.Instance.PlaySFX("Button");
-		MyData.Instance.LoadData();
+		MyData.Instance.LoadGameData();
 		NextScreen();
 	}
 }
