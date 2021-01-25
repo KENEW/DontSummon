@@ -58,6 +58,7 @@ public class StageManage : MonoSingleton<StageManage>
 				break;
 			case GameState.Play:
 				Time.timeScale = 1;
+				curMonster = MonsterCheck();
 				break;
 			case GameState.Pause:
 				Time.timeScale = 0;
@@ -200,8 +201,6 @@ public class StageManage : MonoSingleton<StageManage>
 				}
 				break;
 		}
-
-		curMonster = MonsterCheck();
 	}
 	public void BulletAllDestory()
 	{

@@ -81,8 +81,8 @@ public class Monster : MonoBehaviour
 		StopCoroutine(bulletSpawnCo);
 		StopCoroutine(spawnRandomBulletCo);
 
-		gameObject.transform.FindChild("MonsterCanvas/Hp").gameObject.SetActive(false);
-		gameObject.transform.FindChild("MonsterCanvas/HpBackground").gameObject.SetActive(false);
+		gameObject.transform.Find("MonsterCanvas/Hp").gameObject.SetActive(false);
+		gameObject.transform.Find("MonsterCanvas/HpBackground").gameObject.SetActive(false);
 
 
 		animator.SetTrigger("DieTrigger");
@@ -92,7 +92,6 @@ public class Monster : MonoBehaviour
 
 		StageManage.Instance.MonsterDestory();
 		Destroy(gameObject, 0.1f);
-
 	}
 	protected IEnumerator MonsterChangeFace(Sprite changeSprite)
 	{
@@ -135,17 +134,7 @@ public class Monster : MonoBehaviour
 		if (curHp - hpValue <= 0)
 		{
 			SoundManager.Instance.PlaySFX("MonsterDeathSFX");
-
-			//Score.Instance.AddScore(acuireScore);
-			if(curHp-hpValue==0)  
-			{
-				Score.Instance.AddScore(acuireScore * hpValue);
-            }
-			else //남은 hp만큼만 점수가 더해지게
-			{
-				Score.Instance.AddScore(acuireScore * (-1 * curHp));
-            }
-
+			Score.Instance.AddScore(acuireScore * hpValue);
 			curHp = 0;
 			hpBarImg.fillAmount = 0;
 			if(spriteOutline != null)
@@ -158,7 +147,7 @@ public class Monster : MonoBehaviour
 		{
 			SoundManager.Instance.PlaySFX("MonsterHitSFX");
 
-			//Score.Instance.AddScore((int)(acuireScore * 0.1f) * hpValue);
+			Score.Instance.AddScore(acuireScore * (-1 * curHp));
 			Score.Instance.AddScore(acuireScore*hpValue); 
 			transform.DORotate(new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z - 30), 0.25f)
 			.OnComplete(() => { transform.DORotate(new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z), 0.2f); });
