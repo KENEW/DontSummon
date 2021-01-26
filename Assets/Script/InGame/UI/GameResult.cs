@@ -75,14 +75,14 @@ public class GameResult : MonoSingleton<GameResult>
         addScore += remainHealth * SET_HEALTH_UP;
         addScore += remainTime * SET_RE_TIME_UP;
 
-        totalScore += acquireScore + addScore;
+        totalScore = MyData.Instance.stageInfo.curScore + addScore + Score.Instance.GetScore();
 
         MyData.Instance.stageInfo.curScore += totalScore;
 
-        if (MyData.Instance.stageInfo.curScore > MyData.Instance.scoreInfo.stageScore[MyData.Instance.stageInfo.curChapter - 1])
+        if (totalScore > MyData.Instance.scoreInfo.stageScore[MyData.Instance.stageInfo.curChapter - 1])
         {
             Debug.Log(MyData.Instance.stageInfo.curChapter);
-            MyData.Instance.scoreInfo.stageScore[MyData.Instance.stageInfo.curChapter - 1] = MyData.Instance.stageInfo.curScore;
+            MyData.Instance.scoreInfo.stageScore[MyData.Instance.stageInfo.curChapter - 1] = totalScore;
             MyData.Instance.SaveGameData();
         }
 

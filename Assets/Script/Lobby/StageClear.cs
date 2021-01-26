@@ -12,13 +12,16 @@ public class StageClear : MonoSingleton<StageClear>
     public Text remainTimeText;
     public Text remainHealthText;
     public Text totalScoreText;
+    public Text addScoreText;
 
     private int remainTime = 0;
     private int remainHealth = 0;
+    private int addScore = 0;
+
     private int acquireScore = 0;
     private int totalScore = 0;
 
-    private const int SET_HEALTH_UP = 0;
+    private const int SET_HEALTH_UP = 50;
     private const int SET_RE_TIME_UP = 10;
 
     private void Update()
@@ -49,15 +52,18 @@ public class StageClear : MonoSingleton<StageClear>
     }
     public void ScoreResult(int time, int health, int score)
     {
+        InitScore();
+
         remainTime = time;
         remainHealth = health;
         acquireScore = score;
 
-        totalScore += remainHealth * SET_HEALTH_UP;
-        totalScore += remainTime * SET_RE_TIME_UP;
-        totalScore += acquireScore;
+        addScore += remainHealth * SET_HEALTH_UP;
+        addScore += remainTime * SET_RE_TIME_UP;
 
-        MyData.Instance.stageInfo.curScore += totalScore;
+        totalScore = MyData.Instance.stageInfo.curScore + addScore + Score.Instance.GetScore();
+
+        MyData.Instance.stageInfo.curScore = totalScore;
 
         StartCoroutine(CountSequence());
     }
@@ -78,7 +84,11 @@ public class StageClear : MonoSingleton<StageClear>
                     yield return new WaitForSeconds(delay);
                     break;
                 case 2:
-                    StartCoroutine(Count(totalScoreText, totalScore, acquireScore));
+                    StartCoroutine(Count(addScoreText, addScore, 0));
+                    yield return new WaitForSeconds(delay);
+                    break;
+                case 3:
+                    StartCoroutine(Count(totalScoreText, totalScore, 0));
                     yield return new WaitForSeconds(delay);
                     break;
             }

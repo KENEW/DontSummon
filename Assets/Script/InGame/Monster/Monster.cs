@@ -147,8 +147,8 @@ public class Monster : MonoBehaviour
 		{
 			SoundManager.Instance.PlaySFX("MonsterHitSFX");
 
-			Score.Instance.AddScore(acuireScore * (-1 * curHp));
-			Score.Instance.AddScore(acuireScore*hpValue); 
+			//Score.Instance.AddScore(acuireScore * (-1 * curHp));
+			Score.Instance.AddScore(acuireScore * hpValue); 
 			transform.DORotate(new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z - 30), 0.25f)
 			.OnComplete(() => { transform.DORotate(new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z), 0.2f); });
 			curHp -= hpValue;

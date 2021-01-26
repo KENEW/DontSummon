@@ -15,6 +15,10 @@ public class TimeLimit : MonoSingleton<TimeLimit>
 
 	private Coroutine regularCo;
 
+	public Color NORMAL_TIME;
+	public Color WARNING1_TIME;
+	public Color WARNING2_TIME;
+
 	private void Start()
 	{
 		TimeInit();
@@ -34,11 +38,15 @@ public class TimeLimit : MonoSingleton<TimeLimit>
 
 			if (curTime < (int)(maxTime * 0.2f))
 			{
-				curTimeText.color = Color.red;
+				curTimeText.color = WARNING2_TIME;
 			}
 			else if(curTime < (int)(maxTime * 0.4f))
 			{
-				curTimeText.color = Color.yellow;
+				curTimeText.color = WARNING1_TIME;
+			}
+			else
+			{
+				curTimeText.color = NORMAL_TIME;
 			}
 			
 			UIUpdate();
@@ -48,9 +56,9 @@ public class TimeLimit : MonoSingleton<TimeLimit>
 	}
 	private void UIUpdate()
 	{
-		//hpGauge.fillAmount = Mathf.Lerp(hpGauge.fillAmount, ((float)curTime / (float)maxTime), 7.5f * Time.deltaTime);
 		hpGauge.fillAmount = (float)curTime / (float)maxTime;
 		curTimeText.text = curTime.ToString();
+
 		if(curTime==-1)
         {
 			curTimeText.text = "0";
