@@ -14,11 +14,14 @@ public class GameResult : MonoSingleton<GameResult>
     public Text remainTimeText;
     public Text remainHealthText;
     public Text totalScoreText;
+    public Text addScoreText;
     public Text highScoreText;
 
     private int remainTime = 0;
     private int remainHealth = 0;
     private int acquireScore = 0;
+    private int addScore = 0;
+
     private int totalScore = 0;
 
     private int SET_HEALTH_UP = 50;
@@ -45,7 +48,7 @@ public class GameResult : MonoSingleton<GameResult>
     public void OnReStart()
     {
         SoundManager.Instance.PlaySFX("Button");
-        MyData.Instance.InitState();
+        MyData.Instance.scoreInfo = new ScoreInfo();
 
         lightLoading.LoadStart("Stage1");
     }
@@ -67,15 +70,21 @@ public class GameResult : MonoSingleton<GameResult>
         remainHealth = health;
         acquireScore = score;
 
-        highScoreText.text = MyData.Instance.scoreInfo.stageScore[MyData.Instance.stageInfo.curChapter].ToString();
+        highScoreText.text = MyData.Instance.scoreInfo.stageScore[MyData.Instance.stageInfo.curChapter - 1].ToString();
 
-        totalScore += remainHealth * SET_HEALTH_UP;
-        totalScore += remainTime * SET_RE_TIME_UP;
-        totalScore += acquireScore;
+        addScore += remainHealth * SET_HEALTH_UP;
+        addScore += remainTime * SET_RE_TIME_UP;
+
+        totalScore += acquireScore + addScore;
 
         MyData.Instance.stageInfo.curScore += totalScore;
-        MyData.Instance.scoreInfo.stageScore[MyData.Instance.stageInfo.curChapter] = MyData.Instance.stageInfo.curScore;
-        MyData.Instance.SaveGameData();
+
+        if (MyData.Instance.stageInfo.curScore > MyData.Instance.scoreInfo.stageScore[MyData.Instance.stageInfo.curChapter - 1])
+        {
+            Debug.Log(MyData.Instance.stageInfo.curChapter);
+            MyData.Instance.scoreInfo.stageScore[MyData.Instance.stageInfo.curChapter - 1] = MyData.Instance.stageInfo.curScore;
+            MyData.Instance.SaveGameData();
+        }
 
         StartCoroutine(CountSequence());
     }
@@ -96,10 +105,14 @@ public class GameResult : MonoSingleton<GameResult>
                     yield return new WaitForSeconds(delay);
                     break;
                 case 2:
-                    StartCoroutine(Count(totalScoreText, totalScore, acquireScore));
+                    StartCoroutine(Count(addScoreText, addScore, 0));
                     yield return new WaitForSeconds(delay);
                     break;
                 case 3:
+                    StartCoroutine(Count(totalScoreText, totalScore, 0));
+                    yield return new WaitForSeconds(delay);
+                    break;
+                case 4:
                     if(totalScore > MyData.Instance.scoreInfo.stageScore[MyData.Instance.stageInfo.curChapter])
                     {
                         StartCoroutine(Count(highScoreText, totalScore, MyData.Instance.scoreInfo.stageScore[MyData.Instance.stageInfo.curChapter]));

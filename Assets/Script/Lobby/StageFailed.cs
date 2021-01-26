@@ -17,7 +17,7 @@ public class StageFailed : MonoBehaviour
     public void FailedRestart()
     {
         SoundManager.Instance.PlaySFX("Button");
-        MyData.Instance.InitState();
+        MyData.Instance.DataInit();
         lightLoading.LoadStart(SceneManager.GetActiveScene().name);
     }
 }

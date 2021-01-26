@@ -20,6 +20,8 @@ public class Title : MonoBehaviour
 	{
 		SoundManager.Instance.PlaySFX("Button");
 
+		MyData.Instance.DataInit();
+
 		StageSelect.SetActive(true);
 		TitleScreen.SetActive(false);
 	}

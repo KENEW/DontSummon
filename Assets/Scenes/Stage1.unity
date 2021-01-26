@@ -1495,6 +1495,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8554835725013775333}
     m_Modifications:
+    - target: {fileID: 207320966, guid: 7a370044c131832478d8419519a08d58, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1722358659605303619, guid: 7a370044c131832478d8419519a08d58,
         type: 3}
       propertyPath: m_Name
@@ -1609,6 +1613,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5869493821403398445, guid: 7a370044c131832478d8419519a08d58,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a370044c131832478d8419519a08d58, type: 3}
@@ -1810,6 +1819,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8554835725013775333}
     m_Modifications:
+    - target: {fileID: 461582287325962138, guid: d13e618cbdc87c14aa52e8ad02190e6b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 491
+      objectReference: {fileID: 0}
+    - target: {fileID: 461582288534394644, guid: d13e618cbdc87c14aa52e8ad02190e6b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 461582288690943358, guid: d13e618cbdc87c14aa52e8ad02190e6b,
+        type: 3}
+      propertyPath: m_Text
+      value: "\uC774\uC804 \uCD5C\uACE0 \uC810\uC218 : "
+      objectReference: {fileID: 0}
+    - target: {fileID: 461582288690943358, guid: d13e618cbdc87c14aa52e8ad02190e6b,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 461582288690943359, guid: d13e618cbdc87c14aa52e8ad02190e6b,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 498.79523
+      objectReference: {fileID: 0}
+    - target: {fileID: 461582288690943359, guid: d13e618cbdc87c14aa52e8ad02190e6b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -67
+      objectReference: {fileID: 0}
+    - target: {fileID: 5797306432310084036, guid: d13e618cbdc87c14aa52e8ad02190e6b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5797306432867854585, guid: d13e618cbdc87c14aa52e8ad02190e6b,
         type: 3}
       propertyPath: m_Name
@@ -1927,6 +1971,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7112443183872305745, guid: d13e618cbdc87c14aa52e8ad02190e6b,
         type: 3}
+      propertyPath: addScoreText
+      value: 
+      objectReference: {fileID: 1019884872}
+    - target: {fileID: 7112443183872305745, guid: d13e618cbdc87c14aa52e8ad02190e6b,
+        type: 3}
       propertyPath: lightLoading
       value: 
       objectReference: {fileID: 84375599}
@@ -1944,6 +1993,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1019884869}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1019884872 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5797306432552681071, guid: d13e618cbdc87c14aa52e8ad02190e6b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1019884869}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1026681674
 GameObject:
   m_ObjectHideFlags: 0
@@ -1973,15 +2034,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a81e68a22562847800ae515ac76efe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreInfo:
+    stageScore: 000000000000000000000000
+  curScore: 0
   loginID: 
-  stageScore: 000000000000000000000000
-  stageInfo:
-    curStage: 1
-    curChapter: 1
-    curHp: 3
-    curScore: 0
-    curTIme: 60
-    curDefenceWall: 0
+  filePath: /GameData/
   isLoginCheck: 0
 --- !u!4 &1026681676
 Transform:

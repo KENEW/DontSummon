@@ -7137,18 +7137,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a81e68a22562847800ae515ac76efe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loginID: 
-  stageInfo:
-    curStage: 0
-    curChapter: 1
-    curHp: 3
-    curScore: 0
-    curTIme: 60
-    curDefenceWall: 0
-  isLoginCheck: 0
-  filePath: /GameData/
   scoreInfo:
     stageScore: 000000000000000000000000
+  curScore: 0
+  loginID: 
+  filePath: /GameData/
+  isLoginCheck: 0
 --- !u!4 &930433387
 Transform:
   m_ObjectHideFlags: 0
@@ -9654,7 +9648,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1352003083
 MonoBehaviour:
   m_ObjectHideFlags: 0

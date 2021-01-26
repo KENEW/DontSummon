@@ -83,8 +83,6 @@ public class DefenceWallSelect : MonoBehaviour
     }
     public void GameStart()
     {
-        MyData.Instance.InitState();
-
         SoundManager.Instance.StopBGM();
         SoundManager.Instance.PlaySFX("GameStart");
 
