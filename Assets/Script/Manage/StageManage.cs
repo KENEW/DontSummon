@@ -106,8 +106,8 @@ public class StageManage : MonoSingleton<StageManage>
 			//빨 0.048(소), 0.056(중)
 			//초 0.048(소) 0.067(중)
 			//파 0.067(대)
-			//빨간 보스 0.52(소) 0.6(중)
-			//초록 보스 0.05(중) 0.055(대)
+			//빨간 보스 0.52(소) 0.6(중) 0.7(대)
+			//초록 보스 0.04(소) 0.05(중) 0.055(대)
 			//파랑 보스 0.25(대)
 			case 1:
 				switch (MyData.Instance.stageInfo.curStage)
@@ -178,25 +178,35 @@ public class StageManage : MonoSingleton<StageManage>
 				switch (MyData.Instance.stageInfo.curStage)
 				{
 					case 1:
-						MonsterManager.Instance.MonsterCreate(MonsterType.GreenMonster, 1.71f, 2.08f);
-						MonsterManager.Instance.MonsterCreate(MonsterType.RedMonster, -2.0f, 2.17f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.RedMonster, -1.81f, 2.47f, 0.056f, 5, 100);
+						MonsterManager.Instance.MonsterCreate(MonsterType.BossBlue, 0, 2.89f, 0.215f, 5, 120);
+						GameObject.Find("Tiles").transform.position = new Vector2(0f, 1.3f);
 						break;
 					case 2:
-						MonsterManager.Instance.MonsterCreate(MonsterType.GreenMonster, -1.96f, 2.08f);
-						MonsterManager.Instance.MonsterCreate(MonsterType.RedMonster, -0.12f, 2.65f);
-						MonsterManager.Instance.MonsterCreate(MonsterType.BlueMonster, 1.99f, 2.28f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.BossRed, -2f, 2.27f, 0.52f, 2, 100);
+						MonsterManager.Instance.MonsterCreate(MonsterType.BossGreen, 1.84f, 2.27f, 0.05f, 5, 120);
+						MonsterManager.Instance.MonsterCreate(MonsterType.BossBlue, -0.1f, 2.74f, 0.25f, 10, 80, 2f);
+						GameObject.Find("Tiles").transform.position = new Vector2(0f, 1.3f);
 						break;
 					case 3:
-						MonsterManager.Instance.MonsterCreate(MonsterType.BossRed, -0.12f, 2.65f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.BossRed, -1.88f, 2.35f, 0.60f, 10, 100, 2f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.BossBlue, -0.01f, 2.9f, 0.215f, 10, 100, 2f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.BossGreen, 1.94f, -1f, 0.04f, 4, 100, 2f);
+						GameObject.Find("Tiles").transform.position = new Vector2(0f, 1.3f);
 						break;
 					case 4:
-						MonsterManager.Instance.MonsterCreate(MonsterType.GreenMonster, -1.94f, 2.23f);
-						MonsterManager.Instance.MonsterCreate(MonsterType.GreenMonster, -0.14f, 2.88f);
-						MonsterManager.Instance.MonsterCreate(MonsterType.BlueMonster, 1.65f, 2.32f);
-						MonsterManager.Instance.MonsterCreate(MonsterType.GreenMonster, 1.94f, -1.11f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.BlueMonster, -0.12f, 2.91f, 0.058f, 5, 100);
+						MonsterManager.Instance.MonsterCreate(MonsterType.BlueMonster, 1.67f, -1.05f, 0.058f, 5, 100);
+						MonsterManager.Instance.MonsterCreate(MonsterType.BossRed, -1.95f, 2.43f, 0.6f, 5, 120);
+						MonsterManager.Instance.MonsterCreate(MonsterType.BossGreen, 1.78f, 2.49f, 0.055f, 10, 100, 2f);
+						GameObject.Find("Tiles").transform.position = new Vector2(0f, 1.3f);
 						break;
 					case 5:
-						MonsterManager.Instance.MonsterCreate(MonsterType.BossGreen, 1.53f, 2.45f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.BossRed, -1.92f, -1.15f, 0.52f, 4, 120, 2f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.BossGreen, 1.95f, -1.05f, 0.04f, 4, 120, 2f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.BossGreen, 1.76f, 2.46f, 0.05f, 20, 100, 1.5f);
+						MonsterManager.Instance.MonsterCreate(MonsterType.BossRed, -1.79f, 2.37f, 0.7f, 15, 80, 1f);
+						GameObject.Find("Tiles").transform.position = new Vector2(0f, 1.3f);
 						break;
 				}
 				break;
