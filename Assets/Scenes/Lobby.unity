@@ -1694,7 +1694,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.4320708, y: 1}
+  m_AnchorMax: {x: 0.43207076, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3641,8 +3641,9 @@ GameObject:
   - component: {fileID: 508947193}
   - component: {fileID: 508947192}
   - component: {fileID: 508947194}
+  - component: {fileID: 508947195}
   m_Layer: 5
-  m_Name: Image
+  m_Name: StoryImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3657,7 +3658,7 @@ RectTransform:
   m_GameObject: {fileID: 508947190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0083, y: 1.0083, z: 1.0083}
   m_Children:
   - {fileID: 1122452532}
   m_Father: {fileID: 1994981539}
@@ -3717,8 +3718,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0.4339623, b: 0.22976917, a: 0.5}
-  m_EffectDistance: {x: 14, y: 14}
+  m_EffectColor: {r: 1, g: 0.9933053, b: 0.759434, a: 0.5}
+  m_EffectDistance: {x: 14, y: 0}
+  m_UseGraphicAlpha: 1
+--- !u!114 &508947195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508947190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 0.9921569, b: 0.7607844, a: 1}
+  m_EffectDistance: {x: 0, y: 14}
   m_UseGraphicAlpha: 1
 --- !u!1 &511006948
 GameObject:
@@ -5418,7 +5434,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &772903088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6760,8 +6776,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -120, y: -904}
-  m_SizeDelta: {x: 1350.8517, y: 148.73273}
+  m_AnchoredPosition: {x: 0, y: -904}
+  m_SizeDelta: {x: 2056.0332, y: 148.73273}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &882055083
 MonoBehaviour:
@@ -9322,7 +9338,7 @@ GameObject:
   - component: {fileID: 1277174203}
   - component: {fileID: 1277174202}
   m_Layer: 5
-  m_Name: Button
+  m_Name: NextButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15747,7 +15763,7 @@ MonoBehaviour:
   titlePanel: {fileID: 897571617}
   defenceWallSelectPanel: {fileID: 1461051364}
   stageNumText: {fileID: 1908681276}
-  highScoreText: {fileID: 772903088}
+  highScoreText: {fileID: 882055083}
   stageNameText: {fileID: 1741333825}
   storyText: {fileID: 1167936906}
   scrollPos: 0
@@ -15763,12 +15779,17 @@ MonoBehaviour:
     \uAC74\uC5B4\uBB3C\uC774\uB77C \uBD80\uB974\uBA70 \uB180\uB838\uB2E4.          
     \uD654\uAC00\uB09C \uBAAC\uC2A4\uD130\uB4E4\uC740 \uB178\uB3D9\uC870\uD569\uC744
     \uAC74\uC124\uD574 \uC778\uAD8C\uC744 \uC704\uD574 \uD22C\uC7C1\uD558\uB294\uB370.."
-  - "\uAC1C\uC124\uC911"
-  - "\uAC1C\uC124\uC911"
+  - "\uB05D\uB0B4 \uB9C8\uC655\uC131\uC73C\uB85C \uC9C4\uACA9\uD55C \uBAAC\uC2A4\uD130\uB4E4!
+    \uB9C8\uC655\uACFC \uBAAC\uC2A4\uD130\uB4E4\uC740 \uCD5C\uD6C4\uC758 \uACB0\uC804\uC744
+    \uC55E\uB450\uACE0\uC788\uB2E4."
+  - "\uB9C8\uC9C0\uB9C9 \uD611\uC0C1\uC744 \uC900\uBE44\uD558\uB294 \uBAAC\uC2A4\uD130\uC640
+    \uADF8\uAC83\uC744 \uBB35\uC0B4\uD558\uB294 \uB9C8\uC655. \uACFC\uC5F0 \uB9C8\uC655\uC740
+    \uD22C\uC7C1\uD558\uB294 \uBAAC\uC2A4\uD130\uC640 \uD611\uC0C1 \uC5C6\uC774 \uB3C5\uC7AC\uAC00
+    \uAC00\uB2A5\uD560\uAE4C!?"
   stageName:
   - "\uB9C8\uC655\uC131 \uC785\uAD6C"
-  - "\uB450\uBC88\uC9F8 \uB2E8\uACC4"
-  - "\uC138\uBC88\uC9F8 \uB2E8\uACC4"
+  - "\uB9C8\uC655\uC131 \uB0B4\uBD80"
+  - "\uB9C8\uC655\uC131 \uCD5C\uC0C1\uCE35"
   highScore: 283c000074080100c4860000
 --- !u!114 &2130811847
 MonoBehaviour:
@@ -15973,7 +15994,7 @@ GameObject:
   - component: {fileID: 2143095672}
   - component: {fileID: 2143095671}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

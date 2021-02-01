@@ -87,7 +87,7 @@ public class StageSelect : MonoBehaviour
     private void UIUpdate()
     {
         storyText.text = stageStory[curChapter];
-        highScoreText.text = MyData.Instance.scoreInfo.stageScore[curChapter] + "";
+        highScoreText.text = "최고 스코어 : " + MyData.Instance.scoreInfo.stageScore[curChapter];
         stageNameText.text = stageName[curChapter];
     }
 }

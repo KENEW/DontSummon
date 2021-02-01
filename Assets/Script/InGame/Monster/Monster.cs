@@ -84,13 +84,10 @@ public class Monster : MonoBehaviour
 		gameObject.transform.Find("MonsterCanvas/Hp").gameObject.SetActive(false);
 		gameObject.transform.Find("MonsterCanvas/HpBackground").gameObject.SetActive(false);
 
-
 		animator.SetTrigger("DieTrigger");
 		Instantiate(dieEffect, transform.position, Quaternion.identity, gameObject.transform.parent);
 
 		yield return new WaitForSeconds(1.0f);
-
-		StageManage.Instance.MonsterDestory();
 		Destroy(gameObject, 0.1f);
 	}
 	protected IEnumerator MonsterChangeFace(Sprite changeSprite)
@@ -126,7 +123,6 @@ public class Monster : MonoBehaviour
 				GameObject t_bullet = Instantiate(randomBulletPre[t_type - 1], bulletPos, Quaternion.identity);
 				t_bullet.GetComponent<Bullet>().SetBulletType((BulletType)t_type);
 			}
-
 		}
 	}
 	public void GetDamage(int hpValue)
@@ -141,6 +137,9 @@ public class Monster : MonoBehaviour
 			{
 				spriteOutline.outlineSize = 0;
 			}
+
+			StageManage.Instance.MonsterDestory();
+
 			StartCoroutine(DestoryDelay());
 		}
 		else
