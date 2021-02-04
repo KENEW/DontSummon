@@ -25,15 +25,12 @@ public class Monster : MonoBehaviour
 	public ParticleSystem hitEffect;
 	public ParticleSystem dieEffect;
 
-	private PolygonCollider2D collider;
-
-	protected SpriteRenderer renderer;
+	protected PolygonCollider2D coll;
+	protected SpriteRenderer sprRender;
 
 	public Sprite[] monsterFace;
 
 	protected int curHp;
-	//[SerializeField] protected int maxHp;
-	//[SerializeField] protected int acuireScore;
 
 	public int maxHp;
 	public int acuireScore;
@@ -65,8 +62,8 @@ public class Monster : MonoBehaviour
 
 		bulletPos = new Vector2(transform.position.x, transform.position.y - gameObject.GetComponent<PolygonCollider2D>().bounds.extents.y - 0.45f);
 
-		collider = GetComponent<PolygonCollider2D>();
-		renderer = GetComponent<SpriteRenderer>();
+		coll = GetComponent<PolygonCollider2D>();
+		sprRender = GetComponent<SpriteRenderer>();
 	
 		hpBarImg = transform.Find("MonsterCanvas/Hp").GetComponent<Image>();
 
@@ -75,8 +72,8 @@ public class Monster : MonoBehaviour
 	}
 	IEnumerator DestoryDelay()
 	{
-		collider.enabled = false;
-		renderer.sprite = monsterFace[2];
+		coll.enabled = false;
+		sprRender.sprite = monsterFace[2];
 
 		StopCoroutine(bulletSpawnCo);
 		StopCoroutine(spawnRandomBulletCo);
@@ -92,9 +89,9 @@ public class Monster : MonoBehaviour
 	}
 	protected IEnumerator MonsterChangeFace(Sprite changeSprite)
 	{
-		renderer.sprite = changeSprite;
+		sprRender.sprite = changeSprite;
 		yield return new WaitForSeconds(1f);
-		renderer.sprite = monsterFace[(int)MonsterFaceType.Idle];
+		sprRender.sprite = monsterFace[(int)MonsterFaceType.Idle];
 	}
 	protected IEnumerator BulletSpawn()
 	{
@@ -146,7 +143,6 @@ public class Monster : MonoBehaviour
 		{
 			SoundManager.Instance.PlaySFX("MonsterHitSFX");
 
-			//Score.Instance.AddScore(acuireScore * (-1 * curHp));
 			Score.Instance.AddScore(acuireScore * hpValue); 
 			transform.DORotate(new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z - 30), 0.25f)
 			.OnComplete(() => { transform.DORotate(new Vector3(transform.rotation.x, transform.rotation.y, transform.rotation.z), 0.2f); });

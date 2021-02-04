@@ -16,6 +16,7 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
                                            typeof(T)).AddComponent<T>();
                 DontDestroyOnLoad(instance);
             }
+
             return instance;
         }
     }

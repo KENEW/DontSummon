@@ -8,8 +8,10 @@ using UnityEngine.SceneManagement;
 public class LoadScene : MonoBehaviour
 {
 	public GameObject loadingPanel;
+
 	public Image curLoadGuageBar;
 	public Image sceneScreen;
+
 	public Text curLoadText;
 
 	public void LoadStart(string sceneName)
@@ -37,6 +39,7 @@ public class LoadScene : MonoBehaviour
 			else
 			{
 				timer += Time.deltaTime;
+
 				curLoadGuageBar.fillAmount = Mathf.Lerp(0.9f, 1f, timer);
 				curLoadText.text = (int)(curLoadGuageBar.fillAmount * 100f)+ "";
 

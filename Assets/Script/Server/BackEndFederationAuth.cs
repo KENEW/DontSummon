@@ -9,8 +9,6 @@ using UnityEngine.SocialPlatforms;
 
 public class BackEndFederationAuth : SceneSingleTon<BackEndFederationAuth>
 {
-	public bool isLoginCheck = false;
-
 	public void OnClickGoogleServer()
 	{
 		OnLogin();
@@ -48,6 +46,7 @@ public class BackEndFederationAuth : SceneSingleTon<BackEndFederationAuth>
 				}
 
 				//Login Success
+				GameManager.Instance.isGPSCheck = true;
 				Debug.Log("GetIdToken - " + PlayGamesPlatform.Instance.GetIdToken());
 				Debug.Log("Email - " + ((PlayGamesLocalUser)Social.localUser).Email);
 				Debug.Log("GoogleId - " + Social.localUser.id);
@@ -84,7 +83,6 @@ public class BackEndFederationAuth : SceneSingleTon<BackEndFederationAuth>
 		if (BRO.IsSuccess())
 		{
 			Debug.Log("구글 토큰으로 뒤끝서버 로그인 성공 - 동기방식");
-			isLoginCheck = true;
 		}
 		else
 		{
@@ -174,14 +172,25 @@ public class BackEndFederationAuth : SceneSingleTon<BackEndFederationAuth>
 
 	public void OnShowLeaderBoard()
 	{
+		if (!GameManager.Instance.isGPSCheck)
+		{
+			Debug.Log("구글 로그인이 되지 않았습니다.");
+			return;
+		}
+
 		Social.ShowLeaderboardUI();
 	}
 	public void OnSetLeaderBoard(int stage, int score)
 	{
+		if(!GameManager.Instance.isGPSCheck)
+		{
+			Debug.Log("구글 로그인이 되지 않았습니다.");
+			return;
+		}
 		switch (stage)
 		{
 			case 1:
-				Social.ReportScore(score, GPGSIds.leaderboard_stage1, (bool bSuccess) =>
+				Social.ReportScore(score, GPGSIds.leaderboard_chapter_1, (bool bSuccess) =>
 				{
 					if (bSuccess)
 					{
@@ -195,7 +204,7 @@ public class BackEndFederationAuth : SceneSingleTon<BackEndFederationAuth>
 				);
 				break;
 			case 2:
-				Social.ReportScore(score, GPGSIds.leaderboard_stage2, (bool bSuccess) =>
+				Social.ReportScore(score, GPGSIds.leaderboard_chapter_2, (bool bSuccess) =>
 				{
 					if (bSuccess)
 					{
@@ -209,7 +218,7 @@ public class BackEndFederationAuth : SceneSingleTon<BackEndFederationAuth>
 				);
 				break;
 			case 3:
-				Social.ReportScore(score, GPGSIds.leaderboard_stage3, (bool bSuccess) =>
+				Social.ReportScore(score, GPGSIds.leaderboard_chapter_3, (bool bSuccess) =>
 				{
 					if (bSuccess)
 					{
@@ -224,26 +233,81 @@ public class BackEndFederationAuth : SceneSingleTon<BackEndFederationAuth>
 				break;
 		}
 	}
+	//랭킹 대시보드 보기
 	public void OnShowAchievement()
 	{
+		if (!GameManager.Instance.isGPSCheck)
+		{
+			Debug.Log("구글 로그인이 되지 않았습니다.");
+			return;
+		}
+
 		Social.ShowAchievementsUI();
 	}
 
-	// 업적추가
-	public void OnAddAchievement()
+	// 업적 추가
+	public void OnAddAchievement(string achieveID)
 	{
-		Social.ReportProgress(GPGSIds.achievement, 100.0f, (bool bSuccess) =>
+		if (!GameManager.Instance.isGPSCheck)
 		{
-			if (bSuccess)
-			{
-				Debug.Log("AddAchievement Success");
-			}
-			else
-			{
-				Debug.Log("AddAchievement Fall");
-			}
+			Debug.Log("구글 로그인이 되지 않았습니다.");
+			return;
 		}
-		);
-	}
 
+		switch (achieveID)
+		{
+			case "Start":
+				Social.ReportProgress(GPGSIds.achievement, 100.0f, (bool bSuccess) =>
+				{
+					if (bSuccess)
+					{
+						Debug.Log("Start AddAchievement Success");
+					}
+					else
+					{
+						Debug.Log("Start AddAchievement Fall");
+					}
+				});
+				break;
+			case "Chapter1":
+				Social.ReportProgress(GPGSIds.achievement_2, 100.0f, (bool bSuccess) =>
+				{
+					if (bSuccess)
+					{
+						Debug.Log("1 Stage AddAchievement Success");
+					}
+					else
+					{
+						Debug.Log("1 Stage AddAchievement Fall");
+					}
+				});
+				break;
+			case "Chapter2":
+				Social.ReportProgress(GPGSIds.achievement_3, 100.0f, (bool bSuccess) =>
+				{
+					if (bSuccess)
+					{
+						Debug.Log("2 Stage AddAchievement Success");
+					}
+					else
+					{
+						Debug.Log("2 Stage AddAchievement Fall");
+					}
+				});
+				break;
+			case "Chapter3":
+				Social.ReportProgress(GPGSIds.achievement_4, 100.0f, (bool bSuccess) =>
+				{
+					if (bSuccess)
+					{
+						Debug.Log("3 Stage AddAchievement Success");
+					}
+					else
+					{
+						Debug.Log("3 Stage AddAchievement Fall");
+					}
+				});
+				break;
+		}
+	}
 }

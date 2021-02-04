@@ -31,10 +31,11 @@ public class DefenceWallSelect : MonoBehaviour
 
     public DefenceWall curDefenceWall = DefenceWall.rentangle;
 
-    public Vector2 selectScaleFalse = new Vector3(0.5f, 0.5f);
-    public Vector2 selectScaleTrue = new Vector3(0.39f, 0.39f);
+    private Vector2 selectScaleFalse = new Vector3(0.5f, 0.5f);
+    private Vector2 selectScaleTrue = new Vector3(0.4f, 0.4f);
 
     public int[] defenceWallHp = new int[] {3, 1, 2};
+
     public string[] defenceWallNameStr;
     public string[] defenceWallInfoStr;
 

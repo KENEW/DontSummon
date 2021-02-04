@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : SceneSingleTon<GameManager>
+public class GameManager : MonoSingleton<GameManager>
 {
-	public bool isFirstCheck = true;
+	public bool isLoginCheck = false;
+	public bool isGPSCheck = false;
 
 	private void Awake()
 	{
@@ -12,6 +13,6 @@ public class GameManager : SceneSingleTon<GameManager>
 	}
 	public void ScreenSetting()
 	{
-		Screen.SetResolution(720, 1280, false);
+		Screen.SetResolution(1080, 1920, false);
 	}
 }

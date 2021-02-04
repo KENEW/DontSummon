@@ -14,7 +14,7 @@ public enum BulletType
 public class Bullet : MonoBehaviour
 {
     private Rigidbody2D rigid;
-    private SpriteRenderer renderer;
+    private SpriteRenderer sprRender;
     public Sprite[] sprites;
 
     [SerializeField]
@@ -28,7 +28,7 @@ public class Bullet : MonoBehaviour
 
     void Start()
     {
-        renderer = gameObject.GetComponent<SpriteRenderer>();
+        sprRender = gameObject.GetComponent<SpriteRenderer>();
         rigid = gameObject.GetComponent<Rigidbody2D>();
         //포탈을 향해 이동
         rigid.velocity = new Vector2(-rigid.transform.position.x * moveSpeed, -(rigid.transform.position.y+4.27f) * moveSpeed);
@@ -140,19 +140,19 @@ public class Bullet : MonoBehaviour
             if (coll.CompareTag("RedTile"))
             {
                 coll.GetComponent<Animator>().SetTrigger("BulletTrigger");
-                renderer.sprite = sprites[(int)TypeColor.Red];
+                sprRender.sprite = sprites[(int)TypeColor.Red];
                 bulletColor = TypeColor.Red;
             }
             else if (coll.CompareTag("GreenTile"))
             {
                 coll.GetComponent<Animator>().SetTrigger("BulletTrigger");
-                renderer.sprite = sprites[(int)TypeColor.Green];
+                sprRender.sprite = sprites[(int)TypeColor.Green];
                 bulletColor = TypeColor.Green;
             }
             else if (coll.CompareTag("BlueTile"))
             {
                 coll.GetComponent<Animator>().SetTrigger("BulletTrigger");
-                renderer.sprite = sprites[(int)TypeColor.Blue];
+                sprRender.sprite = sprites[(int)TypeColor.Blue];
                 bulletColor = TypeColor.Blue;
             }
         }

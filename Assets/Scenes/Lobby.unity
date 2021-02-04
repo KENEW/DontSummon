@@ -3782,7 +3782,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de9e00a00b6c07446b54ebc5e22c3819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLoginCheck: 0
 --- !u!114 &511006951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7158,7 +7157,6 @@ MonoBehaviour:
   curScore: 0
   loginID: 
   filePath: /GameData/
-  isLoginCheck: 0
 --- !u!4 &930433387
 Transform:
   m_ObjectHideFlags: 0
@@ -7185,7 +7183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4606a2d57be76d34c8dbd0803be7dbc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFirstCheck: 1
+  isLoginCheck: 0
 --- !u!1 &980800008
 GameObject:
   m_ObjectHideFlags: 0
@@ -8020,7 +8018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loginScreen: {fileID: 1994981538}
-  maskPanel: {fileID: 738520669}
+  fadePanel: {fileID: 738520669}
 --- !u!1 &1118389403
 GameObject:
   m_ObjectHideFlags: 0
@@ -8050,7 +8048,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 594a148c3b055f24892195c6555e499c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   firstScreen: {fileID: 653985724}
   titleScreen: {fileID: 897571617}
 --- !u!4 &1118389405
@@ -10549,8 +10546,6 @@ MonoBehaviour:
   scrollPos: 0
   contentPos: []
   curDefenceWall: 0
-  selectScaleFalse: {x: 0.5, y: 0.5}
-  selectScaleTrue: {x: 0.4, y: 0.4}
   defenceWallHp: 020000000200000001000000
   defenceWallNameStr:
   - "\uC9C1\uC0AC\uAC01\uD615"

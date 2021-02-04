@@ -53,8 +53,6 @@ public class MyData : SceneSingleTon<MyData>
     [SerializeField]
     private string filePath = "/GameData/";
 
-    public bool isLoginCheck = false;
-
     private void Update()
 	{
         //Test Key

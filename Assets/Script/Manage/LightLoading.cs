@@ -8,13 +8,14 @@ using UnityEngine.SceneManagement;
 public class LightLoading : MonoBehaviour
 {
 	public GameObject loadingPanel;
+
 	public Image fadeScreen;
 	public Image curLoadGuageBar;
 
 	public void LoadStart(string sceneName)
 	{
 		Time.timeScale = 1;
-		Debug.Log("타임스케일" + Time.timeScale);
+
 		loadingPanel.SetActive(true);
 		StartCoroutine(Loading(sceneName));
 	}

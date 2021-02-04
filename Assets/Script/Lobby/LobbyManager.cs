@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class LobbyManager : MonoBehaviour
 {
-	public GameManager gameManager;
-
 	public GameObject firstScreen;
 	public GameObject titleScreen;
 
+	public GameManager gameManager;
+
 	private void Start()
 	{
-		Time.timeScale = 1.0f;
-
 		gameManager = FindObjectOfType<GameManager>();
 
-		if (!MyData.Instance.isLoginCheck)
+		Time.timeScale = 1.0f;
+
+		if (!gameManager.isLoginCheck)
 		{
 			firstScreen.SetActive(true);
-			MyData.Instance.isLoginCheck = true;
+			gameManager.isLoginCheck = true;
 		}
 		else
 		{

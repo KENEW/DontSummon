@@ -8,14 +8,14 @@ public class SceneSingleTon<T> : MonoBehaviour where T : MonoBehaviour
 
     void Awake()
     {
-        if (null == instance)
+        if (!instance)
         {
             instance = FindObjectOfType(typeof(T)) as T;
             DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
     public static T Instance

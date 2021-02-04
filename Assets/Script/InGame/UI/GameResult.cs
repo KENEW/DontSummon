@@ -81,7 +81,13 @@ public class GameResult : MonoSingleton<GameResult>
 
         if (totalScore > MyData.Instance.scoreInfo.stageScore[MyData.Instance.stageInfo.curChapter - 1])
         {
-            Debug.Log(MyData.Instance.stageInfo.curChapter);
+            BackEndFederationAuth.Instance.OnSetLeaderBoard(MyData.Instance.stageInfo.curChapter, totalScore);
+
+            if(MyData.Instance.scoreInfo.stageScore[MyData.Instance.stageInfo.curChapter - 1] == 0)
+            {
+                BackEndFederationAuth.Instance.OnAddAchievement("Chapter" + MyData.Instance.stageInfo.curChapter);
+			}
+
             MyData.Instance.scoreInfo.stageScore[MyData.Instance.stageInfo.curChapter - 1] = totalScore;
             MyData.Instance.SaveGameData();
         }

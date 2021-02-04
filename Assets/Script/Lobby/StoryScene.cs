@@ -10,7 +10,8 @@ public class StoryScene : MonoBehaviour
 	public void NextButton()
 	{
 		SoundManager.Instance.PlaySFX("Button");
+
 		mainTitle.SetActive(true);
-		this.gameObject.SetActive(false);
+		gameObject.SetActive(false);
 	}
 }

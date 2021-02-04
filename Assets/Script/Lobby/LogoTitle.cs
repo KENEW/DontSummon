@@ -7,7 +7,7 @@ using DG.Tweening;
 public class LogoTitle : MonoBehaviour
 {
 	public GameObject loginScreen;
-	public Image maskPanel;
+	public Image fadePanel;
 
 	private void Start()
 	{
@@ -15,14 +15,14 @@ public class LogoTitle : MonoBehaviour
 	}
 	private IEnumerator fadeStart()
 	{
-		Color color = maskPanel.color;
+		Color color = fadePanel.color;
 
 		yield return new WaitForSeconds(0.5f);
 
 		while (color.a >= 0.01f)
 		{
 			color.a -= 0.03f;
-			maskPanel.color = color;
+			fadePanel.color = color;
 			yield return null;
 		}
 
@@ -31,12 +31,12 @@ public class LogoTitle : MonoBehaviour
 		while (color.a <= 0.99f)
 		{
 			color.a += 0.03f;
-			maskPanel.color = color;
+			fadePanel.color = color;
 			yield return null;
 		}
 
 		color.a = 1.0f;
-		maskPanel.color = color;
+		fadePanel.color = color;
 		yield return new WaitForSeconds(0.5f);
 
 		loginScreen.SetActive(true);

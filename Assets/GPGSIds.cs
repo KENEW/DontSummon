@@ -24,11 +24,13 @@
 
 public static class GPGSIds
 {
-        public const string leaderboard_totalscore = "CgkIg_ylxfcREAIQAQ"; // <GPGSID>
-        public const string leaderboard_stage1 = "CgkIg_ylxfcREAIQAw"; // <GPGSID>
+        public const string leaderboard_chapter_2 = "CgkIg_ylxfcREAIQBA"; // <GPGSID>
         public const string achievement = "CgkIg_ylxfcREAIQAg"; // <GPGSID>
-        public const string leaderboard_stage2 = "CgkIg_ylxfcREAIQBA"; // <GPGSID>
-        public const string leaderboard_stage3 = "CgkIg_ylxfcREAIQBQ"; // <GPGSID>
+        public const string achievement_2 = "CgkIg_ylxfcREAIQBw"; // <GPGSID>
+        public const string achievement_3 = "CgkIg_ylxfcREAIQBg"; // <GPGSID>
+        public const string achievement_4 = "CgkIg_ylxfcREAIQCA"; // <GPGSID>
+        public const string leaderboard_chapter_1 = "CgkIg_ylxfcREAIQAw"; // <GPGSID>
+        public const string leaderboard_chapter_3 = "CgkIg_ylxfcREAIQBQ"; // <GPGSID>
 
 }
 

@@ -19,14 +19,10 @@ public class LoginScreen : MonoBehaviour
 		BackEndFederationAuth.Instance.OnClickGoogleServer();
 		NextScreen();
 	}
-	public void OnTestLogin()
-	{
-		BackEndAuthentication.Instance.OneClickCustomServer();
-		NextScreen();
-	}
 	public void OnGuestLogin()
 	{
 		SoundManager.Instance.PlaySFX("Button");
+
 		MyData.Instance.LoadGameData();
 		NextScreen();
 	}

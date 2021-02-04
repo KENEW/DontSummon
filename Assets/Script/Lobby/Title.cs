@@ -10,8 +10,6 @@ public class Title : MonoBehaviour
 	public GameObject TitleScreen;
 	public GameObject CreditPanel;
 
-	private bool isBGMCheck = false;
-
 	private void Start()
 	{
 		SoundManager.Instance.PlayBGM("Title");
@@ -20,6 +18,7 @@ public class Title : MonoBehaviour
 	{
 		SoundManager.Instance.PlaySFX("Button");
 
+		BackEndFederationAuth.Instance.OnAddAchievement("Start");
 		MyData.Instance.DataInit();
 
 		StageSelect.SetActive(true);

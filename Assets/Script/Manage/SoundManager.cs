@@ -10,18 +10,12 @@ public class Sound
 }
 public class SoundManager : SceneSingleTon<SoundManager>
 {
-    public static SoundManager Instance;
-     
     [SerializeField] Sound[] sfx = null;
     [SerializeField] Sound[] bgm = null;
 
     [SerializeField] AudioSource bgmPlayer = null;
     [SerializeField] AudioSource[] sfxPlayer = null;
 
-	private void Start()
-	{
-        Instance = this;
-    }
 	public void PlayBGM(string p_bgmName)
 	{
         for(int i = 0; i < bgm.Length; i++)
@@ -33,12 +27,10 @@ public class SoundManager : SceneSingleTon<SoundManager>
 			}
 		}
 	}
-
     public void StopBGM()
     {
         bgmPlayer.Stop();
     }
-
     public void PlaySFX(string p_sfxName)
     {
         for (int i = 0; i < sfx.Length; i++)
@@ -55,11 +47,12 @@ public class SoundManager : SceneSingleTon<SoundManager>
 					}
 
 				}
+
                 Debug.Log("모든 오디오 플레이어가 재생중");
                 return;
             }
         }
-        Debug.Log(p_sfxName + "이름의 효과음이 없습니다.");
 
+        Debug.Log(p_sfxName + "이름의 효과음이 없습니다.");
     }
 }
