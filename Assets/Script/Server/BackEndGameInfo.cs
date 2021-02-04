@@ -156,7 +156,7 @@ public class BackEndGameInfo : SceneSingleTon<BackEndGameInfo>
 		var dataIndate = data["inDate"][0].ToString();
 
 		MyData.Instance.loginID = dataIndate;
-		Debug.Log("사용자 인증번호 : " +MyData.Instance.loginID);
+		Debug.Log("사용자 인증번호 : " + MyData.Instance.loginID);
 
 		for (int i = 0; i < 3; i++)
 		{

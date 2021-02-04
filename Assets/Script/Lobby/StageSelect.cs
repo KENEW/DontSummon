@@ -11,6 +11,8 @@ public class StageSelect : MonoBehaviour
     public GameObject titlePanel;
     public GameObject defenceWallSelectPanel;
 
+    public Button selectButton;
+
     public Text stageNumText;
     public Text highScoreText;
     public Text stageNameText;
@@ -86,6 +88,7 @@ public class StageSelect : MonoBehaviour
     }
     private void UIUpdate()
     {
+        selectButton.interactable = (MyData.Instance.scoreInfo.stageScore[MyData.Instance.stageInfo.curChapter] > 0) ? true : false;
         storyText.text = stageStory[curChapter];
         highScoreText.text = "최고 스코어 : " + MyData.Instance.scoreInfo.stageScore[curChapter];
         stageNameText.text = stageName[curChapter];
