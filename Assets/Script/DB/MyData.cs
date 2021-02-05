@@ -64,6 +64,10 @@ public class MyData : SceneSingleTon<MyData>
         {
             DataEdit();
         }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            DataInit();
+        }
     }
     public void DataInit()
     {

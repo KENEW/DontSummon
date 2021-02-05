@@ -190,7 +190,7 @@ public class BackEndFederationAuth : SceneSingleTon<BackEndFederationAuth>
 		switch (stage)
 		{
 			case 1:
-				Social.ReportScore(score, GPGSIds.leaderboard_chapter_1, (bool bSuccess) =>
+				Social.ReportScore(score, GPGSIds.leaderboard_chapter1, (bool bSuccess) =>
 				{
 					if (bSuccess)
 					{
@@ -204,7 +204,7 @@ public class BackEndFederationAuth : SceneSingleTon<BackEndFederationAuth>
 				);
 				break;
 			case 2:
-				Social.ReportScore(score, GPGSIds.leaderboard_chapter_2, (bool bSuccess) =>
+				Social.ReportScore(score, GPGSIds.leaderboard_chapter2, (bool bSuccess) =>
 				{
 					if (bSuccess)
 					{
@@ -218,7 +218,7 @@ public class BackEndFederationAuth : SceneSingleTon<BackEndFederationAuth>
 				);
 				break;
 			case 3:
-				Social.ReportScore(score, GPGSIds.leaderboard_chapter_3, (bool bSuccess) =>
+				Social.ReportScore(score, GPGSIds.leaderboard_chapter3, (bool bSuccess) =>
 				{
 					if (bSuccess)
 					{

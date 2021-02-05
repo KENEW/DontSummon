@@ -88,7 +88,19 @@ public class StageSelect : MonoBehaviour
     }
     private void UIUpdate()
     {
-        selectButton.interactable = (MyData.Instance.scoreInfo.stageScore[MyData.Instance.stageInfo.curChapter] > 0) ? true : false;
+        if(curChapter == 0)
+        {
+            selectButton.interactable = true;
+        }
+        if(curChapter == 1)
+        {
+            selectButton.interactable = (MyData.Instance.scoreInfo.stageScore[0] > 0) ? true : false;
+        }
+        if (curChapter == 2)
+        {
+            selectButton.interactable = (MyData.Instance.scoreInfo.stageScore[1] > 0) ? true : false;
+        }
+
         storyText.text = stageStory[curChapter];
         highScoreText.text = "최고 스코어 : " + MyData.Instance.scoreInfo.stageScore[curChapter];
         stageNameText.text = stageName[curChapter];

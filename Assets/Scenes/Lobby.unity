@@ -1875,6 +1875,7 @@ MonoBehaviour:
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
+  m_ShouldActivateOnSelect: 1
 --- !u!1 &286537135
 GameObject:
   m_ObjectHideFlags: 0
@@ -14409,6 +14410,7 @@ MonoBehaviour:
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
   m_ReadOnly: 0
+  m_ShouldActivateOnSelect: 1
 --- !u!224 &1909331033
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15760,7 +15762,7 @@ MonoBehaviour:
   stageSelectPanel: {fileID: 1423153884}
   titlePanel: {fileID: 897571617}
   defenceWallSelectPanel: {fileID: 1461051364}
-  selectButton: {fileID: 0}
+  selectButton: {fileID: 1068019063}
   stageNumText: {fileID: 1908681276}
   highScoreText: {fileID: 882055083}
   stageNameText: {fileID: 1741333825}
