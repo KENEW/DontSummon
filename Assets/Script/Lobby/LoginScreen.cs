@@ -16,7 +16,8 @@ public class LoginScreen : MonoBehaviour
 	{
 		SoundManager.Instance.PlaySFX("Button");
 
-		BackEndFederationAuth.Instance.OnClickGoogleServer();
+		BackEndFederationAuth.Instance.OnClickGPGS();
+		//FindObjectOfType<GPGS_TEST>().OnLogin();
 		NextScreen();
 	}
 	public void OnGuestLogin()

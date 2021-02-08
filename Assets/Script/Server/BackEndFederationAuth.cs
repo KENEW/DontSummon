@@ -7,14 +7,19 @@ using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using UnityEngine.SocialPlatforms;
 
-public class BackEndFederationAuth : SceneSingleTon<BackEndFederationAuth>
+public class BackEndFederationAuth : MonoSingleton<BackEndFederationAuth>
 {
-	public void OnClickGoogleServer()
+	public Text text;
+
+	private void Awake()
+	{
+		GPGSInit();
+	}
+	public void OnClickGPGS()
 	{
 		OnLogin();
-		BackEndGameInfo.Instance.OnClickPublicContents();
 	}
-	public void OnLogin()
+	private void GPGSInit()
 	{
 		PlayGamesClientConfiguration config = new PlayGamesClientConfiguration
 		.Builder()
@@ -23,39 +28,40 @@ public class BackEndFederationAuth : SceneSingleTon<BackEndFederationAuth>
 		.RequestIdToken()
 		.Build();
 
-		//Cusomized information GPGS Init
 		PlayGamesPlatform.InitializeInstance(config);
-		PlayGamesPlatform.DebugLogEnabled = false;
-
-		//GPGS START
+		PlayGamesPlatform.DebugLogEnabled = true;
 		PlayGamesPlatform.Activate();
-		GoogleAuth();
-		OnClickGPSLogin();
+
+		text.text = "no Login";
 	}
-
-	private void GoogleAuth()
+	public void OnLogin()
 	{
-		if (PlayGamesPlatform.Instance.localUser.authenticated == false)
+		if (!Social.localUser.authenticated)
 		{
-			Social.localUser.Authenticate(success =>
+			Social.localUser.Authenticate((bool bSuccess) =>
 			{
-				if (success == false)
+				if (bSuccess)
 				{
-					Debug.Log("구글 로그인 실패");
-					return;
-				}
+					Debug.Log("Success : " + Social.localUser.userName);
+					text.text = Social.localUser.userName;
 
-				//Login Success
-				GameManager.Instance.isGPSCheck = true;
-				Debug.Log("GetIdToken - " + PlayGamesPlatform.Instance.GetIdToken());
-				Debug.Log("Email - " + ((PlayGamesLocalUser)Social.localUser).Email);
-				Debug.Log("GoogleId - " + Social.localUser.id);
-				Debug.Log("UserName - " + Social.localUser.userName);
-				Debug.Log("UserName - " + PlayGamesPlatform.Instance.GetUserDisplayName());
+					GameManager.Instance.isGPSCheck = true;
+
+					Debug.Log("Email : " + PlayGamesPlatform.Instance.GetUserEmail());
+					Debug.Log("Token : " + PlayGamesPlatform.Instance.GetIdToken());
+					Debug.Log("AuthCode : " + PlayGamesPlatform.Instance.GetServerAuthCode());
+
+					Debug.Log("GoogleId - " + Social.localUser.id);
+					Debug.Log("UserName - " + PlayGamesPlatform.Instance.GetUserDisplayName());
+				}
+				else
+				{
+					Debug.Log("Fall");
+					text.text = "Fail";
+				}
 			});
 		}
 	}
-
 	private string GetTokens()
 	{
 		if (PlayGamesPlatform.Instance.localUser.authenticated)
@@ -66,7 +72,6 @@ public class BackEndFederationAuth : SceneSingleTon<BackEndFederationAuth>
 		else
 		{
 			Debug.Log("접속되어있지 않습니다. 잠시 후 다시 시도해주세요.");
-			GoogleAuth();
 			return null;
 		}
 	}
@@ -182,7 +187,7 @@ public class BackEndFederationAuth : SceneSingleTon<BackEndFederationAuth>
 	}
 	public void OnSetLeaderBoard(int stage, int score)
 	{
-		if(!GameManager.Instance.isGPSCheck)
+		if (!GameManager.Instance.isGPSCheck)
 		{
 			Debug.Log("구글 로그인이 되지 않았습니다.");
 			return;
