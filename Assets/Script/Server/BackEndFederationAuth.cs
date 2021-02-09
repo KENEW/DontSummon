@@ -11,14 +11,10 @@ public class BackEndFederationAuth : MonoSingleton<BackEndFederationAuth>
 {
 	public Text text;
 
-	private void Awake()
-	{
-		GPGSInit();
-	}
-	public void OnClickGPGS()
-	{
-		OnLogin();
-	}
+	//private void Awake()
+	//{
+	//	GPGSInit();
+	//}
 	private void GPGSInit()
 	{
 		PlayGamesClientConfiguration config = new PlayGamesClientConfiguration
@@ -31,11 +27,11 @@ public class BackEndFederationAuth : MonoSingleton<BackEndFederationAuth>
 		PlayGamesPlatform.InitializeInstance(config);
 		PlayGamesPlatform.DebugLogEnabled = true;
 		PlayGamesPlatform.Activate();
-
-		text.text = "no Login";
 	}
 	public void OnLogin()
 	{
+		GPGSInit();
+
 		if (!Social.localUser.authenticated)
 		{
 			Social.localUser.Authenticate((bool bSuccess) =>
@@ -43,8 +39,6 @@ public class BackEndFederationAuth : MonoSingleton<BackEndFederationAuth>
 				if (bSuccess)
 				{
 					Debug.Log("Success : " + Social.localUser.userName);
-					text.text = Social.localUser.userName;
-
 					GameManager.Instance.isGPSCheck = true;
 
 					Debug.Log("Email : " + PlayGamesPlatform.Instance.GetUserEmail());
@@ -53,16 +47,18 @@ public class BackEndFederationAuth : MonoSingleton<BackEndFederationAuth>
 
 					Debug.Log("GoogleId - " + Social.localUser.id);
 					Debug.Log("UserName - " + PlayGamesPlatform.Instance.GetUserDisplayName());
+
+					OnClickGPSLogin();
 				}
 				else
 				{
+					LoginScreen.Instance.OpenLoginFailedPanel();
 					Debug.Log("Fall");
-					text.text = "Fail";
 				}
 			});
 		}
 	}
-	private string GetTokens()
+	private string GPGSGetTokens()
 	{
 		if (PlayGamesPlatform.Instance.localUser.authenticated)
 		{
@@ -72,25 +68,37 @@ public class BackEndFederationAuth : MonoSingleton<BackEndFederationAuth>
 		else
 		{
 			Debug.Log("접속되어있지 않습니다. 잠시 후 다시 시도해주세요.");
+			LoginScreen.Instance.OpenLoginFailedPanel();
+
 			return null;
 		}
 	}
-
 	public void OnClickGPSLogin()
 	{
-		BackendReturnObject BRO = Backend.BMember.AuthorizeFederation(GetTokens(), FederationType.Google, "gpgs로 만든계정");
+		BackendReturnObject BRO = Backend.BMember.AuthorizeFederation(GPGSGetTokens(), FederationType.Google, "gpgs로 만든계정");
 
-		if (BRO == null)
-		{
-			Debug.Log("BRO가 비워있습니다.");
-			return;
-		}
 		if (BRO.IsSuccess())
 		{
 			Debug.Log("구글 토큰으로 뒤끝서버 로그인 성공 - 동기방식");
+
+			switch(BRO.GetStatusCode())
+			{
+				case "200":
+					Debug.Log("로그인 성공 / InDate값을 불러옵니다.");
+					BackEndGameInfo.Instance.OnClickPublicContents();
+					break;
+				case "201":
+					Debug.Log("회원가입 성공 / InDate값을 생성합니다.");
+					BackEndGameInfo.Instance.OnClickInsertData();
+					break;
+			}
+
+			LoginScreen.Instance.NextScreen();
 		}
 		else
 		{
+			LoginScreen.Instance.OpenLoginFailedPanel();
+
 			switch (BRO.GetStatusCode())
 			{
 				case "200":
@@ -103,83 +111,14 @@ public class BackEndFederationAuth : MonoSingleton<BackEndFederationAuth>
 					Debug.Log("서버 공통 에러 발생" + BRO.GetMessage());
 					break;
 			}
-
 		}
 	}
-
-	public void OnClickUpdateEmail()
-	{
-		BackendReturnObject BRO = Backend.BMember.UpdateFederationEmail(GetTokens(), FederationType.Google);
-		if (BRO.IsSuccess())
-		{
-			Debug.Log("이메일 주소 저장 완료");
-		}
-		else
-		{
-			if (BRO.GetStatusCode() == "404")
-			{
-				Debug.Log("federationId not found, federationId을(를) 찾을 수 없습니다.");
-			}
-			else
-			{
-				Debug.Log("서버 공통 에러 발생" + BRO.GetMessage());
-			}
-		}
-	}
-
-	//이미 가입된 상태인지 확인
-	public void OnClickCheckUserAuthenticate()
-	{
-		BackendReturnObject BRO = Backend.BMember.CheckUserInBackend(GetTokens(), FederationType.Google);
-		if (BRO.GetStatusCode() == "200")
-		{
-			Debug.Log("가입 중인 계정입니다.");
-
-			//해당 계정 정보
-			Debug.Log(BRO.GetReturnValue());
-		}
-		else
-		{
-			Debug.Log("가입된 계정이 아닙니다.");
-		}
-	}
-
-	//커스텀 계정을 패더레이션 계정으로 변경
-	public void OnClickChangeCustomToFederation()
-	{
-		BackendReturnObject BRO = Backend.BMember.ChangeCustomToFederation(GetTokens(), FederationType.Google);
-
-		if (BRO.IsSuccess())
-		{
-			Debug.Log("패더레이션 계정으로 변경 완료");
-		}
-		else
-		{
-			switch (BRO.GetStatusCode())
-			{
-				case "400":
-					if (BRO.GetErrorCode() == "BadParameterException")
-					{
-						Debug.Log("이미 ChangeCustomToFederation 완료 되었는데 다시 시도한 경우");
-					}
-					else if (BRO.GetErrorCode() == "UndefinedParameterException")
-					{
-						Debug.Log("CustomLogin 하지 않은 상황에서 시도한 경우");
-					}
-					break;
-				case "409":
-					//이미 가입되어 있는 경우
-					Debug.Log("Duplicated federationId, 중복된 federationId 입니다.");
-					break;
-			}
-		}
-	}
-
 	public void OnShowLeaderBoard()
 	{
 		if (!GameManager.Instance.isGPSCheck)
 		{
 			Debug.Log("구글 로그인이 되지 않았습니다.");
+			OnClickGPSLogin();
 			return;
 		}
 
@@ -238,7 +177,6 @@ public class BackEndFederationAuth : MonoSingleton<BackEndFederationAuth>
 				break;
 		}
 	}
-	//랭킹 대시보드 보기
 	public void OnShowAchievement()
 	{
 		if (!GameManager.Instance.isGPSCheck)
@@ -249,8 +187,6 @@ public class BackEndFederationAuth : MonoSingleton<BackEndFederationAuth>
 
 		Social.ShowAchievementsUI();
 	}
-
-	// 업적 추가
 	public void OnAddAchievement(string achieveID)
 	{
 		if (!GameManager.Instance.isGPSCheck)
@@ -258,7 +194,6 @@ public class BackEndFederationAuth : MonoSingleton<BackEndFederationAuth>
 			Debug.Log("구글 로그인이 되지 않았습니다.");
 			return;
 		}
-
 		switch (achieveID)
 		{
 			case "Start":

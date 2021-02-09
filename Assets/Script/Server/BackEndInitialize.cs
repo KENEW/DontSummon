@@ -7,15 +7,16 @@ public class BackEndInitialize : MonoBehaviour
 {
 	private void Start()
     { 
+        //Google Hash Test
 	    Backend.Initialize(() =>
         {
             if (Backend.IsInitialized)
             {
-                //Debug.Log("구글 해쉬키 : " + Backend.Utils.GetGoogleHash());
+                Debug.Log("구글 해쉬키 : " + Backend.Utils.GetGoogleHash());
             }
             else
             {
-                //Debug.LogError("초기화 실패");
+                Debug.LogError("초기화 실패");
             }
         });
     }

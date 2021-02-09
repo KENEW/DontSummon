@@ -84,12 +84,19 @@ public class MyData : SceneSingleTon<MyData>
     }
     public void LoadGameData()
     {
-        string filePath_gameData = Application.dataPath + filePath + "GameData.json";
+        string dataPath;
 
-        if (File.Exists(filePath_gameData))
+#if UNITY_ANDROID
+        dataPath = Application.persistentDataPath + "GameData.json";
+#endif
+#if UNITY_EDITOR
+        dataPath = Application.dataPath + filePath + "GameData.json";
+#endif
+
+        if (File.Exists(dataPath))
         {
             Debug.Log("스코어 정보 불러오기 성공!");
-            string FromJsonData = File.ReadAllText(filePath_gameData);
+            string FromJsonData = File.ReadAllText(dataPath);
             FromJsonData = Program.Decrypt(FromJsonData, "userdata");
             scoreInfo = JsonUtility.FromJson<ScoreInfo>(FromJsonData);
         }
@@ -97,14 +104,23 @@ public class MyData : SceneSingleTon<MyData>
         {
             Debug.Log("새로운 스코어 정보 파일 생성");
             scoreInfo = new ScoreInfo();
+            SaveGameData();
         }
     }
     public void SaveGameData()
     {
+        string dataPath;
+
+#if UNITY_ANDROID
+        dataPath = Application.persistentDataPath + "GameData.json";
+#endif
+#if UNITY_EDITOR
+        dataPath = Application.dataPath + filePath + "GameData.json";
+#endif
+
         JsonData jsonData_scoreData = JsonMapper.ToJson(scoreInfo);
         string scoreData = Program.Encrypt(jsonData_scoreData.ToString(), "userdata");
-
-        File.WriteAllText(Application.dataPath + filePath + "GameData.json", scoreData);
+        File.WriteAllText(dataPath, scoreData);
 
         Debug.Log("저장 완료");
     }

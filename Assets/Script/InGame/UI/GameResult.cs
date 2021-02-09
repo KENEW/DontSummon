@@ -90,6 +90,7 @@ public class GameResult : MonoSingleton<GameResult>
 
             MyData.Instance.scoreInfo.stageScore[MyData.Instance.stageInfo.curChapter - 1] = totalScore;
             MyData.Instance.SaveGameData();
+            BackEndGameInfo.Instance.OnClickGameInfoUpdate();
         }
 
         StartCoroutine(CountSequence());

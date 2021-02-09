@@ -12,7 +12,7 @@ public class BackEndAuthentication : SceneSingleTon<BackEndAuthentication>
 	public void OneClickCustomServer()
 	{
 		OnClickLogin();
-		BackEndGameInfo.Instance.OnClickPublicContents();
+		//BackEndGameInfo.Instance.OnClickPublicContents();
 	}
 	public void OnClickSignUp()
 	{
@@ -21,6 +21,7 @@ public class BackEndAuthentication : SceneSingleTon<BackEndAuthentication>
 		if(BRO.IsSuccess())
 		{
 			Debug.Log("회원가입 완료");
+			BackEndGameInfo.Instance.OnClickInsertData();
 		}
 		else
 		{
@@ -44,7 +45,8 @@ public class BackEndAuthentication : SceneSingleTon<BackEndAuthentication>
 
 		if (BRO.IsSuccess())
 		{
-			Debug.Log("로그인 완료");
+			BackEndGameInfo.Instance.OnClickPublicContents();
+			Debug.Log("로그인 완료 / 정보 로드");
 		}
 		else
 		{

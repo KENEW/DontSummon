@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LoginScreen : MonoBehaviour
+public class LoginScreen : MonoSingleton<LoginScreen>
 {
 	public GameObject TitleScreen;
 	public GameObject loginScreen;
+	public GameObject loginFailedPanel;
 
 	public void NextScreen()
 	{
@@ -16,9 +17,7 @@ public class LoginScreen : MonoBehaviour
 	{
 		SoundManager.Instance.PlaySFX("Button");
 
-		BackEndFederationAuth.Instance.OnClickGPGS();
-		//FindObjectOfType<GPGS_TEST>().OnLogin();
-		NextScreen();
+		BackEndFederationAuth.Instance.OnLogin();
 	}
 	public void OnGuestLogin()
 	{
@@ -26,5 +25,13 @@ public class LoginScreen : MonoBehaviour
 
 		MyData.Instance.LoadGameData();
 		NextScreen();
+	}
+	public void OpenLoginFailedPanel()
+	{
+		loginFailedPanel.SetActive(true);
+	}
+	public void CloseLoginFailedPanel()
+	{
+		loginFailedPanel.SetActive(false);
 	}
 }

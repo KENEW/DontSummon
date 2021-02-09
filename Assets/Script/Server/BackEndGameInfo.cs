@@ -9,20 +9,18 @@ public class BackEndGameInfo : SceneSingleTon<BackEndGameInfo>
 {
 	public void OnClickInsertData()
 	{
-		int stage1Score = 0;
-		int stage2Score = 0;
-		int stage3Score = 0;
-
 		Param param = new Param();
-		param.Add("stage1", stage1Score);
-		param.Add("stage2", stage2Score);
-		param.Add("stage3", stage3Score);
+
+		param.Add("stage1", 0);
+		param.Add("stage2", 0);
+		param.Add("stage3", 0);
 
 		BackendReturnObject BRO = Backend.GameInfo.Insert("StageScore", param);
 
 		if(BRO.IsSuccess())
 		{
 			Debug.Log("새로운 데이터가 서버에 등록되었습니다! indate 값 : " + BRO.GetInDate());
+			OnClickPublicContents();
 		}
 		else
 		{
@@ -121,26 +119,25 @@ public class BackEndGameInfo : SceneSingleTon<BackEndGameInfo>
 	{
 		if(returnData != null)
 		{
-			Debug.Log("데이터가 존재합니다.");
-
+			Debug.Log("데이터가 존재합니다. 데이터를 불러옵니다.");
+	
 			//rows Load
 			if (returnData.Keys.Contains("rows"))
 			{
-				Debug.Log("rows로 전달받음");
 				JsonData rows = returnData["rows"];
+
+				var dataIndate = rows[0]["inDate"][0].ToString();
+				MyData.Instance.loginID = dataIndate;
+				Debug.Log("사용자 인증번호 : " + MyData.Instance.loginID);
+
 				for (int i = 0; i < rows.Count; i++)
 				{
-					Debug.Log(rows[i]);
 					GetData(rows[i]);
-
 				}
 			}
-
 			//row Load
 			else if(returnData.Keys.Contains("row"))
 			{
-				Debug.Log("row로 전달받음");
-
 				JsonData row = returnData["row"];
 				GetData(row[0]);
 			}
@@ -153,47 +150,31 @@ public class BackEndGameInfo : SceneSingleTon<BackEndGameInfo>
 
 	private void GetData(JsonData data)
 	{
-		var dataIndate = data["inDate"][0].ToString();
-
-		MyData.Instance.loginID = dataIndate;
-		Debug.Log("사용자 인증번호 : " + MyData.Instance.loginID);
-
 		for (int i = 0; i < 3; i++)
 		{
-			var stageScore = data["stage" + (i + 1)][i].ToString();
-			Debug.Log("서버에서 받아온 스테이지 데이터1 : " + MyData.Instance.scoreInfo.stageScore[i]);
+			string t_contain = "stage" + (i + 1).ToString();
+
+			if (data.Keys.Contains(t_contain)) 
+			{
+				var stageScore = data["stage" + (i + 1)][0].ToString();
+				MyData.Instance.scoreInfo.stageScore[i] = int.Parse(stageScore);
+				Debug.Log(i + "스테이지 : " + MyData.Instance.scoreInfo.stageScore[i]);
+
+			}
 		}
 	}
+
 	string firstKey = string.Empty;
-	public void OnClickPublicContentsNext()
-	{
-		BackendReturnObject BRO;
 
-		if (firstKey == null)
-		{
-			BRO = Backend.GameInfo.GetPublicContents("StageScore", 1);
-		}
-		else
-		{
-			//이전에 불러온 데이터의 다음 순번 데이터를 불러온다.
-			BRO = Backend.GameInfo.GetPublicContents("StageScore", firstKey, 1);
-		}
-
-		if(BRO.IsSuccess())
-		{
-			firstKey = BRO.FirstKeystring();
-			GetGameInfo(BRO.GetReturnValuetoJSON());
-		}
-		else
-		{
-			CheckError(BRO);
-		}
-	}
 	public void OnClickGameInfoUpdate()
 	{
 		Param param = new Param();
-		param.Add("stage1", 9999);
-		
+
+		for(int i = 0; i < 3; i++)
+		{
+			param.Add("stage" + (i + 1), MyData.Instance.scoreInfo.stageScore[i]);
+		}
+
 		BackendReturnObject BRO = Backend.GameInfo.Update("StageScore", MyData.Instance.loginID, param);
 
 		if (BRO.IsSuccess())
