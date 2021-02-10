@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class TimeLimit : MonoSingleton<TimeLimit>
 {
-	public Image hpGauge;
-	public Image hpGaugeBack;
+	public Image curTimeGauge;
 	public Text curTimeText;
 
 	[SerializeField]
@@ -31,7 +30,7 @@ public class TimeLimit : MonoSingleton<TimeLimit>
 	}
 	IEnumerator Regular()
 	{
-		while(curTime >= 0f)
+		while(curTime >= 0)
 		{
 			yield return new WaitForSeconds(1f);
 			curTime -= 1;
@@ -56,10 +55,10 @@ public class TimeLimit : MonoSingleton<TimeLimit>
 	}
 	private void UIUpdate()
 	{
-		hpGauge.fillAmount = (float)curTime / (float)maxTime;
+		curTimeGauge.fillAmount = (float)curTime / (float)maxTime;
 		curTimeText.text = curTime.ToString();
 
-		if(curTime==-1)
+		if(curTime == -1)
         {
 			curTimeText.text = "0";
         }
@@ -70,6 +69,6 @@ public class TimeLimit : MonoSingleton<TimeLimit>
 	}
 	public int GetClearTime()
     {
-		return (int)curTime;
+		return curTime;
     }
 }
