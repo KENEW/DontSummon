@@ -97,7 +97,10 @@ public class BackEndFederationAuth : MonoSingleton<BackEndFederationAuth>
 		}
 		else
 		{
-			LoginScreen.Instance.OpenLoginFailedPanel();
+			if(!GameManager.Instance.isLoginCheck)
+			{
+				LoginScreen.Instance.OpenLoginFailedPanel();
+			}
 
 			switch (BRO.GetStatusCode())
 			{
