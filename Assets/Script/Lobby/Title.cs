@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Title : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Title : MonoBehaviour
 	public GameObject StageSelect;
 	public GameObject TitleScreen;
 	public GameObject CreditPanel;
+
+	public Button rankingButton;
 
 	private void Start()
 	{
@@ -30,14 +33,8 @@ public class Title : MonoBehaviour
 
 		CreditPanel.SetActive(!CreditPanel.activeSelf);
 	}
-	public void ExitButton()
+	private void OnEnable()
 	{
-		SoundManager.Instance.PlaySFX("Button");
-
-#if UNITY_EDITOR
-		UnityEditor.EditorApplication.isPlaying = false;
-		#else
-			Application.Quit();
-		#endif
+		rankingButton.interactable = SystemManager.Instance.isGPSCheck ? true : false;
 	}
 }

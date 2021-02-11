@@ -39,7 +39,8 @@ public class BackEndFederationAuth : MonoSingleton<BackEndFederationAuth>
 				if (bSuccess)
 				{
 					Debug.Log("Success : " + Social.localUser.userName);
-					GameManager.Instance.isGPSCheck = true;
+					//GameManager.Instance.isGPSCheck = true;
+					SystemManager.Instance.isGPSCheck = true;
 
 					Debug.Log("Email : " + PlayGamesPlatform.Instance.GetUserEmail());
 					Debug.Log("Token : " + PlayGamesPlatform.Instance.GetIdToken());
@@ -97,10 +98,7 @@ public class BackEndFederationAuth : MonoSingleton<BackEndFederationAuth>
 		}
 		else
 		{
-			if(!GameManager.Instance.isLoginCheck)
-			{
-				LoginScreen.Instance.OpenLoginFailedPanel();
-			}
+			LoginScreen.Instance.OpenLoginFailedPanel();
 
 			switch (BRO.GetStatusCode())
 			{
@@ -118,7 +116,7 @@ public class BackEndFederationAuth : MonoSingleton<BackEndFederationAuth>
 	}
 	public void OnShowLeaderBoard()
 	{
-		if (!GameManager.Instance.isGPSCheck)
+		if (!SystemManager.Instance.isGPSCheck)
 		{
 			Debug.Log("구글 로그인이 되지 않았습니다.");
 			OnClickGPSLogin();
@@ -129,7 +127,7 @@ public class BackEndFederationAuth : MonoSingleton<BackEndFederationAuth>
 	}
 	public void OnSetLeaderBoard(int stage, int score)
 	{
-		if (!GameManager.Instance.isGPSCheck)
+		if (!SystemManager.Instance.isGPSCheck)
 		{
 			Debug.Log("구글 로그인이 되지 않았습니다.");
 			return;
@@ -182,7 +180,7 @@ public class BackEndFederationAuth : MonoSingleton<BackEndFederationAuth>
 	}
 	public void OnShowAchievement()
 	{
-		if (!GameManager.Instance.isGPSCheck)
+		if (!SystemManager.Instance.isGPSCheck)
 		{
 			Debug.Log("구글 로그인이 되지 않았습니다.");
 			return;
@@ -192,7 +190,7 @@ public class BackEndFederationAuth : MonoSingleton<BackEndFederationAuth>
 	}
 	public void OnAddAchievement(string achieveID)
 	{
-		if (!GameManager.Instance.isGPSCheck)
+		if (!SystemManager.Instance.isGPSCheck)
 		{
 			Debug.Log("구글 로그인이 되지 않았습니다.");
 			return;

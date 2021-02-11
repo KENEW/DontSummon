@@ -2514,7 +2514,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 511006953}
+      - m_Target: {fileID: 0}
         m_MethodName: OnClickSignUp
         m_Mode: 1
         m_Arguments:
@@ -4189,7 +4189,6 @@ GameObject:
   - component: {fileID: 511006952}
   - component: {fileID: 511006951}
   - component: {fileID: 511006950}
-  - component: {fileID: 511006953}
   m_Layer: 0
   m_Name: BackEndManager
   m_TagString: Untagged
@@ -4248,20 +4247,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1829185828}
---- !u!114 &511006953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 511006948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d58d65f7127ffe47bd569f804d506ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  idInput: {fileID: 275260842}
-  paInput: {fileID: 1909331032}
 --- !u!1 &516860020
 GameObject:
   m_ObjectHideFlags: 0
@@ -7552,6 +7537,7 @@ MonoBehaviour:
   StageSelect: {fileID: 1423153884}
   TitleScreen: {fileID: 897571617}
   CreditPanel: {fileID: 404193903}
+  rankingButton: {fileID: 1268130048}
 --- !u!1 &902281125
 GameObject:
   m_ObjectHideFlags: 0
@@ -7726,7 +7712,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 930433387}
-  - component: {fileID: 930433388}
+  - component: {fileID: 930433389}
   - component: {fileID: 930433386}
   m_Layer: 0
   m_Name: GameManager
@@ -7766,7 +7752,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &930433388
+--- !u!114 &930433389
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7775,7 +7761,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 930433385}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4606a2d57be76d34c8dbd0803be7dbc7, type: 3}
+  m_Script: {fileID: 11500000, guid: c5f795ba4503bf849b54825a28ac8fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isLoginCheck: 0
@@ -8776,7 +8762,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstScreen: {fileID: 653985724}
   titleScreen: {fileID: 897571617}
-  gameManager: {fileID: 0}
 --- !u!4 &1118389405
 Transform:
   m_ObjectHideFlags: 0
@@ -15089,7 +15074,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 511006953}
+      - m_Target: {fileID: 0}
         m_MethodName: OnClickLogin
         m_Mode: 1
         m_Arguments:

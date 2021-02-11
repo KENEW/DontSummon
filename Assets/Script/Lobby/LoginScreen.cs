@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LoginScreen : MonoSingleton<LoginScreen>
 {
@@ -8,10 +9,13 @@ public class LoginScreen : MonoSingleton<LoginScreen>
 	public GameObject loginScreen;
 	public GameObject loginFailedPanel;
 
+
 	public void NextScreen()
 	{
 		TitleScreen.SetActive(true);
 		loginScreen.SetActive(false);
+
+		SystemManager.Instance.isLoginCheck = true;
 	}
 	public void OnGoogleLogin()
 	{
