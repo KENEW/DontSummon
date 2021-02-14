@@ -48,7 +48,9 @@ public class GameResult : MonoSingleton<GameResult>
     public void OnReStart()
     {
         SoundManager.Instance.PlaySFX("Button");
-        MyData.Instance.scoreInfo = new ScoreInfo();
+        MyData.Instance.curScore = 0;
+        MyData.Instance.stageInfo.curScore = 0;
+        MyData.Instance.stageInfo.curStage = 1;
 
         lightLoading.LoadStart("Stage1");
     }

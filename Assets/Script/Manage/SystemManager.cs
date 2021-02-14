@@ -9,7 +9,7 @@ public class SystemManager : MonoSingleton<SystemManager>
 
 	private void Awake()
 	{
-		ScreenSetting();
+		//ScreenSetting();
 	}
 	public void ScreenSetting()
 	{
